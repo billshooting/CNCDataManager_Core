@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "alwaysStrict": true,
+    "target": "es5",
+    "experimentalDecorators": true,
+    "outDir": "./dist"
+  }
+}

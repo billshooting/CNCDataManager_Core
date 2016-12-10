@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{465E3676-3EA5-4F44-9BA7-EB0575EB8269}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\css\about.css" />
+    <Content Include="app\css\cncdata.css" />
+    <Content Include="app\css\contact.css" />
+    <Content Include="app\css\directives\header.css" />
+    <Content Include="app\css\home.css" />
+    <Content Include="app\css\index.css" />
+    <Content Include="app\css\others\docPreview.css" />
+    <Content Include="app\css\templates\cncdata-desc.css" />
+    <Content Include="app\css\templates\tablelist.css" />
+    <Content Include="app\images\back-to-top-icon.png" />
+    <Content Include="app\images\CNC\数控系统-表.jpg" />
+    <Content Include="app\images\Cover\CNC.jpg" />
+    <Content Include="app\images\Cover\driver.jpg" />
+    <Content Include="app\images\Cover\machine.jpg" />
+    <Content Include="app\images\Cover\motor.jpg" />
+    <Content Include="app\images\Cover\system.jpg" />
+    <Content Include="app\images\Home\angular.png" />
+    <Content Include="app\images\Home\asp-net.png" />
+    <Content Include="app\images\Home\Azure.png" />
+    <Content Include="app\images\Home\bootstrap-logo.png" />
+    <Content Include="app\images\Home\home-background-img.png" />
+    <Content Include="app\images\Home\jQuery.png" />
+    <Content Include="app\images\Home\left-part-head-img.png" />
+    <Content Include="app\images\Home\login-bg.png" />
+    <Content Include="app\images\Home\login-bg1.png" />
+    <Content Include="app\images\Home\machine1.jpg" />
+    <Content Include="app\images\Home\machine2.jpg" />
+    <Content Include="app\images\load64x64.gif" />
+    <Content Include="app\images\loading38x38.gif" />
+    <Content Include="app\images\Mechanics\1-滚动轴承-介绍.jpg" />
+    <Content Include="app\images\Mechanics\2-联轴器-介绍.jpg" />
+    <Content Include="app\images\Mechanics\3-导轨-介绍.jpg" />
+    <Content Include="app\images\Mechanics\4-滚珠丝杠螺副-介绍.jpg" />
+    <Content Include="app\images\Mechanics\5-回转工作台-介绍.jpg" />
+    <Content Include="app\images\Mechanics\6-齿轮结构-介绍.jpg" />
+    <Content Include="app\images\Mechanics\7-蜗轮蜗杆-介绍.jpg" />
+    <Content Include="app\images\Mechanics\8-带传动-介绍.jpg" />
+    <Content Include="app\images\Mechanics\传动带-表\带传动.jpg" />
+    <Content Include="app\images\Mechanics\回转工作台-表\工作台.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\1-直线滚动导轨-表.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\导轨.jpg" />
+    <Content Include="app\images\Mechanics\数控系统-介绍.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\1-角接触球轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\2-深沟球轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\3-圆锥滚子轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\4-圆柱滚子轴承1-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\4-圆柱滚子轴承2-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\5-调心滚子轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\6-调心球轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\7-滚珠丝杠支撑轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\滚动轴承.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\滚珠丝杠螺母副.jpg" />
+    <Content Include="app\images\Mechanics\滚珠丝杠-表\1-实心滚珠丝杠螺母副-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\1-凸缘式联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\2-十字滑块联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\3-齿式联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\4-带制动轮弹性套柱销联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\5-弹性套注销联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\6-弹性柱销联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\7-梅花形弹性联轴器-表.jpg" />
+    <Content Include="app\images\Mechanics\联轴器-表\联轴器.jpg" />
+    <Content Include="app\images\Mechanics\蜗轮蜗杆-表\1-普通圆柱蜗轮蜗杆-表.jpg" />
+    <Content Include="app\images\Mechanics\蜗轮蜗杆-表\2-圆弧圆柱蜗轮蜗杆-表.jpg" />
+    <Content Include="app\images\Mechanics\蜗轮蜗杆-表\蜗轮蜗杆.jpg" />
+    <Content Include="app\images\Mechanics\齿轮-表\1-直齿圆柱齿轮-表.jpg" />
+    <Content Include="app\images\Mechanics\齿轮-表\2-斜齿圆柱齿轮-表.jpg" />
+    <Content Include="app\images\Mechanics\齿轮-表\3-直齿锥齿轮-表.jpg" />
+    <Content Include="app\images\Mechanics\齿轮-表\齿轮.jpg" />
+    <Content Include="app\images\Motors\主轴电机.jpg" />
+    <Content Include="app\images\Motors\伺服电机-介绍.jpg" />
+    <Content Include="app\images\Motors\伺服电机.jpg" />
+    <Content Include="app\images\Motors\进给电机-表.jpg" />
+    <Content Include="app\images\Motors\进给电机尺寸图-表.jpg" />
+    <Content Include="app\images\Report\cautious.png" />
+    <Content Include="app\images\Report\MachineType.png" />
+    <Content Include="app\images\Report\simu-1.png" />
+    <Content Include="app\images\Report\simu-2.png" />
+    <Content Include="app\images\Report\simu-3.png" />
+    <Content Include="app\images\Report\university-icon.png" />
+    <Content Include="app\images\Report\条形码.png" />
+    <Content Include="app\images\Servo\伺服部分.jpg" />
+    <Content Include="app\images\Servo\永磁同步交流进给伺服电机驱动器-表.jpg" />
+    <Content Include="app\images\Servo\电机驱动-介绍.jpg" />
+    <Content Include="app\index.html" />
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\accountController.js" />
+    <Content Include="app\js\controllers\cncdataController.js" />
+    <Content Include="app\js\controllers\homeController.js" />
+    <Content Include="app\js\directives\cncdata\align-ball-brgs-panel.js" />
+    <Content Include="app\js\directives\cncdata\align-roller-brgs-panel.js" />
+    <Content Include="app\js\directives\cncdata\AngContactBallBrgs.js" />
+    <Content Include="app\js\directives\cncdata\ArcCylinWormGears.js" />
+    <Content Include="app\js\directives\cncdata\BallLeadScrewSptBrgs.js" />
+    <Content Include="app\js\directives\cncdata\BWElasticSlvPinCoups.js" />
+    <Content Include="app\js\directives\cncdata\Cables.js" />
+    <Content Include="app\js\directives\cncdata\cncdata-index-panel.js" />
+    <Content Include="app\js\directives\cncdata\contenteditable.js" />
+    <Content Include="app\js\directives\cncdata\CylinRollerBrgs.js" />
+    <Content Include="app\js\directives\cncdata\DeepGrooveBallBrgs.js" />
+    <Content Include="app\js\directives\cncdata\DoubleRowCylinRollerBrgs.js" />
+    <Content Include="app\js\directives\cncdata\DoubleThrustAngContactBallBrgs.js" />
+    <Content Include="app\js\directives\cncdata\ElasticSlvPinCoups.js" />
+    <Content Include="app\js\directives\cncdata\ElecSpindleParas.js" />
+    <Content Include="app\js\directives\cncdata\FlangeCoups.js" />
+    <Content Include="app\js\directives\cncdata\FlexiblePinCoups.js" />
+    <Content Include="app\js\directives\cncdata\GearCoups.js" />
+    <Content Include="app\js\directives\cncdata\HeliCylinGears.js" />
+    <Content Include="app\js\directives\cncdata\HubShapedCoups.js" />
+    <Content Include="app\js\directives\cncdata\LineRollingGuides.js" />
+    <Content Include="app\js\directives\cncdata\NCSystemFunctionalOptions.js" />
+    <Content Include="app\js\directives\cncdata\NCSystemIOUnits.js" />
+    <Content Include="app\js\directives\cncdata\NCSystemManuals.js" />
+    <Content Include="app\js\directives\cncdata\NCSystemPowerUnits.js" />
+    <Content Include="app\js\directives\cncdata\NeedleRollerThrustRollerBrgs.js" />
+    <Content Include="app\js\directives\cncdata\OldhamCoups.js" />
+    <Content Include="app\js\directives\cncdata\PlumShapedFlexibleCoups.js" />
+    <Content Include="app\js\directives\cncdata\PMSrvMotorDrivers.js" />
+    <Content Include="app\js\directives\cncdata\PMSrvMotorParas.js" />
+    <Content Include="app\js\directives\cncdata\RotaryTables.js" />
+    <Content Include="app\js\directives\cncdata\SpindleBeltLength.js" />
+    <Content Include="app\js\directives\cncdata\SpindleBeltParas.js" />
+    <Content Include="app\js\directives\cncdata\SpindleBeltSizes.js" />
+    <Content Include="app\js\directives\cncdata\SpindleSrvMotorDrivers.js" />
+    <Content Include="app\js\directives\cncdata\SpindleSrvMotorParas.js" />
+    <Content Include="app\js\directives\cncdata\SpurGears.js" />
+    <Content Include="app\js\directives\cncdata\SrvDriverBrakeResistors.js" />
+    <Content Include="app\js\directives\cncdata\SrvDriverReactors.js" />
+    <Content Include="app\js\directives\cncdata\SrvDriverTransformers.js" />
+    <Content Include="app\js\directives\cncdata\StraightBevelGears.js" />
+    <Content Include="app\js\directives\cncdata\TaperedRollerBrgs.js" />
+    <Content Include="app\js\directives\cncdata\XTaperedRollerBrgs.js" />
+    <Content Include="app\js\directives\home-pages.js" />
+    <Content Include="app\js\index.js" />
+    <Content Include="app\js\others\sendAjax.js" />
+    <Content Include="app\js\services\proxyservice.js" />
+    <Content Include="app\js\services\table-handler.js" />
+    <Content Include="app\system.config.js" />
+    <Content Include="app\views\directives\header.html" />
+    <Content Include="app\views\cncdata.html" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\home\about.html" />
+    <Content Include="app\views\home\contact.html" />
+    <Content Include="app\views\home\index.html" />
+    <Content Include="app\views\modals\confirmDeleteModal.html" />
+    <Content Include="app\views\modals\tryAddModal.html" />
+    <Content Include="app\views\templates\align-ball-panel.html" />
+    <Content Include="app\views\templates\align-roller-bearings.html" />
+    <Content Include="app\views\templates\AngContactBallBrgs.html" />
+    <Content Include="app\views\templates\ArcCylinWormGears.html" />
+    <Content Include="app\views\templates\BallLeadScrewSptBrgs.html" />
+    <Content Include="app\views\templates\BWElasticSlvPinCoups.html" />
+    <Content Include="app\views\templates\Cables.html" />
+    <Content Include="app\views\templates\cncdata-desc.html" />
+    <Content Include="app\views\templates\CylinRollerBrgs.html" />
+    <Content Include="app\views\templates\DeepGrooveBallBrgs.html" />
+    <Content Include="app\views\templates\DoubleRowCylinRollerBrgs.html" />
+    <Content Include="app\views\templates\DoubleThrustAngContactBallBrgs.html" />
+    <Content Include="app\views\templates\ElasticSlvPinCoups.html" />
+    <Content Include="app\views\templates\ElecSpindleParas.html" />
+    <Content Include="app\views\templates\FlangeCoups.html" />
+    <Content Include="app\views\templates\FlexiblePinCoups.html" />
+    <Content Include="app\views\templates\GearCoups.html" />
+    <Content Include="app\views\templates\HeliCylinGears.html" />
+    <Content Include="app\views\templates\HubShapedCoups.html" />
+    <Content Include="app\views\templates\LineRollingGuides.html" />
+    <Content Include="app\views\templates\NCSystemFunctionalOptions.html" />
+    <Content Include="app\views\templates\NCSystemIOUnits.html" />
+    <Content Include="app\views\templates\NCSystemManuals.html" />
+    <Content Include="app\views\templates\NCSystemPowerUnits.html" />
+    <Content Include="app\views\templates\NeedleRollerThrustRollerBrgs.html" />
+    <Content Include="app\views\templates\OldhamCoups.html" />
+    <Content Include="app\views\templates\PlumShapedFlexibleCoups.html" />
+    <Content Include="app\views\templates\PMSrvMotorDrivers.html" />
+    <Content Include="app\views\templates\PMSrvMotorParas.html" />
+    <Content Include="app\views\templates\RotaryTables.html" />
+    <Content Include="app\views\templates\SpindleBeltLength.html" />
+    <Content Include="app\views\templates\SpindleBeltParas.html" />
+    <Content Include="app\views\templates\SpindleBeltSizes.html" />
+    <Content Include="app\views\templates\SpindleSrvMotorDrivers.html" />
+    <Content Include="app\views\templates\SpindleSrvMotorParas.html" />
+    <Content Include="app\views\templates\SpurGears.html" />
+    <Content Include="app\views\templates\SrvDriverBrakeResistors.html" />
+    <Content Include="app\views\templates\SrvDriverReactors.html" />
+    <Content Include="app\views\templates\SrvDriverTransformers.html" />
+    <Content Include="app\views\templates\StraightBevelGears.html" />
+    <Content Include="app\views\templates\TaperedRollerBrgs.html" />
+    <Content Include="app\views\templates\XTaperedRollerBrgs.html" />
+    <None Include="app\_references.js" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\system.config.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+    <Content Include="package.json" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="test\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\scripts\index.ts" />
+    <TypeScriptCompile Include="app\scripts\bases\route.ts" />
+    <TypeScriptCompile Include="app\scripts\bases\utility.ts" />
+    <TypeScriptCompile Include="app\scripts\controllers\home\about.ts" />
+    <TypeScriptCompile Include="app\scripts\controllers\home\contact.ts" />
+    <TypeScriptCompile Include="app\scripts\controllers\home\home.ts" />
+    <TypeScriptCompile Include="app\scripts\controllers\index.ts" />
+    <TypeScriptCompile Include="app\scripts\directives\Header.ts" />
+    <TypeScriptCompile Include="app\scripts\directives\index.ts" />
+    <TypeScriptCompile Include="app\scripts\services\HttpProxy.ts" />
+    <TypeScriptCompile Include="app\scripts\services\index.ts" />
+    <TypeScriptCompile Include="app\scripts\services\Users.ts" />
+    <TypeScriptCompile Include="app\scripts\types\ICncDataScope.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CNCDataManager</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58744</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58744/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

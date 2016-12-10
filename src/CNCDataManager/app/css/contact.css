@@ -1,0 +1,46 @@
+﻿#contact-block {
+    display:block;
+    width:30%;
+    max-width: 320px;
+    height:auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:auto;
+    padding:20px;
+    border-radius:6px;
+    background-color: white;
+}
+
+#contact-icon p{
+    text-align:center;
+}
+
+#contact-icon p:first-child{
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+#contact-icon p:last-child
+{
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:1px;
+    color:#555;
+}
+
+#contact-message p{
+    font-size:16px;
+}
+
+#developer-message p:first-child{
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+#developer-message p:last-child{
+    font-size:18px;
+    letter-spacing:1px;
+}

@@ -1,0 +1,187 @@
+* {
+    font-family:'Microsoft YaHei';
+    font-size:16px;
+    margin:0;
+    padding:0;
+}
+
+
+/*#region 轮播封面 */
+
+.carousel-control.left {
+    background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0) 0), color-stop(rgba(0, 0, 0, 0) 0%));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-color:rgba(0, 0, 0, 0.60);
+    height:50px;
+    margin-bottom:auto;
+    margin-top:auto;
+    width:50px;
+    border-radius:25px;
+    /*border:solid 4px white;*/
+    left:30px;
+    right:auto;
+    padding:0;
+}
+
+#home-index-cover-prev-arrow{
+    position:absolute;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    width:100%;
+    left:0;
+    right:auto;
+    top:10px;
+    bottom:auto;
+}
+
+.carousel-control.right {
+    background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0) 0), color-stop(rgba(0, 0, 0, 0) 0%));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-color:rgba(0, 0, 0, 0.60);
+    height:50px;
+    margin-bottom:auto;
+    margin-top:auto;
+    width:50px;
+    border-radius:25px;
+    /*border:solid 4px white;*/
+    left:auto;
+    right:30px;
+    padding:0;
+}
+
+#home-index-cover-next-arrow{
+    position:absolute;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    width:100%;
+    left:auto;
+    right:0;
+    top:10px;
+    bottom:auto;
+}
+
+#home-index-cover{
+    width:100%;
+    height:auto;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:150px;
+}
+
+.carousel-indicators >li{
+    color:rgba(0, 0, 0, 0.70);
+    background-color:rgba(0, 0, 0, 0.70);
+}
+
+.home-index-cover-img >img{
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*#endregion */
+
+
+/*#region 主页标题描述 */
+
+div#home-page-head{
+    margin-top: 5%;
+    color: white;
+    text-align: center;
+}
+
+div#home-page-head >h1{ 
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+div#home-page-head >h3{
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+div#home-page-head >h4{
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/*#endregion */
+/*#region 主页主题描述 */
+
+.home-index-desc{
+    margin-top: 50px;
+    letter-spacing:1px;
+    text-indent:35px;
+}
+.home-index-desc ul{
+    text-indent:0;
+    margin-left:35px;
+}
+
+/*#endregion */
+
+/*#region 所用技术展示 */
+
+.home-index-tech-used{
+    width:80%;
+    margin:auto;
+}
+.home-index-tech-used >p{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.tech-img{
+    position:relative;
+    width: 200px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding-left:24px;
+    padding-right: 24px;    
+    float:left;
+}
+.tech-img:hover{
+    border: 1px solid #777;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    -webkit-animation-name: imgrollback; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation-name: imgrollback;
+    animation-duration: 1s;
+}
+
+.tech-img img{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+div.tech-img-desc{
+    padding:10px;
+    font-size:18px;
+    font-weight:bold;
+    text-align: center;
+}
+
+/*#endregion */
+
+
+/*实现图片翻转*/
+@keyframes imgrollback{
+    0%   {transform: rotateY(0);}
+    50%  {transform: rotateY(180deg);}
+    100% {transform: rotateY(360deg)}
+}
+

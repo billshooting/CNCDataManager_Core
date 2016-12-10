@@ -1,0 +1,40 @@
+﻿/*#region 主页导航 */
+
+div.navbar {
+    border:none;
+}
+
+
+a.home-index-nav-link{
+    margin-top:auto;
+    margin-bottom:auto;
+    vertical-align:central;
+    font-family:'Microsoft YaHei';
+    font-size:16px;
+    color:white;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+a.home-index-nav-link :visited{
+    background-color: transparent;
+}
+
+ul.navbar-nav li >a{ color: white;}
+
+ul.navbar-nav li :hover{
+    color:lightgray;
+    background-color:transparent; 
+}
+
+
+a.navbar-brand { 
+    font-size:16px;
+    font-weight:bold;
+    color:white;
+    letter-spacing:2px;
+}
+
+a.navbar-brand :hover{ color: lightgray;}
+
+/*#endregion */

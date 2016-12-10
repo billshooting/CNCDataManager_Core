@@ -1,0 +1,137 @@
+﻿* {
+    font-family:'Microsoft YaHei, 宋体';
+    font-size:14px;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color: #e8e8e8;
+}
+
+.middle-container{
+    display: block;
+    position: relative;
+    width: 21cm;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.fixed-window {
+    display: block;
+    position:fixed;
+    height: 90%;
+    max-height: 90%;
+    width: 14.64cm;
+    padding: 2.54cm 3.18cm 2.54cm 3.18cm;
+
+    border: 1px solid #555;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.inline-div {
+    display: inline-block;
+}
+#time-div {
+    position: absolute;
+    right: 0;
+    margin-right: 0;
+}
+#time-div >p{
+    margin-right: 0;
+}
+#time-div >ul{
+    list-style: none;
+    margin-right: 0;
+}
+
+#university-icon {
+    height: 0.88cm;
+    width: 5.29cm;
+}
+
+#barcode {
+    margin-top: 1cm;
+    height: 2.29cm;
+    width: 4.62cm;
+}
+
+#title {
+    font-size: 24pt;
+    text-align: center;
+}
+
+.sub-title {
+    font-size: 18pt;
+    text-align: center;
+}
+
+.paragraph{
+    line-height: 20px;
+    text-indent: 30px;
+}
+/*#region table */
+
+.doc-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+.doc-table td{
+    height: 26px;
+    border: 1px solid #000;
+    text-align: left;
+    vertical-align: central;
+    padding-left: 10px;
+}
+
+.td-25 {
+    width: 25%;
+}
+
+/*#endregion */
+
+/*#region picture */
+
+#machineType-pic {
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    height: 7.06cm;
+    width: 10.58cm;
+}
+
+.simu-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 7.76cm;
+    width: 10.58cm;
+}
+
+/*#endregion */
+
+.download {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 100px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4caf50;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+}
+.download:hover {
+    color: #4caf50;
+    background-color: #fff;
+}

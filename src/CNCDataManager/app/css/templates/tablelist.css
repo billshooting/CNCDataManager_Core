@@ -1,0 +1,129 @@
+div.list-content{
+    margin-left: 300px;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+/*表格列选择部分*/
+.cncdata-table-select{
+    display: block;
+    height: 25px;
+}
+
+.cncdata-table-col{
+    display: inline-block;
+    margin: auto 10px;
+    color: #555;
+}
+
+
+.cncdata-table-col:hover{
+    cursor: pointer;
+    color: black;
+}
+
+
+.cncdata-table-col-checked >span{
+    color: black;
+}
+.cncdata-table-col-checked >span:first-child{
+    color: indianred;
+}
+/*表格列选择部分结束*/
+
+/*表格列排序部分*/
+.table-td-orderable{
+    color: white;
+    background-color: #4caf50;
+}
+
+.table-td-orderable:hover{
+    cursor: pointer;
+    color: #4caf50;
+    background-color: white;
+}
+
+.table-td-ordered{
+    color: white;
+    background-color: #4caf50;
+}
+
+
+/*表格列排序部分结束*/
+
+/*表格处理部分*/
+.table-td-loading{
+    background: url('../images/loading38x38.gif') no-repeat;
+}
+.table-td-btn{
+    background-color: #4caf50;
+    cursor: pointer;
+}
+.table-td-btn :hover{
+    cursor: pointer;
+}
+/*表格处理部分结束*/
+
+
+/*尺寸描述部分*/
+.list-desc{
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h4.head-title{
+    display: block;
+    padding: 5px 0 5px 10px;
+    background-color: #ccc;
+    letter-spacing: 2px;
+}
+
+.span-button{
+    height: 29px;
+    margin: -5px 0 -5px 0;
+    padding: 4px 2px 4px 2px;
+    color: white;
+    background-color: #4caf50;
+    border: 1px #4caf50 solid;
+    letter-spacing: 0.5px;
+}
+
+.span-button:hover{
+    cursor: pointer;
+    border: 1px #337ab7 solid;
+    background-color: #4b9730;
+}
+
+.list-desc-img >img{
+    width: 110%;
+}
+.list-desc-txt >p{
+    font-size: 16px;
+    text-indent:40px;
+    margin-top:20px;
+    vertical-align: middle;
+}
+
+.cncdata-table >thead{
+    background-color:#ccc;
+}
+.cncdata-table td{
+    /*min-width: 100px;*/
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*transition: width linear 0.5s;*/
+    width:150px;
+}
+.cncdata-table{
+    display:block;
+    overflow-x: auto;
+}
+.table{
+    width: 100%;
+    min-height: 300px;
+}
+/*尺寸描述部分结束*/

@@ -1,0 +1,49 @@
+﻿.background-about{
+    background-color:none;
+    background-image: url(../images/Home/login-bg.png);
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+
+#about-block {
+    display:block;
+    width:30%;
+    max-width: 400px;
+    height:auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:auto;
+    padding:15px 20px 7px 20px;
+    border-radius:6px;
+    background-color: white;
+}
+
+#about-icon p{
+    text-align:center;
+}
+
+#about-icon p:first-child{
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+#about-icon p:last-child
+{
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:1px;
+    color:#555;
+}
+
+#about-message p{
+    text-indent:35px;
+    letter-spacing:1px;
+}
+
+#about-message ul{
+    text-indent:0;
+    margin-left: 35px;
+}
+

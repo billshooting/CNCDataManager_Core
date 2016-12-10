@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+</head>
+<body ng-app="cncDataManager">
+    <app-header></app-header>
+    <h1>TypeScript HTML App</h1>
+
+    <div id="content"></div>
+    <script src="//cdn.bootcss.com/systemjs/0.19.41/system.js"></script>
+    <script src="system.config.js"></script>
+    <script>
+        System.import('./index.js');
+    </script>
+</body>
+</html>

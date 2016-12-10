@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CDEC80CC-FC64-48BC-A0EF-52AB1C377FCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6D7278C1-2BDD-411B-80F9-7FB9B41C7E8B}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CNCDataManager_Core", "src\CNCDataManager_Core\CNCDataManager_Core.xproj", "{2DB41913-B6A1-433B-9728-B32039D9B4D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNCDataManager", "src\CNCDataManager\CNCDataManager.csproj", "{465E3676-3EA5-4F44-9BA7-EB0575EB8269}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DB41913-B6A1-433B-9728-B32039D9B4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB41913-B6A1-433B-9728-B32039D9B4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB41913-B6A1-433B-9728-B32039D9B4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB41913-B6A1-433B-9728-B32039D9B4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465E3676-3EA5-4F44-9BA7-EB0575EB8269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465E3676-3EA5-4F44-9BA7-EB0575EB8269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465E3676-3EA5-4F44-9BA7-EB0575EB8269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465E3676-3EA5-4F44-9BA7-EB0575EB8269}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DB41913-B6A1-433B-9728-B32039D9B4D1} = {CDEC80CC-FC64-48BC-A0EF-52AB1C377FCC}
+		{465E3676-3EA5-4F44-9BA7-EB0575EB8269} = {CDEC80CC-FC64-48BC-A0EF-52AB1C377FCC}
+	EndGlobalSection
+EndGlobal

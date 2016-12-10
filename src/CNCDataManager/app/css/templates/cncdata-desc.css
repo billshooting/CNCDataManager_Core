@@ -1,0 +1,315 @@
+
+/*伺服电机样式*/
+
+div.motor-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+div.motor-desc >img{
+    margin-top:40px;
+    width: 100%;
+}
+div.motor-desc >p:first-child{
+    text-indent: 0;
+}
+/*伺服电机样式结束*/
+/*伺服驱动器*/
+#servo-desc-img >img{
+    display:block;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.servo-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+
+/*伺服驱动器结束*/
+
+/*数控系统*/
+.system-desc >img{
+    display:block;
+    width:100%;
+}
+
+.system-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+.system-desc >p:first-child{
+    margin-top: 30px;
+}
+/*数控系统结束*/
+
+/*滚动轴承*/
+.bearings-desc >img{
+    display:block;
+    width:100%;
+    margin-bottom:30px;
+}
+
+.bearings-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+/*滚动轴承结束*/
+
+/*联轴器*/
+.coupling-desc >img{
+    display:block;
+    width:100%;
+}
+.coupling-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+.coupling-desc >p:first-child{
+    margin-top: 30px;
+}
+/*联轴器结束*/
+
+/*导轨*/
+.guide-desc >img{
+    display:block;
+    width:100%;
+    margin-top:30px;
+}
+.guide-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+/*导轨结束*/
+
+/*滚珠丝杠螺母副*/
+.screw-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+
+.screw-desc >img{
+    display:block;
+    width:100%;
+}
+/*滚珠丝杠螺母副结束*/
+
+/*回转工作台*/
+.table-desc >img{
+    display:block;
+    width:100%;
+}
+
+.table-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+
+.table-desc >p:first-child{
+    margin-top:60px;
+}
+/*回转工作台结束*/
+
+/*齿轮*/
+.gear-desc >img{
+    display:block;
+    width:100%;
+}
+
+.gear-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+.gear-desc >p:first-child{
+    margin-top:30px;
+}
+/*齿轮结束*/
+
+/*蜗轮蜗杆*/
+.worm-desc >img{
+    display:block;
+    width:100%;
+}
+
+.worm-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+.worm-desc >p:first-child{
+    margin-top:30px;
+}
+/*蜗轮蜗杆结束*/
+
+/*带传动*/
+
+.belt-desc >img{
+    display:block;
+    width:100%;
+}
+
+.belt-desc >p{
+    font-size:16px;
+    letter-spacing:1px;
+    color: #555;
+    text-indent:35px;
+}
+.belt-desc >p:first-child{
+    margin-top:30px;
+}
+/*带传动结束*/
+
+/*标题*/
+.desc-header{
+    display:block;
+    width:80%;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-top: 10px;
+    margin-bottom:0;
+    padding:8px 5px 8px 5px;
+
+    border:1px solid #bbb;
+    background-color:#ccc;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+
+    letter-spacing: 2px;
+    font-size: 20px;
+
+    transition:width 0.5s;
+    -moz-transition:width 0.5s;
+    -webkit-transition:width 0.5s;
+}
+.desc-header-open{
+    display:block;
+    width:auto;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-top:10px;
+    margin-bottom:0;
+    padding:8px 5px 8px 5px;
+
+    border-top:1px solid #41bae2;
+    border-left:1px solid #41bae2;
+    border-bottom:0;
+    border-right:1px solid #41bae2;
+
+    color: #fff;
+    background-color:#41bae2;
+
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    -moz-border-radius-bottomleft:0;
+    -moz-border-radius-bottomright:0;
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-topright:5px;
+    -webkit-border-bottom-left-radius:0;
+    -webkit-border-bottom-right-radius:0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.desc-header:hover{
+    display:block;
+    width:96%;
+    border-color:#41bae2;
+    background-color:#41bae2;
+    color: #fff;
+    cursor:pointer;
+}
+.desc-header-open:hover
+{ 
+    display:block;
+    width:auto;
+    border-color:#41bae2;
+    background-color:#41bae2;
+    color: #fff;
+    cursor:pointer;
+}
+
+.desc-header-icon{
+    margin-left: 10px;
+    margin-right: 20px;
+}
+/*标题样式结束*/
+
+/*主题样式*/
+.desc-body{  
+    display:none;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-top:0;
+    margin-bottom:0;
+    
+    border-top:0;
+    border-left:1px solid #41bae2;
+    border-bottom:1px solid #41bae2;
+    border-right:1px solid #41bae2;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+    -moz-border-radius-topleft:0;
+    -moz-border-radius-topright:0;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+}
+.desc-body-open{  
+    display:block;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-top:0;
+    margin-bottom:0;
+
+    border-top:0;
+    border-left:1px solid #41bae2;
+    border-bottom:1px solid #41bae2;
+    border-right:1px solid #41bae2;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+    -moz-border-radius-topleft:0;
+    -moz-border-radius-topright:0;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+}
+/*主题样式结束*/
+
+/*#region 调整左边距 */
+div.index-content{
+    margin-left: 300px;
+}
+
+/*#endregion */
