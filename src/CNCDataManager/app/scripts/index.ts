@@ -1,26 +1,20 @@
 ﻿
 import * as angular from 'angular';
-import 'angular-route';
 
-angular.module('cncDataManager',
-    [
-        'ngRoute'
-    ]);
-
-let app: angular.IModule = angular.module('cncDataManager');
+let app = angular.module('cncDataManager', ['ngRoute']);
 
 import registerControllers from './controllers/index';
 import registerRoute from './bases/route';
 import registerServices from './services/index';
 import registerDirectives from './directives/index';
 
-/* services register*/
+///* services register*/
 registerServices(app);
 
-/* directives register*/
+///* directives register*/
 registerDirectives(app);
 
-/* controller register*/
+///* controller register*/
 registerControllers(app);
 
 /* route config*/

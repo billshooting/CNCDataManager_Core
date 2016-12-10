@@ -1,9 +1,9 @@
 ﻿import * as angular from 'angular';
-import Users from '../services/Users';
+import User from '../services/User';
 
-let Header: angular.IDirectiveFactory = (user: Users, $modal: mgcrea.ngStrap.modal.IModal): angular.IDirective => {
+let Header: angular.IDirectiveFactory = (user: User): angular.IDirective => {
     return {
-        templateUrl: './views/directives/header.html',
+        templateUrl: './app/views/directives/header.html',
         restrict: 'E',
         scope: true,
         link: (scope: angular.IScope, ele: Element, attr: Attr) => {
@@ -11,5 +11,5 @@ let Header: angular.IDirectiveFactory = (user: Users, $modal: mgcrea.ngStrap.mod
         }
     };
 };
-
+Header.$inject = ['User'];
 export default Header;

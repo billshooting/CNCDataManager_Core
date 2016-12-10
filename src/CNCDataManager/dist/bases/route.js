@@ -1,27 +1,27 @@
-System.register([], function (exports_1, context_1) {
+System.register(["angular-route"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function registerRoute(app) {
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/home/index', {
-                templateUrl: '/views/home.html',
+                templateUrl: './views/home.html',
                 controller: 'HomeCtrl'
             })
                 .when('/home/about', {
-                templateUrl: '/views/about.html',
+                templateUrl: './views/about.html',
                 controller: 'AboutCtrl'
             })
                 .when('home/contact', {
-                templateUrl: '/views/contact.html',
+                templateUrl: './views/contact.html',
                 controller: 'ContactCtrl'
             })
                 .when('/cncdata/index', {
-                templateUrl: 'views/cncdata.html',
+                templateUrl: './views/cncdata.html',
                 controller: 'CncIndexCtrl'
             })
                 .when('/cncdata/list', {
-                templateUrl: 'views/cncdata.html',
+                templateUrl: './views/cncdata.html',
                 controller: 'CncDataCtrl'
             })
                 .otherwise({
@@ -31,7 +31,10 @@ System.register([], function (exports_1, context_1) {
     }
     exports_1("default", registerRoute);
     return {
-        setters: [],
+        setters: [
+            function (_1) {
+            }
+        ],
         execute: function () {
             registerRoute.$inject = ['$routeProvider'];
         }

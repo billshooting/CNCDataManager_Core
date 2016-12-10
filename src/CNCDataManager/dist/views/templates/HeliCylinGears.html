@@ -1,0 +1,250 @@
+﻿<div class="list-content">
+    <div>
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-list"></span>
+            斜齿圆柱齿轮参数表
+            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+        </h4>
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>齿轮系数</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>定位圆参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>齿形参数</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>硬度精度</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>材料与热处理</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>传动效率和转动惯量</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[6]" ng-click="toggleCol(6, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>说明</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('ModulusOfEndSurface_mt')" title="按此列排序">
+                            端面模数mt
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'ModulusOfEndSurface_mt'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-ModulusOfEndSurface_mt'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('ModulusOfNormalSurface_mn')" title="按此列排序">
+                            法面模数mn
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'ModulusOfNormalSurface_mn'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-ModulusOfNormalSurface_mn'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('PressureAngle_alphi')" title="按此列排序">
+                            压力角α
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'PressureAngle_alphi'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-PressureAngle_alphi'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NumberOfTeeth_z')" title="按此列排序">
+                            齿数z
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NumberOfTeeth_z'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NumberOfTeeth_z'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('EquivalentNumberOfTeeth_zv')" title="按此列排序">
+                            当量齿数zv
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'EquivalentNumberOfTeeth_zv'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-EquivalentNumberOfTeeth_zv'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('HelixAngle_beta')" title="按此列排序">
+                            螺旋角β
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'HelixAngle_beta'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-HelixAngle_beta'"></span>
+                        </td>
+                        <td ng-if="colState[0]">齿顶高系数</td>
+                        <td ng-if="colState[0]">齿根高系数</td>
+                        <td ng-if="colState[0]">顶隙系数</td>
+                        <td ng-if="colState[0]">变位系数χ</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfPitchCircle_d')" ng-show="colState[1]" title="按此列排序">
+                            分度圆直径 d/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfPitchCircle_d'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfPitchCircle_d'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfBaseCircle_db')" ng-show="colState[1]" title="按此列排序">
+                            基圆直径 db/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfBaseCircle_db'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfBaseCircle_db'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfAddendumCircle_da')" ng-show="colState[1]" title="按此列排序">
+                            齿顶圆直径 da/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfAddendumCircle_da'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfAddendumCircle_da'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfDedendumCircle_df')" ng-show="colState[1]" title="按此列排序">
+                            齿根圆直径 df/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfDedendumCircle_df'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfDedendumCircle_df'"></span>
+                        </td>
+                        <td ng-if="colState[2]">齿宽 b/mm</td>
+                        <td ng-if="colState[2]">齿高 h/mm</td>
+                        <td ng-if="colState[2]">齿顶高 ha/mm</td>
+                        <td ng-if="colState[2]">齿根高 hf/mm</td>
+                        <td ng-if="colState[2]">端面齿距 pt/mm</td>
+                        <td ng-if="colState[2]">法面齿距 pn/mm</td>
+                        <td ng-if="colState[2]">端面齿厚 st/mm</td>
+
+                        <td ng-if="colState[3]">齿面硬度</td>
+                        <td ng-if="colState[3]">齿轮精度等级</td>
+
+                        <td ng-if="colState[4]">材料</td>
+                        <td ng-if="colState[4]">热处理方式</td>
+
+                        <td ng-if="colState[5]">齿轮传动效率η</td>
+                        <td ng-if="colState[5]">转动惯量</td>
+                        <td ng-if="colState[6]">说明</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="model in items | orderBy: orderProperty">
+                        <td style="width: 100px">
+                            {{$index + 1}}
+                            <span class="glyphicon glyphicon-pencil span-button pull-right" title="编辑这条记录" ng-click="updateItemLocal(model)"></span>
+                            <button type="button" class="close" ng-click="showDeleteModal(model)" title="在数据库中删除这条记录">&times;</button>
+                        </td>
+                        <td>{{model.TypeID}}</td>
+                        <td ng-bind="model.Manufacturer" type="text"></td>
+                        <td ng-bind="model.ModulusOfEndSurface_mt" type="number"></td>
+                        <td ng-bind="model.ModulusOfNormalSurface_mn" type="number"></td>
+                        <td ng-bind="model.PressureAngle_alphi" type="number"></td>
+                        <td ng-bind="model.NumberOfTeeth_z" type="number"></td>
+                        <td ng-bind="model.EquivalentNumberOfTeeth_zv" type="number"></td>
+                        <td ng-bind="model.HelixAngle_beta" type="number"></td>
+                        <td ng-if="colState[0]" ng-bind="model.AddendumCoefficient" type="number"></td>
+                        <td ng-if="colState[0]" ng-bind="model.DedendumCoefficient" type="number"></td>
+                        <td ng-if="colState[0]" ng-bind="model.HeadspaceCoefficient" type="number"></td>
+                        <td ng-if="colState[0]" ng-bind="model.ModificationCoefficient_X" type="number"></td>
+                        <td ng-bind="model.DiameterOfPitchCircle_d" ng-show="colState[1]" type="number"></td>
+                        <td ng-bind="model.DiameterOfBaseCircle_db" ng-show="colState[1]" type="number"></td>
+                        <td ng-bind="model.DiameterOfAddendumCircle_da" ng-show="colState[1]" type="number"></td>
+                        <td ng-bind="model.DiameterOfDedendumCircle_df" ng-show="colState[1]" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.WidthOfTeeth_b" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.HeightOfFullTeeth_h" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.Addendum_ha" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.Dedendum_hf" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.PitchOfEndSurfaceTeeth_pt" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.PitchOfNormalSurfaceTeeth_pn" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.ThicknessOfEndSurfaceTeeth_st" type="number"></td>
+
+                        <td ng-if="colState[3]" ng-bind="model.HardnessOfTeeth" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.GearAccuracyClass" type="number"></td>
+
+                        <td ng-if="colState[4]" ng-bind="model.Material" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.HeatTreatment" type="number"></td>
+
+                        <td ng-if="colState[5]" ng-bind="model.GearTransmissionEfficiency_ita" type="text"></td>
+                        <td ng-if="colState[5]" ng-bind="model.MomentOfInertia" type="text"></td>
+                        <td ng-if="colState[6]" ng-bind="model.Description" type="text"></td>
+                    </tr>
+                    <tr ng-show="addingItems.length">
+                        <td colspan="6">
+                            <span class="text-center">下方为表格编辑区，可直接在表格内编辑</span>
+                            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+                        <td>
+                    </tr>
+                    <tr ng-repeat="item in addingItems">
+                        <td class="table-td-btn" ng-click="addItemRemote(item)">
+                            添加到数据库
+                            <button type="button" class="close" ng-click="deleteItemLocal(item)">&times;</button>
+                        </td>
+                        <td class="" ng-bind="item.TypeID"></td>
+                        <td class="" ng-model="item.Manufacturer" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.ModulusOfEndSurface_mt" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.ModulusOfNormalSurface_mn" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.PressureAngle_alphi" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.NumberOfTeeth_z" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.EquivalentNumberOfTeeth_zv" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.HelixAngle_beta" contenteditable="true" type="number"></td>
+                        <td class="" ng-if="colState[0]" ng-model="item.AddendumCoefficient" contenteditable="true" type="number"></td>
+                        <td class="" ng-if="colState[0]" ng-model="item.DedendumCoefficient" contenteditable="true" type="number"></td>
+                        <td class="" ng-if="colState[0]" ng-model="item.HeadspaceCoefficient" contenteditable="true" type="number"></td>
+                        <td class="" ng-if="colState[0]" ng-model="item.ModificationCoefficient_X" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-model="item.DiameterOfPitchCircle_d" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DiameterOfBaseCircle_db" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DiameterOfAddendumCircle_da" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DiameterOfDedendumCircle_df" ng-show="colState[1]" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-model="item.WidthOfTeeth_b" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.HeightOfFullTeeth_h" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.Addendum_ha" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.Dedendum_hf" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.PitchOfEndSurfaceTeeth_pt" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.PitchOfNormalSurfaceTeeth_pn" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.ThicknessOfEndSurfaceTeeth_st" ng-if="colState[2]" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-if="colState[3]" ng-model="item.HardnessOfTeeth" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.GearAccuracyClass" contenteditable type="number"></td>
+
+                        <td class="" ng-model="item.Material" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.HeatTreatment" ng-if="colState[4]" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-model="item.GearTransmissionEfficiency_ita" ng-if="colState[5]" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.MomentOfInertia" ng-if="colState[5]" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.Description" ng-if="colState[6]" contenteditable="true" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添加数据
+                            <button type="button" class="btn btn-success btn-xs pull-right" ng-click="showAddModal()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="list-desc">
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-tags"></span>
+            尺寸说明
+        </h4>
+        <div class="row">
+            <div class="col-sm-6 list-desc-img">
+                <img src="/images/Mechanics/齿轮-表/2-斜齿圆柱齿轮-表.jpg" />
+            </div>
+            <div class="col-sm-6 list-desc-txt">
+                <p>斜齿圆柱齿轮。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

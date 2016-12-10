@@ -40,6 +40,7 @@
     "angular-cookie": "^4.1.0",
     "angular-resource": "^1.6.0",
     "angular-route": "^1.6.0",
+    "angular-strap": "^2.3.10",
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "systemjs": "^0.19.41"

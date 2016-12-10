@@ -1,0 +1,25 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">请输入型号</h4>
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+            </div>
+
+            <form role="form" name="addItemForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="type-id">型号<span class="text-danger">(必须与已有的型号不同)</span></label>
+                        <input type="text" class="form-control" ng-model="handlingItems.addingItem.TypeID"
+                                placeholder="请输入型号" id="type-id" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" ng-click="addItemLocal(addItemModal)"
+                            ng-disabled="!addItemForm.$valid">添加</button>
+                    <button type="button" class="btn btn-danger" ng-click="$hide()">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

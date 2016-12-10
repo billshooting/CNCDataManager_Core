@@ -5,7 +5,6 @@
 
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import {inject} from '../bases/utility';
 import {ICncDataScope, IItem, IHandlingItems} from '../types/ICncDataScope';
 
 interface IRestfulMethod {
@@ -30,7 +29,7 @@ interface IHttpResponse<T> extends angular.IHttpPromiseCallbackArg<T>{
     message? : string;
 }
 
-@inject(['$http', '$q'])
+
 export default class HttpProxy{
     private BASE = '/';
     //const BASE = 'http://localhost:9000/';
@@ -161,5 +160,7 @@ export default class HttpProxy{
         },
     };
 }
+
+HttpProxy.$inject = ['$http', '$q'];
 
 

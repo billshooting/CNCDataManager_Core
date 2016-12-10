@@ -5,15 +5,16 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            Header = function (user, $modal) {
+            Header = function (user) {
                 return {
-                    templateUrl: './views/directives/header.html',
+                    templateUrl: './app/views/directives/header.html',
                     restrict: 'E',
                     scope: true,
                     link: function (scope, ele, attr) {
                     }
                 };
             };
+            Header.$inject = ['User'];
             exports_1("default", Header);
         }
     };

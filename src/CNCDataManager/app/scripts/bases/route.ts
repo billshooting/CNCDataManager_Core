@@ -1,4 +1,5 @@
 ﻿import * as angular from 'angular';
+import 'angular-route';
 
 registerRoute.$inject = ['$routeProvider'];
 export default function registerRoute(app: angular.IModule): void
@@ -7,23 +8,23 @@ export default function registerRoute(app: angular.IModule): void
     {
         $routeProvider
             .when('/home/index', {
-                templateUrl: '/views/home.html',
+                templateUrl: './views/home.html',
                 controller: 'HomeCtrl'
             })
             .when('/home/about', {
-                templateUrl: '/views/about.html',
+                templateUrl: './views/about.html',
                 controller: 'AboutCtrl'
             })
             .when('home/contact', {
-                templateUrl: '/views/contact.html',
+                templateUrl: './views/contact.html',
                 controller: 'ContactCtrl'
             })
             .when('/cncdata/index', {
-                templateUrl: 'views/cncdata.html',
+                templateUrl: './views/cncdata.html',
                 controller: 'CncIndexCtrl'
             })
             .when('/cncdata/list', {
-                templateUrl: 'views/cncdata.html',
+                templateUrl: './views/cncdata.html',
                 controller: 'CncDataCtrl'
             })
             .otherwise({

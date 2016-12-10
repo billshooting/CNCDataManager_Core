@@ -1,4 +1,4 @@
-System.register(["angular", "angular-route", "./controllers/index", "./bases/route", "./services/index", "./directives/index"], function (exports_1, context_1) {
+System.register(["angular", "./controllers/index", "./bases/route", "./services/index", "./directives/index"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var angular, app, index_1, route_1, index_2, index_3;
@@ -6,8 +6,6 @@ System.register(["angular", "angular-route", "./controllers/index", "./bases/rou
         setters: [
             function (angular_1) {
                 angular = angular_1;
-            },
-            function (_1) {
             },
             function (index_1_1) {
                 index_1 = index_1_1;
@@ -23,15 +21,12 @@ System.register(["angular", "angular-route", "./controllers/index", "./bases/rou
             }
         ],
         execute: function () {
-            angular.module('cncDataManager', [
-                'ngRoute'
-            ]);
-            app = angular.module('cncDataManager');
-            /* services register*/
+            app = angular.module('cncDataManager', ['ngRoute']);
+            ///* services register*/
             index_2.default(app);
-            /* directives register*/
+            ///* directives register*/
             index_3.default(app);
-            /* controller register*/
+            ///* controller register*/
             index_1.default(app);
             /* route config*/
             route_1.default(app);
