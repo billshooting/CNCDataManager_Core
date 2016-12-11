@@ -1,8 +1,10 @@
-﻿.background-about{
+﻿.background-bg{
     background-color:none;
     background-image: url(../images/Home/login-bg.png);
     background-size:100%;
     background-repeat:no-repeat;
+    width: 100%;
+    height: 95%;
 }
 
 #about-block {

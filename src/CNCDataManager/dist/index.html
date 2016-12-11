@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="zh-cn">
 <head>
-    <meta charset="utf-8" />
-    <title>TypeScript HTML App</title>
+    <meta charset="utf-8" />    
+    <meta name="description" content="华中科技大学机械学院数控中心学生开发的基于数控机床数据的选型应用">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>数控机床数据中心</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/app.css" />
 </head>
 <body ng-app="cncDataManager">
     <app-header></app-header>
-    <h1>TypeScript HTML App</h1>
     <ng-view></ng-view>
     <div id="content"></div>
+    <back-to-top></back-to-top>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/systemjs/0.19.41/system.js"></script>
-    <script src="system.config.js"></script>
+    <script src="./scripts/system.config.js"></script>
     <script>
-        System.import('./index.js');
+        System.import('./scripts/app.js');
     </script>
 </body>
 </html>

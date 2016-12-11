@@ -4,6 +4,10 @@ div.navbar {
     border:none;
 }
 
+#navbar{
+    transition: background linear 0.5s;
+}
+
 
 a.home-index-nav-link{
     margin-top:auto;

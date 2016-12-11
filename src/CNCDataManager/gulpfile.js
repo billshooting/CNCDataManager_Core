@@ -11,10 +11,11 @@ var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 
 var browserify = require("browserify");
-var source = require('vinyl-source-stream');
+var source = require("vinyl-source-stream");
 var tsify = require("tsify");
 var paths = {
-    pages: ['./app/*.html']
+    pages: ["./app/**/*.html",],
+    styles: ["./app/**/*.css"],
 };
 
 gulp.task("copy-html", function () {
@@ -22,11 +23,17 @@ gulp.task("copy-html", function () {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("default", ["copy-html"], function () {
+gulp.task("css", function () {
+    return gulp.src(paths.styles)
+        .pipe(concat("app.css"))
+        .pipe(gulp.dest("dist/css"));
+})
+
+gulp.task("default", ["copy-html", "css"], function () {
     return tsProject.src()
         .pipe(tsProject())
         .js
         //.pipe(concat('bundle.js'))
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("dist/scripts"));
 
 });

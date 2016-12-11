@@ -1,4 +1,4 @@
-﻿
+﻿import * as $ from 'jquery';
 import * as angular from 'angular';
 
 let app = angular.module('cncDataManager', ['ngRoute']);

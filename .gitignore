@@ -1,15 +1,9 @@
 /src/CNCDataManager/bin
 /src/CNCDataManager/obj
 /src/CNCDataManager/node_modules
+/src/CNCDataManager/dist/*
 
 /src/CNCDataManager_Core/bin
 /src/CNCDataManager_Core/obj
 /src/CNCDataManager_Core/FrontEnd
 
-node_modules/*
-dist/*
-.tmp/*
-.sass-cache/*
-bower_components/*
-bin/*
-obj/*

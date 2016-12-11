@@ -8,23 +8,23 @@ export default function registerRoute(app: angular.IModule): void
     {
         $routeProvider
             .when('/home/index', {
-                templateUrl: './views/home.html',
+                templateUrl: './views/controller-tpls/home.html',
                 controller: 'HomeCtrl'
             })
             .when('/home/about', {
-                templateUrl: './views/about.html',
+                templateUrl: './views/controller-tpls/about.html',
                 controller: 'AboutCtrl'
             })
-            .when('home/contact', {
-                templateUrl: './views/contact.html',
+            .when('/home/contact', {
+                templateUrl: './views/controller-tpls/contact.html',
                 controller: 'ContactCtrl'
             })
             .when('/cncdata/index', {
-                templateUrl: './views/cncdata.html',
+                templateUrl: './views/controller-tpls/cncdata.html',
                 controller: 'CncIndexCtrl'
             })
             .when('/cncdata/list', {
-                templateUrl: './views/cncdata.html',
+                templateUrl: './views/controller-tpls/cncdata.html',
                 controller: 'CncDataCtrl'
             })
             .otherwise({
