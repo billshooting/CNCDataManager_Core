@@ -15,5 +15,14 @@
     background-repeat:no-repeat;
 }
 
+.short-background {
+    background: linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+    background: -webkit-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+    background: -moz-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+    background: -o-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+    opacity:0.9;
+    background-size: 100% 320px;
+    background-repeat :no-repeat;
+}
 
 

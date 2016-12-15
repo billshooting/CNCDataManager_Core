@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAf56yaPGaWEecH+7U+ZcA+gAAAAACAAAAAAAQZgAAAAEAACAAAABA7Sq/AdhpxCr76u8bXsyU7u/SkW5BpAKl5hahUmg5zAAAAAAOgAAAAAIAACAAAAA27LoSk9cpCw0s5XZJAwqhhjycBrFjedjNp1ie/FSB3oAAAABD44ePAXnQ2H1QeBek/qb5Uuvwbynbc+QAQZlx209tKK+HsLLA6UJF0HplqPN2FikpiCTUIH903tMFxQYI2sMWkF3AFhvVjBmbu2hpZXXuVDctAtgmh6zlDwaLZse6gLMQIyjygtF+EyXV89RRRdqRr9kSIQr0LrmCO1jQZOO7oUAAAAAn3+0a8wYSwOsqVmBJBvghAv1LpF9XDubHVTO8t8Ol6ef4/PQF8O6+M7YXHD42JTVbBwCMjphsAxmv6MMwUNfm</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="CNCMachineData">
+      <Value>Server=tcp:billdbserver.database.windows.net,1433;Initial Catalog=CNCMachineToolsDB;Persist Security Info=False;User ID=bill_shooting;Password=Love@chen#111319;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</Value>
+    </DestinationConnectionStrings>
+    <DestinationConnectionStrings Include="CNCUserData">
+      <Value>Server=tcp:billdata.database.windows.net,1433;Initial Catalog=CNCUserDB;Persist Security Info=False;User ID=bill_shooting;Password=Love@chen#111319;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

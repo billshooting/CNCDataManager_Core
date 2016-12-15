@@ -1,0 +1,16 @@
+﻿<!-- 加载动画 -->
+<div class="overlay-container" ng-show="isLoading">
+    <button type="button" class="close" ng-click="hideLoading()">&times;</button>
+    <h2 class="text-center">Loading...</h2>
+    <div class="text-center">
+        <span id="update-msg"></span>
+        <span id="error-msg"></span>
+    </div>
+    <div title='loading...' id="loading-animation"></div>
+</div>
+<!-- 出错动画 -->
+<div class="overlay-container" ng-show="isError">
+    <button type="button" class="close" ng-click="hideError()">&times;</button>
+    <h2 class="text-center">操作出错</h2>
+    <div class="text-center" title="error..." id="errorMsg"></div>
+</div>

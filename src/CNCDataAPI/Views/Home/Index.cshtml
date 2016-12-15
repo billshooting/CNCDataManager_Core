@@ -1,0 +1,4476 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>DataAPI文档-数控机床</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            font-family:'Microsoft YaHei';
+            font-size:14px;
+            margin:0;
+            padding:0;
+        }
+        body {
+            background: linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+            background: -webkit-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+            background: -moz-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+            background: -o-linear-gradient(30deg, #280155 0%, #5c0063 51%, #610087 75%);
+            opacity:0.9;
+            background-size: 100% 320px;
+            background-repeat :no-repeat;
+        }
+
+        /*页面标题*/
+        .page-header{
+            height: 320px;
+            color: white;
+        }
+
+        /*页面主题*/
+        .document-content{
+
+        }
+
+        /*每项条目*/
+        .document-list{
+
+        }
+
+        /*条目标题*/
+        .document-list-head{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+            background-color: #41bae2;
+
+            font-size: 16px;
+        }
+
+        .document-list-head:hover{
+            cursor: pointer;
+            color: #555;
+            background-color: #fff;
+            box-shadow: #41bae2 0px 0px 8px;
+        }
+
+        .document-list-head >span:first-child{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+
+
+        /*条目主体*/
+        .document-list-body{
+            display: none;
+        }
+
+        .document-list-body >p{
+            text-indent: 20px;
+        }
+
+        .fixed-width-span{
+            min-width: 200px;
+            font-size: 16px;
+        }
+
+        .table-overflow{
+            max-width: 100%;
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="container body-content"> 
+        <div class="page-header">
+            <h2>CNCDataAPI 开发文档</h2>
+        </div>
+        <div class="document-content">
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-1">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">调心球轴承</span> 
+                    --- Aligning Ball Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-1-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <h5 style="color: #41bae2">前端接口</h5>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AlignBallBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AlignBallBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/AlignBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/AlignBallBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/AlignBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped table-overflow">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td>InnerDiameter_d</td>
+                            <td>Diameter_D</td>
+                            <td>Width_B</td>
+                            <td>BasicRatedDynamicLoad</td>
+                            <td>BasicRatedStaticLoad</td>
+                            <td>BearingStartingTorque</td>
+                        </tr>
+                        <tr>
+                            <td>属性</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td>内径d</td>
+                            <td>外径D</td>
+                            <td>宽度B</td>
+                            <td>基本额定动载荷</td>
+                            <td>基本额定静载荷</td>
+                            <td>轴承启动转矩</td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                        </tr>
+                    </table>
+                    <h5><span style="color: #41bae2">后端接口</span>&nbsp;&nbsp;<span style="color: #ff0000">(其他类的接口和此类一样，都是两个GET接口，一个POST接口，一个PUT接口，一个DELETE接口)</span></h5>
+                    <div style="border: 1px solid #555">
+                        <p style="color: #41baff">[ApiAuthorize]</p>
+                        <p style="color: #41baff">[EnableCors(origins:"*", headers:"*", methods:"*")]</p>
+                        <p><span style="color: #0000ff">public class</span> <span style="color: #41baff">AlignBallBrgsController : ApiController</span></p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #41baff">[AllowAnonymous]</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span style="color: #0000ff">public</span>&nbsp;
+                            <span style="color: #41baff">IQueryable</span>&lt;&nbsp;
+                            <span style="color: #41baff">AlignBallBrg</span>&gt; GetAlignBallBearings() 
+                            <span style="color: #008000">//使用HTTP.GET请求url时会调用此方法，允许匿名调用</span>
+                        </p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #41baff">[AllowAnonymous]</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span style="color: #0000ff">public async</span>&nbsp;
+                            <span style="color: #41baff">Task</span>>&lt;
+                            <span style="color: #41baff">IHttpActionResult</span>&gt; GetAlignBallBrg(<span style="color: #0000ff">string</span> id) 
+                            <span style="color: #008000">//使用HTTP.GET请求url并且附有id参数时会调用此方法，允许匿名调用</span>
+                        </p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span style="color: #0000ff">public async</span>&nbsp;
+                            <span style="color: #41baff">Task</span>&lt;
+                            <span style="color: #41baff">IHttpActionResult</span>&gt; PutAlignBallBrg(<span style="color: #0000ff">string</span> id, <span style="color: #41baff">AlignBallBrg</span> alignBallBrg) 
+                            <span style="color: #008000">//使用HTTP.PUT请求url时会调用此方法，不允许匿名调用</span>
+                        </p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span style="color: #0000ff">public async</span>&nbsp;
+                            <span style="color: #41baff">Task</span>&lt;
+                            <span style="color: #41baff">IHttpActionResult</span>&gt; PostAlignBallBrg(<span style="color: #41baff">AlignBallBrg</span> alignBallBrg) 
+                            <span style="color: #008000">//使用HTTP.POST请求url时会调用此方法，不允许匿名调用</span>
+                        </p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span style="color: #0000ff">public async</span>&nbsp;
+                            <span style="color: #41baff">Task</span>&lt;
+                            <span style="color: #41baff">IHttpActionResult</span>&gt; DeleteAlignBallBrg(<span style="color: #0000ff">string</span> id) 
+                            <span style="color: #008000">//使用HTTP.DELETE请求url时会调用此方法，不允许匿名调用</span>
+                        </p>
+                        <p>}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-2">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">调心滚子轴承</span>
+                     --- Aligning Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-2-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AlignRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AlignRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/AlignRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/AlignRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/AlignRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped table-overflow">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td>InnerDiameter_d</td>
+                            <td>Diameter_D</td>
+                            <td>Width_B</td>
+                            <td>BasicRatedDynamicLoad</td>
+                            <td>BasicRatedStaticLoad</td>
+                            <td>BearingStartingTorque</td>
+                        </tr>
+                        <tr>
+                            <td>属性</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td>内径d</td>
+                            <td>外径D</td>
+                            <td>宽度B</td>
+                            <td>基本额定动载荷</td>
+                            <td>基本额定静载荷</td>
+                            <td>轴承启动转矩</td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-3">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">角接触球轴承</span>
+                     --- Angular Contact Ball Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-3-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AngContactBallBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/AngContactBallBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/AngContactBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/AngContactBallBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/AngContactBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped table-overflow">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td>ContactAngle_Alpha</td>
+                            <td>InnerDiameter_d</td>
+                            <td>Diameter_D</td>
+                            <td>Width_B</td>
+                            <td>BasicRatedDynamicLoad</td>
+                            <td>BasicRatedStaticLoad</td>
+                            <td>BearingStartingTorque</td>
+                        </tr>
+                        <tr>
+                            <td>属性</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td>接触角α</td>
+                            <td>内径d</td>
+                            <td>外径D</td>
+                            <td>宽度B</td>
+                            <td>基本额定动载荷</td>
+                            <td>基本额定静载荷</td>
+                            <td>轴承启动转矩</td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-4">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">圆弧圆柱蜗轮蜗杆</span>
+                     --- Arc Cylindrical Worm Gear And Worm
+                </h2>
+                <div class="document-list-body" id="document-list-4-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ArcCylinWormGears</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ArcCylinWormGears/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/ArcCylinWormGears/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/ArcCylinWormGears</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/ArcCylinWormGears/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-5">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">滚珠丝杠支撑轴承</span> 
+                    --- Ball Leading Screw Support Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-5-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/BallLeadScrewSptBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/BallLeadScrewSptBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/BallLeadScrewSptBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/BallLeadScrewSptBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/BallLeadScrewSptBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped table-overflow">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td>ContactAngle_Alpha</td>
+                            <td>InnerDiameter_d</td>
+                            <td>Diameter_D</td>
+                            <td>Width_B</td>
+                            <td>BasicRatedDynamicLoad</td>
+                            <td>BasicRatedStaticLoad</td>
+                            <td>BearingStartingTorque</td>
+                        </tr>
+                        <tr>
+                            <td>属性</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td>接触角α</td>
+                            <td>内径d</td>
+                            <td>外径D</td>
+                            <td>宽度B</td>
+                            <td>基本额定动载荷</td>
+                            <td>基本额定静载荷</td>
+                            <td>轴承启动转矩</td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                            <td>double?</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-6">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    带制动轮弹性套柱销联轴器 --- Brake Wheel Elastic Sleeve Pin Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-6-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/BWElasticSlvPinCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/BWElasticSlvPinCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/BWElasticSlvPinCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/BWElasticSlvPinCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/BWElasticSlvPinCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-7">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    电缆辅件 --- Cables
+                </h2>
+                <div class="document-list-body" id="document-list-7-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/Cables</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/Cables/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/Cables/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/Cables</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/Cables/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-8">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    普通圆柱蜗轮蜗杆 --- Common Cylindrical Worm Gear And Worm
+                </h2>
+                <div class="document-list-body" id="document-list-8-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/CommonCylinWormGears</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/CommonCylinWormGears/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/CommonCylinWormGears/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/CommonCylinWormGears</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/CommonCylinWormGears/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-9">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    圆柱滚子轴承 --- Cylindrical Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-9-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/CylinRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/CylinRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/CylinRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/CylinRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/CylinRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-10">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    深沟球轴承 --- Deep Groove Ball Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-10-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DeepGrooveBallBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DeepGrooveBallBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/DeepGrooveBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/DeepGrooveBallBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/DeepGrooveBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-11">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    双列圆柱滚子轴承 --- Double Row Cylindrical Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-11-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DoubleRowCylinRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DoubleRowCylinRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/DoubleRowCylinRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/DoubleRowCylinRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/DoubleRowCylinRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-12">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    双向推力角接触球轴承 --- Double Thrust Angular Contact Ball Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-12-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DoubleThrustAngContactBallBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/DoubleThrustAngContactBallBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/DoubleThrustAngContactBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/DoubleThrustAngContactBallBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/DoubleThrustAngContactBallBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-13">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    弹性套柱销联轴器  --- Elastic Sleeve Pin Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-13-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElasticSlvPinCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElasticSlvPinCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/ElasticSlvPinCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/ElasticSlvPinCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/ElasticSlvPinCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-14">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    电主轴技术参数 --- Parameter O fElectric Spindle
+                </h2>
+                <div class="document-list-body" id="document-list-14-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElecSpindleParas</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElecSpindleParas/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/ElecSpindleParas/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/ElecSpindleParas</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/ElecSpindleParas/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-15">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    电主轴尺寸参数 --- Size Of Electric Spindle
+                </h2>
+                <div class="document-list-body" id="document-list-15-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElecSpindleSizes</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/ElecSpindleSizes/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/ElecSpindleSizes/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/ElecSpindleSizes</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/ElecSpindleSizes/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-16">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    凸缘联轴器 --- Flange Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-16-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/FlangeCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/FlangeCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/FlangeCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/FlangeCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/FlangeCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-17">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    弹性柱销联轴器 --- Flexible Pin Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-17-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/FlexiblePinCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/FlexiblePinCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/FlexiblePinCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/FlexiblePinCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/FlexiblePinCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-18">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    齿式联轴器 --- Gear Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-18-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/GearCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/GearCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/GearCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/GearCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/GearCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-19">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    斜齿圆柱齿轮 --- Helical Cylindrical Gear
+                </h2>
+                <div class="document-list-body" id="document-list-19-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/HeliCylinGears</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/HeliCylinGears/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/HeliCylinGears/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/HeliCylinGears</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/HeliCylinGears/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-20">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    轮毂型联轴器 --- Hub-Shaped Couplings
+                </h2>
+                <div class="document-list-body" id="document-list-20-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/HubShapedCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/HubShapedCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/HubShapedCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/HubShapedCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/HubShapedCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-21">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    直线滚动导轨 --- Linear Rolling Guide
+                </h2>
+                <div class="document-list-body" id="document-list-21-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/LineRollingGuides</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/LineRollingGuides/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/LineRollingGuides/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/LineRollingGuides</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/LineRollingGuides/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-22">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    数控系统功能选项 --- NCSystem Functional Options
+                </h2>
+                <div class="document-list-body" id="document-list-22-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemFunctionalOptions</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemFunctionalOptions/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NCSystemFunctionalOptions/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NCSystemFunctionalOptions</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NCSystemFunctionalOptions/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-23">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    数控系统IO单元 --- NC System IO Unit
+                </h2>
+                <div class="document-list-body" id="document-list-23-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemIOUnits</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemIOUnits/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NCSystemIOUnits/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NCSystemIOUnits</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NCSystemIOUnits/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-24">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    数控系统手操盘 --- NC System Manual
+                </h2>
+                <div class="document-list-body" id="document-list-24-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemManuals</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemManuals/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NCSystemManuals/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NCSystemManuals</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NCSystemManuals/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-25">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    数控系统电源模块 --- NC System Power Unit
+                </h2>
+                <div class="document-list-body" id="document-list-25-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemPowerUnits</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystemPowerUnits/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NCSystemPowerUnits/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NCSystemPowerUnits</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NCSystemPowerUnits/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-26">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    <span class="fixed-width-span">数控系统</span>
+                     --- NC System
+                </h2>
+                <div class="document-list-body" id="document-list-26-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystems</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NCSystems/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NCSystems/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NCSystems</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NCSystems/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td>Series</td>
+                            <td>SupportMachineType</td>
+                            <td>SupportChannels</td>
+                            <td>MaxNumberOfFeedShafts</td>
+                            <td>MaxNumberOfSpindels</td>
+                            <td>MaxNumberOfLinkageAxis</td>
+                            <td>IsMask</td>
+                            <td>PictureUrl</td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td>系列</td>
+                            <td>支持机床类型</td>
+                            <td>支持通道数</td>
+                            <td>进给轴最大控制轴数</td>
+                            <td>主轴最大控制轴数</td>
+                            <td>最大联轴数</td>
+                            <td>是否代工生产</td>
+                            <td>图片URL</td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>string</td>
+                            <td>int</td>
+                            <td>int</td>
+                            <td>int</td>
+                            <td>int</td>
+                            <td>bool</td>
+                            <td>string</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-27">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    滚针轴承和推力滚子组合轴承 --- Needle Roller And Thrust Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-27-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NeedleRollerThrustRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/NeedleRollerThrustRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/NeedleRollerThrustRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/NeedleRollerThrustRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/NeedleRollerThrustRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-28">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    十字滑块联轴器 --- Oldham Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-28-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/OldhamCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/OldhamCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/OldhamCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/OldhamCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/OldhamCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-29">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    梅花形弹性联轴器 --- PlumShaped Flexible Coupling
+                </h2>
+                <div class="document-list-body" id="document-list-29-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PlumShapedFlexibleCoups</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PlumShapedFlexibleCoups/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/PlumShapedFlexibleCoups/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/PlumShapedFlexibleCoups</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/PlumShapedFlexibleCoups/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-30">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    永磁同步交流进给系统伺服电机驱动器 --- Driver Of Servo Motor Of PMSACFS 
+                </h2>
+                <div class="document-list-body" id="document-list-30-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <p>PMSACFS: Permanent magnet synchronous AC (servo motor) feeding system.</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorDrivers</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorDrivers/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/PMSrvMotorDrivers/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/PMSrvMotorDrivers</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/PMSrvMotorDrivers/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-31">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    永磁同步交流进给系统伺服电机技术参数 --- Parameter Of Servo Motor Of PMSACFS
+                </h2>
+                <div class="document-list-body" id="document-list-31-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <p>PMSACFS: Permanent magnet synchronous AC (servo motor) feeding system.</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorParas</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorParas/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/PMSrvMotorParas/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/PMSrvMotorParas</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/PMSrvMotorParas/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-32">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    永磁同步交流进给系统伺服电机尺寸参数 --- Size Of Servo Motor Of PMSACFS 
+                </h2>
+                <div class="document-list-body" id="document-list-32-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <p>PMSACFS: Permanent magnet synchronous AC (servo motor) feeding system.</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorSizes</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/PMSrvMotorSizes/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/PMSrvMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/PMSrvMotorSizes</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/PMSrvMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-33">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    旋转工作台 --- Rotary Tables
+                </h2>
+                <div class="document-list-body" id="document-list-33-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/RotaryTables</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/RotaryTables/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/RotaryTables/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/RotaryTables</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/RotaryTables/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-34">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    实心滚珠丝杠螺母副 --- Solid Ball Screw Nut Pairs
+                </h2>
+                <div class="document-list-body" id="document-list-34-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SolidBallScrewNutPairs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SolidBallScrewNutPairs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SolidBallScrewNutPairs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SolidBallScrewNutPairs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SolidBallScrewNutPairs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-35">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴同步带长度数据 --- Spindle Belt Length
+                </h2>
+                <div class="document-list-body" id="document-list-35-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltLengths</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltLengths/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleBeltLengths/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleBeltLengths</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleBeltLengths/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-36">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴同步带技术参数 --- Spindle Belt Parameter
+                </h2>
+                <div class="document-list-body" id="document-list-36-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltParas</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltParas/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleBeltParas/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleBeltParas</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleBeltParas/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-37">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴同步带尺寸参数 --- Spindle Belt Size
+                </h2>
+                <div class="document-list-body" id="document-list-37-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltSizes</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleBeltSizes/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleBeltSizes/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleBeltSizes</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleBeltSizes/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-38">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴伺服电机驱动器 --- Driver of Spindle Servo Motor
+                </h2>
+                <div class="document-list-body" id="document-list-38-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorDrivers</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorDrivers/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleSrvMotorDrivers/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleSrvMotorDrivers</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleSrvMotorDrivers/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-39">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴伺服电机技术参数 --- Spindle Servo Motor Parameter
+                </h2>
+                <div class="document-list-body" id="document-list-39-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorParas</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorParas/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleSrvMotorParas/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleSrvMotorParas</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleSrvMotorParas/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-40">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    主轴伺服电机尺寸参数 ---  Spindle Servo Motor Size
+                </h2>
+                <div class="document-list-body" id="document-list-40-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorSizes</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpindleSrvMotorSizes/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpindleSrvMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpindleSrvMotorSizes</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpindleSrvMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-41">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    直齿圆柱齿轮 --- Spur Gear
+                </h2>
+                <div class="document-list-body" id="document-list-41-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpurGears</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SpurGears/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SpurGears/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SpurGears</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SpurGears/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-42">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    伺服驱动器制动电阻 --- Servo Driver Brake Resistor
+                </h2>
+                <div class="document-list-body" id="document-list-42-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverBrakeResistors</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverBrakeResistors/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SrvDriverBrakeResistors/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SrvDriverBrakeResistors</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SrvDriverBrakeResistors/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-43">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    伺服驱动电抗器 ---  Servo Driver Reactor
+                </h2>
+                <div class="document-list-body" id="document-list-43-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverReactors</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverReactors/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SrvDriverReactors/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SrvDriverReactors</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SrvDriverReactors/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-44">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    伺服驱动三相变压器 --- Servo Driver Transformer
+                </h2>
+                <div class="document-list-body" id="document-list-44-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverTransformers</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/SrvDriverTransformers/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/SrvDriverTransformers/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/SrvDriverTransformers</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/SrvDriverTransformers/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-45">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    步进电机技术参数 --- Stepper Motor Parameter
+                </h2>
+                <div class="document-list-body" id="document-list-45-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StepMotorParas</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StepMotorParas/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/StepMotorParas/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/StepMotorParas</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/StepMotorParas/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-46">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    步进电机尺寸参数 --- Stepper Motor Size
+                </h2>
+                <div class="document-list-body" id="document-list-46-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StepMotorSizes</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StepMotorSizes/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/StepMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/StepMotorSizes</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/StepMotorSizes/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-47">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    直齿锥齿轮 --- Straight Bevel Gear
+                </h2>
+                <div class="document-list-body" id="document-list-47-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StraightBevelGears</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/StraightBevelGears/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/StraightBevelGears/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/StraightBevelGears</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/StraightBevelGears/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-48">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    圆锥滚子轴承 --- Tapered Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-48-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/TaperedRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/TaperedRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/TaperedRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/TaperedRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/TaperedRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="document-list">
+                <h2 class="document-list-head document-list-close" id="document-list-49">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                    交叉圆锥滚子轴承 --- Cross Tapered Roller Bearings
+                </h2>
+                <div class="document-list-body" id="document-list-49-body">
+                    <p>GET 操作不需要登陆，其他POST，PUT等动作都需要登陆验证权限之后才能访问，注意英文名和API并不完全对应</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>HTTP动作</td>
+                            <td>URL示例</td>
+                            <td>需要授权</td>
+                            <td>返回值</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/XTaperedRollerBrgs</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/api/cncdata/XTaperedRollerBrgs/5</td>
+                            <td>No</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/api/cncdata/XTaperedRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>HTTP 204</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/api/cncdata/XTaperedRollerBrgs</td>
+                            <td>YES</td>
+                            <td>重定向</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/api/cncdata/XTaperedRollerBrgs/5</td>
+                            <td>YES</td>
+                            <td>XML/JSON</td>
+                        </tr>
+                    </table>
+                    <h6>属性  ---  省略了不重要的属性</h6>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Property</td>
+                            <td>TypeID</td>
+                            <td>Manufacturer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>属性名</td>
+                            <td>型号</td>
+                            <td>生产厂家</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td>String</td>
+                            <td>String</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var toggleBody = function (head) {
+                var headId = '#' + $(head).attr("id");
+                var bodyId = headId + "-body";
+                var icon = headId + " >span:first-child";
+
+                var iconClass = $(icon).attr("class").toString();
+                if (iconClass.indexOf("glyphicon-menu-down") > 0)
+                {
+                    setTimeout(function () {
+                        $(icon).removeClass("glyphicon-menu-down").addClass("glyphicon-menu-right");
+                    }, 500);
+                }
+                else {
+                    $(icon).removeClass("glyphicon-menu-right").addClass("glyphicon-menu-down");
+                }
+                $(bodyId).animate({ height: 'toggle' }, 500);
+            };
+
+            $(".document-list-head").click(function () {
+                toggleBody(this);
+            });
+        });
+    </script>
+</body>
+</html>
+

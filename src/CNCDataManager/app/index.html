@@ -8,17 +8,16 @@
     <meta name="viewport" content="width=device-width">
     <title>数控机床数据中心</title>
     <link rel="shortcut icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" href="./lib/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/app.css" />
 </head>
 <body ng-app="cncDataManager">
     <app-header></app-header>
-    <ng-view></ng-view>
-    <div id="content"></div>
+    <div ui-view></div>
     <back-to-top></back-to-top>
-    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdn.bootcss.com/systemjs/0.19.41/system.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/system.js"></script>
     <script src="./scripts/system.config.js"></script>
     <script>
         System.import('./scripts/app.js');

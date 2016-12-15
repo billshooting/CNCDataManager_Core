@@ -1,0 +1,283 @@
+﻿<div class="index-content">
+    <h3 class="desc-header desc-header-open" id="desc-header-1" ng-click="toggleDesc($event, '#desc-body-1', '#desc-header-1 >span')" style="margin-top: 0">
+        <span class="glyphicon glyphicon-menu-down desc-header-icon"></span>
+        简介 - 进给伺服电机
+    </h3>
+    <div class="row desc-body" id="desc-body-1" style="display:block; padding-top: 20px;">
+        <div class="col-sm-4 motor-desc">
+            <p>数控机床的分类:</p>
+            <p>(1)进给轴伺服电机</p>
+            <p>(2)主轴伺服电机</p>
+            <img src="./images/Motors/伺服电机-介绍.jpg" />
+        </div>
+        <div class="col-sm-8 motor-desc">
+            <p>数控机床对进给伺服电机的要求：</p>
+            <p>(1)机械特性:要求伺服电机的速降小、刚度大;</p>
+            <p>(2)快速响应的要求:这在轮廓加工，特别对曲率大的加工对象进行高速加工时要求较严格;</p>
+            <p>(3)调速范围:这可以使数控机床适用于各种不同的刀具、加工材质;适应于各种不同的加工工艺;</p>
+            <p>(4)一定的输出转矩，并要求一定的过载转矩。机床进给机械负载的性质主要是克服工作台的摩擦力和切削的阻力，因此主要是恒转矩的性质。</p>
+            <br />
+            <p style="text-indent:0">数控机床对主轴电机的要求：</p>
+            <p>(1)足够的输出功率，数控机床的主轴负载性质近似于恒功率，也就是当机床的主轴转速高时，输出转矩较小;主轴转速低时，输出转矩大;即要求主轴驱动装置要具有恒功率的性质;</p>
+            <p>(2)调速范围:为保证数控机床适用于各种不同的刀具、加工材质;适应于各种不同的加工工艺，要求主轴电机具有一定的调速范围。但对主轴的要求比进给低;</p>
+            <p>(3)速度精度:一般要求静差度小于5 ％，更高的要求为小于1％;</p>
+            <p>(4)快速:主轴驱动装置有时也用在定位功能上，这就要求它也具有一定的快速性。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-2" ng-click="toggleDesc($event, '#desc-body-2', '#desc-header-2 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 伺服驱动器
+    </h3>
+    <div class="row desc-body" id="desc-body-2">
+        <div class="col-sm-12" id="servo-desc-img">
+            <img src="./images/Servo/电机驱动-介绍.jpg" />
+        </div>
+        <div class="col-sm-6 servo-desc">
+            <p>
+                伺服驱动器（servo drives）又称为“伺服控制器”、“伺服放大器”，是用来控制伺服电机的一种控制器，其作用类似于变频器作用于普通交流马达，属于伺服系统的一部分，主要应用于高精度的定位系统。一般是通过位置、速度和力矩三种方式对伺服马达进行控制，实现高精度的传动系统定位，目前是传动技术的高端产品。
+            </p>
+            <p style="text-indent:0">对电机的要求:</p>
+            <p>(1)从最低速到最高速电机都能平稳运转，转矩波动要小，尤其在低速如0.1r/min或更低速时，仍有平稳的速度而无爬行现象；</p>
+            <p>(2)电机应具有大的较长时间的过载能力，以满足低速大转矩的要求。一般直流伺服电机要求在数分钟内过载4～6倍而不损坏；</p>
+            <p>(3)为了满足快速响应的要求，电机应有较小的转动惯量和大的堵转转矩，并具有尽可能小的时间常数和启动电压；</p>
+            <p>(4)电机应能承受频繁启、制动和反转。</p>
+        </div>
+        <div class="col-sm-6 servo-desc">
+            <p style="text-indent:0">对伺服进给系统的要求：</p>
+            <p>(1)调速范围宽；</p>
+            <p>(2)定位精度高；</p>
+            <p>(3)有足够的传动刚性和高的速度稳定性；</p>
+            <p>
+                (4)快速响应，无超调
+                为了保证生产率和加工质量，除了要求有较高的定位精度外，还要求有良好的快速响应特性，即要求跟踪指令信号的响应要快，因为数控系统在启动、制动时，要求加、减加速度足够大，缩短进给系统的过渡过程时间，减小轮廓过渡误差；
+            </p>
+            <p>
+                (5)低速大转矩，过载能力强
+                一般来说，伺服驱动器具有数分钟甚至半小时内1.5倍以上的过载能力，在短时间内可以过载4～6倍而不损坏；
+            </p>
+            <p>
+                (6)可靠性高
+                要求数控机床的进给驱动系统可靠性高、工作稳定性好，具有较强的温度、湿度、振动等环境适应能力和很强的抗干扰的能力。
+            </p>
+        </div>
+
+    </div>
+
+    <h3 class="desc-header" id="desc-header-3" ng-click="toggleDesc($event, '#desc-body-3', '#desc-header-3 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 数控系统
+    </h3>
+    <div class="row desc-body" id="desc-body-3">
+        <div class="col-sm-5 system-desc">
+            <img src="./images/Mechanics/数控系统-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 system-desc">
+            <p>
+                数字控制系统简称，英文名称为Numerical Control System，早期是与计算机并行发展演化的，用于控制自动化加工设备的，由电子管和继电器等硬件构成具有计算能力的专用控制器的称为硬件数控（Hard NC）。
+                20世纪70年代以后，分离的硬件电子元件逐步由集成度更高的计算机处理器代替，称为计算机数控系统。
+            </p>
+            <p>
+                计算机数控（Computerized numerical control，简称CNC）系统是用计算机控制加工功能，实现数值控制的系统。
+                CNC系统根据计算机存储器中存储的控制程序，执行部分或全部数值控制功能，并配有接口电路和伺服驱动装置，用于控制自动化加工设备的专用计算机系统。
+            </p>
+            <p>CNC系统由数控程序存储装置（从早期的纸带到磁环，到磁带、磁盘到计算机通用的硬盘）、计算机控制主机（从专用计算机进化到PC体系结构的计算机）、可编程逻辑控制器（PLC）、主轴驱动装置和进给（伺服）驱动装置（包括检测装置）等组成。</p>
+            <p>由于逐步使用通用计算机，数控系统日趋具有了软件为主的色彩，又用PLC代替了传统的机床电器逻辑控制装置，使系统更小巧，其灵活性、通用性、可靠性更好，易于实现复杂的数控功能，使用、维护也方便，并具有与网络连接及进行远程通信的功能。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-4" ng-click="toggleDesc($event, '#desc-body-4', '#desc-header-4 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 滚动轴承
+    </h3>
+    <div class="row desc-body" id="desc-body-4">
+        <div class="col-sm-5 bearings-desc">
+            <img src="./images/Mechanics/1-滚动轴承-介绍.jpg" />
+            <p>滚动轴承（rollingbearing）是将运转的轴与轴座之间的滑动摩擦变为滚动摩擦，从而减少摩擦损失的一种精密的机械元件。滚动轴承一般由内圈、外圈、滚动体和保持架四部分组成，内圈的作用是与轴相配合并与轴一起旋转；外圈作用是与轴承座相配合，起支撑作用；滚动体是借助于保持架均匀的将滚动体分布在内圈和外圈之间，其形状大小和数量直接影响着滚动轴承的使用性能和寿命；保持架能使滚动体均匀分布，防止滚动体脱落，引导滚动体旋转起润滑作用。</p>
+        </div>
+        <div class="col-sm-7 bearings-desc">
+            <p>
+                滚动轴承的结构由部分组成：<br />
+                1)外圈——装在轴承座孔内，一般不转动；<br />
+                2)内圈——装在轴颈上，随轴转动；<br />
+                3)滚动体——滚动轴承的核心元件；<br />
+                4)保持架——将滚动体均匀隔开，避免摩擦；<br />
+                润滑剂也被认为是滚动轴承第五大件，它主要起润滑、冷却、清洗等作用。
+            </p>
+            <p style="text-indent:0">按结构类型分类：</p>
+            <p>
+                (1)轴承按其所能承受的载荷方向或公称接触角的不同分为<br />
+                1)向心轴承----主要用于承受径向载荷的滚动轴承，其公称接触角从0°到45°。按公称接触角不同，又分为：径向接触轴承----公称接触角为0的向心轴承：向心角接触轴承----公称接触角大于0°到45°的向心轴承。<br />
+                2)推力轴承----主要用于承受轴向载荷的滚动轴承，其公称接触角大于45°到90°。按公称接触角不同又分为：轴向接触轴承----公称接触角为90°的推力轴承：推力角接触轴承----公称接触角大于45°但小于90°的推力轴承。
+            </p>
+            <p>
+                (2)轴承按其滚动体的种类，分为：<br />
+                1)球轴承----滚动体为球：<br />
+                2)滚子轴承----滚动体为滚子。滚子轴承按滚子种类，又分为：圆柱滚子轴承----滚动体是圆柱滚子的轴承，圆柱滚子的长度与直径之比小于或等于3 ；滚针轴承----滚动体是滚针的轴承，滚针的长度与直径之比大于3，但直径小于或等于5mm;圆锥滚子轴承----滚动体是圆锥滚子的轴承;调心滚子轴承一一滚动体是球面滚子的轴承。
+            </p>
+            <p>
+                (3)轴承按其工作时能否调心，分为：<br />
+                1)调心轴承----滚道是球面形的，能适应两滚道轴心线间的角偏差及角运动的轴承。<br />
+                2)非调心轴承（刚性轴承)----能阻抗滚道间轴心线角偏移的轴承。<br />
+                轴承按滚动体的列数，分为：<br />
+                1)单列轴承----具有一列滚动体的轴承。<br />
+                2)双列轴承----具有两列滚动体的轴承。<br />
+                3)多列轴承----具有多于两列滚动体的轴承，如三列、 四列轴承。
+            </p>
+            <p>
+                (4)轴承按其部件能否分离，分为：<br />
+                1)可分离轴承----具有可分离部件的轴承；<br />
+                2)不可分离轴承----轴承在最终配套后，套圈均不能任意自由分离的轴承。<br />
+            </p>
+            <p>轴承按其结构形状（如有无装填槽，有无内、外圈以及套圈的形状，挡边的结构，甚至有无保持架等）还可以分为多种结构类型。</p>
+        </div>
+
+
+    </div>
+
+    <h3 class="desc-header" id="desc-header-5" ng-click="toggleDesc($event, '#desc-body-5', '#desc-header-5 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 联轴器
+    </h3>
+    <div class="row desc-body" id="desc-body-5">
+        <div class="col-sm-5 coupling-desc">
+            <img src="./images/Mechanics/2-联轴器-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 coupling-desc">
+            <p>
+                用来联接不同机构中的两根轴（主动轴和从动轴）使之共同旋转以传递扭矩的机械零件。在高速重载的动力传动中，有些联轴器还有缓冲、减振和提高轴系动态性能的作用。联轴器由两半部分组成，分别与主动轴和从动轴联接。一般动力机大都借助于联轴器与工作机相联接。
+                根据有无补偿能力联轴器分为：<br />
+                1)刚性联轴器(无补偿能力)<br />
+                2)挠性联轴器（有补偿能力）<br />
+                3)无弹性元件<br />
+                4)有弹性元件
+            </p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-6" ng-click="toggleDesc($event, '#desc-body-6', '#desc-header-6 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 导轨
+    </h3>
+    <div class="row desc-body" id="desc-body-6">
+        <div class="col-sm-5 guide-desc">
+            <img src="./images/Mechanics/3-导轨-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 guide-desc">
+            <p>数控机床中导轨的作用是使支承和引导运动部件沿着一定的准确轨道运动，导轨的的性能直接影响到机床运动精度和定位精度。对机床的刚度、加工精度和使用寿命都有很大的影响。数控机床的导轨比普通机床的导轨要求更高：在高度进给时不发生振动，低速进给时不出现爬行现象；灵活性高，耐磨性好；可在重载荷下长期连续工作；精度保持性好等。</p>
+            <p>
+                导轨按照运动轨迹可以分为：<br />
+                1)直线运动导轨；<br />
+                2)圆运动导轨。
+            </p>
+            <p>
+                按照工作性质可以分为：<br />
+                1)主动运动导轨；<br />
+                2)进给运动导轨；<br />
+                3)调整导轨。
+            </p>
+            <p>
+                按照接触面的摩擦性质可分为：<br />
+                1)滑动导轨；<br />
+                2)滚动导轨；<br />
+                3)静压导轨。<br />
+                其中滑动导轨可以分为普通滑动导轨和塑料滑动导轨。
+            </p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-7" ng-click="toggleDesc($event, '#desc-body-7', '#desc-header-7 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 滚珠丝杠螺母副
+    </h3>
+    <div class="row desc-body" id="desc-body-7">
+        <div class="col-sm-5 screw-desc">
+            <p>滚珠丝杆螺母副（简称滚珠丝杆副）是回转运动与直线运动相互转换的理想传动装置，它的结构特点是具有螺旋槽的丝杠螺母间装有滚珠（作为中间传动元件），以减少摩擦。其工作原理是：在丝杠和螺母上加工有弧形螺旋槽，当把它们套装在一起时可形成螺旋滚道，并且滚道内填满滚珠，当丝杠相对于螺母做旋转运动吋，两者间发生轴向位移。而滚珠则可沿着滚道滚动。减少摩擦阻力。滚珠在丝杠上滚过数圈后，通过回程引导装置（回珠器）。逐个滚回到丝杠和螺母之间，构成一个闭合的回路管道。按滚珠的循环方式可以将滚珠丝杠分为内循环式和外循环滚珠丝杠螺母副，如下图所示。</p>
+            <img src="./images/Mechanics/4-滚珠丝杠螺副-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 screw-desc">
+            <p>在传动时，滚珠与丝杠、螺母之间基本上是滚动摩擦.因此它具有以下优点：</p>
+            <p>
+                (1)传动效率高<br />
+                滚珠丝杠副的传动效率很高，可达92%〜98%，是普通丝杠传动的2〜4倍。
+            </p>
+            <p>
+                (2)定位精度和重复定位精度高<br />
+                滚珠丝杠副的驱动力矩减少至滑动丝杠的1/3左右，发热率大幅降低，温升减小.并 且在安装滚珠丝杠副时采取以预紧方式消除轴向间隙等措施.使滚珠丝杠副具有高的定 位精度和重复定位精度。
+            </p>
+            <p>
+                (3)使用寿命长<br />
+                滚珠丝杠副采用优质合金钢制成，其滚道表面经淬火热处理后硬度高达60〜 似HRC，因此其实际寿命远高于滑动丝杠，从而弥补其制造成本高于滑动丝杠的不足点。
+            </p>
+            <p>
+                (4)刚度高<br />
+                滚珠丝杠副经预紧后可以消除轴向间隙，提高系统的刚度。
+            </p>
+            <p>
+                (5)传动的可逆性
+                滚珠丝杠副消除了在传动过程中可能出现的爬行现象，能够实现将旋转运动转化为直线运动或将直线运动转化为旋转运动并传递动力这两种传动方式。
+            </p>
+            <p>因为滚珠丝杠副具有上述优点，所以在各类中、小型数控机床的直线进给系统中普遍采用滚珠丝杠，但是由于滚珠丝杠副的摩擦因数小、不能自锁，所以当作用于垂直位置时. 为防止因突然停电而造成主轴箱自动下滑，必须加有制动装置。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-8" ng-click="toggleDesc($event, '#desc-body-8', '#desc-header-8 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 回转工作台
+    </h3>
+    <div class="row desc-body" id="desc-body-8">
+        <div class="col-sm-5 table-desc">
+            <img src="./images/Mechanics/5-回转工作台-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 table-desc">
+            <p>数控机床的圆周进给运动包括分度运动和圆周运动两种。圆周进给运动是通过回转工作台实现的。数控机床对回转工作台的基本要求是分辨率高、定位精度高、运动平稳、运动迅速、回转刚度好，同时，在采用多轴联动实现曲线和曲面的加工时，回转工作台必须能够进行连续的圆周进给运动。通常将只能实现分度运动的回转工作台称为分度工作台，而将能够实现连续圆周运动进给运动的回转工作台称为数控回转工作台。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-9" ng-click="toggleDesc($event, '#desc-body-9', '#desc-header-9 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 齿轮
+    </h3>
+    <div class="row desc-body" id="desc-body-9">
+        <div class="col-sm-5 gear-desc">
+            <img src="./images/Mechanics/6-齿轮结构-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 gear-desc">
+            <p>齿轮传递在数控机床中用于进给运动或者主轴运动的减速等用途，齿轮传动的优点是：能够传递两个平行轴、相交轴或者交错的回转运动和转矩，能保证传动足够大的动力；运动精度和传动效率高，工作可靠、寿命长、结构紧凑。主要缺点是：制造精度要求高，制造浪费大，精度低时振动和噪声大，不宜用于周间距离较大的传动。
+            <p>在数控机床中常用的齿轮可以分为：</p>
+            <p>(1)直齿圆柱齿轮；</p>
+            <p>(2)斜齿圆柱齿轮；</p>
+            <p>(3)直齿锥齿轮。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-10" ng-click="toggleDesc($event, '#desc-body-10', '#desc-header-10 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 蜗轮蜗杆
+    </h3>
+    <div class="row desc-body" id="desc-body-10">
+        <div class="col-sm-5 worm-desc">
+            <img src="./images/Mechanics/7-蜗轮蜗杆-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 worm-desc">
+            <p>蜗杆传动用于传递空间两交错轴之间的运动和动力。通常两轴线的交错角为90°。蜗杆传动具有传动比大、传动平稳、噪声低和能自锁等优点，应用非常广泛。其不足之处是由于在啮合齿面间产生很大的相对滑动速度，因此摩擦发热很大，传动效率低，且常需耗用非铁合金，故不适合用于大功率和长期连续工作的场合。</p>
+            <p>圆柱蜗杆传动可以分为：</p>
+            <p>(1)普通圆柱蜗杆传动；</p>
+            <p>(2)圆弧蜗杆传动。</p>
+        </div>
+    </div>
+
+    <h3 class="desc-header" id="desc-header-11" ng-click="toggleDesc($event, '#desc-body-11', '#desc-header-11 >span')">
+        <span class="glyphicon glyphicon-menu-right desc-header-icon"></span>
+        简介 - 带传动
+    </h3>
+    <div class="row desc-body" id="desc-body-11">
+        <div class="col-sm-5 belt-desc">
+            <img src="./images/Mechanics/8-带传动-介绍.jpg" />
+        </div>
+        <div class="col-sm-7 belt-desc">
+            <p>带传动是利用张紧在带轮上的柔性带进行运动或动力传递的一种机械传动。根据传动原理的不同，有靠带与带轮间的摩擦力传动的摩擦型带传动，也有靠带与带轮上的齿相互啮合传动的同步带传动。</p>
+            <p>带传动具有结构简单、传动平稳、能缓冲吸振、可以在大的轴间距和多轴间传递动力，且其造价低廉、不需润滑、维护容易等特点，在近代机械传动中应用十分广泛。摩擦型带传动能过载打滑、运转噪声低，但传动比不准确（滑动率在2%以下）；同步带传动可保证传动同步，但对载荷变动的吸收能力稍差，高速运转有噪声。 带传动除用以传递动力外，有时也用来输送物料、进行零件的整列等。</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,333 @@
+--temp-output:D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\obj\Debug\net452\
+--out:D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\bin\Debug\net452\CNCDataAPI.exe
+--define:DEBUG
+--define:TRACE
+--define:NET452
+--suppress-warning:CS1701
+--suppress-warning:CS1702
+--suppress-warning:CS1705
+--platform:x64
+--optimize:False
+--emit-entry-point:True
+--output-name:CNCDataAPI
+--file-version:1.0.0.0
+--version:1.0.0.0
+--informational-version:1.0.0
+--target-framework:.NETFramework,Version=v4.5.2
+--reference:C:\Users\Bill\.nuget\packages\DocX\1.0.0.22\lib\net40\DocX.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.1.0\lib\net451\Microsoft.AspNetCore.Antiforgery.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Authentication\1.1.0\lib\net451\Microsoft.AspNetCore.Authentication.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Authentication.Cookies\1.1.0\lib\net451\Microsoft.AspNetCore.Authentication.Cookies.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Authorization\1.1.0\lib\net451\Microsoft.AspNetCore.Authorization.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Cors\1.1.0\lib\net451\Microsoft.AspNetCore.Cors.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Cryptography.Internal\1.1.0\lib\net451\Microsoft.AspNetCore.Cryptography.Internal.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation\1.1.0\lib\net451\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.DataProtection\1.1.0\lib\net451\Microsoft.AspNetCore.DataProtection.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.DataProtection.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Diagnostics\1.1.0\lib\net451\Microsoft.AspNetCore.Diagnostics.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Diagnostics.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore\1.1.0\lib\net451\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Hosting\1.1.0\lib\net451\Microsoft.AspNetCore.Hosting.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Hosting.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.Hosting.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Html.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.AspNetCore.Html.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Http\1.1.0\lib\net451\Microsoft.AspNetCore.Http.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Http.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.Http.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Http.Extensions\1.1.0\lib\net451\Microsoft.AspNetCore.Http.Extensions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Http.Features\1.1.0\lib\net451\Microsoft.AspNetCore.Http.Features.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.HttpOverrides\1.1.0\lib\net451\Microsoft.AspNetCore.HttpOverrides.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Identity\1.1.0\lib\net451\Microsoft.AspNetCore.Identity.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Identity.EntityFrameworkCore\1.1.0\lib\net451\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.JsonPatch\1.1.0\lib\net451\Microsoft.AspNetCore.JsonPatch.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Localization\1.1.0\lib\net451\Microsoft.AspNetCore.Localization.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.ApiExplorer\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Core\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Core.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Cors\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Cors.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.DataAnnotations\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Formatters.Json\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Localization\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Localization.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Razor\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Razor.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.Razor.Host\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.Razor.Host.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.TagHelpers\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Mvc.ViewFeatures\1.1.0\lib\net451\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Razor\1.1.0\lib\net451\Microsoft.AspNetCore.Razor.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Razor.Runtime\1.1.0\lib\net451\Microsoft.AspNetCore.Razor.Runtime.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Razor.Tools\1.0.0-preview2-final\lib\net451\dotnet-razor-tooling.exe
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.ResponseCaching.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Routing\1.1.0\lib\net451\Microsoft.AspNetCore.Routing.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Routing.Abstractions\1.1.0\lib\net451\Microsoft.AspNetCore.Routing.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Server.IISIntegration\1.1.0\lib\net451\Microsoft.AspNetCore.Server.IISIntegration.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.Server.Kestrel\1.1.0\lib\net451\Microsoft.AspNetCore.Server.Kestrel.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.StaticFiles\1.1.0\lib\net451\Microsoft.AspNetCore.StaticFiles.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.AspNetCore.WebUtilities\1.1.0\lib\net451\Microsoft.AspNetCore.WebUtilities.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.CodeAnalysis.Common\1.3.0\lib\net45\Microsoft.CodeAnalysis.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.CodeAnalysis.CSharp\1.3.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.CodeAnalysis.CSharp.Workspaces\1.3.0\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.CodeAnalysis.Workspaces.Common\1.3.0\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.CodeAnalysis.Workspaces.Common\1.3.0\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Composition\1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Composition\1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Composition\1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Composition\1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Composition\1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Microsoft.CSharp.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.DotNet.Cli.Utils\1.0.0-preview2-003121\lib\net451\Microsoft.DotNet.Cli.Utils.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.DotNet.PlatformAbstractions\1.1.0\lib\net451\Microsoft.DotNet.PlatformAbstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.DotNet.ProjectModel\1.0.0-rc3-003121\lib\net451\Microsoft.DotNet.ProjectModel.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore\1.1.0\lib\net451\Microsoft.EntityFrameworkCore.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.Design.Core\1.0.0-preview2-final\lib\net451\Microsoft.EntityFrameworkCore.Design.Core.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.Relational\1.1.0\lib\net451\Microsoft.EntityFrameworkCore.Relational.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.Relational.Design\1.1.0\lib\net451\Microsoft.EntityFrameworkCore.Relational.Design.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.SqlServer\1.1.0\lib\net451\Microsoft.EntityFrameworkCore.SqlServer.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.SqlServer.Design\1.1.0\lib\net451\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.EntityFrameworkCore.Tools\1.0.0-preview2-final\lib\net451\Microsoft.EntityFrameworkCore.Tools.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Caching.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Caching.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Caching.Memory\1.1.0\lib\net451\Microsoft.Extensions.Caching.Memory.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.CommandLineUtils\1.0.0\lib\net451\Microsoft.Extensions.CommandLineUtils.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.Binder\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.Binder.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.EnvironmentVariables\1.1.0\lib\net451\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.FileExtensions\1.1.0\lib\net451\Microsoft.Extensions.Configuration.FileExtensions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.Json\1.1.0\lib\net451\Microsoft.Extensions.Configuration.Json.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Configuration.UserSecrets\1.1.0\lib\net451\Microsoft.Extensions.Configuration.UserSecrets.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.DependencyInjection\1.1.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.DependencyInjection.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.DependencyModel\1.1.0\lib\net451\Microsoft.Extensions.DependencyModel.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.FileProviders.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.FileProviders.Composite\1.1.0\lib\netstandard1.0\Microsoft.Extensions.FileProviders.Composite.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.FileProviders.Physical\1.1.0\lib\net451\Microsoft.Extensions.FileProviders.Physical.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.FileSystemGlobbing\1.1.0\lib\net45\Microsoft.Extensions.FileSystemGlobbing.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Globalization.CultureInfoCache\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Globalization.CultureInfoCache.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Localization\1.1.0\lib\net451\Microsoft.Extensions.Localization.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Localization.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Localization.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Logging\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Logging.Abstractions\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Logging.Console\1.1.0\lib\net451\Microsoft.Extensions.Logging.Console.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Logging.Debug\1.1.0\lib\net451\Microsoft.Extensions.Logging.Debug.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.ObjectPool\1.1.0\lib\net451\Microsoft.Extensions.ObjectPool.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Options\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Options.ConfigurationExtensions\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.PlatformAbstractions\1.1.0\lib\net451\Microsoft.Extensions.PlatformAbstractions.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.Primitives\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Extensions.WebEncoders\1.1.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.Net.Http.Headers\1.1.0\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.BrowserLink.Loader\14.1.0\lib\net451\Microsoft.VisualStudio.Web.BrowserLink.Loader.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGeneration.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration.Core\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration.Templating\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration.Tools\1.0.0-preview2-final\lib\net451\dotnet-aspnet-codegenerator.exe
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGeneration.Utils\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+--reference:C:\Users\Bill\.nuget\packages\Microsoft.VisualStudio.Web.CodeGenerators.Mvc\1.0.0-preview2-final\lib\net451\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+--reference:C:\Users\Bill\.nuget\packages\Newtonsoft.Json\9.0.1\lib\net45\Newtonsoft.Json.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Common\3.5.0-beta2-1484\lib\net45\NuGet.Common.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Configuration\3.5.0-beta2-1484\lib\net45\NuGet.Configuration.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.DependencyResolver.Core\3.5.0-beta2-1484\lib\net45\NuGet.DependencyResolver.Core.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Frameworks\3.5.0-beta2-1484\lib\net45\NuGet.Frameworks.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.LibraryModel\3.5.0-beta2-1484\lib\net45\NuGet.LibraryModel.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Packaging\3.5.0-beta2-1484\lib\net45\NuGet.Packaging.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Packaging.Core\3.5.0-beta2-1484\lib\net45\NuGet.Packaging.Core.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Packaging.Core.Types\3.5.0-beta2-1484\lib\net45\NuGet.Packaging.Core.Types.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.ProjectModel\3.5.0-beta2-1484\lib\net45\NuGet.ProjectModel.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Protocol.Core.Types\3.5.0-beta2-1484\lib\net45\NuGet.Protocol.Core.Types.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Protocol.Core.v3\3.5.0-beta2-1484\lib\net45\NuGet.Protocol.Core.v3.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Repositories\3.5.0-beta2-1484\lib\net45\NuGet.Repositories.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.RuntimeModel\3.5.0-beta2-1484\lib\net45\NuGet.RuntimeModel.dll
+--reference:C:\Users\Bill\.nuget\packages\NuGet.Versioning\3.5.0-beta2-1484\lib\net45\NuGet.Versioning.dll
+--reference:C:\Users\Bill\.nuget\packages\Remotion.Linq\2.1.1\lib\net45\Remotion.Linq.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Buffers\4.3.0\lib\netstandard1.1\System.Buffers.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Collections.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Collections.Concurrent.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Collections.Immutable\1.3.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.ComponentModel.dll
+--reference:C:\Users\Bill\.nuget\packages\System.ComponentModel.Primitives\4.3.0\ref\net45\System.ComponentModel.Primitives.dll
+--reference:C:\Users\Bill\.nuget\packages\System.ComponentModel.TypeConverter\4.3.0\ref\net45\System.ComponentModel.TypeConverter.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Diagnostics.Contracts.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Diagnostics.Debug.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Diagnostics.DiagnosticSource\4.3.0\lib\portable-net45+win8+wpa81\System.Diagnostics.DiagnosticSource.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Diagnostics.Tools.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Diagnostics.Tracing.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Globalization.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Interactive.Async\3.0.0\lib\net45\System.Interactive.Async.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.IO.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.IO.Compression.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Linq.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Linq.Expressions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Linq.Queryable.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Net.Primitives.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Numerics.Vectors\4.3.0\ref\netstandard1.0\System.Numerics.Vectors.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.ObjectModel.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Reflection.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Reflection.Extensions.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Reflection.Metadata\1.4.1\lib\portable-net45+win8\System.Reflection.Metadata.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Reflection.Primitives.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Resources.ResourceManager.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Runtime.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Runtime.CompilerServices.Unsafe\4.3.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Runtime.Extensions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Runtime.InteropServices.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Runtime.InteropServices.RuntimeInformation\4.3.0\ref\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Runtime.Numerics.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Text.Encoding.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Text.Encoding.Extensions.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Text.Encodings.Web\4.3.0\lib\netstandard1.0\System.Text.Encodings.Web.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Text.RegularExpressions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Threading.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Threading.Tasks.dll
+--reference:C:\Users\Bill\.nuget\packages\System.Threading.Tasks.Extensions\4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Threading.Timer.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Xml.ReaderWriter.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Xml.XDocument.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Core.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Security.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.Linq.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Configuration.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ComponentModel.DataAnnotations.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Transactions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.IdentityModel.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.WebRequest.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ServiceModel.dll
+--resource:"D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\obj\Debug\net452\CNCDataAPIdotnet-compile.deps.json",CNCDataAPI.deps.json
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Program.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Startup.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\AccountController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\HomeController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\ManageController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\ReportController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\AlignBallBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\AlignRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\AngContactBallBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\ArcCylinWormGearsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\BallLeadScrewSptBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\BWElasticSlvPinCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\CablesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\CNCMachineTypesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\CommonCylinWormGearsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\CylinRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\DeepGrooveBallBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\DoubleRowCylinRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\DoubleThrustAngContactBallBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\ElasticSlvPinCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\ElecSpindleSizesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\FlangeCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\FlexiblePinCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\GearCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\HeliCylinGearsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\HubShapedCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\LineRollingGuidesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NCSystemFunctionalOptionsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NCSystemIOUnitsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NCSystemManualsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NCSystemPowerUnitsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NCSystemsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\NeedleRollerThrustRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\OldhamCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\PlumShapedFlexibleCoupsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\PMSrvMotorDriversController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\PMSrvMotorParasController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\PMSrvMotorSizesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\RotaryTablesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SolidBallScrewNutPairsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleBeltLengthsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleBeltParasController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleBeltSizesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleSrvMotorDriversController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleSrvMotorParasController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpindleSrvMotorSizesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SpurGearsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SrvDriverBrakeResistorsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SrvDriverReactorsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\SrvDriverTransformersController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\StepMotorParasController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\StepMotorSizesController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\StraightBevelGearsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\TaperedRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\UploadFileController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\APIs\XTaperedRollerBrgsController.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\Internals\ApiAuthorizeAttribute.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Controllers\Internals\DocxGenerator.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Data\ApplicationDbContext.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Data\Migrations\00000000000000_CreateIdentitySchema.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Data\Migrations\ApplicationDbContextModelSnapshot.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ApplicationUser.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\ForgotPasswordViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\LoginViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\RegisterViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\ResetPasswordViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\SendCodeViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\AccountViewModels\VerifyCodeViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_AligningBallBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_AligningRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_AngularContactBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_BallLeadScrewSupportBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_CrossTaperedRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_CylindricalRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_DeepGrooveBallBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_DoubleRowCylindricalRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_DoubleThrustAngularContactBallBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_NeedleRollerAndThrustRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Bearings_TaperedRollerBearings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Belt_LengthOfSpindleBelt.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Belt_ParaOfSpindleBelt.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Belt_SizeOfSpindleBelt.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\CNCMachineData.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_BrakeWheelElasticSleevePinCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_ElasticSleevePinCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_FlangeCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_FlexiblePinCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_GearCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_HubShapedCouplings.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_OldhamCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Coupling_PlumShapedFlexibleCoupling.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Driver_DriverOfServoMotorOfPMSACFS.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Driver_ServoDriverBrakeResistor.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Driver_ServoDriverReactor.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Driver_ServoDriverTransformer.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Driver_ServoMotorDriverOfSpindle.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Gear_HelicalCylindricalGear.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Gear_SpurGear.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Gear_StraightBevelGear.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Guide_LinearRollingGuide.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_ParaOfElectricSpindle.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_ParaOfServoMotorOfPMSACFS.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_ParaOfServoMotorOfSpindle.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_ParaOfStepperMotor.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_SizeOfElectricSpindle.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_SizeOfServoMotorOfPMSACFS.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_SizeOfServoMotorOfSpindle.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Motor_SizeOfStepperMotor.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Others_Cables.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Others_RotaryTable.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Others_SolidBallScrewNutPairs.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_CNCMachineType.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_NCSystem.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_NCSystemFunctionalOptions.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_NCSystemIOUnit.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_NCSystemManual.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\System_NCSystemPowerUnit.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Worm_ArcCylindricalWormGear.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\APIs\Worm_CommonCylindricalWormGear.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\AddPhoneNumberViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\ChangePasswordViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\FactorViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\IndexViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\ManageLoginsViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\RemoveLoginViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\SetPasswordViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\Report\ReportTemplateResult.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Models\Report\SelectionResult.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Services\IEmailSender.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Services\ISmsSender.cs
+D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\Services\MessageServices.cs

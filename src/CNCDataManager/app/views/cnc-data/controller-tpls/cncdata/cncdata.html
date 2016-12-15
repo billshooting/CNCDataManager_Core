@@ -1,0 +1,31 @@
+<div class="short-background">
+    <!-- 加载动画 -->
+    <div class="overlay-container" ng-show="isLoading">
+        <button type="button" class="close" ng-click="hideLoading()">&times;</button>
+        <h2 class="text-center">Loading...</h2>
+        <div class="text-center">
+            <span id="update-msg"></span>
+            <span id="error-msg"></span>
+        </div>
+        <div title='loading...' id="loading-animation"></div>
+    </div>
+    <!-- 出错动画 -->
+    <div class="overlay-container" ng-show="isError">
+        <button type="button" class="close" ng-click="hideError()">&times;</button>
+        <h2 class="text-center">操作出错</h2>
+        <div class="text-center" title="error..." id="errorMsg"></div>
+    </div>
+    <!-- 巨幕标题 -->
+    <div class="layout-header">
+        <div class="container">
+            <h1>数据</h1>
+            <p>详尽、包括伺服电机、伺服驱动、数控系统和机械部件等各项数据。</p>
+        </div>
+    </div>
+
+    <div class="full-wide-body-content">
+        <div ui-view="leftside"></div>
+        <div ui-view="content"></div>
+    </div>
+</div>
+

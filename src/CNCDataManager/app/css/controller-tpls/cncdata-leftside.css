@@ -1,0 +1,116 @@
+﻿/*#region 左侧导航栏 */
+
+/*#region 最外层容器 */
+
+.side-nav-container{
+    position: relative;
+    float: left;
+    width: 300px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.side-nav-container-fixed{
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/*#endregion */
+
+
+.cncdata-side-bar{
+    display:block;
+    position: relative;
+    width: 320px;
+    height: 100%;
+    padding-left: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #280155;
+}
+
+/*#region 侧边导航标题 */
+.side-bar-title{
+    height: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 20px;
+}
+.side-bar-title >h4{
+    color: #ccc;
+    margin: 0;
+    margin-left:40px;
+    letter-spacing: 4px;
+    font-weight:bold;
+}
+
+
+/*#endregion */
+
+.side-nav-head-1{
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    padding-left: 15px;
+    position:relative;
+    font-family:'Microsoft YaHei';
+    color: white;
+    font-weight:bold;
+    background-color: #555;
+}
+
+.side-nav-head-2{
+    display:block;
+    position:relative;
+    margin-left:37px;
+}
+.side-nav-head-3{
+    display:block;
+    position:relative;
+    margin-left:20px;
+}
+.side-nav-3-hide{
+    display:none;
+    position:relative;
+    margin-left:20px;
+}
+.side-nav-head-3 >li{
+    font-size:14px;
+}
+.side-nav-3-hide >li{ font-size:14px;}
+
+.side-nav-head-1 li{
+    list-style:none;
+}
+/*鼠标悬停效果*/
+.side-nav-head-1 a{
+    display:block;
+    list-style:none;
+    text-decoration:none;
+    color: white;
+}
+
+.side-nav-head-1 a:hover{
+    background-color:#ccc;
+}
+div.side-nav-icon-bar >a{
+    display:inline;
+}
+div.side-nav-icon-bar:hover{
+    background-color: #ccc;
+}
+/*前面的+-标志*/
+.nav-icon:hover{
+    color:#610087;
+    cursor:pointer;
+}
+
+/*#endregion */

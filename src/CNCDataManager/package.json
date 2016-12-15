@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/billshooting/CNCDataManager_Core#readme",
   "devDependencies": {
+    "@types/angular-ui-router": "^1.1.35",
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
@@ -40,7 +41,10 @@
     "angular-cookie": "^4.1.0",
     "angular-resource": "^1.6.0",
     "angular-route": "^1.6.0",
+    "angular-sanitize": "^1.6.0",
     "angular-strap": "^2.3.10",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "systemjs": "^0.19.41"

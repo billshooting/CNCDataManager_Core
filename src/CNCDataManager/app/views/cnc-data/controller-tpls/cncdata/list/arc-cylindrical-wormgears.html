@@ -1,0 +1,235 @@
+<div class="list-content">
+    <div>
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-list"></span>
+            圆弧圆柱蜗轮蜗杆参数表
+            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+        </h4>
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch ="colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>齿数</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch ="colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>传动比和中心距</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch ="colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>其他蜗杆参数</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch ="colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>其他蜗轮参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch ="colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>载荷参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch ="colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>材料和铸造方法</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch ="colState[6]" ng-click="toggleCol(6, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>说明</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Modulus_m')" title="按此列排序">
+                            模数m
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Modulus_m'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Modulus_m'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('ProfileAngle_alphi')" title="按此列排序">
+                            齿形角α
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'ProfileAngle_alphi'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-ProfileAngle_alphi'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NumberOfWormTeeth_z1')" ng-show="colState[0]" title="按此列排序">
+                            蜗杆头数z1
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NumberOfWormTeeth_z1'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NumberOfWormTeeth_z1'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NumberOfWormWheelTeeth_z2')" ng-show="colState[0]" title="按此列排序">
+                            蜗轮齿数z2
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NumberOfWormWheelTeeth_z2'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NumberOfWormWheelTeeth_z2'"></span>
+                        </td>                        
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DriveRatio_i')" ng-show="colState[1]" title="按此列排序">
+                            传动比i
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DriveRatio_i'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DriveRatio_i'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('CentralDistance_a')" ng-show="colState[1]" title="按此列排序">
+                            中心距a
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'CentralDistance_a'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-CentralDistance_a'"></span>
+                        </td>                        
+                        <td ng-if="colState[2]">蜗杆分度圆直径 d1/mm</td>
+                        <td ng-if="colState[2]">蜗杆导程 pz/mm</td>
+                        <td ng-if="colState[2]">蜗杆轴向齿距 px/mm</td>
+                        <td ng-if="colState[2]">蜗轮分度圆柱导程角 γ/mm</td>
+                        <td ng-if="colState[2]">蜗杆齿顶圆直径 da1/mm</td>
+                        <td ng-if="colState[2]">蜗杆齿根圆直径 df1/mm</td>
+                        <td ng-if="colState[2]">蜗杆螺纹部分长度 b1/mm</td>
+                        <td ng-if="colState[2]">蜗杆轴向齿厚 Sx/mm</td>
+                        <td ng-if="colState[2]">蜗杆法向齿厚 Sn/mm</td>
+
+                        <td ng-if="colState[3]">蜗轮分度圆直径 d2/mm</td>
+                        <td ng-if="colState[3]">蜗轮齿顶高 ha2/mm</td>
+                        <td ng-if="colState[3]">蜗轮齿根高 hf2/mm</td>
+                        <td ng-if="colState[3]">蜗轮喉圆直径 da2/mm</td>
+                        <td ng-if="colState[3]">蜗轮齿宽 b2mm</td>
+                        <td ng-if="colState[3]">蜗轮轮缘宽度 B/mm</td>
+
+                        <td ng-if="colState[4]">传动效率η</td>
+                        <td ng-if="colState[4]">蜗杆轴粘滞摩擦</td>
+                        <td ng-if="colState[4]">蜗轮转动惯量</td>
+                        <td ng-if="colState[4]">蜗杆转动惯量</td>
+                        <td ng-if="colState[4]">蜗杆轴的扭转刚度</td>
+
+                        <td ng-if="colState[5]">材料</td>
+                        <td ng-if="colState[5]">铸造方法</td>
+                        <td ng-if="colState[6]">说明</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="model in items | orderBy: orderProperty">
+                        <td style="width: 100px">{{$index + 1}} 
+                            <span class="glyphicon glyphicon-pencil span-button pull-right" title="编辑这条记录" ng-click="updateItemLocal(model)"></span>
+                            <button type="button" class="close" ng-click="showDeleteModal(model)" title="在数据库中删除这条记录">&times;</button>
+                        </td>
+                        <td>{{model.TypeID}}</td> 
+                        <td ng-bind="model.Manufacturer"  type="text" ></td>
+                        <td ng-bind="model.Modulus_m"  type="number"></td>
+                        <td ng-bind="model.ProfileAngle_alphi"  type="number"></td>
+                        <td ng-bind="model.NumberOfWormTeeth_z1" ng-show="colState[0]"  type="number"></td>
+                        <td ng-bind="model.NumberOfWormWheelTeeth_z2" ng-show="colState[0]"  type="number"></td>                        
+                        <td ng-bind="model.DriveRatio_i" ng-show="colState[1]"  type="number"></td>
+                        <td ng-bind="model.CentralDistance_a" ng-show="colState[1]"  type="number"></td>                        
+                        <td ng-if="colState[2]" ng-bind="model.DiameterOfPitchCircleOfWorm_d1"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.LeadOfWorm_pz"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.AxialPitchOfWorm_px"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.LeadAngleOfPitchCircleOfWormWheel_gama"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.DiameterOfAddendumCircleOfWorm_da1"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.DiameterOfAddendumCircleOfWorm_df1"  type="number" ></td>
+                        <td ng-if="colState[2]" ng-bind="model.LengthOfScrewThreadOfWorm_b1"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.AxialThicknessOfWorm_Sx"  type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.NormalThicknessOfWorm_Sn"  type="number"></td>
+
+                        <td ng-if="colState[3]" ng-bind="model.DiameterOfPitchCircleOfWormWheel_d2" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.AddendumOfWormWheel_ha2" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.DedendumOfWormWheel_hf2" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.DiameterOfThroatCircleOfWormWheel_da2" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.TeethWidthOfWormWheel_b2" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.FlangeWidthOfWormWheel_B" type="number"></td>
+
+                        <td ng-if="colState[4]" ng-bind="model.TransmissionEfficiency_ita"  type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.ViscousFrictionOfWormShaft"  type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.MomentOfInertiaOfWormWheel"  type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.MomentOfInertiaOFWorm"  type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.TorsionalStiffnessOfWormShaft"  type="number"></td>
+
+                        <td ng-if="colState[5]" ng-bind="model.Material"  type="text"></td>
+                        <td ng-if="colState[5]" ng-bind="model.CastingProcess"  type="text"></td>
+                        <td ng-if="colState[6]" ng-bind="model.Description"  type="text"></td>
+                    </tr>
+                    <tr ng-show="addingItems.length">
+                        <td colspan="6">
+                            <span class="text-center">下方为表格编辑区，可直接在表格内编辑</span>
+                            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+                        <td>
+                    </tr>
+                    <tr ng-repeat="item in addingItems">
+                        <td class="table-td-btn" ng-click="addItemRemote(item)">
+                            添加到数据库
+                            <button type="button" class="close" ng-click="deleteItemLocal(item)">&times;</button>
+                        </td>
+                        <td class="" ng-bind="item.TypeID"></td>
+                        <td class="" ng-model="item.Manufacturer" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.Modulus_m" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.ProfileAngle_alphi" contenteditable="true" type="text"></td>
+
+                        <td class="" ng-model="item.NumberOfWormTeeth_z1" ng-show="colState[0]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.NumberOfWormWheelTeeth_z2" ng-show="colState[0]" contenteditable="true" type="number"></td>                        
+                        <td class="" ng-model="item.DriveRatio_i" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.CentralDistance_a" ng-show="colState[1]" contenteditable="true" type="number"></td> 
+
+                        <td class="" ng-model="item.DiameterOfPitchCircleOfWorm_d1" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.LeadOfWorm_pz" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.AxialPitchOfWorm_px" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.LeadAngleOfPitchCircleOfWormWheel_gama" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DiameterOfAddendumCircleOfWorm_da1" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DiameterOfAddendumCircleOfWorm_df1" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.LengthOfScrewThreadOfWorm_b1" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.AxialThicknessOfWorm_Sx" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.NormalThicknessOfWorm_Sn" ng-if="colState[2]" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-if="colState[3]" ng-model="item.DiameterOfPitchCircleOfWormWheel_d2" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.AddendumOfWormWheel_ha2" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.DedendumOfWormWheel_hf2" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.DiameterOfThroatCircleOfWormWheel_da2" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.TeethWidthOfWormWheel_b2" contenteditable type="number"></td>
+                        <td class="" ng-if="colState[3]" ng-model="item.FlangeWidthOfWormWheel_B" contenteditable type="number"></td> 
+
+                        <td class="" ng-model="item.TransmissionEfficiency_ita" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.ViscousFrictionOfWormShaft" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MomentOfInertiaOfWormWheel" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MomentOfInertiaOFWorm" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MomentOfInertiaOFWorm" ng-if="colState[4]" contenteditable="true" type="number"></td>
+
+                        <td class="" ng-model="item.Material" ng-if="colState[5]" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.CastingProcess" ng-if="colState[5]" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.Description" ng-if="colState[6]" contenteditable="true" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添加数据
+                            <button type="button" class="btn btn-success btn-xs pull-right" ng-click="showAddModal()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>       
+    </div>
+
+    <div class="list-desc">
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-tags"></span>
+            尺寸说明
+        </h4>
+        <div class="row">
+            <div class="col-sm-6 list-desc-img">
+                <img src="./images/Mechanics/蜗轮蜗杆-表/2-圆弧圆柱蜗轮蜗杆-表.jpg" />
+            </div>
+            <div class="col-sm-6 list-desc-txt">
+                <p>用于减速机。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
