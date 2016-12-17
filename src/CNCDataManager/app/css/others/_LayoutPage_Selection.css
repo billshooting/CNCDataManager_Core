@@ -1,0 +1,180 @@
+﻿@charset "utf-8";
+
+/** {
+    font-family:'Microsoft YaHei';
+    font-size:14px;
+    margin:0;
+    padding:0;
+}*/
+body {
+  background: #f1f2f3;
+}
+
+div.navbar {
+    border:none;
+}
+
+.selectionHead h3{
+    text-align: center;
+	font-size: 4.5em;
+	color: #12a3d6;
+	font-weight:400;
+}
+
+.middleNav {
+    margin-top:-10px;
+    margin-bottom:20px;
+}
+
+/*超大屏幕*/
+.jumbotron {
+    position: relative;
+    padding: 40px 0;
+    color: #fff;
+    //text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    background: #B24926; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #B24926 0%, #FAA523 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#B24926), color-stop(100%,#FAA523)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  #B24926 0%,#FAA523 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  #B24926 0%,#FAA523 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  #B24926 0%,#FAA523 100%); /* IE10+ */
+    background: linear-gradient(45deg,  #B24926 0%,#FAA523 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B24926', endColorstr='#FAA523',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+    -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+    box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+.jumbotron h1 {
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.jumbotron p {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 30px;
+}
+
+
+/* .menu-collapse { margin-right: 0px; padding-bottom: -15px;}
+.menu-collapse :first-child { margin-top: 0; }
+.menu-collapse .list-group { margin-bottom: -15px; border-radius:0;}
+.menu-collapse .list-group-item { font-size: 14px; margin-left: -34px; margin-right: -34px; padding-top: 7px; padding-bottom: 7px;}
+.menu-collapse .list-group-item:first-child { margin-top: -15px; }
+.menu-collapse .list-group-item:last-child { margin-bottom: -15px; }  */
+/*.menu-collapse a { 
+  height:3em;
+}
+
+.menu-collapse h2 {
+    padding-top:5px;
+}
+
+.menu-collapse p {
+  margin-left:-30px;
+  margin-right:-30px;
+  margin-top:-14px;
+}*/
+
+/*数字输入框*/
+.spinner {
+  width: 100px;
+}
+.spinner input {
+  text-align: left;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+
+.imgSelected{
+  border:1px solid #0099CC;
+}
+
+/*.CNCTable{
+  border-radius: 25px;
+  border: 2px solid #DDD;
+  padding: 20px; 
+}*/
+
+.CNCTable{
+  margin: 0 -20px 20px -20px;
+  padding:20px 20px 20px 20px;
+  background: #fff;
+  box-shadow:0 0 8px 1px #e4e5e6;
+}
+
+.tableSelected{
+  background: #CCCCCC;
+}
+
+.filterTable{
+  overflow-y:auto;
+}
+
+table th{
+  min-width:100px;
+}
+
+.btn-group-vertical{
+  width: 100%;
+}
+
+.btn-group-vertical .btnMenu{
+  height: 45px;
+  line-height: 30px;
+  overflow: :hidden;
+}
+
+.user{
+  padding:5px;
+  margin-bottom: 5px;
+}
+
+.CNCtableimg{
+  transition:all 0.3s;
+}
+
+.CNCtableimg:hover{
+  transform: scale(1.01,1.01);
+}
+
+
+
+
+
+
+
+
+
+
+

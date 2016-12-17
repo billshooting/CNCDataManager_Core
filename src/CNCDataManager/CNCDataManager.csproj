@@ -26,7 +26,74 @@
     <Content Include="app\css\directives\back-to-top.css" />
     <Content Include="app\css\controller-tpls\cncdata-description.css" />
     <Content Include="app\css\controller-tpls\cncdata-list.css" />
+    <Content Include="app\css\others\feedSystem.css" />
+    <Content Include="app\css\others\index.css" />
+    <Content Include="app\css\others\reset.css" />
+    <Content Include="app\css\others\_LayoutPage_Selection.css" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\images\back-to-top-icon.png" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2000TA.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2000TA1.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2000TD.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2100eM.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2100eMS.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2100M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2110eM.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\CASNUC2110eT.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-100.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-201.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-210.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-230.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-301.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-303M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-303T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-310.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-330.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GJ-400.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK218Da.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK218MC.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK218MD.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK218T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK25i.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TA2.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TC-1.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TCa-L.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TCa.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TD.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TEa.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK928TEⅡ.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980MD.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980MDa.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980MDc.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TA2.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TB.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TB2.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TD.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TDa.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TDb.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TDc.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TE2.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK980TTC.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK981T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK983M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK983Ma.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK983Me.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK983Ta.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK988T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK98T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK98Ta.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\GSK990MA.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-808-M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-808-T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-808TEA.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-818A-M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-818A-T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-818B-M.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-818B-T.jpg" />
+    <Content Include="app\images\CNC\CNCSystem\HNC-848C.jpg" />
+    <Content Include="app\images\CNC\IO.jpg" />
+    <Content Include="app\images\CNC\UPS电源.jpg" />
+    <Content Include="app\images\CNC\手操盘.jpg" />
     <Content Include="app\images\CNC\数控系统-表.jpg" />
     <Content Include="app\images\Cover\CNC.jpg" />
     <Content Include="app\images\Cover\driver.jpg" />
@@ -46,6 +113,13 @@
     <Content Include="app\images\Home\machine2.jpg" />
     <Content Include="app\images\load64x64.gif" />
     <Content Include="app\images\loading38x38.gif" />
+    <Content Include="app\images\Machines\卧式车床.jpg" />
+    <Content Include="app\images\Machines\卧式铣床.jpg" />
+    <Content Include="app\images\Machines\斜床身车床.jpg" />
+    <Content Include="app\images\Machines\磨床.jpg" />
+    <Content Include="app\images\Machines\立式车床.jpg" />
+    <Content Include="app\images\Machines\立式铣床.jpg" />
+    <Content Include="app\images\Machines\龙门铣床.jpg" />
     <Content Include="app\images\Mechanics\1-滚动轴承-介绍.jpg" />
     <Content Include="app\images\Mechanics\2-联轴器-介绍.jpg" />
     <Content Include="app\images\Mechanics\3-导轨-介绍.jpg" />
@@ -57,7 +131,11 @@
     <Content Include="app\images\Mechanics\传动带-表\带传动.jpg" />
     <Content Include="app\images\Mechanics\回转工作台-表\工作台.jpg" />
     <Content Include="app\images\Mechanics\导轨-表\1-直线滚动导轨-表.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\Guide.jpg" />
     <Content Include="app\images\Mechanics\导轨-表\导轨.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\立铣Z轴导轨.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\立铣水平上导轨.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\立铣水平下导轨.jpg" />
     <Content Include="app\images\Mechanics\数控系统-介绍.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\1-角接触球轴承-表.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\2-深沟球轴承-表.jpg" />
@@ -67,8 +145,10 @@
     <Content Include="app\images\Mechanics\滚动轴承-表\5-调心滚子轴承-表.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\6-调心球轴承-表.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\7-滚珠丝杠支撑轴承-表.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\DoubleThrustAngContactBallBrgs.jpg" />
+    <Content Include="app\images\Mechanics\滚动轴承-表\NeedleRollerThrustRollerBrgs.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\滚动轴承.jpg" />
-    <Content Include="app\images\Mechanics\滚动轴承-表\滚珠丝杠螺母副.jpg" />
+    <Content Include="app\images\Mechanics\滚珠丝杠-表\滚珠丝杠螺母副.jpg" />
     <Content Include="app\images\Mechanics\滚珠丝杠-表\1-实心滚珠丝杠螺母副-表.jpg" />
     <Content Include="app\images\Mechanics\联轴器-表\1-凸缘式联轴器-表.jpg" />
     <Content Include="app\images\Mechanics\联轴器-表\2-十字滑块联轴器-表.jpg" />
@@ -97,6 +177,7 @@
     <Content Include="app\images\Report\simu-3.png" />
     <Content Include="app\images\Report\university-icon.png" />
     <Content Include="app\images\Report\条形码.png" />
+    <Content Include="app\images\Servo\Driver.jpg" />
     <Content Include="app\images\Servo\伺服部分.jpg" />
     <Content Include="app\images\Servo\永磁同步交流进给伺服电机驱动器-表.jpg" />
     <Content Include="app\images\Servo\电机驱动-介绍.jpg" />
@@ -117,6 +198,7 @@
     <Content Include="app\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="app\lib\angular\angular.min.js" />
     <Content Include="app\lib\bootstrap\bootstrap.min.css" />
+    <Content Include="app\views\cnc-selection\controller-tpls\selection.html" />
     <Content Include="dist\lib\bootstrap\bootstrap.min.css" />
     <Content Include="app\lib\bootstrap\bootstrap.min.js" />
     <Content Include="app\lib\jquery\jquery.min.js" />
@@ -252,6 +334,10 @@
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\straight-bevel-gears.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\tapered-roller-bearings.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\across-tapered-roller-bearings.html" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="app\_references.js" />
     <Content Include="dist\favicon.ico" />
     <Content Include="dist\index.html" />
@@ -332,8 +418,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\scripts\cnc-selection\" />
+    <Folder Include="app\lib\fonts\" />
     <Folder Include="dist\fonts\" />
+    <Folder Include="dist\lib\fonts\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +485,9 @@
     <TypeScriptCompile Include="app\scripts\cnc-data\services\TableHandler.ts" />
     <TypeScriptCompile Include="app\scripts\cnc-data\services\User.ts" />
     <TypeScriptCompile Include="app\scripts\cnc-data\types\ICncDataScope.d.ts" />
+    <TypeScriptCompile Include="app\scripts\cnc-selection\bases\controllers\index.ts" />
+    <TypeScriptCompile Include="app\scripts\cnc-selection\bases\controllers\Selection.ts" />
+    <TypeScriptCompile Include="app\scripts\cnc-selection\bases\Route.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

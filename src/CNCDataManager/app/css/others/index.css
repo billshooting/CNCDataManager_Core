@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.index-footer{
+	background-color: #3b3b3b;
+	height:216px;
+}
+
+.index-footer .footer-col{
+	color:#fff;
+	float:left;
+}

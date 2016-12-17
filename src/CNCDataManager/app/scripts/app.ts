@@ -12,6 +12,7 @@ let app = angular.module('cncDataManager', [
     'ngAnimate',
     'ngResource',
     'ngSanitize',
+    'ngCookies',
     'mgcrea.ngStrap'
 ]);
 
@@ -20,6 +21,7 @@ import registerControllers from './cnc-data/controllers/index';
 import registerRoute from './cnc-data/bases/Route';
 import registerServices from './cnc-data/services/index';
 import registerDirectives from './cnc-data/directives/index';
+
 ///* services register*/
 registerServices(app);
 
@@ -31,6 +33,10 @@ registerControllers(app);
 
 /* route config*/
 registerRoute(app);
+
+import registerSelectionRoute from './cnc-selection/bases/Route';
+
+registerSelectionRoute(app);
 
 
 
