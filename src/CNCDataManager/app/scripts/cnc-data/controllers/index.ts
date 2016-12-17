@@ -29,6 +29,24 @@ import { NCSystemFunctionalOptions } from './cncdata/list/NCSystemFunctionalOpti
 import { NCSystemIOUnits } from './cncdata/list/NCSystemIOUnits';
 import { NCSystemManuals } from './cncdata/list/NCSystemManuals';
 import { NCSystemPowerUnits} from './cncdata/list/NCSystemPowerUnits';
+import { NeedleThrustRollerBearings } from './cncdata/list/NeedleThrustRollerBearings';
+import { OldhamCouplings } from './cncdata/list/OldhamCouplings';
+import { PlumShapedFlexibleCouplings } from './cncdata/list/PlumShapedFlexibleCouplings';
+import { PMServoMotorDrivers } from './cncdata/list/PMServoMotorDrivers';
+import { PMServoMotorTechParameters } from './cncdata/list/PMServoMotorTechParameters';
+import { RotaryTables } from './cncdata/list/RotaryTables';
+import { SpindleBeltLengthParameters } from './cncdata/list/SpindleBeltLengthParameters';
+import { SpindleBeltTechParameters } from './cncdata/list/SpindleBeltTechParameters';
+import { SpindleBeltSizeParameters } from './cncdata/list/SpindleBeltSizeParameters';
+import { SpindleServoMotorDrivers } from './cncdata/list/SpindleServoMotorDrivers';
+import { SpindleServoMotorTechParameters } from './cncdata/list/SpindleServoMotorTechParameters';
+import { SpurGears } from './cncdata/list/SpurGears';
+import { ServoDriverBrakeResistors } from './cncdata/list/ServoDriverBrakeResistors';
+import { ServoDriverReactors } from './cncdata/list/ServoDriverReactors';
+import { ServoDriverTransformers } from './cncdata/list/ServoDriverTransformers';
+import { StraightBevelGears } from './cncdata/list/StraightBevelGears';
+import { TaperedRollerBearings } from './cncdata/list/TaperedRollerBearings';
+import { AcrossTaperedRollerBearings } from './cncdata/list/AcrossTaperedRollerBearings';
 
 export default function registerControllers(app: angular.IModule): void {
     app.controller('HomeCtrl', HomeController);
@@ -61,4 +79,22 @@ export default function registerControllers(app: angular.IModule): void {
     app.controller('NCSystemIOUnitsCtrl', NCSystemIOUnits);
     app.controller('NCSystemManualsCtrl', NCSystemManuals);
     app.controller('NCSystemPowerUnitsCtrl', NCSystemPowerUnits);
+    app.controller('NeedleThrustRollerBearingsCtrl', NeedleThrustRollerBearings);
+    app.controller('OldhamCouplingsCtrl', OldhamCouplings);
+    app.controller('PlumShapedFlexibleCouplingsCtrl', PlumShapedFlexibleCouplings);
+    app.controller('PMServoMotorDriversCtrl', PMServoMotorDrivers);
+    app.controller('PMServoMotorTechParametersCtrl', PMServoMotorTechParameters);
+    app.controller('RotaryTablesCtrl', RotaryTables);
+    app.controller('SpindleBeltLengthParametersCtrl', SpindleBeltLengthParameters);
+    app.controller('SpindleBeltTechParametersCtrl', SpindleBeltTechParameters);
+    app.controller('SpindleBeltSizeParametersCtrl', SpindleBeltSizeParameters);
+    app.controller('SpindleServoMotorDriversCtrl', SpindleServoMotorDrivers);
+    app.controller('SpindleServoMotorTechParametersCtrl', SpindleServoMotorTechParameters);
+    app.controller('SpurGearsCtrl', SpurGears);
+    app.controller('ServoDriverBrakeResistorsCtrl', ServoDriverBrakeResistors);
+    app.controller('ServoDriverReactorsCtrl', ServoDriverReactors);
+    app.controller('ServoDriverTransformersCtrl', ServoDriverTransformers);
+    app.controller('StraightBevelGearsCtrl', StraightBevelGears);
+    app.controller('TaperedRollerBearingsCtrl', TaperedRollerBearings);
+    app.controller('AcrossTaperedRollerBearingsCtrl', AcrossTaperedRollerBearings);
 };    

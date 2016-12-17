@@ -206,7 +206,7 @@ export default function registerRoute(app: angular.IModule): void {
                 url: '/hubshapedcouplings',
                 views: {
                     'list@cncdata.list': {
-                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/Hub-Shaped-couplings.html',
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/hub-shaped-couplings.html',
                         controller: 'HubShapedCouplingsCtrl'
                     }
                 }
@@ -253,6 +253,168 @@ export default function registerRoute(app: angular.IModule): void {
                     'list@cncdata.list': {
                         templateUrl: './views/cnc-data/controller-tpls/cncdata/list/ncsystem-power-units.html',
                         controller: 'NCSystemPowerUnitsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.NeedleThrustRollerBearings', {
+                url: '/needlethrustrollerbearings',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/needle-thrust-roller-bearings.html',
+                        controller: 'NeedleThrustRollerBearingsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.OldhamCouplings', {
+                url: '/oldhamcouplings',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/oldham-couplings.html',
+                        controller: 'OldhamCouplingsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.PlumShapedFlexibleCouplings', {
+                url: '/plumshapedflexiblecouplings',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/plum-shaped-flexible-couplings.html',
+                        controller: 'PlumShapedFlexibleCouplingsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.PMServoMotorDrivers', {
+                url: '/pmservomotordrivers',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/pmservo-motor-drivers.html',
+                        controller: 'PMServoMotorDriversCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.PMServoMotorTechParameters', {
+                url: '/pmservomotortechparameters',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/pmservo-motor-tech-parameters.html',
+                        controller: 'PMServoMotorTechParametersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.RotaryTables', {
+                url: '/rotarytables',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/rotary-tables.html',
+                        controller: 'RotaryTablesCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpindleBeltLengthParameters', {
+                url: '/spindlebeltlengthparameters',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spindle-belt-length-parameters.html',
+                        controller: 'SpindleBeltLengthParametersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpindleBeltTechParameters', {
+                url: '/spindlebelttechparameters',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spindle-belt-tech-parameters.html',
+                        controller: 'SpindleBeltTechParametersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpindleBeltSizeParameters', {
+                url: '/spindlebeltsizeparameters',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spindle-belt-size-parameters.html',
+                        controller: 'SpindleBeltSizeParametersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpindleServoMotorDrivers', {
+                url: '/spindleservomotordrivers',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spindle-servo-motor-drivers.html',
+                        controller: 'SpindleServoMotorDriversCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpindleServoMotorTechParameters', {
+                url: '/spindleservomotortechparameters',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spindle-servo-motor-tech-parameters.html',
+                        controller: 'SpindleServoMotorTechParametersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.SpurGears', {
+                url: '/spurgears',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/spur-gears.html',
+                        controller: 'SpurGearsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.ServoDriverBrakeResistors', {
+                url: '/servodriverbrakeresistors',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/servo-driver-brake-resistors.html',
+                        controller: 'ServoDriverBrakeResistorsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.ServoDriverReactors', {
+                url: '/servodriverreactors',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/servo-driver-reactors.html',
+                        controller: 'ServoDriverReactorsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.ServoDriverTransformers', {
+                url: '/servodrivertransformers',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/servo-driver-transformers.html',
+                        controller: 'ServoDriverTransformersCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.StraightBevelGears', {
+                url: '/straightbevelGears',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/straight-bevel-gears.html',
+                        controller: 'StraightBevelGearsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.TaperedRollerBearings', {
+                url: '/taperedrollerbearings',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/tapered-roller-bearings.html',
+                        controller: 'TaperedRollerBearingsCtrl'
+                    }
+                }
+            })
+            .state('cncdata.list.AcrossTaperedRollerBearings', {
+                url: '/acrosstaperedrollerbearings',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/across-tapered-roller-bearings.html',
+                        controller: 'AcrossTaperedRollerBearingsCtrl'
                     }
                 }
             })

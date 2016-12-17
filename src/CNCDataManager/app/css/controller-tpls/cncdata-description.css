@@ -257,7 +257,7 @@ div.motor-desc >p:first-child{
 /*标题样式结束*/
 
 /*主题样式*/
-.desc-body{  
+.row.desc-body{  
     display: none;
     margin-left:2%;
     margin-right: 2%;

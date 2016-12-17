@@ -1,0 +1,168 @@
+﻿<div class="list-content">
+    <div>
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-list"></span>
+            电主轴技术参数表
+            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+        </h4>
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>动力参数</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>速度参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>电气参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>质量</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>热时间常数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>说明</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('RatedTorque')" ng-show="colState[0]" title="按此列排序">
+                            额定转矩
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'RatedTorque'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-RatedTorque'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('RatedPower')" ng-show="colState[0]" title="按此列排序">
+                            额定功率
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'RatedPower'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-RatedPower'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('RatedRotationSpeed')" ng-show="colState[1]" title="按此列排序">
+                            额定转速
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'RatedRotationSpeed'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-RatedRotationSpeed'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('MaxRotationSpeed')" ng-show="colState[1]" title="按此列排序">
+                            最大转速
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxRotationSpeed'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxRotationSpeed'"></span>
+                        </td>
+                        <td ng-if="colState[2]">额定电流</td>
+                        <td ng-if="colState[2]">最大电流</td>
+                        <td ng-if="colState[2]">直流母线电压</td>
+                        <td ng-if="colState[2]">反电动势系数</td>
+
+                        <td ng-if="colState[3]">转子质量</td>
+                        <td ng-if="colState[3]">定子质量</td>
+                        <td ng-if="colState[3]">转动惯量</td>
+                        <td ng-if="colState[4]">热时间常数</td>
+                        <td ng-if="colState[5]">说明</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="model in items | orderBy: orderProperty">
+                        <td style="width: 100px">
+                            {{$index + 1}}
+                            <span class="glyphicon glyphicon-pencil span-button pull-right" title="编辑这条记录" ng-click="updateItemLocal(model)"></span>
+                            <button type="button" class="close" ng-click="showDeleteModal(model)" title="在数据库中删除这条记录">&times;</button>
+                        </td>
+                        <td>{{model.TypeID}}</td>
+                        <td ng-bind="model.Manufacturer" type="text"></td>
+                        <td ng-bind="model.RatedTorque" ng-show="colState[0]" type="number"></td>
+                        <td ng-bind="model.RatedPower" ng-show="colState[0]" type="number"></td>
+                        <td ng-bind="model.RatedRotationSpeed" ng-show="colState[1]" type="number"></td>
+                        <td ng-bind="model.MaxRotationSpeed" ng-show="colState[1]" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.RatedCurrent" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.MaxCurrent" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.DCLinkVoltage" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.BackEMFCoefficient" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.MassOfRotor" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.MassOfStator" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.MomentOfInertia" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.ThermalTimeConstant" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.Description" type="text"></td>
+                    </tr>
+                    <tr ng-show="addingItems.length">
+                        <td colspan="6">
+                            <span class="text-center">下方为表格编辑区，可直接在表格内编辑</span>
+                            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+                        <td>
+                    </tr>
+                    <tr ng-repeat="item in addingItems">
+                        <td class="table-td-btn" ng-click="addItemRemote(item)">
+                            添加到数据库
+                            <button type="button" class="close" ng-click="deleteItemLocal(item)">&times;</button>
+                        </td>
+                        <td class="" ng-bind="item.TypeID"></td>
+                        <td class="" ng-model="item.Manufacturer" contenteditable="true" type="text"></td>
+                        <td class="" ng-model="item.RatedTorque" ng-show="colState[0]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.RatedPower" ng-show="colState[0]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.RatedRotationSpeed" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MaxRotationSpeed" ng-show="colState[1]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.RatedCurrent" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MaxCurrent" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.DCLinkVoltage" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.BackEMFCoefficient" ng-if="colState[2]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MassOfRotor" ng-if="colState[3]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MassOfStator" ng-if="colState[3]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.MomentOfInertia" ng-if="colState[3]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.ThermalTimeConstant" ng-if="colState[4]" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.Description" ng-if="colState[5]" contenteditable="true" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添加数据
+                            <button type="button" class="btn btn-success btn-xs pull-right" ng-click="showAddModal()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="list-desc">
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-tags"></span>
+            尺寸说明
+        </h4>
+        <div class="row">
+            <div class="col-sm-6 list-desc-img">
+                <img src="./images/Motors/主轴电机.jpg" />
+            </div>
+            <div class="col-sm-6 list-desc-txt">
+                <p>
+                    电主轴技术参数。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

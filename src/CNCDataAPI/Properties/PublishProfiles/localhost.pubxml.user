@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\TestEnviroment\WebSites\CNCDataAPI</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Bill\Documents\GitHub\CNCDataManager_Core\src\CNCDataAPI\.\bin\Release\PublishOutput</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

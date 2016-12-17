@@ -2,46 +2,46 @@
 <div class="side-nav-container" id="side-nav-container">
     <div class="cncdata-side-bar">
         <div class="side-bar-title">
-            <h4 ng-click="log()">数控机床分类索引</h4>
+            <h4>数控机床分类索引</h4>
         </div>
         <ul class="side-nav-head-1">
             <li>
                 <div class="side-nav-icon-bar">
                     <span id="nav-icon-motor" class="glyphicon glyphicon-minus nav-icon" ng-click="toggleNav($event, '#nav-motor-ul')"></span>
-                    <a href="#/cncdata/list?listname=ServoMotorParameterOfPMSACFS">伺服电机</a>
+                    <a ui-sref="cncdata.list.PMServoMotorTechParameters">伺服电机</a>
                 </div>
                 <ul id="nav-motor-ul" class="side-nav-head-2">
-                    <li><a href="#/cncdata/list?listname=ServoMotorParameterOfPMSACFS">永磁同步交流电机技术参数</a></li>
-                    <li><a href="#/cncdata/list?listname=ServoMotorSizeOfPMSACFS">永磁同步交流电机尺寸参数</a></li>
-                    <li><a href="#/cncdata/list?listname=ServoMotorOfSpindleParameter">主轴伺服电机技术参数</a></li>
-                    <li><a href="#/cncdata/list?listname=ServoMotorOfSpindleSize">主轴伺服电机尺寸参数</a></li>
-                    <li><a href="#/cncdata/list?listname=ElectricSpindleParameter">电主轴技术参数</a></li>
-                    <li><a href="#/cncdata/list?listname=ElectricSpindleSize">电主轴尺寸参数</a></li>
+                    <li><a ui-sref="cncdata.list.PMServoMotorTechParameters">永磁同步交流电机技术参数</a></li>
+                    <li><a ui-sref="cncdata.list.PMServoMotorSizeParameters">永磁同步交流电机尺寸参数</a></li>
+                    <li><a ui-sref="cncdata.list.SpindleServoMotorTechParameters">主轴伺服电机技术参数</a></li>
+                    <li><a ui-sref="cncdata.list.SpindleServoMotorSizeParameters">主轴伺服电机尺寸参数</a></li>
+                    <li><a ui-sref="cncdata.list.ElectronicSpindleTechParameters">电主轴技术参数</a></li>
+                    <li><a ui-sref="cncdata.list.ElectronicSpindleSizeParameters">电主轴尺寸参数</a></li>
                 </ul>
             </li>
             <li>
                 <div class="side-nav-icon-bar">
                     <span id="nav-icon-driver" class="glyphicon glyphicon-minus nav-icon" ng-click="toggleNav($event, '#nav-driver-ul')"></span>
-                    <a href="#/cncdata/list?listname=DriverOfServoMotorOfPMSACFS">伺服驱动器</a>
+                    <a ui-sref="cncdata.list.PMServoMotorDrivers">伺服驱动器</a>
                 </div>
                 <ul id="nav-driver-ul" class="side-nav-head-2">
-                    <li><a href="#/cncdata/list?listname=DriverOfServoMotorOfPMSACFS">同步交流电机驱动器</a></li>
-                    <li><a href="#/cncdata/list?listname=SpindleSrvMotorDrivers">主轴系统伺服电机驱动器</a></li>
-                    <li><a href="#/cncdata/list?listname=SrvDriverBrakeResistor">伺服驱动制动电阻</a></li>
-                    <li><a href="#/cncdata/list?listname=SrvDriverReactors">伺服驱动电抗器</a></li>
-                    <li><a href="#/cncdata/list?listname=SrvDriverTransformers">伺服驱动三相变压器</a></li>
+                    <li><a ui-sref="cncdata.list.PMServoMotorDrivers">永磁同步交流电机驱动器</a></li>
+                    <li><a ui-sref="cncdata.list.SpindleServoMotorDrivers">主轴系统伺服电机驱动器</a></li>
+                    <li><a ui-sref="cncdata.list.ServoDriverBrakeResistors">伺服驱动制动电阻</a></li>
+                    <li><a ui-sref="cncdata.list.ServoDriverReactors">伺服驱动电抗器</a></li>
+                    <li><a ui-sref="cncdata.list.ServoDriverTransformers">伺服驱动三相变压器</a></li>
                 </ul>
             </li>
             <li>
                 <div class="side-nav-icon-bar">
                     <span id="nav-icon-system" class="glyphicon glyphicon-minus nav-icon" ng-click="toggleNav($event, '#nav-system-ul')"></span>
-                    <a href="#/cncdata/list?listname=NCSystem">数控系统</a>
+                    <a ui-sref="cncdata.list.NCSystemFunctionalOptions">数控系统</a>
                 </div>
                 <ul id="nav-system-ul" class="side-nav-head-2">
-                    <li><a href="#/cncdata/list?listname=NCSystemFunctionalOptions">数据系统功能选项</a></li>
-                    <li><a href="#/cncdata/list?listname=NCSystemIOUnits">数控系统IO模块数据</a></li>
-                    <li><a href="#/cncdata/list?listname=NCSystemManuals">数控系统手操盘数据</a></li>
-                    <li><a href="#/cncdata/list?listname=NCSystemPowerUnits">数控系统电源模块</a></li>
+                    <li><a ui-sref="cncdata.list.NCSystemFunctionalOptions">数据系统功能选项</a></li>
+                    <li><a ui-sref="cncdata.list.NCSystemIOUnits">数控系统IO模块数据</a></li>
+                    <li><a ui-sref="cncdata.list.NCSystemManuals">数控系统手操盘数据</a></li>
+                    <li><a ui-sref="cncdata.list.NCSystemPowerUnits">数控系统电源模块</a></li>
                 </ul>
             </li>
             <li>
@@ -53,97 +53,97 @@
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-coupling" class="glyphicon glyphicon-minus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-coupling-ul')"></span>
-                            <a href="#/cncdata/list?listname=BrakeWheelElasticSleevePinCoupling">联轴器</a>
+                            <a ui-sref="cncdata.list.FlangeCouplings">联轴器</a>
                         </div>
                         <ul id="nav-mech-coupling-ul" class="side-nav-head-3">
-                            <li><a href="#/cncdata/list?listname=FlangeCoupling">凹缘式联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=OldhamCoupling">十字滑块联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=GearCoupling">齿式联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=BrakeWheelElasticSleevePinCoupling">带制动套柱销联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=FlexiblePinCoupling">弹性柱销联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=ElasticSleevePinCoupling">弹性套柱销联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=PlumShapedFlexibleCoupling">梅花弹性联轴器</a></li>
-                            <li><a href="#/cncdata/list?listname=HubShapedCouplings">轮毂型联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.FlangeCouplings">凹缘式联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.OldhamCouplings">十字滑块联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.GearCouplings">齿式联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.BWElasticSleevePinCouplings">带制动套柱销联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.FlexiblePinCouplings">弹性柱销联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.ElasticSleevePinCouplings">弹性套柱销联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.PlumShapedFlexibleCouplings">梅花弹性联轴器</a></li>
+                            <li><a ui-sref="cncdata.list.HubShapedCouplings">轮毂型联轴器</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-bearing" class="glyphicon glyphicon-minus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-bearing-ul')"></span>
-                            <a href="#/CNCData/List?listname=AligningBallBearings">滚动轴承</a>
+                            <a ui-sref="cncdata.list.AngularContactBallBearings">滚动轴承</a>
                         </div>
                         <ul id="nav-mech-bearing-ul" class="side-nav-head-3">
                             <li><a ui-sref="cncdata.list.AngularContactBallBearings">角接触球轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=DeepGrooveBallBearings">深沟球轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=TaperedRollerBearings">圆锥滚子轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=CylindricalRollerBearings">圆柱滚子轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=AligningRollerBearings">调心滚子轴承</a></li>
+                            <li><a ui-sref="cncdata.list.DeepGrooveBallBearings">深沟球轴承</a></li>
+                            <li><a ui-sref="cncdata.list.TaperedRollerBearings">圆锥滚子轴承</a></li>
+                            <li><a ui-sref="cncdata.list.CylindricalRollerBearings">圆柱滚子轴承</a></li>
+                            <li><a ui-sref="cncdata.list.AligningRollerBearings">调心滚子轴承</a></li>
                             <li><a ui-sref="cncdata.list.AligningBallBearings">调心球轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=BallLeadScrewSupportBearings">滚珠丝杠支撑轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=CrossTaperedRollerBearings">交叉圆锥滚子轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=DoubleRowCylindricalRollerBearings">双列圆柱滚子轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=DoubleThrustAngularContactBallBearings">双向推力角接触球轴承</a></li>
-                            <li><a href="#/cncdata/list?listname=NeedleRollerAndThrustRollerBearings">滚针轴承和推力滚子组合轴承</a></li>
+                            <li><a ui-sref="cncdata.list.BallLeadingScrewSupportingBearings">滚珠丝杠支撑轴承</a></li>
+                            <li><a ui-sref="cncdata.list.AcrossTaperedRollerBearings">交叉圆锥滚子轴承</a></li>
+                            <li><a ui-sref="cncdata.list.DoubleRowCylindricalRollerBearings">双列圆柱滚子轴承</a></li>
+                            <li><a ui-sref="cncdata.list.DoubleThrustAngularContactBallBearings">双向推力角接触球轴承</a></li>
+                            <li><a ui-sref="cncdata.list.NeedleThrustRollerBearings">滚针轴承和推力滚子组合轴承</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-guide" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-guide-ul')"></span>
-                            <a href="#/cncdata/list?listname=LinearRollingGuide">导轨</a>
+                            <a ui-sref="cncdata.list.LinearRollingGuides">导轨</a>
                         </div>
                         <ul id="nav-mech-guide-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=LinearRollingGuide">直线滚动导轨</a></li>
+                            <li><a ui-sref="cncdata.list.LinearRollingGuides">直线滚动导轨</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-screw" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-screw-ul')"></span>
-                            <a href="#/cncdata/list?listname=SolidBallScrewNutPairs">滚珠丝杠</a>
+                            <a>滚珠丝杠</a>
                         </div>
                         <ul id="nav-mech-screw-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=SolidBallScrewNutPairs">内循环式滚珠丝杠</a></li>
+                            <li><a>内循环式滚珠丝杠</a></li>
                             <li><a>外循环式滚珠丝杠</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-gear" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-gear-ul')"></span>
-                            <a href="#/cncdata/list?listname=SpurGear">齿轮</a>
+                            <a ui-sref="cncdata.list.SpurGears">齿轮</a>
                         </div>
                         <ul id="nav-mech-gear-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=SpurGear">直齿圆柱齿轮</a></li>
-                            <li><a href="#/cncdata/list?listname=HelicalCylindricalGear">斜齿圆柱齿轮</a></li>
-                            <li><a href="#/cncdata/list?listname=StraightBevelGear">直齿锥齿轮</a></li>
+                            <li><a ui-sref="cncdata.list.SpurGears">直齿圆柱齿轮</a></li>
+                            <li><a ui-sref="cncdata.list.HelicalCylindricalGears">斜齿圆柱齿轮</a></li>
+                            <li><a ui-sref="cncdata.list.StraightBevelGears">直齿锥齿轮</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-worm" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-worm-ul')"></span>
-                            <a href="#/cncdata/list?listname=ArcCylindricalWormGear">蜗轮蜗杆</a>
+                            <a ui-sref="cncdata.list.ArcCylindricalWormGears">蜗轮蜗杆</a>
                         </div>
                         <ul id="nav-mech-worm-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=ArcCylindricalWormGear">圆弧圆柱蜗轮蜗杆</a></li>
-                            <li><a href="#/cncdata/list?listname=CommonCylindricalWormGear">普通圆柱蜗轮蜗杆</a></li>
+                            <li><a ui-sref="cncdata.list.ArcCylindricalWormGears">圆弧圆柱蜗轮蜗杆</a></li>
+                            <li><a ui-sref="cncdata.list.CommonCylindricalWormGears">普通圆柱蜗轮蜗杆</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-belt" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-belt-ul')"></span>
-                            <a href="#/cncdata/list?listname=ArcCylindricalWormGear">传动带</a>
+                            <a ui-sref="cncdata.list.SpindleBeltLengthParameters">传动带</a>
                         </div>
                         <ul id="nav-mech-belt-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=SpindleBeltLength">主轴同步带带长参数</a></li>
-                            <li><a href="#/cncdata/list?listname=SpindleBeltParas">主轴同步带技术参数</a></li>
-                            <li><a href="#/cncdata/list?listname=SpindleBeltSizes">主轴同步带尺寸参数</a></li>
+                            <li><a ui-sref="cncdata.list.SpindleBeltLengthParameters">主轴同步带带长参数</a></li>
+                            <li><a ui-sref="cncdata.list.SpindleBeltTechParameters">主轴同步带技术参数</a></li>
+                            <li><a ui-sref="cncdata.list.SpindleBeltSizeParameters">主轴同步带尺寸参数</a></li>
                         </ul>
                     </li>
                     <li>
                         <div class="side-nav-icon-bar">
                             <span id="nav-icon-mech-table" class="glyphicon glyphicon-plus nav-icon" ng-click="toggleSecondNav($event, '#nav-mech-table-ul')"></span>
-                            <a href="#/cncdata/list?listname=RotaryTable">其他部件</a>
+                            <a ui-sref="cncdata.list.RotaryTables">其他部件</a>
                         </div>
                         <ul id="nav-mech-table-ul" class="side-nav-3-hide">
-                            <li><a href="#/cncdata/list?listname=RotaryTable">数控回转工作台</a></li>
-                            <li><a href="#/cncdata/list?listname=Cables">电缆辅件</a></li>
+                            <li><a ui-sref="cncdata.list.RotaryTables">数控回转工作台</a></li>
+                            <li><a ui-sref="cncdata.list.Cables">电缆辅件</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -1,0 +1,143 @@
+﻿<div class="list-content">
+    <div>
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-list"></span>
+            主轴同步带尺寸参数表
+            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+        </h4>
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>尺寸参数1</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>尺寸参数2</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            带型
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Pitch')" title="按此列排序">
+                            齿距
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Pitch'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Pitch'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Density')" title="按此列排序">
+                            密度
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Density'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Density'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('C2F')" ng-show="colState[0]" title="按此列排序">
+                            2F
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'C2F'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-C2F'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Lr')" ng-show="colState[0]" title="按此列排序">
+                            Lr
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Lr'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Lr'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Small_h')" ng-show="colState[0]" title="按此列排序">
+                            小h
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Small_h'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Small_h'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Big_H')" ng-show="colState[1]" title="按此列排序">
+                            大H
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Big_H'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Big_H'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Rr')" ng-show="colState[1]" title="按此列排序">
+                            Rr
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Rr'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Rr'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Ra')" ng-show="colState[1]" title="按此列排序">
+                            Ra
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Ra'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Ra'"></span>
+                        </td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="model in items | orderBy: orderProperty">
+                        <td style="width: 100px">
+                            {{$index + 1}}
+                            <span class="glyphicon glyphicon-pencil span-button pull-right" title="编辑这条记录" ng-click="updateItemLocal(model)"></span>
+                            <button type="button" class="close" ng-click="showDeleteModal(model)" title="在数据库中删除这条记录">&times;</button>
+                        </td>
+                        <td>{{model.TypeID}}</td>
+                        <td ng-bind="model.Pitch" type="number"></td>
+                        <td ng-bind="model.Density" type="number"></td>
+                        <td ng-show="colState[0]" ng-bind="model.C2F" type="number"></td>
+                        <td ng-show="colState[0]" ng-bind="model.Lr" type="number"></td>
+                        <td ng-show="colState[0]" ng-bind="model.Small_h" type="number"></td>
+                        <td ng-show="colState[1]" ng-bind="model.Big_H" type="number"></td>
+                        <td ng-show="colState[1]" ng-bind="model.Rr" type="number"></td>
+                        <td ng-show="colState[1]" ng-bind="model.Ra" type="number"></td>
+                    </tr>
+                    <tr ng-show="addingItems.length">
+                        <td colspan="6">
+                            <span class="text-center">下方为表格编辑区，可直接在表格内编辑</span>
+                            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+                        <td>
+                    </tr>
+                    <tr ng-repeat="item in addingItems">
+                        <td class="table-td-btn" ng-click="addItemRemote(item)">
+                            添加到数据库
+                            <button type="button" class="close" ng-click="deleteItemLocal(item)">&times;</button>
+                        </td>
+                        <td class="" ng-bind="item.TypeID"></td>
+                        <td class="" ng-model="item.Pitch" contenteditable="true" type="number"></td>
+                        <td class="" ng-model="item.Density" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[1]" ng-model="item.C2F" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[2]" ng-model="item.Lr" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[3]" ng-model="item.Small_h" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[4]" ng-model="item.Big_H" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[5]" ng-model="item.Rr" contenteditable="true" type="number"></td>
+                        <td class="" ng-show="colState[6]" ng-model="item.Ra" contenteditable="true" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添加数据
+                            <button type="button" class="btn btn-success btn-xs pull-right" ng-click="showAddModal()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="list-desc">
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-tags"></span>
+            尺寸说明
+        </h4>
+        <div class="row">
+            <div class="col-sm-6 list-desc-img">
+                <img src="./images/Mechanics/传动带-表/带传动.jpg" />
+            </div>
+            <div class="col-sm-6 list-desc-txt">
+                <p>
+                    主轴传送带尺寸参数。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
