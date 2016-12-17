@@ -64,10 +64,18 @@
         //]
     },
     meta: {
+        'jquery': {
+            format: 'global'
+        },
         'angular': {
             format: 'global',
             deps: ["jquery",
                 "bootstrap"
+            ]
+        },
+        'angular-cookie': {
+            deps: ["jquery",
+                "angular"
             ]
         }
     }

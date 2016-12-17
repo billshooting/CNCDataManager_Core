@@ -10,10 +10,10 @@ import 'angular-strap';
 let app = angular.module('cncDataManager', [
     'ui.router',
     'ngAnimate',
+    //'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngCookies',
-    'mgcrea.ngStrap'
+    'mgcrea.ngStrap',
 ]);
 
 
@@ -35,8 +35,11 @@ registerControllers(app);
 registerRoute(app);
 
 import registerSelectionRoute from './cnc-selection/bases/Route';
+import registerSelectionControllers from './cnc-selection/controllers/index';
 
 registerSelectionRoute(app);
+registerSelectionControllers(app);
+
 
 
 

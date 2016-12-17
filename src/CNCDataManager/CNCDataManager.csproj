@@ -485,8 +485,8 @@
     <TypeScriptCompile Include="app\scripts\cnc-data\services\TableHandler.ts" />
     <TypeScriptCompile Include="app\scripts\cnc-data\services\User.ts" />
     <TypeScriptCompile Include="app\scripts\cnc-data\types\ICncDataScope.d.ts" />
-    <TypeScriptCompile Include="app\scripts\cnc-selection\bases\controllers\index.ts" />
-    <TypeScriptCompile Include="app\scripts\cnc-selection\bases\controllers\Selection.ts" />
+    <TypeScriptCompile Include="app\scripts\cnc-selection\controllers\index.ts" />
+    <TypeScriptCompile Include="app\scripts\cnc-selection\controllers\Selection.ts" />
     <TypeScriptCompile Include="app\scripts\cnc-selection\bases\Route.ts" />
   </ItemGroup>
   <PropertyGroup>
