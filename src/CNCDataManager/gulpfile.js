@@ -14,11 +14,12 @@ var browserify = require("browserify");
 var source = require("vinyl-source-stream");
 var tsify = require("tsify");
 var paths = {
-    pages: ["./app/**/*.html",],
-    styles: ["./app/**/*.css",
-             "./app/**/*.min.css"],
-    js: ["./app/**/*.js",
-         "./app/**/*.min.js"],
+    pages: ["./app/**/*.html"],
+    styles: ["./app/css/**/*.css",
+             "./app/css/**/*.min.css"],
+    lib: ["./app/lib/**/*.*",
+         "./app/lib/**/*.min.*"],
+    config: ["./app/scripts/system.config.js"],
 };
 
 gulp.task("copy-html", function () {
@@ -26,10 +27,15 @@ gulp.task("copy-html", function () {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("copy-lib-config", function () {
-    return gulp.src(paths.js)
-        .pipe(gulp.dest("dist"));
+gulp.task("copy-lib", function () {
+    return gulp.src(paths.lib)
+        .pipe(gulp.dest("dist/lib"));
 });
+
+gulp.task("copy-config", function () {
+    return gulp.src(paths.config)
+        .pipe(gulp.dest("dist/scripts"))
+}); 
 
 gulp.task("css", function () {
     return gulp.src(paths.styles)
@@ -37,7 +43,7 @@ gulp.task("css", function () {
         .pipe(gulp.dest("dist/css"));
 })
 
-gulp.task("default", ["copy-html", "css", "copy-lib-config"], function () {
+gulp.task("default", ["copy-html", "css", "copy-config"], function () {
     return tsProject.src()
         .pipe(tsProject())
         .js

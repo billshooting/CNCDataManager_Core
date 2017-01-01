@@ -1,0 +1,188 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li class="active">滚珠丝杠列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-5">
+                <img src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg" class="img-thumbnail" alt="滚珠丝杠">
+            </div>
+            <form name="ballscrewForm">
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">滚珠丝杠参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="accuracyClass" class="control-label">精度等级:</label>
+                                    <select id="accuracyClass" class="form-control" ng-options="data as data.name for data in accuracyClassOptions" ng-model="ballscrewPara.accuracyClass"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reliability" class="control-label">可靠性:</label>
+                                    <select id="reliability" class="form-control" ng-options="data as data.name for data in reliabilityOptions" ng-model="ballscrewPara.reliability"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="supportMode" class="control-label">支撑方式:</label>
+                                    <select id="supportMode" class="form-control" ng-options="data for data in supportModeOptions" ng-model="ballscrewPara.supportMode"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preloadType" class="control-label">预载类型:</label>
+                                    <select id="preloadType" class="form-control" ng-options="data as data.name for data in preloadTypeOptions" ng-model="ballscrewPara.preloadType"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ballscrewForm.workingLife.$invalid && !ballscrewForm.workingLife.$pristine}">
+                                    <label for="workingLife" class="control-label">工作寿命:</label>
+                                    <input type="number" id="workingLife" name="workingLife" class="form-control" ng-model="ballscrewPara.workingLife" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">h</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ballscrewForm.screwLength.$invalid && !ballscrewForm.screwLength.$pristine}">
+                                    <label for="screwLength" class="control-label">丝杠总长:</label>
+                                    <input type="number" id="screwLength" name="screwLength" class="form-control" ng-model="ballscrewPara.screwLength" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ballscrewForm.locationAccuracy.$invalid && !ballscrewForm.locationAccuracy.$pristine}">
+                                    <label for="locationAccuracy" class="control-label">定位精度:</label>
+                                    <input type="number" id="locationAccuracy" name="locationAccuracy" class="form-control" ng-model="ballscrewPara.locationAccuracy" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">μm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ballscrewForm.repeatLocationAccuracy.$invalid && !ballscrewForm.repeatLocationAccuracy.$pristine}">
+                                    <label for="repeatLocationAccuracy" class="control-label">重复定位精度:</label>
+                                    <input type="number" id="repeatLocationAccuracy" name="repeatLocationAccuracy" class="form-control" ng-model="ballscrewPara.repeatLocationAccuracy" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">μm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ballscrewForm.motorMaxSpeed.$invalid && !ballscrewForm.motorMaxSpeed.$pristine}">
+                                    <label for="motorMaxSpeed" class="control-label">初选点击最大转速:</label>
+                                    <input type="number" id="motorMaxSpeed" name="motorMaxSpeed" class="form-control" ng-model="ballscrewPara.motorMaxSpeed" style="width:30%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">r/min</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">计算结果</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label">导程:</label>
+                                    <p class="form-control-static">{{caculation.lead}}</p>
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">额定动载荷:</label>
+                                    <p class="form-control-static">{{caculation.dynamicLoad}}</p>
+                                    <label class="control-label">kN</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">最小底径:</label>
+                                    <p class="form-control-static">{{caculation.minDiameter}}</p>
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">等效转矩:</label>
+                                    <p class="form-control-static">{{caculation.torque}}</p>
+                                    <label class="control-label">N·m</label>
+                                </div>
+                            </div>
+                            <p class="text-danger" ng-bind="message"></p>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary col-md-3 col-md-offset-2" ng-click="caculate()" ng-disabled="ballscrewForm.$invalid">计算</button>
+                                <button type="button" class="btn btn-primary col-md-3 col-md-offset-2" ng-click="reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="selection-content">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
+                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
+                        <th class="btn-primary" ng-click="title='BasicRatedDynamicLoad_Ca';desc=!desc" role="button">基本额定动载荷Ca</th>
+                        <th class="btn-primary" ng-click="title='BasicRatedStaticLoad_Coa';desc=!desc" role="button">基本额定静载荷Coa</th>
+                        <th class="btn-primary" ng-click="title='Stiffness';desc=!desc" role="button">刚度</th>
+                        <th class="btn-primary" ng-click="title='NominalDiameter_d0';desc=!desc" role="button">公称直径d0</th>
+                        <th class="btn-primary" ng-click="title='NominalLead_Ph0';desc=!desc" role="button">公称导程ph0</th>
+                        <th class="btn-primary" ng-click="title='OuterDiameterOfScrew_d1';desc=!desc" role="button">丝杠外径d1</th>
+                        <th class="btn-primary" ng-click="title='DiameterOfSteelBall_DW';desc=!desc" role="button">钢球直径DW</th>
+                        <th class="btn-primary" ng-click="title='BottomDiameterOfScrew_d2';desc=!desc" role="button">丝杠底径d2</th>
+                        <th class="btn-primary" ng-click="title='AdaptableDiameterWithBearing';desc=!desc" role="button">轴承配合直径</th>
+                        <th class="btn-primary" ng-click="title='AdaptableDiameterWithCouplingShaftHole';desc=!desc" role="button">联轴器轴孔配合直径</th>
+                        <th class="btn-primary" ng-click="title='LimitRotationSpeed';desc=!desc" role="button">极限转速</th>
+                        <th class="btn-primary" ng-click="title='DistanceBetweenTwoPushBearings';desc=!desc" role="button">两双推轴承之间的距离</th>
+                        <th class="btn-primary" ng-click="title='LengthOfScrew_L';desc=!desc" role="button">丝杠长度L</th>
+                        <th class="btn-primary" ng-click="title='TotalCycleTurns_n';desc=!desc" role="button">循环总圈数n</th>
+                        <th class="btn-primary" ng-click="title='NumberOfScrewHoles_m';desc=!desc" role="button">螺栓孔数目m</th>
+                        <th class="btn-primary" ng-click="title='Density';desc=!desc" role="button">密度</th>
+                        <th class="btn-primary" ng-click="title='ElasticModulus';desc=!desc" role="button">弹性模量</th>
+                        <th class="btn-primary" ng-click="title='ShearElasticModulus';desc=!desc" role="button">剪切弹性模量</th>
+                        <th class="btn-primary" ng-click="title='RadialDampingCoefficient';desc=!desc" role="button">丝杠与螺母结合面径向阻尼系数</th>
+                        <th class="btn-primary" ng-click="title='ViscousFrictionFactor';desc=!desc" role="button">滚珠丝杠副处的粘滞摩擦因素</th>
+                        <th class="btn-primary" ng-click="title='EfficiencyOfBallScrewPreload';desc=!desc" role="button">滚珠丝杠预紧效率</th>
+                        <th class="btn-primary"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ballscrew in ballscrews|SolidBallScrewNutPairsFilt:caculation|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(ballscrew)" ng-class="{tableSelected:ballscrew.TypeID==ballscrewSelected.TypeID}">
+                        <td>{{ballscrew.TypeID}}</td>
+                        <td>{{ballscrew.Manufacturer}}</td>
+                        <td>{{ballscrew.BasicRatedDynamicLoad_Ca}}</td>
+                        <td>{{ballscrew.BasicRatedStaticLoad_Coa}}</td>
+                        <td>{{ballscrew.Stiffness}}</td>
+                        <td>{{ballscrew.NominalDiameter_d0}}</td>
+                        <td>{{ballscrew.NominalLead_Ph0}}</td>
+                        <td>{{ballscrew.OuterDiameterOfScrew_d1}}</td>
+                        <td>{{ballscrew.DiameterOfSteelBall_DW}}</td>
+                        <td>{{ballscrew.BottomDiameterOfScrew_d2}}</td>
+                        <td>{{ballscrew.AdaptableDiameterWithBearing}}</td>
+                        <td>{{ballscrew.AdaptableDiameterWithCouplingShaftHole}}</td>
+                        <td>{{ballscrew.LimitRotationSpeed}}</td>
+                        <td>{{ballscrew.DistanceBetweenTwoPushBearings}}</td>
+                        <td>{{ballscrew.LengthOfScrew_L}}</td>
+                        <td>{{ballscrew.TotalCycleTurns_n}}</td>
+                        <td>{{ballscrew.NumberOfScrewHoles_m}}</td>
+                        <td>{{ballscrew.Density}}</td>
+                        <td>{{ballscrew.ElasticModulus}}</td>
+                        <td>{{ballscrew.ShearElasticModulus}}</td>
+                        <td>{{ballscrew.RadialDampingCoefficient}}</td>
+                        <td>{{ballscrew.ViscousFrictionFactor}}</td>
+                        <td>{{ballscrew.EfficiencyOfBallScrewPreload}}</td>
+                        <td class="freezingCol"><a ui-sref="FeedSystem.SolidBallScrewNutPairs.detail({id:ballscrew.TypeID})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+                <div class="col-md-2">
+                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <uib-pagination boundary-links="true" total-items="ballscrews|SolidBallScrewNutPairsFilt:caculation|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!ballscrewSelected.TypeID">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

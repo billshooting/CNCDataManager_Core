@@ -1,0 +1,137 @@
+﻿#side-menu {
+    position: fixed;
+    width: auto;
+    max-width: 320px;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transition: 0.5s ease right;
+    -webkit-transition: 0.5s ease right;
+    background-color: transparent;
+    z-index: 1000;
+}
+
+#side-menu-arrow {
+    position: absolute;
+    left: 0;
+    top: 46%;
+    width: 20px;
+    height: 40px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+
+    background-color: rgba(255,255,255,0.5);
+}
+#side-menu-arrow:hover {
+    border-color: #555;
+    background-color: rgba(255,255,255, 0.8);
+    cursor: pointer;
+}
+
+#side-menu-arrow >div{
+    width: 10px;
+    height: 10px;
+    margin: 15px 5px 15px 5px;
+    border-left: 3px solid #000;
+    border-top: 3px solid #000;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#side-menu-content {
+    display:block;
+    position: relative;
+    width: 320px;
+    height: 100%;
+    margin-left: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+    background-color: #fff;
+}
+
+/*#region 用户信息 */
+
+#user-icon {
+    display: inline-block;
+    width: 100px;
+    height: 140px;
+}
+
+/*#endregion */
+
+/*#region details */
+
+/*进给轴标题*/
+.axis-header {
+    color: #fff;
+    background-color: #41bae2;
+}
+
+/*标签列*/
+.side-menu-header {
+    padding: 3px 5px 5px 5px;
+    height:27px;
+    border-bottom: 1px solid #ccc;
+    vertical-align: middle;
+
+    cursor: pointer;
+}
+.side-menu-header span{
+    padding: 0;
+}
+.side-menu-header:hover {
+    background-color: #ddd;
+}
+
+/*内容伸缩部分*/
+.side-menu-detail {
+    height: 100%;
+    opacity: 1;
+}
+.side-menu-detail.ng-hide-add, 
+.side-menu-detail.ng-hide-remove {
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+}
+.side-menu-detail.ng-hide {
+    height: 0;
+    opacity: 0;
+}
+
+/*细节图片*/
+.detail-image {
+    width: auto;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*#endregion */
+
+/*#region 按钮 */
+
+#side-menu-complete {
+    display: inline-block;
+    width: 80px;
+    margin: 10px 10px 10px 60px;
+}
+
+#side-menu-reset {
+    display: inline-block;
+    width: 80px;
+    margin: 10px auto 10px 10px;
+}
+
+/*#endregion */

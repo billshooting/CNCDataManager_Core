@@ -1,0 +1,107 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li class="active">伺服驱动列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="./images/Servo/Driver.jpg" class="driver-img" alt="伺服驱动">
+            </div>
+            <div class="col-md-offset-2 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">伺服驱动参数</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form name="driverForm">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label" for="manufacturer">生产厂家:</label>
+                                    <select class="form-control" id="manufacturer" ng-options="data.name for data in manufacturerOptions" ng-model="driverPara.manufacturer"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="powerType">输入电源类型:</label>
+                                    <select class="form-control" id="powerType" ng-options="data.name for data in powerTypeOptions" ng-model="driverPara.powerType"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="overloadCurrent">电流过载倍数:</label>
+                                    <input class="form-control" id="overloadCurrent" type="number" ng-model="driverPara.overloadCurrent" placeholder="请输入值" style="width:40%">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="inputCurrent">电机输入电流:</label>
+                                    <input class="form-control" id="inputCurrent" type="number" ng-model="driverPara.inputCurrent" placeholder="请输入值" style="width:40%">
+                                    <label class="control-label">A</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="ratedCurrent">额定输出电流:</label>
+                                    <div class="form-control-static">{{driverPara.ratedCurrent}}</div>
+                                    <label class="control-label">A</label>
+                                </div>
+                                <div class="row">
+                                    <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()">计 算</button>
+                                    <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重 置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="selection-content">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
+                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
+                        <th class="btn-primary" ng-click="title='ContinuousCurrent';desc=!desc" role="button">连续电流</th>
+                        <th class="btn-primary" ng-click="title='PeakCurrent';desc=!desc" role="button">短时最大电流</th>
+                        <th class="btn-primary" ng-click="title='SupplyVoltage';desc=!desc" role="button">电源电压</th>
+                        <th class="btn-primary" ng-click="title='MaxAdaptableMotorPower';desc=!desc" role="button">最大适配电机功率</th>
+                        <th class="btn-primary" ng-click="title='MaxBrakingCurrent';desc=!desc" role="button">最大制动电流</th>
+                        <th class="btn-primary" ng-click="title='ExternalBrakingResistance';desc=!desc" role="button">外接制动电阻</th>
+                        <th class="btn-primary" ng-click="title='CycleOfPWM';desc=!desc" role="button">PWM周期</th>
+                        <th class="btn-primary" ng-click="title='SupplyVoltageOfDC';desc=!desc" role="button">直流供电电压</th>
+                        <th class="btn-primary"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="driver in drivers|DriverFilt:driverPara|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(driver)" ng-class="{tableSelected:driver.TypeID==driverSelected.TypeID}">
+                        <td>{{driver.TypeID}}</td>
+                        <td>{{driver.Manufacturer}}</td>
+                        <td>{{driver.ContinuousCurrent}}</td>
+                        <td>{{driver.PeakCurrent}}</td>
+                        <td>{{driver.SupplyVoltage}}</td>
+                        <td>{{driver.MaxAdaptableMotorPower}}</td>
+                        <td>{{driver.MaxBrakingCurrent}}</td>
+                        <td>{{driver.ExternalBrakingResistance}}</td>
+                        <td>{{driver.CycleOfPWM}}</td>
+                        <td>{{driver.SupplyVoltageOfDC}}</td>
+                        <td><a ui-sref="FeedSystem.Driver.detail({id:driver.TypeID})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+                <div class="col-md-2">
+                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <uib-pagination boundary-links="true" total-items="bearing|BearingsFilt:caculation:bearingPara.lubricationMethod|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!driverSelected.TypeID">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

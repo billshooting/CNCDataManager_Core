@@ -1,11 +1,5 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
-*{
-	margin:0;
-	padding:0;
-	font-family:'Microsoft YaHei';
-	font-size:14px;
-}
 
 input{
 	margin:2px 0;

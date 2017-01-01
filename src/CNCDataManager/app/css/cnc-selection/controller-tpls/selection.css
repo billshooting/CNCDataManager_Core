@@ -1,0 +1,50 @@
+﻿/*#region leftside */
+
+.btn-selection-menu {
+    height: 45px;
+    line-height: 30px;
+}
+
+/*#endregion */
+
+/*#region selection主体 */
+
+.selection-content {
+  margin: 0px -15px 0px -15px;
+  padding: 15px 15px 15px 15px;
+  background: #fff;
+  box-shadow: 0px 0px 8px 1px #e4e5e6;
+}
+
+.panel.panel-default.panel-green {
+    border-color: #4caf50;
+}
+.panel.panel-default.panel-green >.panel-heading {
+    color: #fff;
+    background-color: #4caf50;
+}
+/*#endregion */
+
+/*#region 机床类型 */
+
+.machine-type-img {
+    cursor: pointer;
+    transition:all 0.3s ease;
+}
+.machine-type-img:hover{
+    transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+}
+.machine-type-img:active{
+    border:1px solid #0099cc;
+}
+.selected {
+    border:1px solid #0099cc;
+    transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+}
+
+/*#endregion */

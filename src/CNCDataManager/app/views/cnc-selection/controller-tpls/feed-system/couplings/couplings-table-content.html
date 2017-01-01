@@ -1,0 +1,113 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li class="active">联轴器列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-5">
+                <img src="./images/Mechanics/联轴器-表/联轴器.jpg" class="img-thumbnail" alt="联轴器">
+            </div>
+            <form name="couplingForm">
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">联轴器参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label" for="couplingType">联轴器类型:</label>
+                                    <select id="couplingType" class="form-control" ng-options="data.name for data in typeOptions" ng-model="couplingPara.couplingType" ng-change="getData(couplingPara.couplingType)"></select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':couplingForm.applicationFactor.$invalid && !couplingForm.applicationFactor.$pristine}">
+                                    <label class="control-label" for="applicationFactor">工况系数:</label>
+                                    <input id="applicationFactor" name="applicationFactor" class="form-control" type="number" ng-model="couplingPara.applicationFactor" palceholder="请输入值" data-content="按1.5-2选取" max="2" min="1.5" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">计算结果</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label">轴孔直径:</label>
+                                    <p class="form-control-static">{{caculation.shaftDia}}</p>
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">最大转速:</label>
+                                    <p class="form-control-static">{{caculation.maxSpeed}}</p>
+                                    <label class="contorl-label">r/min</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="contorl-label">计算转矩:</label>
+                                    <p class="form-control-static">{{caculation.computedTorque}}</p>
+                                    <label class="control-label">kN·m</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()" ng-disabled="couplingForm.$invalid">计算</button>
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="CNCTable">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
+                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
+                        <th class="btn-primary" ng-click="title='NominalTorque';desc=!desc" role="button">公称转矩</th>
+                        <th class="btn-primary" ng-click="title='AllowableRotationSpeed';desc=!desc" role="button">许用转速</th>
+                        <th class="btn-primary" ng-click="title='Mass';desc=!desc" role="button">质量</th>
+                        <th class="btn-primary" ng-click="title='MomentOfInertia';desc=!desc" role="button">转动惯量</th>
+                        <th class="btn-primary" ng-click="title='Stiffness';desc=!desc" role="button">刚度</th>
+                        <th class="btn-primary"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="coupling in couplings|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(coupling)" ng-class="{tableSelected:coupling.TypeID==couplingSelected.TypeID}">
+                        <td>{{coupling.TypeID}}</td>
+                        <td>{{coupling.Manufacturer}}</td>
+                        <td>{{coupling.NominalTorque}}</td>
+                        <td>{{coupling.AllowableRotationSpeed}}</td>
+                        <td>{{coupling.Mass}}</td>
+                        <td>{{coupling.MomentOfInertia}}</td>
+                        <td>{{coupling.Stiffness}}</td>
+                        <td><a ui-sref="FeedSystem.Coupling.detail({id:coupling.TypeID,type:couplingPara.couplingType.url})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+                <div class="col-md-2">
+                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <uib-pagination boundary-links="true" total-items="bearing|BearingsFilt:caculation:bearingPara.lubricationMethod|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!couplingSelected.TypeID">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

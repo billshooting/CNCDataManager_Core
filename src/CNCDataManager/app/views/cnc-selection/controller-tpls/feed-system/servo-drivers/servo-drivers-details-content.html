@@ -1,0 +1,84 @@
+﻿<div class="selection-content">
+    <ol class="breadcrumb">
+        <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}</a></li>
+        <li><a ui-sref="FeedSystem.Driver">伺服驱动列表</a></li>
+        <li class="active">伺服驱动详情</li>
+    </ol>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">伺服驱动详情</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>型号</th>
+                    <td>{{driver.TypeID}}</td>
+                    <td></td>
+                    <th>生产厂家</th>
+                    <td>{{driver.Manufacturer}}</td>
+                    <td></td>
+                    <th>连续电流</th>
+                    <td>{{driver.ContinuousCurrent}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>短时最大电流</th>
+                    <td>{{driver.PeakCurrent}}</td>
+                    <td></td>
+                    <th>电源电压</th>
+                    <td>{{driver.SupplyVoltage}}</td>
+                    <td></td>
+                    <th>最大适配电机功率</th>
+                    <td>{{driver.MaxAdaptableMotorPower}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>最大制动电流</th>
+                    <td>{{driver.MaxBrakingCurrent}}</td>
+                    <td></td>
+                    <th>外接制动电阻</th>
+                    <td>{{driver.ExternalBrakingResistance}}</td>
+                    <td></td>
+                    <th>PWM周期</th>
+                    <td>{{driver.CycleOfPWM}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>直流供电电压</th>
+                    <td>{{driver.SupplyVoltageOfDC}}</td>
+                    <td></td>
+                    <th>位置环增益</th>
+                    <td>{{driver.PositionLoopGain}}</td>
+                    <td></td>
+                    <th>速度环增益</th>
+                    <td>{{driver.SpeedLoopGain}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>速度环积分常数</th>
+                    <td>{{driver.IntegralConstantOfSpeedLoop}}</td>
+                    <td></td>
+                    <th>d轴电流增益值</th>
+                    <td>{{driver.DaxisCurrentGain}}</td>
+                    <td></td>
+                    <th>d轴电流积分常数</th>
+                    <td>{{driver.IntegralConstantOfDaxisCurrent}}</td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <img class="img-thumbnail" src="./images/Servo/Driver.jpg" alt="伺服驱动尺寸">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-8">
+            <button class="btn btn-primary" type="button" ng-click="nextStep()">下 一 步</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" type="button" ng-click="back()">返 回</button>
+        </div>
+    </div>
+</div>

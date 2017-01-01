@@ -1,0 +1,69 @@
+﻿<div class="selection-content">
+    <ol class="breadcrumb">
+        <li><a ui-sref="CNCSystem">数控系统</a></li>
+        <li class="active">数控系统类型</li>
+    </ol>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="Manufacturer" class="col-md-2 control-label">生产厂家：</label>
+            <div class="col-md-2">
+                <select class="form-control" id="Manufacturer" ng-model="filtNum.Manufacturer" ng-options="data for data in ManufacturerOptions">
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label for="SupportNumberOfChannels" class="col-md-2 control-label">支持通道数：</label>
+            <div class="col-md-2">
+                <input type="number" class="form-control" id="SupportNumberOfChannels" ng-model="filtNum.SupportNumberOfChannels" min="1">
+            </div>
+            <label for="MaxControlNumberOfFeedAxis" class="col-md-2 control-label">最大进给轴数：</label>
+            <div class="col-md-2">
+                <input type="number" class="form-control" id="MaxControlNumberOfFeedAxis" ng-model="filtNum.MaxControlNumberOfFeedAxis" min="1">
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
+                <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
+                <th class="btn-primary" ng-click="title='SupportMachineType';desc=!desc" role="button">支持机床类型</th>
+                <th class="btn-primary" ng-click="title='SupportChannels';desc=!desc" role="button">支持通道数</th>
+                <th class="btn-primary" ng-click="title='MaxNumberOfFeedShafts';desc=!desc" role="button">进给轴最大控制轴数</th>
+                <th class="btn-primary" ng-click="title='MaxNumberOfSpindels';desc=!desc" role="button">主轴最大控制轴数</th>
+                <th class="btn-primary" ng-click="title='MaxNumberOfLinkageAxis';desc=!desc" role="button">最大联动轴数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="NCSystem in NCSystems|CNCSystemFilt:filtNum|orderBy:title:desc|paging:Page.currentPage:Page.pageSize"
+                ng-click="Selected(NCSystem)"
+                ng-class="{tableSelected:NCSystem.TypeID==CNCSystemSelected.TypeID}">
+                <td>{{NCSystem.TypeID}}</td>
+                <td>{{NCSystem.Manufacturer}}</td>
+                <td>{{NCSystem.SupportMachineType}}</td>
+                <td>{{NCSystem.SupportChannels}}</td>
+                <td>{{NCSystem.MaxNumberOfFeedShafts}}</td>
+                <td>{{NCSystem.MaxNumberOfSpindels}}</td>
+                <td>{{NCSystem.MaxNumberOfLinkageAxis}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row form-horizontal">
+        <div class="form-group">
+            <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+            <div class="col-md-2">
+                <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <uib-pagination boundary-links="true" total-items="NCSystems|CNCSystemFilt:filtNum|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-8 col-md-2">
+            <button type="button" ng-click="nextStep()" class="btn btn-primary" ng-disabled="!CNCSystemSelected.TypeID">下 一 步</button>
+        </div>
+        <div>
+            <button type="button" ng-click="reset()" class="btn btn-primary">取 消</button>
+        </div>
+    </div>
+</div>

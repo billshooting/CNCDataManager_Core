@@ -1,0 +1,111 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}</a></li>
+            <li class="active">伺服电机列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="./images/Motors/伺服电机.jpg" class="motor-img" alt="伺服电机">
+            </div>
+            <form name="servoMotorForm">
+                <div class="col-md-offset-2 col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">伺服电机参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label" for="manufacturer">生产厂家:</label>
+                                    <select id="manufacturer" class="form-control" ng-options="data for data in manufacturerOptions" ng-model="servoMotorPara.manufacturer"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="voltage">工作电压:</label>
+                                    <select class="form-control" id="voltage" ng-options="data.name for data in voltageOptions" ng-model="servoMotorPara.voltage"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">负载转矩:</label>
+                                    <p class="form-control-static">{{servoMotorPara.loadTorque}}</p>
+                                    <label class="control-label">N·m</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">负载惯量:</label>
+                                    <p class="form-control-static">{{servoMotorPara.loadInertia}}</p>
+                                    <label class="control-label">kg·m^2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()">计 算</button>
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重 置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="selection-content">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
+                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
+                        <th class="btn-primary" ng-click="title='RatedTorque';desc=!desc" role="button">额定转矩</th>
+                        <th class="btn-primary" ng-click="title='MaxTorque';desc=!desc" role="button">最大转矩</th>
+                        <th class="btn-primary" ng-click="title='RatedRotationSpeed';desc=!desc" role="button">额定转速</th>
+                        <th class="btn-primary" ng-click="title='MaxRotationSpeed';desc=!desc" role="button">最大转速</th>
+                        <th class="btn-primary" ng-click="title='MomentOfInertia';desc=!desc" role="button">转动惯量</th>
+                        <th class="btn-primary" ng-click="title='RatedPower';desc=!desc" role="button">额定功率</th>
+                        <th class="btn-primary" ng-click="title='StaticTorque';desc=!desc" role="button">静转矩</th>
+                        <th class="btn-primary" ng-click="title='DCLinkVoltage';desc=!desc" role="button">直流母线电压</th>
+                        <th class="btn-primary" ng-click="title='RatedCurrent';desc=!desc" role="button">额定电流</th>
+                        <th class="btn-primary" ng-click="title='MaxCurrent';desc=!desc" role="button">最大电流</th>
+                        <th class="btn-primary" ng-click="title='MechanicalTimeConstant';desc=!desc" role="button">机械时间常数</th>
+                        <th class="btn-primary" ng-click="title='Mass';desc=!desc" role="button">质量</th>
+                        <th class="btn-primary"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="servoMotor in servoMotors|ServoMotorFilt:servoMotorPara|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(servoMotor)" ng-class="{tableSelected:servoMotor.TypeID==servoMotorSelected.TypeID}">
+                        <td>{{servoMotor.TypeID}}</td>
+                        <td>{{servoMotor.Manufacturer}}</td>
+                        <td>{{servoMotor.RatedTorque}}</td>
+                        <td>{{servoMotor.MaxTorque}}</td>
+                        <td>{{servoMotor.RatedRotationSpeed}}</td>
+                        <td>{{servoMotor.MaxRotationSpeed}}</td>
+                        <td>{{servoMotor.MomentOfInertia}}</td>
+                        <td>{{servoMotor.RatedPower}}</td>
+                        <td>{{servoMotor.StaticTorque}}</td>
+                        <td>{{servoMotor.DCLinkVoltage}}</td>
+                        <td>{{servoMotor.RatedCurrent}}</td>
+                        <td>{{servoMotor.MaxCurrent}}</td>
+                        <td>{{servoMotor.MechanicalTimeConstant}}</td>
+                        <td>{{servoMotor.Mass}}</td>
+                        <td><a ui-sref="FeedSystem.ServoMotor.detail({id:servoMotor.TypeID})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+                <div class="col-md-2">
+                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <uib-pagination boundary-links="true" total-items="bearing|BearingsFilt:caculation:bearingPara.lubricationMethod|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!servoMotorSelected.TypeID">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

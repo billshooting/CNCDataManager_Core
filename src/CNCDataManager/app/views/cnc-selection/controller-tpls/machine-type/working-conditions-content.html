@@ -1,0 +1,159 @@
+﻿<div class="selection-content">
+    <ol class="breadcrumb">
+        <li><a ui-sref="selection.MachineType">数控机床</a></li>
+        <li class="active">工作需求</li>
+    </ol>
+    <form class="form-horizontal" role="form" name="CNCWorkingConditionForm">
+        <div class="panel panel-default panel-green">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    切削条件
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="row">
+                            <th class="col-md-3"></th>
+                            <th class="col-md-2">纵向切削力(N)</th>
+                            <th class="col-md-2">垂直切削力(N)</th>
+                            <th class="col-md-2">进给速度(m/min)</th>
+                            <th class="col-md-2">工作时间占比(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row">
+                            <td class="col-md-3">强力切削</td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[0].lengthwaysForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[0].verticalForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[0].feedSpeed" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[0].timeScale" required /></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-3">一般切削</td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[1].lengthwaysForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[1].verticalForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[1].feedSpeed" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[1].timeScale" required /></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-3">精切削</td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[2].lengthwaysForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[2].verticalForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[2].feedSpeed" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[2].timeScale" required /></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-3">快速进给</td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[3].lengthwaysForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[3].verticalForce" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[3].feedSpeed" required /></td>
+                            <td class="col-md-2"><input type="text" class="form-control" placeholder="请输入值" ng-model="data.cuttingCondition[3].timeScale" required /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default panel-green">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    工况
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group" id="firstGroup">
+                        <label for="maxFeedSpeed" class="col-md-2 control-label">最大进给速度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="maxFeedSpeed" placeholder="请输入值" ng-model="data.productCondition.maxFeedSpeed" required />
+                        </div>
+                        <div class="col-md-1 control-label ">m/min</div>
+                        <label for="tableTravel" class="col-md-2 col-md-offset-1 control-label">工作台行程：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tableTravel" placeholder="请输入值" ng-model="data.productCondition.tableTravel" required />
+                        </div>
+                        <div class="col-md-1 control-label ">mm</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="productMaxMass" class="col-md-2 control-label">工件最大质量：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="productMaxMass" placeholder="请输入值" ng-model="data.productCondition.productMaxMass" required />
+                        </div>
+                        <div class="col-md-1 control-label ">kg</div>
+                        <label for="tableMass" class="col-md-2 col-md-offset-1 control-label">工作台质量：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tableMass" placeholder="请输入值" ng-model="data.productCondition.tableMass" required />
+                        </div>
+                        <div class="col-md-1 control-label ">kg</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="productMaxHeight" class="col-md-2 control-label">工件最大高度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="productMaxHeight" placeholder="请输入值" ng-model="data.productCondition.productMaxHeight" required />
+                        </div>
+                        <div class="col-md-1 control-label">mm</div>
+                        <label for="loadCharacter" class="col-md-2 col-md-offset-1 control-label">负载性质：</label>
+                        <div class="col-md-2">
+                            <select class="form-control" id="loadCharacter" ng-model="data.productCondition.loadCharacter" ng-options="data for data in loadCharacterOptions"></select>
+                        </div>
+                        <div class="col-md-1 control-label "></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="productMaxLength" class="col-md-2 control-label">工件最大长度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="productMaxLength" placeholder="请输入值" ng-model="data.productCondition.productMaxLength" required />
+                        </div>
+                        <div class="col-md-1 control-label ">mm</div>
+                        <label for="feedAcceleration" class="col-md-2 col-md-offset-1 control-label">快速进给加速度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="feedAcceleration" placeholder="请输入值" ng-model="data.productCondition.feedAcceleration" required />
+                        </div>
+                        <div class="col-md-1 control-label ">m/s^2</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="productMaxWidth" class="col-md-2 control-label">工件最大宽度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="productMaxWidth" placeholder="请输入值" ng-model="data.productCondition.productMaxWidth" required />
+                        </div>
+                        <div class="col-md-1 control-label ">mm</div>
+                        <label for="spindleBoxMass" class="col-md-2 col-md-offset-1 control-label">主轴箱质量：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="spindleBoxMass" placeholder="请输入值" ng-model="data.productCondition.spindleBoxMass" required />
+                        </div>
+                        <div class="col-md-1 control-label ">kg</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="tableLength" class="col-md-2 control-label">工作台长度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tableLength" placeholder="请输入值" ng-model="data.productCondition.tableLength" required />
+                        </div>
+                        <div class="col-md-1 control-label ">mm</div>
+                        <label for="productStiffness" class="col-md-2 col-md-offset-1 control-label">工件接触刚度：</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="productStiffness" placeholder="请输入值" ng-model="data.productCondition.productStiffness" required />
+                        </div>
+                        <div class="col-md-1 control-label ">N/m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-8">
+                <button type="submit" class="btn btn-success" ng-disabled="CNCWorkingConditionForm.$invalid" ng-click="nextStep()">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger" ng-click="reset()">取 消</button>
+            </div>
+        </div>
+    </form>
+</div>

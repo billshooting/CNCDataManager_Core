@@ -1,4 +1,4 @@
-﻿import * as $ from 'jquery';
+﻿
 import * as angular from 'angular';
 import 'angular-animate';
 import 'angular-cookie';
@@ -10,20 +10,26 @@ import 'angular-strap';
 let app = angular.module('cncDataManager', [
     'ui.router',
     'ngAnimate',
-    //'ngCookies',
+   // 'ngCookies',
     'ngResource',
     'ngSanitize',
     'mgcrea.ngStrap',
 ]);
 
 
-import registerControllers from './cnc-data/controllers/index';
-import registerRoute from './cnc-data/bases/Route';
-import registerServices from './cnc-data/services/index';
-import registerDirectives from './cnc-data/directives/index';
+import registerControllers from './controllers/cnc-data/index';
+import registerRoute from './bases/Route';
+import registerServices from './services/index';
+import registerDirectives from './directives/index';
+import registerFilters from './filters/index';
 
+import registerSelectionRoute from './bases/SelectionRoute';
+import registerSelectionControllers from './controllers/cnc-selection/index';
 ///* services register*/
 registerServices(app);
+
+///* filters register */
+registerFilters(app);
 
 ///* directives register*/
 registerDirectives(app);
@@ -33,9 +39,6 @@ registerControllers(app);
 
 /* route config*/
 registerRoute(app);
-
-import registerSelectionRoute from './cnc-selection/bases/Route';
-import registerSelectionControllers from './cnc-selection/controllers/index';
 
 registerSelectionRoute(app);
 registerSelectionControllers(app);

@@ -1,0 +1,141 @@
+﻿<div class="selection-content">
+    <ol class="breadcrumb">
+        <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+        <li><a ui-sref="FeedSystem.SolidBallScrewNutPairs">滚珠丝杠列表</a></li>
+        <li class="active">滚珠丝杠详情</li>
+    </ol>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">滚珠丝杠详情</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-reponsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>型号:</th>
+                        <td>{{ballscrew.TypeID}}</td>
+                        <td></td>
+                        <th>生产厂家:</th>
+                        <td>{{ballscrew.Manufacturer}}</td>
+                        <td></td>
+                        <th>基本额定动载荷Ca:</th>
+                        <td>{{ballscrew.BasicRatedDynamicLoad_Ca}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>基本额定静载荷Coa:</th>
+                        <td>{{ballscrew.BasicRatedStaticLoad_Coa}}</td>
+                        <td></td>
+                        <th>刚度:</th>
+                        <td>{{ballscrew.Stiffness}}</td>
+                        <td></td>
+                        <th>公称直径d0:</th>
+                        <td>{{ballscrew.NominalDiameter_d0}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>公称导程ph0:</th>
+                        <td>{{ballscrew.NominalLead_Ph0}}</td>
+                        <td></td>
+                        <th>丝杠外径d1:</th>
+                        <td>{{ballscrew.OuterDiameterOfScrew_d1}}</td>
+                        <td></td>
+                        <th>钢球直径DW:</th>
+                        <td>{{ballscrew.DiameterOfSteelBall_DW}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>丝杠底径d2:</th>
+                        <td>{{ballscrew.BottomDiameterOfScrew_d2}}</td>
+                        <td></td>
+                        <th>轴承配合直径:</th>
+                        <td>{{ballscrew.AdaptableDiameterWithBearing}}</td>
+                        <td></td>
+                        <th>联轴器轴孔配合直径:</th>
+                        <td>{{ballscrew.AdaptableDiameterWithCouplingShaftHole}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>极限转速:</th>
+                        <td>{{ballscrew.LimitRotationSpeed}}</td>
+                        <td></td>
+                        <th>两双推轴承之间的距离:</th>
+                        <td>{{ballscrew.DistanceBetweenTwoPushBearings}}</td>
+                        <td></td>
+                        <th>丝杠长度L:</th>
+                        <td>{{ballscrew.LengthOfScrew_L}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>循环总圈数n:</th>
+                        <td>{{ballscrew.TotalCycleTurns_n}}</td>
+                        <td></td>
+                        <th>尺寸D3:</th>
+                        <td>{{ballscrew.Size_D3}}</td>
+                        <td></td>
+                        <th>尺寸D4:</th>
+                        <td>{{ballscrew.Size_D4}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>尺寸D5:</th>
+                        <td>{{ballscrew.Size_D5}}</td>
+                        <td></td>
+                        <th>尺寸D6:</th>
+                        <td>{{ballscrew.Size_D6}}</td>
+                        <td></td>
+                        <th>尺寸D7:</th>
+                        <td>{{ballscrew.Size_D7}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>尺寸L1:</th>
+                        <td>{{ballscrew.Size_L1}}</td>
+                        <td></td>
+                        <th>螺栓孔数目m:</th>
+                        <td>{{ballscrew.NumberOfScrewHoles_m}}</td>
+                        <td></td>
+                        <th>密度:</th>
+                        <td>{{ballscrew.Density}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>弹性模量:</th>
+                        <td>{{ballscrew.ElasticModulus}}</td>
+                        <td></td>
+                        <th>剪切弹性模量:</th>
+                        <td>{{ballscrew.ShearElasticModulus}}</td>
+                        <td></td>
+                        <th>丝杠与螺母结合面径向阻尼系数:</th>
+                        <td>{{ballscrew.RadialDampingCoefficient}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>滚珠丝杠副处的粘滞摩擦因素:</th>
+                        <td>{{ballscrew.ViscousFrictionFactor}}</td>
+                        <td></td>
+                        <th>滚珠丝杠预紧效率:</th>
+                        <td>{{ballscrew.EfficiencyOfBallScrewPreload}}</td>
+                        <td></td>
+                        <th>说明:</th>
+                        <td>{{ballscrew.Description}}</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <img src="./images/Mechanics/滚珠丝杠-表/1-实心滚珠丝杠螺母副-表.jpg" class="img-thumbnail">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-8">
+            <button type="button" ng-click="nextStep()" class="btn btn-primary">下 一 步</button>
+        </div>
+        <div>
+            <button type="button" ng-click="back()" class="btn btn-primary">返 回</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,489 @@
+﻿<div id="side-menu">
+    <div id="side-menu-arrow" ng-click="toggleState()"><div></div></div>
+    <div id="side-menu-content">
+        <div id="side-menu-user">
+            <img id="user-icon" alt="用户头像" />
+            <span>用户名</span>
+        </div>
+        <div>
+            <div class="side-menu-header" ng-switch="data.CNCMachine.IsSelected" ng-click="toggleState('CNCMachine')">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>数控机床类型</span>
+            </div>           
+            <div class="side-menu-detail" ng-show="data.CNCMachine.IsShown">
+                <img ng-src="{{data.CNCMachine.ImgUrl}}" class="detail-image" alt="机床图片" />
+                <table class="table table-striped">
+                    <tr>
+                        <td>型号</td>
+                        <td ng-bind="data.CNCMachine.TypeID"></td>
+                    </tr>
+                    <tr>
+                        <td>支持类型</td>
+                        <td ng-bind="data.CNCMachine.SupportType"></td>
+                    </tr>
+                    <tr>
+                        <td>数量</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="side-menu-header" ng-switch="data.CNCSystem.IsSelected" ng-click="toggleState('CNCSystem')">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>数控系统</span>
+            </div>
+            <div class="side-menu-detail" ng-show="data.CNCSystem.IsShown">
+                <img ng-src="{{data.CNCSystem.ImgUrl}}" class="detail-image" alt="数控机床类型" />
+                <table class="table table-striped">
+                    <tr>
+                        <td>型号</td>
+                        <td ng-bind="data.CNCSystem.TypeID"></td>
+                    </tr>
+                    <tr>
+                        <td>生产厂家</td>
+                        <td ng-bind="data.CNCSystem.Manufacturer"></td>
+                    </tr>
+                    <tr>
+                        <td>数量</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="side-menu-header axis-header" ng-click="toggleState('FeedSystemX')">
+                <span>进给轴X</span>
+            </div>
+            <div class="side-menu-detail" ng-show="data.FeedSystemX.IsShown">
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.Guide.IsSelected" ng-click="toggleState('FeedSystemX', 'Guide')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>导轨</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.Guide.IsShown">
+                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.Guide.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.Guide.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.ScrewNuts.IsSelected" ng-click="toggleState('FeedSystemX', 'ScrewNuts')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>滚珠丝杠</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.ScrewNuts.IsShown">
+                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.ScrewNuts.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.ScrewNuts.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.Bearings.IsSelected" ng-click="toggleState('FeedSystemX', 'Bearings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>轴承</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.Bearings.IsShown">
+                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.Bearings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.Bearings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.Couplings.IsSelected" ng-click="toggleState('FeedSystemX', 'Couplings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>联轴器</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.Couplings.IsShown">
+                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.Couplings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.Couplings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.ServoMotor.IsSelected" ng-click="toggleState('FeedSystemX', 'ServoMotor')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服电机</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.ServoMotor.IsShown">
+                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.ServoMotor.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.ServoMotor.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemX.ServoDriver.IsSelected" ng-click="toggleState('FeedSystemX', 'ServoDriver')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服驱动</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemX.ServoDriver.IsShown">
+                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <table class="table table-striped"> 
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemX.ServoDriver.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemX.ServoDriver.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="side-menu-header axis-header" ng-click="toggleState('FeedSystemY')">
+                <span>进给轴Y</span>
+            </div>
+            <div class="side-menu-detail" ng-show="data.FeedSystemY.IsShown">
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.Guide.IsSelected" ng-click="toggleState('FeedSystemY', 'Guide')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>导轨</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.Guide.IsShown">
+                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.Guide.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.Guide.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.ScrewNuts.IsSelected" ng-click="toggleState('FeedSystemY', 'ScrewNuts')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>滚珠丝杠</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.ScrewNuts.IsShown">
+                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.ScrewNuts.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.ScrewNuts.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.Bearings.IsSelected" ng-click="toggleState('FeedSystemY', 'Bearings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>轴承</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.Bearings.IsShown">
+                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg" />
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.Bearings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.Bearings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.Couplings.IsSelected" ng-click="toggleState('FeedSystemY', 'Couplings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>联轴器</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.Couplings.IsShown">
+                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.Couplings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.Couplings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.ServoMotor.IsSelected" ng-click="toggleState('FeedSystemY', 'ServoMotor')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服电机</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.ServoMotor.IsShown">
+                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.ServoMotor.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.ServoMotor.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemY.ServoDriver.IsSelected" ng-click="toggleState('FeedSystemY', 'ServoDriver')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服驱动</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemY.ServoDriver.IsShown">
+                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemY.ServoDriver.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemY.ServoDriver.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="side-menu-header axis-header" ng-click="toggleState('FeedSystemZ')">
+                <span>进给轴Z</span>
+            </div>
+            <div class="side-menu-detail" ng-show="data.FeedSystemZ.IsShown">
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.Guide.IsSelected" ng-click="toggleState('FeedSystemZ', 'Guide')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>导轨</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.Guide.IsShown">
+                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.Guide.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.Guide.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.ScrewNuts.IsSelected" ng-click="toggleState('FeedSystemZ', 'ScrewNuts')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>滚珠丝杠</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.ScrewNuts.IsShown">
+                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.ScrewNuts.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.ScrewNuts.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.Bearings.IsSelected" ng-click="toggleState('FeedSystemZ', 'Bearings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>轴承</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.Bearings.IsShown">
+                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.Bearings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.Bearings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.Couplings.IsSelected" ng-click="toggleState('FeedSystemZ', 'Couplings')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>联轴器</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.Couplings.IsShown">
+                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.Couplings.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.Couplings.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.ServoMotor.IsSelected" ng-click="toggleState('FeedSystemZ', 'ServoMotor')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服电机</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.ServoMotor.IsShown">
+                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.ServoMotor.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.ServoMotor.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="side-menu-header" ng-switch="data.FeedSystemZ.ServoDriver.IsSelected" ng-click="toggleState('FeedSystemZ', 'ServoDriver')">
+                    <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                    <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                    <span>伺服驱动</span>
+                </div>
+                <div class="side-menu-detail" ng-show="data.FeedSystemZ.ServoDriver.IsShown">
+                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>型号</td>
+                            <td ng-bind="data.FeedSystemZ.ServoDriver.TypeID"></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂家</td>
+                            <td ng-bind="data.FeedSystemZ.ServoDriver.Manufacturer"></td>
+                        </tr>
+                        <tr>
+                            <td>数量</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <a id="side-menu-complete" class="btn btn-default">完成</a>
+        <a id="side-menu-reset" class="btn btn-danger">重置数据</a>
+    </div>
+</div>

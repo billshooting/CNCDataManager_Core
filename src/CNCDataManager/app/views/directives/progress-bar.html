@@ -1,0 +1,28 @@
+﻿<div class="row">
+    <ul class="nav nav-tabs">
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-machine"></div>
+            <a ui-sref="selection.MachineType" class="text-center">机床类型</a>
+        </li>
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-cncsystem"></div>
+            <a ui-sref="selection.CNCSystem" class="text-center">数控系统</a>
+        </li>
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-feedsystemx"></div>
+            <a ui-sref="selection.FeedSystem({axis: 'X'})" class="text-center">进给轴X</a>
+        </li>
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-feedsystemy"></div>
+            <a ui-sref="selection.FeedSystem({axis: 'Y'})" class="text-center">进给轴Y</a>
+        </li>
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-feedsystemz"></div>
+            <a ui-sref="selection.FeedSystem({axis: 'Z'})" class="text-center">进给轴Z</a>
+        </li>
+        <li class="col-md-2 selection-progress">
+            <div class="selection-progress-bar" id="progress-bar-spindle"></div>
+            <a ui-sref="selection.Spindle" class="text-center">主轴</a>
+        </li>
+    </ul>
+</div>

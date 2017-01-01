@@ -6,4 +6,12 @@
             <p>基于数控机床数据中心的数据支撑,根据进给系统各部件的配置计算对每个部件进行参数化选型</p>
         </div>
     </div>
+    <div class="container">
+        <progress-bar></progress-bar>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-2" style="padding-left: 0px" ui-view="leftside"></div>
+            <div class="col-md-10" ui-view="content"></div>
+        </div>
+    </div>
+    <side-menu></side-menu>
 </div>

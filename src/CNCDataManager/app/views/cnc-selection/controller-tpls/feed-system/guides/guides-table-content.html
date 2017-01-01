@@ -1,0 +1,187 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li class="active">导轨列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{imgsrc}}" class="img-thumbnail" alt="直线导轨尺寸" />
+            </div>
+            <form name="guideForm">
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">导轨相关尺寸</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL0.$invalid && !guideForm.sizeL0.$pristine}">
+                                    <label for="sizeL0" class="control-label">尺寸L0:</label>
+                                    <input type="number" id="sizeL0" name="sizeL0" ng-model="sizePara.sizeL0" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL1.$invalid && !guideForm.sizeL1.$pristine}">
+                                    <label for="sizeL1" class="control-label">尺寸L1:</label>
+                                    <input type="number" id="sizeL1" name="sizeL1" ng-model="sizePara.sizeL1" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL2.$invalid && !guideForm.sizeL2.$pristine}">
+                                    <label for="sizeL2" class="control-label">尺寸L2:</label>
+                                    <input type="number" id="sizeL2" name="sizeL2" ng-model="sizePara.sizeL2" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL3.$invalid && !guideForm.sizeL3.$pristine}">
+                                    <label for="sizeL3" class="control-label">尺寸L3:</label>
+                                    <input type="number" id="sizeL3" name="sizeL3" ng-model="sizePara.sizeL3" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL4.$invalid && !guideForm.sizeL4.$pristine}">
+                                    <label for="sizeL4" class="control-label">尺寸L4:</label>
+                                    <input type="number" id="sizeL4" name="sizeL4" ng-model="sizePara.sizeL4" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.sizeL5.$invalid && !guideForm.sizeL5.$pristine}">
+                                    <label for="sizeL5" class="control-label">尺寸L5:</label>
+                                    <input type="number" id="sizeL5" name="sizeL5" ng-model="sizePara.sizeL5" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group" ng-show="FeedSystemType=='Z'" ng-class="{'has-error':guideForm.sizeL6.$invalid && !guideForm.sizeL6.$pristine}">
+                                    <label for="sizeL6" class="control-label">尺寸L6:</label>
+                                    <input type="number" id="sizeL6" name="sizeL6" ng-model="sizePara.sizeL6" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">mm</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">导轨参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="guidType" class="control-label">导轨类型:</label>
+                                    <select id="guidType" ng-model="guidPara.guidType" class="form-control" ng-options="data for data in guidTypeOptions" style="width:60%"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rollerType" class="control-label">滚子类型:</label>
+                                    <select id="rollerType" ng-model="guidPara.rollerType" class="form-control" ng-options="data.id as data.name for data in rollerTypeOptions" style="width:60%"></select>
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group" ng-show="FeedSystemType=='Y'" ng-class="{'has-error':guideForm.XMass.$invalid && !guideForm.XMass.$pristine}">
+                                    <label for="XMass" class="control-label">X轴重量:</label>
+                                    <input type="number" id="XMass" name="XMass" ng-model="guidPara.XMass" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">kg</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.life.$invalid && !guideForm.life.$pristine}">
+                                    <label for="life" class="control-label">寿命:</label>
+                                    <input type="number" id="life" name="life" ng-model="guidPara.life" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label">h</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.safety.$invalid && !guideForm.safety.$pristine}">
+                                    <label for="safety" class="control-label">安全系数:</label>
+                                    <input type="number" id="safety" name="safety" ng-model="guidPara.safety" class="form-control" palceholder="请输入值" style="width:50%" data-content="一般运行状况下取1~2，轻微冲击取2~3，受冲击、振动取3~5" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.load.$invalid && !guideForm.load.$pristine}">
+                                    <label for="load" class="control-label">载荷系数:</label>
+                                    <input type="number" id="load" name="load" ng-model="guidPara.load" class="form-control" palceholder="请输入值" style="width:50%" data-content="根据机床的载荷情况，应取1~1.5" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.contact.$invalid && !guideForm.contact.$pristine}">
+                                    <label for="contact" class="control-label">接触系数:</label>
+                                    <input type="number" id="contact" name="contact" ng-model="guidPara.contact" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':guideForm.friction.$invalid && !guideForm.friction.$pristine}">
+                                    <label for="friction" class="control-label">摩擦系数:</label>
+                                    <input type="number" id="friction" name="friction" ng-model="guidPara.friction" class="form-control" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required />
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">最小额定静载荷:</label>
+                                    <p class="form-control-static">{{guidPara.minStaticLoad}}</p>
+                                    <label class="control-label">N</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">最小额定动载荷:</label>
+                                    <p class="form-control-static">{{guidPara.minLiveLoad}}</p>
+                                    <label class="control-label">N</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" ng-click="caculate()" class="btn btn-primary col-md-offset-2 col-md-3 text-center" ng-disabled="guideForm.$invalid">计算</button>
+                                <button type="button" ng-click="reset()" class="btn btn-primary col-md-offset-2 col-md-3 text-center">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="selection-content">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="btn-primary" ng-click="title=TypeID;desc=!desc" role="button">型号</th>
+                        <th class="btn-primary" ng-click="title=Manufacturer;desc=!desc" role="button">生产厂家</th>
+                        <th class="btn-primary" ng-click="title=SizeOfGuideFixedBolt;desc=!desc" role="button">导轨固定螺栓尺寸</th>
+                        <th class="btn-primary" ng-click="title=RollerType;desc=!desc" role="button">滚子类型</th>
+                        <th class="btn-primary" ng-click="title=BasicRatedDynamicLoad_C;desc=!desc" role="button">基本额定动载荷</th>
+                        <th class="btn-primary" ng-click="title=BasicRatedStaticLoad_C0;desc=!desc" role="button">基本额定静载荷</th>
+                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_MR;desc=!desc" role="button">容许静力矩MR</th>
+                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_Mp;desc=!desc" role="button">容许静力矩Mp</th>
+                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_M_r;desc=!desc" role="button">容许静力矩Mr</th>
+                        <th class="btn-primary" ng-click="title=MassOfSlider;desc=!desc" role="button">滑块质量</th>
+                        <th class="btn-primary" ng-click="title=MassOfGuide;desc=!desc" role="button">导轨质量</th>
+                        <th class="btn-primary" ng-click="title=CoefficientOfFrictionGuidPairs;desc=!desc">导轨副的摩擦系数</th>
+                        <th class="btn-primary" ng-click="title=CoefficientOfViscousFriction;desc=!desc" role="button">粘滞摩擦因子</th>
+                        <th class="btn-primary freezingCol"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="LineRollingGuide in LineRollingGuides|LinnearRollingGuideFilt:guidPara.rollerType:guidPara.minLiveLoad:guidPara.minStaticLoad|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(LineRollingGuide)" ng-class="{tableSelected:LineRollingGuide.TypeID==LineRollingGuideSelected.TypeID}">
+                        <td>{{LineRollingGuide.TypeID}}</td>
+                        <td>{{LineRollingGuide.Manufacturer}}</td>
+                        <td>{{LineRollingGuide.SizeOfGuideFixedBolt}}</td>
+                        <td>{{LineRollingGuide.RollerType}}</td>
+                        <td>{{LineRollingGuide.BasicRatedDynamicLoad_C}}</td>
+                        <td>{{LineRollingGuide.BasicRatedStaticLoad_C0}}</td>
+                        <td>{{LineRollingGuide.AllowableStaticMoment_MR}}</td>
+                        <td>{{LineRollingGuide.AllowableStaticMoment_Mp}}</td>
+                        <td>{{LineRollingGuide.AllowableStaticMoment_M_r}}</td>
+                        <td>{{LineRollingGuide.MassOfSlider}}</td>
+                        <td>{{LineRollingGuide.MassOfGuide}}</td>
+                        <td>{{LineRollingGuide.CoefficientOfFrictionGuidPairs}}</td>
+                        <td>{{LineRollingGuide.CoefficientOfViscousFriction}}</td>
+                        <td class="freezingCol"><a ui-sref="FeedSystem.detail({id:LineRollingGuide.TypeID})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row form-horizontal">
+            <div class="form-group">
+                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
+                <div class="col-md-2">
+                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
+                </div>
+                <div class="col-md-6 col-md-offset-1">
+                    <uib-pagination boundary-links="true" total-items="LineRollingGuides|LinnearRollingGuideFilt:guidPara.rollerType:guidPara.minLiveLoad:guidPara.minStaticLoad|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!LineRollingGuideSelected.TypeID">下 一 步</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

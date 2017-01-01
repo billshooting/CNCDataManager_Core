@@ -1,0 +1,58 @@
+﻿<div class="selection-content">
+    <ol class="breadcrumb">
+        <li><a ui-sref="selection.MachineType">数控机床</a></li>
+        <li class="active">机床类型</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('立式车床','C', $event)" ng-class="{selected:data.type === '立式车床'}">
+                <img src="./images/Machines/立式车床.jpg" class="img-rounded" alt="立式车床" />
+                <div class="caption text-center">立式车床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('立式铣床' ,'X', $event)" ng-class="{selected:data.type === '立式铣床'}">
+                <img src="./images/Machines/立式铣床.jpg" class="img-rounded" alt="立式铣床" />
+                <div class="caption text-center">立式铣床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('龙门铣床','X', $event)" ng-class="{ selected: data.type === '龙门铣床'}">
+                <img src="./images/Machines/龙门铣床.jpg" class="img-rounded" alt="龙门铣床" />
+                <div class="caption text-center">龙门铣床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('卧式车床','C', $event)" ng-class="{ selected: data.type === '卧式车床'}">
+                <img src="./images/Machines/卧式车床.jpg" class="img-rounded" alt="卧式车床" />
+                <div class="caption text-center">卧式车床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('卧式铣床','X', $event)" ng-class="{ selected: data.type === '卧式铣床'}">
+                <img src="./images/Machines/卧式铣床.jpg" class="img-rounded" alt="卧式铣床" />
+                <div class="caption text-center">卧式铣床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('斜床身车床','C', $event)" ng-class="{ selected: data.type === '斜床身车床' }">
+                <img src="./images/Machines/斜床身车床.jpg" class="img-rounded" alt="斜床身车床" />
+                <div class="caption text-center">斜床身车床</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail machine-type-img" ng-click="selectType('磨床','M', $event)" ng-class="{ selected: data.type === '磨床'}">
+                <img src="./images/Machines/磨床.jpg" class="img-rounded" alt="磨床" />
+                <div class="caption text-center">磨床</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-8 col-md-2">
+            <button type="button" class="btn btn-success" ng-click="nextStep()" ng-disabled="!data.type">下 一 步</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger" ng-click="reset()">取 消</button>
+        </div>
+    </div>
+</div>
