@@ -42,7 +42,7 @@ export default class SelectionTableHandler {
         this.message.showLoading();
         this.httpProxy.http(scope.ITEMNAME)
                       .get()
-                      .then((response: any) => { this.httpProxy.loadSuccess(scope, response); },
+                      .then((response: any) => { this.httpProxy.loadSuccess(scope, response); scope.changePaginationSize(); },
                             (response: any) => { this.httpProxy.loadFail(scope, response); });
     }
 

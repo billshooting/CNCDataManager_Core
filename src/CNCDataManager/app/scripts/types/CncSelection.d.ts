@@ -50,16 +50,23 @@ interface ISelectionTableScope extends ITableScope, ISelectionPartScope {
     items: IItem[];
     state: {
         orderProperty: string;
-        paginationIndex: number;
-        paginationSize: number;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
         colState?: boolean[];
     };
     data: {
+        selectedItem: any;
         selectedTypeID: string;
     };
     changeOrderProperty: (property: string) => void;
     selectItem: (item: IItem) => void;
     toggleCol?: (id: number, e: BaseJQueryEventObject) => void;
+    changePaginationSize?: () => void;
+    changePaginationIndex?: (index: number) => void;
+    previousPage?: () => void;
+    nextPage?: () => void;
 }
 
 interface ISelectionTableHandler {
@@ -84,11 +91,15 @@ interface IFilterCNCSystemFiltrate {
 }
 
 interface ICNCSystemSelectionScope extends ISelectionTableScope {
+    filtratedItems: IItem[];
     state: {
         filtrateConditions: ICNCSystemFilterConditions;
+        ManufacturerOptions: string[];
         orderProperty: string;
-        paginationIndex: number;
-        paginationSize: number;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
         colState?: boolean[];
     };
 }

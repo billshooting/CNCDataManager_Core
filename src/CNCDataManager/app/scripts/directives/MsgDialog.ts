@@ -8,7 +8,7 @@ interface IMsgDialogScope extends angular.IScope {
     hideLoading: () => void;
 }
 
-let MsgDialog: angular.IDirectiveFactory = (messageService: MessageTips, $scope: IMsgDialogScope): angular.IDirective => {
+let MsgDialog: angular.IDirectiveFactory = (messageService: MessageTips): angular.IDirective => {
     return {
         templateUrl: './views/directives/message-tips.html',
         restrict: 'E',
@@ -54,5 +54,5 @@ let MsgDialog: angular.IDirectiveFactory = (messageService: MessageTips, $scope:
     };
 };
 
-MsgDialog.$inject = ['MessageTips', '$scope'];
+MsgDialog.$inject = ['MessageTips'];
 export default MsgDialog;

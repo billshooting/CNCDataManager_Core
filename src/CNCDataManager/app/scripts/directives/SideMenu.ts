@@ -1,12 +1,13 @@
 ﻿import * as angular from 'angular';
 import { ISelectionStateScope } from '../types/CncSelection';
 import SelectionNotification from '../services/SelectionNotification';
+import DataStorage from '../services/DataStorage';
 
 interface ISideMenuScope extends ISelectionStateScope{
     toggleState: (propA?: string, propB?: string)=> void;
 }
 
-let SideMenu: angular.IDirectiveFactory = (notification: SelectionNotification): angular.IDirective => {
+let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, dataStorage: DataStorage): angular.IDirective => {
     return {
         templateUrl: './views/directives/side-menu.html',
         restrict: 'E',
@@ -162,10 +163,52 @@ let SideMenu: angular.IDirectiveFactory = (notification: SelectionNotification):
 
             scope.changeHandler = () => {};
             //注册通知
-            notification.registerNotification(scope);
+            notifier.registerNotification(scope);
+            let storageKeys: string[] = ['MachineType', 'MachineWorkingConditions',
+                                        'CNCSystem', 'CNCSystemAccessories',
+                                        'XGuide', 'XBallScrew', 'XBearings', 'XCouplings', 'XServoMotor', 'XServoDriver',
+                                        'YGuide', 'YBallScrew', 'YBearings', 'YCouplings', 'YServoMotor', 'YServoDriver',
+                                        'ZGuide', 'ZBallScrew', 'ZBearings', 'ZCouplings', 'ZServoMotor', 'ZServoDriver'];
+            storageKeys.forEach(key => {
+                let storage = dataStorage.getObject(key);
+                if(storage){
+                    switch(key)
+                    {
+                        case storageKeys[0]:
+                        {
+                            notifier.notifyChange(data => {
+                                let indentifiedValue = data.CNCMachine.IsShown; 
+                                data.CNCMachine = {
+                                    IsSelected: true,
+                                    TypeID: storage.type,
+                                    SupportType: storage.support,
+                                    IsShown: indentifiedValue,
+                                    ImgUrl: storage.imgUrl,
+                                };
+                            });
+                            break;
+                        }
+                        case storageKeys[1]: break;
+                        case storageKeys[2]:
+                        {
+                            notifier.notifyChange(data => {
+                                let indentifiedValue = data.CNCSystem.IsShown; 
+                                data.CNCSystem = {
+                                    IsSelected: true,
+                                    TypeID: storage.TypeID,
+                                    Manufacturer: storage.Manufacturer,
+                                    IsShown: indentifiedValue,
+                                    ImgUrl: './images/CNC/CNCSystem/' + storage.TypeID + '.jpg',
+                                };
+                            });
+                            break;
+                        }
+                    }
+                }
+            })
         }
     };
 };
-SideMenu.$inject = ['SelectionNotification']
+SideMenu.$inject = ['SelectionNotification', 'DataStorage'];
 
 export default SideMenu;

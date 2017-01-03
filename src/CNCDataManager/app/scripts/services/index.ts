@@ -4,7 +4,7 @@ import User from './User';
 import MessageTips from './MessageTips';
 import TableHandler from './TableHandler';
 import SelectionNotification from './SelectionNotification';
-import DataStroage from './DataStroage';
+import DataStorage from './DataStorage';
 import SelectionTableHandler from './SelectionTableHandler';
 
 export default function registerServices(app: angular.IModule): void {
@@ -13,6 +13,6 @@ export default function registerServices(app: angular.IModule): void {
     app.service('MessageTips', MessageTips);
     app.service('TableHandler', TableHandler);
     app.service('SelectionNotification', SelectionNotification);
-    app.service('DataStroage', DataStroage);
+    app.service('DataStorage', DataStorage);
     app.service('SelectionTableHandler', SelectionTableHandler)
 };

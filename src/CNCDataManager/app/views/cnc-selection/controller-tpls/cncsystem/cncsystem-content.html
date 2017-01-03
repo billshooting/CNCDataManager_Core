@@ -7,7 +7,7 @@
         <div class="form-group">
             <label for="Manufacturer" class="col-md-2 control-label">生产厂家：</label>
             <div class="col-md-2">
-                <select class="form-control" id="Manufacturer" ng-model="state.filtrateConditions.Manufacturer" ng-options="data for data in ManufacturerOptions">
+                <select class="form-control" id="Manufacturer" ng-model="state.filtrateConditions.Manufacturer" ng-options="data for data in state.ManufacturerOptions">
                     <option value="">--请选择--</option>
                 </select>
             </div>
@@ -23,58 +23,59 @@
     </form>
     
     <div class="cncdata-table">
-        <table class="table table-striped table-hover">
+        <table class="table">
             <thead>
                 <tr>
                     <td style="width: 30px">序号</td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
                         型号
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'TypeID'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-TypeID'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
                         生产厂家
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'Manufacturer'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-Manufacturer'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('Series')" title="按此列排序">
                         系列
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Series'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Series'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'Series'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-Series'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('SupportMachineType')" title="按此列排序">
                         支持机床类型
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'SupportMachineType'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-SupportMachineType'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'SupportMachineType'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-SupportMachineType'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('SupportChannels')" title="按此列排序">
                         支持通道数
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'SupportChannels'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-SupportChannels'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'SupportChannels'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-SupportChannels'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('MaxNumberOfFeedShafts')" title="按此列排序">
                         进给轴最大控制轴数
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxNumberOfFeedShafts'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxNumberOfFeedShafts'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'MaxNumberOfFeedShafts'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-MaxNumberOfFeedShafts'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('MaxNumberOfSpindels')" title="按此列排序">
                         主轴最大控制轴数
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxNumberOfSpindels'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxNumberOfSpindels'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'MaxNumberOfSpindels'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-MaxNumberOfSpindels'"></span>
                     </td>
                     <td class="table-td-orderable" ng-click="changeOrderProperty('MaxNumberOfLinkageAxis')" title="按此列排序">
                         最大联轴数
-                        <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxNumberOfLinkageAxis'"></span>
-                        <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxNumberOfLinkageAxis'"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'MaxNumberOfLinkageAxis'"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-MaxNumberOfLinkageAxis'"></span>
                     </td>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="item in items | cncSystemFiltrateBy: state.filtrateConditions | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
                     ng-click="selectItem(item)"
-                    ng-class="selected: item.TypeID === data.selectedTypeID">
+                    ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                    class="selection-table-tr">
                     <td style="width: 30px">{{$index + 1}}</td>
-                    <td>{{model.TypeID}}</td>
+                    <td ng-bind="item.TypeID"></td>
                     <td ng-bind="item.Manufacturer" type="text"></td>
                     <td ng-bind="item.Series" type="text"></td>
                     <td ng-bind="item.SupportMachineType" type="text"></td>
@@ -86,20 +87,10 @@
             </tbody>
         </table>
     </div>
-    <div class="row form-horizontal">
-        <div class="form-group">
-            <label for="page-size" class="control-label col-md-2">每页条目数：</label>
-            <div class="col-md-2">
-                <select id="page-size" ng-model="state.paginationSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
-            </div>
-            <div class="col-md-6 col-md-offset-1">
-                <uib-pagination boundary-links="true" total-items="NCSystems|CNCSystemFilt:filtNum|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
-            </div>
-        </div>
-    </div>
+    <cnc-pagination></cnc-pagination>
     <div class="row">
         <div class="col-md-offset-8 col-md-2">
-            <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!CNCSystemSelected.TypeID">下 一 步</button>
+            <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下 一 步</button>
         </div>
         <div>
             <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>

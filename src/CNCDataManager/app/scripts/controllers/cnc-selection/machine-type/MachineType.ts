@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import DataStroage from '../../../services/DataStroage';
+import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
 import { ISelectionPartScope } from  '../../../types/CncSelection';
 
@@ -15,7 +15,7 @@ interface IMachineTypeScope extends ISelectionPartScope {
 export class MachineType {
     public constructor($scope: IMachineTypeScope, 
                        $state: angular.ui.IStateService, 
-                       dataStroage: DataStroage,
+                       dataStorage: DataStorage,
                        notifier: SelectionNotification)
     {
         $scope.data = {type: null, support: null, imgUrl: null};
@@ -28,7 +28,7 @@ export class MachineType {
             $scope.data = { type: null, support: null, imgUrl: null};
         };
         $scope.nextStep = (): void => {
-            dataStroage.setObject('MachineType', $scope.data);
+            dataStorage.setObject('MachineType', $scope.data);
             notifier.notifyChange(data => {
                 let indentifiedValue = data.CNCMachine.IsShown; 
                 data.CNCMachine = {
@@ -45,4 +45,4 @@ export class MachineType {
 
 };
 //$scope也是依赖，也需要注入
-MachineType.$inject = ['$scope','$state', 'DataStroage', 'SelectionNotification'];
+MachineType.$inject = ['$scope','$state', 'DataStorage', 'SelectionNotification'];

@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import DataStroage from '../../../services/DataStroage';
+import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
 import { ISelectionPartScope } from  '../../../types/CncSelection';
 
@@ -14,7 +14,7 @@ interface IMachineDetailsScope extends ISelectionPartScope {
 export class MachineDetails {
     public constructor($scope: IMachineDetailsScope,
                        $state: angular.ui.IStateService,
-                       dataStroage: DataStroage,
+                       dataStorage: DataStorage,
                        notifier: SelectionNotification)
     {
         $scope.reset = (): void => {
@@ -62,7 +62,7 @@ export class MachineDetails {
             };
         };
         $scope.nextStep = (): void => {
-            dataStroage.setObject('MachineWorkingConditions', $scope.data);
+            dataStorage.setObject('MachineWorkingConditions', $scope.data);
             notifier.notifyChange(data => {});
             $state.go('selection.CNCSystem');
         };
@@ -70,4 +70,4 @@ export class MachineDetails {
     }
 
 };
-MachineDetails.$inject = ['$scope','$state', 'DataStroage', 'SelectionNotification'];
+MachineDetails.$inject = ['$scope','$state', 'DataStorage', 'SelectionNotification'];

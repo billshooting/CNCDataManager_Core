@@ -4,7 +4,7 @@
         <li class="active">数控系统辅件</li>
     </ol>
     <div class="form-horizontal">
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-green">
             <div class="panel-heading">
                 <h3 class="panel-title">I/O单元</h3>
             </div>
@@ -27,15 +27,7 @@
                         <label for="baseboardNum" class="col-md-3 control-label">底板数量：</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="baseboardNum" ng-model="IOUnit.baseboardNum" placeholder="请输入值">
-                                <div class="input-group-btn-vertical">
-                                    <button class="btn btn-default" type="button" ng-click="add(0)">
-                                        <i class="fa fa-caret-up"></i>
-                                    </button>
-                                    <button class="btn btn-default" type="button" ng-click="minus(0)">
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                </div>
+                                <input type="number" class="form-control" id="baseboardNum" ng-model="IOUnit.baseboardNum" placeholder="请输入值">
                             </div>
                         </div>
                     </div>
@@ -47,15 +39,7 @@
                         <label for="communicationboardNum" class="col-md-3 control-label">通讯板数量：</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="communicationboardNum" ng-model="IOUnit.communicationboardNum" placeholder="请输入值">
-                                <div class="input-group-btn-vertical">
-                                    <button class="btn btn-default" type="button" ng-click="add(1)">
-                                        <i class="fa fa-caret-up"></i>
-                                    </button>
-                                    <button class="btn btn-default" type="button" ng-click="minus(1)">
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                </div>
+                                <input type="number" class="form-control" id="communicationboardNum" ng-model="IOUnit.communicationboardNum" placeholder="请输入值">
                             </div>
                         </div>
                     </div>
@@ -67,15 +51,7 @@
                         <label for="IOModuleNum" class="col-md-3 control-label">I/O模块数量：</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="IOModuleNum" ng-model="IOUnit.IOModuleNum" placeholder="请输入值">
-                                <div class="input-group-btn-vertical">
-                                    <button class="btn btn-default" type="button" ng-click="add(2)">
-                                        <i class="fa fa-caret-up"></i>
-                                    </button>
-                                    <button class="btn btn-default" type="button" ng-click="minus(2)">
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                </div>
+                                <input type="number" class="form-control" id="IOModuleNum" ng-model="IOUnit.IOModuleNum" placeholder="请输入值">
                             </div>
                         </div>
                     </div>
@@ -83,29 +59,13 @@
                         <label for="inputboardNum" class="col-md-3 control-label">输入板数量：</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="inputboardNum" ng-model="IOUnit.inputboardNum" placeholder="请输入值">
-                                <div class="input-group-btn-vertical">
-                                    <button class="btn btn-default" type="button" ng-click="add(3)">
-                                        <i class="fa fa-caret-up"></i>
-                                    </button>
-                                    <button class="btn btn-default" type="button" ng-click="minus(3)">
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                </div>
+                                <input type="number" class="form-control" id="inputboardNum" ng-model="IOUnit.inputboardNum" placeholder="请输入值">
                             </div>
                         </div>
                         <label for="outputboardNum" class="col-md-3 control-label">输出板数量：</label>
                         <div class="col-md-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="outputboardNum" ng-model="IOUnit.outputboardNum" placeholder="请输入值">
-                                <div class="input-group-btn-vertical">
-                                    <button class="btn btn-default" type="button" ng-click="add(4)">
-                                        <i class="fa fa-caret-up"></i>
-                                    </button>
-                                    <button class="btn btn-default" type="button" ng-click="minus(4)">
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                </div>
+                                <input type="number" class="form-control" id="outputboardNum" ng-model="IOUnit.outputboardNum" placeholder="请输入值">
                             </div>
                         </div>
                     </div>
@@ -114,7 +74,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-green">
                     <div class="panel-heading">
                         <h2 class="panel-title">UPS电源</h2>
                     </div>
@@ -138,15 +98,7 @@
                                 <label for="UPSNum" class="control-label col-md-4">数量:</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="UPSNum" ng-model="UPSPower.UPSNum" placeholder="请输入值" ng-disabled="!UPSPower.isAdd">
-                                        <div class="input-group-btn-vertical">
-                                            <button class="btn btn-default" type="button" ng-click="add(5)" ng-disabled="!UPSPower.isAdd">
-                                                <i class="fa fa-caret-up"></i>
-                                            </button>
-                                            <button class="btn btn-default" type="button" ng-click="minus(5)" ng-disabled="!UPSPower.isAdd">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </div>
+                                        <input type="number" class="form-control" id="UPSNum" ng-model="UPSPower.UPSNum" placeholder="请输入值" ng-disabled="!UPSPower.isAdd">
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +107,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-green">
                     <div class="panel-heading">
                         <h2 class="panel-title">手操盘</h2>
                     </div>
@@ -179,15 +131,7 @@
                                 <label for="manulNum" class="control-label col-md-4">数量:</label>
                                 <div class="col-md-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="manulNum" ng-model="manul.manulNum" placeholder="请输入值" ng-disabled="!manul.isAdd">
-                                        <div class="input-group-btn-vertical">
-                                            <button class="btn btn-default" type="button" ng-click="add(6)" ng-disabled="!manul.isAdd">
-                                                <i class="fa fa-caret-up"></i>
-                                            </button>
-                                            <button class="btn btn-default" type="button" ng-click="minus(6)" ng-disabled="!manul.isAdd">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </div>
+                                        <input type="number" class="form-control" id="manulNum" ng-model="manul.manulNum" placeholder="请输入值" ng-disabled="!manul.isAdd">
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +142,7 @@
         </div>
         <div class="row">
             <div class="col-md-offset-8 col-md-2">
-                <button type="button" ng-click="nextStep()" class="btn btn-success">下 一 步</button>
+                <button type="button" ng-click="nextStep()" class="btn btn-success">下一步</button>
             </div>
             <div class="col-md-2">
                 <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>

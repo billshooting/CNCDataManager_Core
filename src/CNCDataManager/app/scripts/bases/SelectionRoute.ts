@@ -50,6 +50,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                     },
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/cncsystem/cncsystem-content.html',
+                        controller: 'CNCSystemTypeCtrl'
                     }
                 }
             })
@@ -58,6 +59,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/cncsystem/accessories-content.html',
+                        controller: 'CNCSystemAccessoriesCtrl'
                     }
                 }
             })
@@ -66,6 +68,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     '': {
                         templateUrl: './views/cnc-selection/controller-tpls/selection.html',
+                        controller: 'SelectionCtrl'
                     },
                     'leftside@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/feed-system-leftside.html',

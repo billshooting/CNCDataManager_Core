@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 
-export default class DataStroage {
+export default class DataStorage {
     public constructor(){}
     public setValue(key: string, value: string): void {
         localStorage.setItem(key, value);
