@@ -1,7 +1,7 @@
 ﻿import * as angular from 'angular';
 import 'angular-strap';
 import 'angular-strap-tpl';
-import { ICncDataScope } from '../../../../types/ICncDataScope';
+import { ICncDataScope } from '../../../../types/CncData';
 import TableHandler from '../../../../services/TableHandler';
 
 export class AligningBallBearings {

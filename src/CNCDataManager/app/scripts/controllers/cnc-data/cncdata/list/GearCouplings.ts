@@ -2,7 +2,7 @@
 import * as angular from 'angular';
 import 'angular-strap';
 import 'angular-strap-tpl';
-import { ICncDataScope, IItem, IHandlingItems, ITableHandler } from '../../../../types/ICncDataScope';
+import { ICncDataScope, IItem, IHandlingItems, ITableHandler } from '../../../../types/CncData';
 import TableHandler from '../../../../services/TableHandler';
 
 export class GearCouplings {

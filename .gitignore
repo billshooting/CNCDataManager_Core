@@ -6,4 +6,6 @@
 /src/CNCDataManager_Core/bin
 /src/CNCDataManager_Core/obj
 /src/CNCDataManager_Core/FrontEnd
+/src/CNCDataAPI/bin
+/src/CNCDataAPI/obj
 

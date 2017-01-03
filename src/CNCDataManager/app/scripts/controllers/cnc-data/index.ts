@@ -76,7 +76,7 @@ export default function registerControllers(app: angular.IModule): void {
     app.controller('HelicalCylindricalGearsCtrl', HelicalCylindricalGears);
     app.controller('HubShapedCouplingsCtrl', HubShapedCouplings);
     app.controller('LinearRollingGuidesCtrl', LinearRollingGuides);
-    app.controller('NCSystems', NCSystems);
+    app.controller('NCSystemsCtrl', NCSystems);
     app.controller('NCSystemFunctionalOptionsCtrl', NCSystemFunctionalOptions);
     app.controller('NCSystemIOUnitsCtrl', NCSystemIOUnits);
     app.controller('NCSystemManualsCtrl', NCSystemManuals);

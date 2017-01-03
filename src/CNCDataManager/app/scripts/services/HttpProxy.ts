@@ -5,7 +5,7 @@
 
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import { ICncDataScope, IItem, IHandlingItems } from '../types/ICncDataScope';
+import { ITableScope, ICncDataScope, IItem, IHandlingItems } from '../types/CncData';
 import MessageTips from './MessageTips';
 
 interface IRestfulMethod {
@@ -73,7 +73,7 @@ export default class HttpProxy{
         }
     }
 
-    public loadSuccess(scope: ICncDataScope, response: IHttpResponse<any>): void
+    public loadSuccess(scope: ITableScope, response: IHttpResponse<any>): void
     {
         if (response.status < 300) {
             scope.items = response.data;
@@ -87,7 +87,7 @@ export default class HttpProxy{
         }
     }
 
-    public loadFail(scope: ICncDataScope, response: IHttpResponse<any>): void
+    public loadFail(scope: ITableScope, response: IHttpResponse<any>): void
     {
         let msg = '错误信息:' + response.status + ' ' + response.statusText;
         if (response.message !== undefined) msg = '错误信息:' + response.message;

@@ -14,7 +14,12 @@ interface IHandlingItems{
     updatingItem: IItem;
 }
 
-interface ICncDataScope extends angular.IScope{
+interface ITableScope extends angular.IScope {
+    ITEMNAME: string;
+    items: IItem[];
+}
+
+interface ICncDataScope extends ITableScope{
     deleteItemModal: mgcrea.ngStrap.modal.IModal;
     addItemModal: mgcrea.ngStrap.modal.IModal;
 
@@ -53,5 +58,6 @@ interface ITableHandler {
 
 export { IItem };
 export { IHandlingItems };
+export { ITableScope };
 export { ICncDataScope };
 export { ITableHandler };

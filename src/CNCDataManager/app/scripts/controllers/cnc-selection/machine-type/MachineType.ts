@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import DataStroage from '../../../services/DataStroage';
 import SelectionNotification from '../../../services/SelectionNotification';
-import { ISelectionPartScope } from  '../../../types/ISelectionStateScope';
+import { ISelectionPartScope } from  '../../../types/CncSelection';
 
 interface IMachineTypeScope extends ISelectionPartScope {
     data:{

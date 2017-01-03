@@ -1,5 +1,5 @@
 ﻿import * as angular from 'angular';
-import { ISelectionStateScope, ISelectionData } from '../types/ISelectionStateScope';
+import { ISelectionStateScope, ISelectionData } from '../types/CncSelection';
 
 export default class SelectionNotification {
     private scopes: ISelectionStateScope[];

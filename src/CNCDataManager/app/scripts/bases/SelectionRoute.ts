@@ -13,6 +13,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
             .state('selection', {
                 url: '/selection',
                 templateUrl: './views/cnc-selection/controller-tpls/selection.html',
+                controller: 'SelectionCtrl'
             })
             .state('selection.MachineType', {
                 url: '/machinetype',

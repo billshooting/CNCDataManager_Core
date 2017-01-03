@@ -3,11 +3,11 @@ import * as angular from 'angular';
 import * as _ from 'lodash';
 import HttpProxy from './HttpProxy';
 import MessageTips from './MessageTips';
-import { ICncDataScope, IItem, IHandlingItems, ITableHandler } from '../types/ICncDataScope';
+import { ICncDataScope, IItem, IHandlingItems, ITableHandler } from '../types/CncData';
 
 export default class TableHandler {
-    public httpProxy: HttpProxy;
-    public message: MessageTips;
+    private httpProxy: HttpProxy;
+    private message: MessageTips;
 
     public constructor(httpProxy: HttpProxy, message: MessageTips)
     {

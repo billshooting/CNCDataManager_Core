@@ -1,5 +1,5 @@
 ﻿import * as angular from 'angular';
-import { ISelectionStateScope } from '../types/ISelectionStateScope';
+import { ISelectionStateScope } from '../types/CncSelection';
 import SelectionNotification from '../services/SelectionNotification';
 
 interface ISideMenuScope extends ISelectionStateScope{

@@ -1,5 +1,5 @@
 ﻿import * as angular from 'angular';
-import { ISelectionStateScope, ISelectionAxis } from '../types/ISelectionStateScope';
+import { ISelectionStateScope, ISelectionAxis } from '../types/CncSelection';
 import SelectionNotification from '../services/SelectionNotification';
 
 interface IProgressBarScope extends ISelectionStateScope {

@@ -5,6 +5,7 @@ import MessageTips from './MessageTips';
 import TableHandler from './TableHandler';
 import SelectionNotification from './SelectionNotification';
 import DataStroage from './DataStroage';
+import SelectionTableHandler from './SelectionTableHandler';
 
 export default function registerServices(app: angular.IModule): void {
     app.service('HttpProxy', HttpProxy);
@@ -13,4 +14,5 @@ export default function registerServices(app: angular.IModule): void {
     app.service('TableHandler', TableHandler);
     app.service('SelectionNotification', SelectionNotification);
     app.service('DataStroage', DataStroage);
+    app.service('SelectionTableHandler', SelectionTableHandler)
 };
