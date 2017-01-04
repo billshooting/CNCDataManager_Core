@@ -104,6 +104,20 @@ interface ICNCSystemSelectionScope extends ISelectionTableScope {
     };
 }
 
+/** Guide Selection TypeID */
+interface IGuideScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+        imgUrl: string
+    };
+}
+
 export { ISelectionAxis };
 export { ISelectionData };
 export { ISelectionStateScope };
@@ -114,3 +128,4 @@ export { IFilterPageBy };
 export { ICNCSystemFilterConditions };
 export { IFilterCNCSystemFiltrate };
 export { ICNCSystemSelectionScope };
+export { IGuideScope };

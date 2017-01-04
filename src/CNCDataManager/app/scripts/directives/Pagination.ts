@@ -19,6 +19,7 @@ let Pagination: angular.IDirectiveFactory = (): angular.IDirective => {
                         $scope.state.paginationAllIndex.push(i);
                     }
                 }
+                $scope.state.paginationIndex = 1;
             };
             $scope.previousPage = () =>{ $scope.state.paginationIndex--; };
             $scope.nextPage = () => { $scope.state.paginationIndex++; };

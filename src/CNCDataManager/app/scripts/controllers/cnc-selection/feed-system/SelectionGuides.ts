@@ -1,42 +1,38 @@
 import * as angular from 'angular';
-import { ICNCSystemSelectionScope, ICNCSystemFilterConditions } from '../../../types/CncSelection';
 import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
+import { IGuideScope } from '../../../types/CncSelection';
 
-export class CNCSystemType {
-    public constructor($scope: ICNCSystemSelectionScope, 
-                       tableHandler: SelectionTableHandler,
-                       $state: angular.ui.IStateService,
-                       dataStorage: DataStorage,
-                       notifier: SelectionNotification)
+export class SelectionGuides {
+    public constructor ($scope: IGuideScope,
+                        $state: angular.ui.IStateService,
+                        $stateParams: angular.ui.IStateParamsService,
+                        tableHandler: SelectionTableHandler,
+                        dataStorage: DataStorage,
+                        notifier: SelectionNotification)
     {
-        // 属性
-        $scope.ITEMNAME = 'ncsystems/';
+        $scope.ITEMNAME = 'linerollingguides/';
         $scope.items = [];
-        $scope.filtratedItems = [];
         $scope.state = {
             orderProperty: 'TypeID',
             paginationIndex: 1,
             paginationSize: 10,
             pageNumber: 1,
             paginationAllIndex: [1],
-            ManufacturerOptions: ["华中数控","广州数控","沈阳高精","北京航天数控"],
-            filtrateConditions: {
-                Manufacturer: null,
-                SupportChannels: 1,
-                MaxNumberOfFeedShafts: 1,
-                SupportMachineType: dataStorage.getObject('MachineType').support,
-            }
+            colState: [true, false, false],
+            axisID: null,
+            imgUrl: null,
         };
         $scope.data = {
-            selectedItem: null,
-            selectedTypeID: null
+            selectedTypeID: null,
+            selectedItem: null
         };
 
         // 方法
         let handler = tableHandler.buildTableHandler($scope);
         $scope.changeOrderProperty = handler.changeOrderProperty;
+        $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = item => {
             $scope.data.selectedItem = item as any;
             $scope.data.selectedTypeID = item.TypeID;
@@ -76,7 +72,13 @@ export class CNCSystemType {
             $scope.data = { selectedTypeID: null, selectedItem: null };
         };
 
+        //初始化
+        $scope.$watch(() => { return $stateParams['axis']; },
+                      (newValue: string) => { 
+                          $scope.state.axisID = newValue;
+                          $scope.state.imgUrl = './images/Mechanics/导轨-表/立铣' + newValue + '轴导轨.jpg'; 
+                        });
         tableHandler.Initialize($scope);
-    }
+    }  
 };
-CNCSystemType.$inject = ['$scope', 'SelectionTableHandler', '$state', 'DataStorage', 'SelectionNotification'];
+SelectionGuides.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];

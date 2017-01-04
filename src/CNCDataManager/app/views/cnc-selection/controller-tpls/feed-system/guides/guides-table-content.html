@@ -1,12 +1,12 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li><a ui-sref="FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">导轨列表</li>
         </ol>
         <div class="row">
             <div class="col-md-6">
-                <img src="{{imgsrc}}" class="img-thumbnail" alt="直线导轨尺寸" />
+                <img ng-src="{{state.imgUrl}}" class="img-thumbnail" alt="直线导轨尺寸" />
             </div>
             <form name="guideForm">
                 <div class="col-md-3">
@@ -124,63 +124,127 @@
         </div>
     </div>
     <div class="selection-content">
-        <div class="table-responsive">
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="state.colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>静力矩参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>质量参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>其他</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="btn-primary" ng-click="title=TypeID;desc=!desc" role="button">型号</th>
-                        <th class="btn-primary" ng-click="title=Manufacturer;desc=!desc" role="button">生产厂家</th>
-                        <th class="btn-primary" ng-click="title=SizeOfGuideFixedBolt;desc=!desc" role="button">导轨固定螺栓尺寸</th>
-                        <th class="btn-primary" ng-click="title=RollerType;desc=!desc" role="button">滚子类型</th>
-                        <th class="btn-primary" ng-click="title=BasicRatedDynamicLoad_C;desc=!desc" role="button">基本额定动载荷</th>
-                        <th class="btn-primary" ng-click="title=BasicRatedStaticLoad_C0;desc=!desc" role="button">基本额定静载荷</th>
-                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_MR;desc=!desc" role="button">容许静力矩MR</th>
-                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_Mp;desc=!desc" role="button">容许静力矩Mp</th>
-                        <th class="btn-primary" ng-click="title=AllowableStaticMoment_M_r;desc=!desc" role="button">容许静力矩Mr</th>
-                        <th class="btn-primary" ng-click="title=MassOfSlider;desc=!desc" role="button">滑块质量</th>
-                        <th class="btn-primary" ng-click="title=MassOfGuide;desc=!desc" role="button">导轨质量</th>
-                        <th class="btn-primary" ng-click="title=CoefficientOfFrictionGuidPairs;desc=!desc">导轨副的摩擦系数</th>
-                        <th class="btn-primary" ng-click="title=CoefficientOfViscousFriction;desc=!desc" role="button">粘滞摩擦因子</th>
-                        <th class="btn-primary freezingCol"></th>
+                        <td style="width: 30px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('RollerType')" title="按此列排序">
+                            滚子类型
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'RollerType'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-RollerType'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedDynamicLoad_C')" title="按此列排序">
+                            基本额定动载荷
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'BasicRatedDynamicLoad_C'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-BasicRatedDynamicLoad_C'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedStaticLoad_C0')" title="按此列排序">
+                            基本额定静载荷
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'BasicRatedStaticLoad_C0'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-BasicRatedStaticLoad_C0'"></span>
+                        </td>
+                        <td ng-show="state.colState[0]" class="table-td-orderable" ng-click="changeOrderProperty('AllowableStaticMoment_MR')" title="按此列排序">
+                            容许静力矩MR
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'AllowableStaticMoment_MR'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-AllowableStaticMoment_MR'"></span>
+                        </td>
+                        <td ng-show="state.colState[0]" class="table-td-orderable" ng-click="changeOrderProperty('AllowableStaticMoment_Mp')" title="按此列排序">
+                            容许静力矩Mp
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'AllowableStaticMoment_Mp'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-AllowableStaticMoment_Mp'"></span>
+                        </td>
+                        <td ng-show="state.colState[0]" class="table-td-orderable" ng-click="changeOrderProperty('AllowableStaticMoment_M_r')" title="按此列排序">
+                            容许静力矩Mr
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'AllowableStaticMoment_M_r'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-AllowableStaticMoment_M_r'"></span>
+                        </td>
+                        <td ng-show="state.colState[1]" class="table-td-orderable" ng-click="changeOrderProperty('MassOfSlider')" title="按此列排序">
+                            滑块质量
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'MassOfSlider'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-MassOfSlider'"></span>
+                        </td>
+                        <td ng-show="state.colState[1]" class="table-td-orderable" ng-click="changeOrderProperty('MassOfGuide')" title="按此列排序">
+                            导轨质量
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'MassOfGuide'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-MassOfGuide'"></span>
+                        </td>
+                        <td ng-show="state.colState[2]" class="table-td-orderable" ng-click="changeOrderProperty('CoefficientOfFrictionGuidPairs')" title="按此列排序">
+                            导轨副的摩擦系数
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'CoefficientOfFrictionGuidPairs'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-CoefficientOfFrictionGuidPairs'"></span>
+                        </td>
+                        <td ng-show="state.colState[2]" class="table-td-orderable" ng-click="changeOrderProperty('CoefficientOfViscousFriction')" title="按此列排序">
+                            粘滞摩擦因子
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'CoefficientOfViscousFriction'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-CoefficientOfViscousFriction'"></span>
+                        </td>
+                        <td ng-show="state.colState[2]" class="table-td-orderable" ng-click="changeOrderProperty('SizeOfGuideFixedBolt')" title="按此列排序">
+                            导轨固定螺栓尺寸
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'SizeOfGuideFixedBolt'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-SizeOfGuideFixedBolt'"></span>
+                        </td>
+                        <td>详情</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="LineRollingGuide in LineRollingGuides|LinnearRollingGuideFilt:guidPara.rollerType:guidPara.minLiveLoad:guidPara.minStaticLoad|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(LineRollingGuide)" ng-class="{tableSelected:LineRollingGuide.TypeID==LineRollingGuideSelected.TypeID}">
-                        <td>{{LineRollingGuide.TypeID}}</td>
-                        <td>{{LineRollingGuide.Manufacturer}}</td>
-                        <td>{{LineRollingGuide.SizeOfGuideFixedBolt}}</td>
-                        <td>{{LineRollingGuide.RollerType}}</td>
-                        <td>{{LineRollingGuide.BasicRatedDynamicLoad_C}}</td>
-                        <td>{{LineRollingGuide.BasicRatedStaticLoad_C0}}</td>
-                        <td>{{LineRollingGuide.AllowableStaticMoment_MR}}</td>
-                        <td>{{LineRollingGuide.AllowableStaticMoment_Mp}}</td>
-                        <td>{{LineRollingGuide.AllowableStaticMoment_M_r}}</td>
-                        <td>{{LineRollingGuide.MassOfSlider}}</td>
-                        <td>{{LineRollingGuide.MassOfGuide}}</td>
-                        <td>{{LineRollingGuide.CoefficientOfFrictionGuidPairs}}</td>
-                        <td>{{LineRollingGuide.CoefficientOfViscousFriction}}</td>
-                        <td class="freezingCol"><a ui-sref="FeedSystem.detail({id:LineRollingGuide.TypeID})">详情</a></td>
+                    <tr ng-repeat="item in items | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
+                        ng-click="selectItem(item)"
+                        ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                        class="selection-table-tr">
+                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="item.TypeID"></td>
+                        <td ng-bind="item.Manufacturer" type="text"></td>
+                        <td ng-bind="item.RollerType" type="text"></td>
+                        <td ng-bind="item.BasicRatedDynamicLoad_C" type="text"></td>
+                        <td ng-bind="item.BasicRatedStaticLoad_C0" type="text"></td>
+                        <td ng-show="state.colState[0]" ng-bind="item.AllowableStaticMoment_MR" type="text"></td>
+                        <td ng-show="state.colState[0]" ng-bind="item.AllowableStaticMoment_Mp" type="text"></td>
+                        <td ng-show="state.colState[0]" ng-bind="item.AllowableStaticMoment_M_r" type="text"></td>
+                        <td ng-show="state.colState[1]" ng-bind="item.MassOfSlider" type="text"></td>
+                        <td ng-show="state.colState[1]" ng-bind="item.MassOfGuide" type="text"></td>
+                        <td ng-show="state.colState[2]" ng-bind="item.CoefficientOfFrictionGuidPairs" type="text"></td>
+                        <td ng-show="state.colState[2]" ng-bind="item.CoefficientOfViscousFriction" type="text"></td>
+                        <td ng-show="state.colState[2]" ng-bind="item.SizeOfGuideFixedBolt" type="text"></td>
+                        <td><a ui-sref="selection.FeedSystem.Guides.Details({id:item.TypeID})">详情</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="row form-horizontal">
-            <div class="form-group">
-                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
-                <div class="col-md-2">
-                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
-                </div>
-                <div class="col-md-6 col-md-offset-1">
-                    <uib-pagination boundary-links="true" total-items="LineRollingGuides|LinnearRollingGuideFilt:guidPara.rollerType:guidPara.minLiveLoad:guidPara.minStaticLoad|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
-                </div>
-            </div>
-        </div>
+        <cnc-pagination></cnc-pagination>
         <div class="row">
             <div class="col-md-offset-8 col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!LineRollingGuideSelected.TypeID">下 一 步</button>
+                <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下一步</button>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            <div>
+                <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>
             </div>
         </div>
     </div>

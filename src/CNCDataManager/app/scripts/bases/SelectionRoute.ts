@@ -68,13 +68,14 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     '': {
                         templateUrl: './views/cnc-selection/controller-tpls/selection.html',
-                        controller: 'SelectionCtrl'
                     },
                     'leftside@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/feed-system-leftside.html',
+                        controller: 'FeedSystemLeftSideCtrl'
                     },
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/guides/guides-table-content.html',
+                        controller: 'SelectionGuidesCtrl'
                     }
                 }
             })
@@ -83,6 +84,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/guides/guides-table-content.html',
+                        controller: 'SelectionGuidesCtrl'
                     }
                 }
             })

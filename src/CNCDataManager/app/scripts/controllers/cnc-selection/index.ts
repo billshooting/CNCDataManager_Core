@@ -4,6 +4,8 @@ import { MachineType } from './machine-type/MachineType';
 import { MachineDetails } from './machine-type/MachineDetails';
 import { CNCSystemType } from './cncsystem/CNCSystemType';
 import { CNCSystemAccessories } from './cncsystem/CNCSystemAccessories';
+import { FeedSystemLeftSide } from './feed-system/FeedSystemLeftSide';
+import { SelectionGuides } from './feed-system/SelectionGuides';
 
 export default function registerSelectionControllers(app: angular.IModule): void {
     app.controller('SelectionCtrl', Selection);
@@ -11,4 +13,6 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('MachineDetailsCtrl', MachineDetails);
     app.controller('CNCSystemTypeCtrl', CNCSystemType);
     app.controller('CNCSystemAccessoriesCtrl', CNCSystemAccessories);
+    app.controller('FeedSystemLeftSideCtrl', FeedSystemLeftSide);
+    app.controller('SelectionGuidesCtrl', SelectionGuides);
 }

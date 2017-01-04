@@ -31,7 +31,6 @@
     <Content Include="app\css\directives\side-menu.css" />
     <Content Include="app\css\others\feedSystem.css" />
     <Content Include="app\css\others\reset.css" />
-    <Content Include="app\css\others\_LayoutPage_Selection.css" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\images\back-to-top-icon.png" />
     <Content Include="app\images\CNC\CNCSystem\CASNUC2000TA.jpg" />
@@ -221,6 +220,7 @@
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\machine-type-leftside.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\working-conditions-content.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\selection.html" />
+    <Content Include="app\views\directives\cnc-pagination.html" />
     <Content Include="app\views\directives\progress-bar.html" />
     <Content Include="app\views\directives\side-menu.html" />
     <Content Include="dist\lib\bootstrap\bootstrap.min.css" />
