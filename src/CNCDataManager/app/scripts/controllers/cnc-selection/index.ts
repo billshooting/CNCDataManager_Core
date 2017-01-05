@@ -6,6 +6,8 @@ import { CNCSystemType } from './cncsystem/CNCSystemType';
 import { CNCSystemAccessories } from './cncsystem/CNCSystemAccessories';
 import { FeedSystemLeftSide } from './feed-system/FeedSystemLeftSide';
 import { SelectionGuides } from './feed-system/SelectionGuides';
+import { SelectionScrewNuts } from './feed-system/SelectionScrewNuts';
+import { SelectionBearings } from './feed-system/SelectionBearings';
 
 export default function registerSelectionControllers(app: angular.IModule): void {
     app.controller('SelectionCtrl', Selection);
@@ -15,4 +17,6 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('CNCSystemAccessoriesCtrl', CNCSystemAccessories);
     app.controller('FeedSystemLeftSideCtrl', FeedSystemLeftSide);
     app.controller('SelectionGuidesCtrl', SelectionGuides);
+    app.controller('SelectionScrewNutsCtrl', SelectionScrewNuts);
+    app.controller('SelectionBearingsCtrl', SelectionBearings);
 }

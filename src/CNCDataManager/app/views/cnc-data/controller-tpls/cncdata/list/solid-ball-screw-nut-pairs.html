@@ -1,0 +1,228 @@
+﻿<div class="list-content">
+    <div>
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-list"></span>
+            滚珠丝杠螺母副参数表
+            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+        </h4>
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col" ng-switch="colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>钢球尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>丝杠尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>配合尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>极限转速</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>外形参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>物理性质</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="colState[6]" ng-click="toggleCol(6, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>说明</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedDynamicLoad_Ca')" title="按此列排序">
+                            基本额定动载荷Ca
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'BasicRatedDynamicLoad_Ca'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-BasicRatedDynamicLoad_Ca'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedStaticLoad_Coa')" title="按此列排序">
+                            基本额定静载荷Coa
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'BasicRatedStaticLoad_Coa'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-BasicRatedStaticLoad_Coa'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NominalDiameter_d0')" title="按此列排序">
+                            公称直径d0
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NominalDiameter_d0'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NominalDiameter_d0'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NominalLead_Ph0')" title="按此列排序">
+                            公称导程Ph0
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NominalLead_Ph0'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NominalLead_Ph0'"></span>
+                        </td>
+                        <td>刚度</td>
+
+                        <td ng-if="colState[0]">钢球直径DW</td>
+                        <td ng-if="colState[1]">丝杠外径d1</td>
+                        <td ng-if="colState[1]">丝杠底径d2</td>
+                        <td ng-if="colState[2]">轴承内径配合直径</td>
+                        <td ng-if="colState[2]">联轴器轴孔配合直径</td>
+                        <td ng-if="colState[3]">极限转速</td>
+
+                        <td ng-if="colState[4]">两双推轴承之间的距离</td>
+                        <td ng-if="colState[4]">丝杠总长L</td>
+                        <td ng-if="colState[4]">循环总圈数n</td>
+                        <td ng-if="colState[4]">尺寸D3</td>
+                        <td ng-if="colState[4]">尺寸D4</td>
+                        <td ng-if="colState[4]">尺寸D5</td>
+                        <td ng-if="colState[4]">尺寸D6</td>
+                        <td ng-if="colState[4]">尺寸D7</td>
+                        <td ng-if="colState[4]">尺寸L1</td>
+                        <td ng-if="colState[4]">螺钉孔个数m</td>
+
+                        <td ng-if="colState[5]">密度</td>
+                        <td ng-if="colState[5]">弹性模量</td>
+                        <td ng-if="colState[5]">剪切弹性模量</td>
+                        <td ng-if="colState[5]">丝杠与螺母结合面径向阻尼系数</td>
+                        <td ng-if="colState[5]">滚珠丝杠副处的粘滞摩擦因素</td>
+                        <td ng-if="colState[5]">滚珠丝杠预紧效率</td>
+
+                        <td ng-if="colState[6]">说明</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="model in items | orderBy: orderProperty">
+                        <td style="width: 100px">
+                            {{$index + 1}}
+                            <span class="glyphicon glyphicon-pencil span-button pull-right" title="编辑这条记录" ng-click="updateItemLocal(model)"></span>
+                            <button type="button" class="close" ng-click="showDeleteModal(model)" title="在数据库中删除这条记录">&times;</button>
+                        </td>
+                        <td>{{model.TypeID}}</td>
+                        <td ng-bind="model.Manufacturer" type="text"></td>
+                        <td ng-bind="model.BasicRatedDynamicLoad_Ca" type="number"></td>
+                        <td ng-bind="model.BasicRatedStaticLoad_Coa" type="number"></td>
+                        <td ng-bind="model.NominalDiameter_d0" type="number"></td>
+                        <td ng-bind="model.NominalLead_Ph0" type="number"></td>
+                        <td ng-bind="model.Stiffness" type="number"></td>
+
+                        <td ng-if="colState[0]" ng-bind="model.DiameterOfSteelBall_DW" type="number"></td>
+                        <td ng-if="colState[1]" ng-bind="model.OuterDiameterOfScrew_d1" type="number"></td>
+                        <td ng-if="colState[1]" ng-bind="model.BottomDiameterOfScrew_d2" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.AdaptableDiameterWithBearing" type="number"></td>
+                        <td ng-if="colState[2]" ng-bind="model.AdaptableDiameterWithCouplingShaftHole" type="number"></td>
+                        <td ng-if="colState[3]" ng-bind="model.LimitRotationSpeed" type="number"></td>
+
+                        <td ng-if="colState[4]" ng-bind="model.DistanceBetweenTwoPushBearings" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.LengthOfScrew_L" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.TotalCycleTurns_n" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_D3" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_D4" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_D5" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_D6" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_D7" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.Size_L1" type="number"></td>
+                        <td ng-if="colState[4]" ng-bind="model.NumberOfScrewHoles_m" type="number"></td>
+
+                        <td ng-if="colState[5]" ng-bind="model.Density" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.ElasticModulus" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.ShearElasticModulus" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.RadialDampingCoefficient" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.ViscousFrictionFactor" type="number"></td>
+                        <td ng-if="colState[5]" ng-bind="model.EfficiencyOfBallScrewPreload" type="number"></td>
+
+                        <td ng-if="colState[6]" ng-bind="model.Description" type="text"></td>
+                    </tr>
+                    <tr ng-show="addingItems.length">
+                        <td colspan="6">
+                            <span class="text-center">下方为表格编辑区，可直接在表格内编辑</span>
+                            <span class="span-button pull-right" ng-click="updateItemsRemote()" title="保存所有修改到数据库">保存所有</span>
+                        <td>
+                    </tr>
+                    <tr ng-repeat="item in addingItems">
+                        <td class="table-td-btn" ng-click="addItemRemote(item)">
+                            添加到数据库
+                            <button type="button" class="close" ng-click="deleteItemLocal(item)">&times;</button>
+                        </td>
+                        <td class="" ng-bind="item.TypeID"></td>
+                        <td contenteditable="true" ng-model="item.Manufacturer" type="text"></td>
+                        <td contenteditable="true" ng-model="item.BasicRatedDynamicLoad_Ca" type="number"></td>
+                        <td contenteditable="true" ng-model="item.BasicRatedStaticLoad_Coa" type="number"></td>
+                        <td contenteditable="true" ng-model="item.Stiffness" type="number"></td>
+                        <td contenteditable="true" ng-model="item.NominalDiameter_d0" type="number"></td>
+                        <td contenteditable="true" ng-model="item.NominalLead_Ph0" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[0]" ng-model="item.DiameterOfSteelBall_DW" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[1]" ng-model="item.OuterDiameterOfScrew_d1" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[1]" ng-model="item.BottomDiameterOfScrew_d2" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[2]" ng-model="item.AdaptableDiameterWithBearing" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[2]" ng-model="item.AdaptableDiameterWithCouplingShaftHole" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[3]" ng-model="item.LimitRotationSpeed" type="number"></td>
+
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.DistanceBetweenTwoPushBearings" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.LengthOfScrew_L" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.TotalCycleTurns_n" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_D3" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_D4" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_D5" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_D6" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_D7" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.Size_L1" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[4]" ng-model="item.NumberOfScrewHoles_m" type="number"></td>
+
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.Density" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.ElasticModulus" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.ShearElasticModulus" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.RadialDampingCoefficient" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.ViscousFrictionFactor" type="number"></td>
+                        <td contenteditable="true" ng-if="colState[5]" ng-model="item.EfficiencyOfBallScrewPreload" type="number"></td>
+
+                        <td contenteditable="true" ng-if="colState[6]" ng-model="item.Description" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            添加数据
+                            <button type="button" class="btn btn-success btn-xs pull-right" ng-click="showAddModal()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="list-desc">
+        <h4 class="head-title">
+            <span class="glyphicon glyphicon-tags"></span>
+            尺寸说明
+        </h4>
+        <div class="row">
+            <div class="col-sm-6 list-desc-img">
+                <img src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg" />
+            </div>
+            <div class="col-sm-6 list-desc-txt">
+                <p>
+                    滚珠丝杠，通常作为机床进给轴的传动轴出现。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

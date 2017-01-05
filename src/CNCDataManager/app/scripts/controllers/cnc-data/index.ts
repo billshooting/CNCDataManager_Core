@@ -36,6 +36,7 @@ import { PlumShapedFlexibleCouplings } from './cncdata/list/PlumShapedFlexibleCo
 import { PMServoMotorDrivers } from './cncdata/list/PMServoMotorDrivers';
 import { PMServoMotorTechParameters } from './cncdata/list/PMServoMotorTechParameters';
 import { RotaryTables } from './cncdata/list/RotaryTables';
+import { SolidBallScrewNutPairs } from './cncdata/list/SolidBallScrewNutPairs';
 import { SpindleBeltLengthParameters } from './cncdata/list/SpindleBeltLengthParameters';
 import { SpindleBeltTechParameters } from './cncdata/list/SpindleBeltTechParameters';
 import { SpindleBeltSizeParameters } from './cncdata/list/SpindleBeltSizeParameters';
@@ -87,6 +88,7 @@ export default function registerControllers(app: angular.IModule): void {
     app.controller('PMServoMotorDriversCtrl', PMServoMotorDrivers);
     app.controller('PMServoMotorTechParametersCtrl', PMServoMotorTechParameters);
     app.controller('RotaryTablesCtrl', RotaryTables);
+    app.controller('SolidBallScrewNutPairsCtrl', SolidBallScrewNutPairs);
     app.controller('SpindleBeltLengthParametersCtrl', SpindleBeltLengthParameters);
     app.controller('SpindleBeltTechParametersCtrl', SpindleBeltTechParameters);
     app.controller('SpindleBeltSizeParametersCtrl', SpindleBeltSizeParameters);

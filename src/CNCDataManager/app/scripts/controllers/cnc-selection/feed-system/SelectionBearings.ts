@@ -2,17 +2,17 @@ import * as angular from 'angular';
 import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
-import { IGuideScope, ISelectionAxis } from '../../../types/CncSelection';
+import { IBearingsScope, ISelectionAxis } from '../../../types/CncSelection';
 
-export class SelectionGuides {
-    public constructor ($scope: IGuideScope,
+export class SelectionBearings {
+    public constructor ($scope: IBearingsScope,
                         $state: angular.ui.IStateService,
                         $stateParams: angular.ui.IStateParamsService,
                         tableHandler: SelectionTableHandler,
                         dataStorage: DataStorage,
                         notifier: SelectionNotification)
     {
-        $scope.ITEMNAME = 'linerollingguides/';
+        $scope.ITEMNAME = 'angcontactballbrgs/';
         $scope.items = [];
         $scope.state = {
             orderProperty: 'TypeID',
@@ -20,10 +20,23 @@ export class SelectionGuides {
             paginationSize: 10,
             pageNumber: 1,
             paginationAllIndex: [1],
-            colState: [true, false, false],
+            colState: [true, true, true, false, false, false],
             axisID: null,
-            imgUrl: null,
-        };
+            bearingsTypeOptions: [
+                { name: '角接触球轴承', type: 'ball', url: 'angcontactballbrgs'},
+                { name: '深沟球轴承', type: 'ball', url: 'deepgrooveballbrgs' },
+                { name: '圆锥滚子轴承', type: 'roller', url: 'taperedrollerbrgs'},
+                { name: '圆柱滚子轴承', type: 'roller', url: 'cylinrollerbrgs'},
+                { name: '调心滚子轴承', type: 'roller', url: 'alignrollerbrgs'},
+                { name: '调心球轴承', type: 'ball', url: 'alignballbrgs'},
+                { name: '滚珠丝杠支撑轴承', type: 'ball', url: 'ballleadscrewsptbrgs'},
+                { name: '交叉圆锥滚子轴承', type: 'roller', url: 'xtaperedrollerbrgs'},
+                { name: '双列圆柱滚子轴承', type: 'roller', url: 'doublerowcylinrollerbrgs'},
+                { name: '双向推力角接触球轴承', type: 'ball', url: 'doublethrustangcontactballbrgs'},
+                //{ name: '滚针轴承和推力滚子组合轴承', type: 'roller', url: 'needlerollerthrustrollerbrgs'},
+            ],
+            currentBearingsType: { name: '角接触球轴承', type: 'ball', url: 'angcontactballbrgs'},
+        }
         $scope.data = {
             selectedTypeID: null,
             selectedItem: null
@@ -53,24 +66,29 @@ export class SelectionGuides {
             $scope.state.paginationIndex = 1;
         };
 
+        $scope.changeBearingsType = (): void => {
+            $scope.ITEMNAME = $scope.state.currentBearingsType.url;
+            tableHandler.Initialize($scope);
+        }
+
         $scope.nextStep = () =>　{
-            let key = 'FeedSystem' + $scope.state.axisID + 'Guide';
+            let key = 'FeedSystem' + $scope.state.axisID + 'Bearings';
             dataStorage.setObject(key, $scope.data.selectedItem);
             notifier.notifyChange(data => {
                 let feedSystem: ISelectionAxis = null;
                 if($scope.state.axisID === 'X') feedSystem = data.FeedSystemX;
                 else if($scope.state.axisID === 'Y') feedSystem = data.FeedSystemY;
                 else feedSystem = data.FeedSystemZ; 
-                let indentifiedValue = feedSystem.Guide.IsShown; 
-                feedSystem.Guide = {
+                let indentifiedValue = feedSystem.Bearings.IsShown; 
+                feedSystem.Bearings = {
                     IsSelected: true,
                     TypeID: $scope.data.selectedTypeID,
                     Manufacturer: $scope.data.selectedItem.Manufacturer,
                     IsShown: indentifiedValue,
-                    ImgUrl: './images/Mechanics/导轨-表/Guide.jpg',
+                    ImgUrl: './images/Mechanics/滚动轴承-表/滚动轴承.jpg',
                 };
             });
-            $state.go('selection.FeedSystem.ScrewNuts');
+            $state.go('selection.FeedSystem.Couplings');
         };
 
         $scope.reset = () => {
@@ -78,12 +96,9 @@ export class SelectionGuides {
         };
 
         //初始化
-        $scope.$watch(() => { return $stateParams['axis']; },
-                      (newValue: string) => { 
-                          $scope.state.axisID = newValue;
-                          $scope.state.imgUrl = './images/Mechanics/导轨-表/立铣' + newValue + '轴导轨.jpg'; 
-                        });
+        $scope.state.axisID = $stateParams['axis'];
         tableHandler.Initialize($scope);
-    }  
+    }
 };
-SelectionGuides.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];
+
+SelectionBearings.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];

@@ -104,7 +104,7 @@ interface ICNCSystemSelectionScope extends ISelectionTableScope {
     };
 }
 
-/** Guide Selection TypeID */
+/** Guide Selection Type */
 interface IGuideScope extends ISelectionTableScope {
     state: {
         orderProperty: string;
@@ -118,6 +118,35 @@ interface IGuideScope extends ISelectionTableScope {
     };
 }
 
+/** ScrewNuts Selection Type */
+interface IScrewNutsScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+    };
+}
+
+/** Bearings Selection Type */
+interface IBearingsScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+        bearingsTypeOptions: { name: string; type: string; url: string}[];
+        currentBearingsType: { name: string; type: string; url: string},
+    };
+    changeBearingsType: () => void;
+}
+
 export { ISelectionAxis };
 export { ISelectionData };
 export { ISelectionStateScope };
@@ -129,3 +158,5 @@ export { ICNCSystemFilterConditions };
 export { IFilterCNCSystemFiltrate };
 export { ICNCSystemSelectionScope };
 export { IGuideScope };
+export { IScrewNutsScope };
+export { IBearingsScope };

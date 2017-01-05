@@ -15,7 +15,7 @@ namespace CNCDataManager.Controllers.APIs
     {
         private CNCMachineData db;
 
-        TaperedRollerBrgsController(CNCMachineData data)
+        public TaperedRollerBrgsController(CNCMachineData data)
         {
             db = data;
         }

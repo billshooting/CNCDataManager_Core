@@ -101,6 +101,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/screw-nuts/screw-nuts-table-content.html',
+                        controller: 'SelectionScrewNutsCtrl',
                     }
                 }
             })
@@ -117,6 +118,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/bearings/bearings-table-content.html',
+                        controller: 'SelectionBearingsCtrl',
                     }
                 }
             })

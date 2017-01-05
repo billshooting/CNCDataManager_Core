@@ -319,6 +319,15 @@ export default function registerRoute(app: angular.IModule): void {
                     }
                 }
             })
+            .state('cncdata.list.SolidBallScrewNutPairs', {
+                url: '/solidballscrewnutpairs',
+                views: {
+                    'list@cncdata.list': {
+                        templateUrl: './views/cnc-data/controller-tpls/cncdata/list/solid-ball-screw-nut-pairs.html',
+                        controller: 'SolidBallScrewNutPairsCtrl'
+                    }
+                }
+            })
             .state('cncdata.list.SpindleBeltLengthParameters', {
                 url: '/spindlebeltlengthparameters',
                 views: {
