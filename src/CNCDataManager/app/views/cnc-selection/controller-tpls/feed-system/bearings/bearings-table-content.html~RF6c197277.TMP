@@ -1,0 +1,195 @@
+﻿<div>
+    <div class="selection-content">
+        <ol class="breadcrumb">
+            <li><a ui-sref="FeedSystem">进给轴{{state.axisID}}轴</a></li>
+            <li class="active">{{state.currentBearingsType}}列表</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg" class="img-thumbnail" alt="轴承">
+            </div>
+            <form name="bearingForm">
+                <div class="col-md-3">
+                    <div class="panel panel-default panel-green">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">轴承参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="control-label" for="bearingType">轴承类型:</label>
+                                    <select id="bearingType" class="form-control" ng-options="data as data.name for data in state.bearingsTypeOptions" ng-model="state.currentBearingsType" style="width:100%;padding-left:0" ng-change="changeBearingsType()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="compoundMode">组合方式:</label>
+                                    <select id="compoundMode" class="form-control" ng-options="data as data.name for data in compoundModeOptions" ng-model="bearingPara.compoundMode"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="contol-label" for="lubricationMethod">润滑方式:</label>
+                                    <select id="lubricationMethod" class="form-control" ng-options="data for data in lubricationMethodOptions" ng-model="bearingPara.lubricationMethod"
+                                            ng-change="getData(bearingPara.lubricationMethod)"></select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':bearingForm.lifetime.$invalid && !bearingForm.lifetime.$pristine}">
+                                    <label for="lifetime" class="control-label">使用寿命:</label>
+                                    <input id="lifetime" name="lifetime" class="form-control" type="number" ng-model="bearingPara.lifetime" palceholder="请输入值" style="width:50%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                    <label class="control-label">h</label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':bearingForm.impactLoadFactor.$invalid && !bearingForm.impactLoadFactor.$pristine}">
+                                    <label for="impactLoadFactor" class="control-label">冲击载荷系数:</label>
+                                    <input id="impactLoadFactor" name="impactLoadFactor" class="form-control" type="number" ng-model="bearingPara.impactLoadFactor" palceholder="请输入值" data-content="按1.2-1.8选取" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':bearingForm.loadMomentFactor.$invalid && !bearingForm.loadMomentFactor.$pristine}">
+                                    <label for="loadMomentFactor" class="control-label">力矩载荷系数:</label>
+                                    <input id="loadMomentFactor" name="loadMomentFactor" class="form-control" type="number" ng-model="bearingPara.loadMomentFactor" palceholder="请输入值" data-content="力矩载荷较小时取1.5；力矩载荷较大时取2。" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':bearingForm.temperatureVariation.$invalid && !bearingForm.temperatureVariation.$pristine}">
+                                    <label for="temperatureVariation" class="control-label">工作温度变化:</label>
+                                    <input id="temperatureVariation" name="temperatureVariation" class="form-control" type="number" ng-model="bearingPara.tempeartureVariation" palceholder="请输入值" data-content="按2-3°选取" style="width:40%" ng-pattern="/^(0*\.\d*[1-9]\d*|\d*[1-9]\d*\.\d*|\d*[1-9]\d*)$/" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">计算结果</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="bearingBoreDiameter" class="control-label">轴承内径:</label>
+                                    <p class="form-control-static">{{caculation.bearingBoreDiameter}}</p>
+                                    <label class="control-label">mm</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bearingLimitSpeed" class="control-label">极限转速:</label>
+                                    <p class="form-control-static">{{caculation.bearingLimitSpeed}}</p>
+                                    <label class="control-label">r/min</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ratedDynamicLoad" class="control-label">额定动载荷:</label>
+                                    <p class="form-control-static">{{caculation.ratedDynamicLoad}}</p>
+                                    <label class="control-label">N</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()" ng-disabled="bearingForm.$invalid">计算</button>
+                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="selection-content">
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="state.colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>内径d</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="state.colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>外径D</span>
+            </div>
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="state.colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>载荷参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>接触角</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>速度参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>其他参数</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('InnerDiameter_d')" ng-show="state.colState[0]" title="按此列排序">
+                            内径 (d/mm)
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'InnerDiameter_d'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-InnerDiameter_d'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Diameter_D')" ng-show="state.colState[1]" title="按此列排序">
+                            外径 (D/mm)
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Diameter_D'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Diameter_D'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedDynamicLoad')" ng-show="state.colState[2]" title="按此列排序">
+                            基本额定动载荷
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'BasicRatedDynamicLoad'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-BasicRatedDynamicLoad'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedStaticLoad')" ng-show="state.colState[2]" title="按此列排序">
+                            基本额定静载荷
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'BasicRatedStaticLoad'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-BasicRatedStaticLoad'"></span>
+                        </td>
+                        <td ng-if="state.colState[3]">接触角α</td>
+                        <td ng-if="state.colState[4]">脂润滑极限速度</td>
+                        <td ng-if="state.colState[4]">油润滑极限速度</td>
+                        <td ng-if="state.colState[5]">轴承轴向刚度</td>
+                        <td ng-if="state.colState[5]">轴承启动转矩</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
+                        ng-click="selectItem(item)"
+                        ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                        class="selection-table-tr">
+                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="item.TypeID"></td>
+                        <td ng-bind="item.Manufacturer" type="text"></td>
+                        <td ng-if="state.colState[0]" ng-bind="item.InnerDiameter_d" type="number"></td>
+                        <td ng-if="state.colState[1]" ng-bind="item.Diameter_D" type="number"></td>
+                        <td ng-if="state.colState[2]" ng-bind="item.BasicRatedDynamicLoad"></td>
+                        <td ng-if="state.colState[2]" ng-bind="item.BasicRatedStaticLoad"></td>
+                        <td ng-if="state.colState[3]" ng-bind="item.ContactAngle_Alpha" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.SpeedLimitOfGrease" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.SpeedLimitOfOil" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.BearingAxialStiffness" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.BearingStartingTorque" type="number"></td>
+
+                        <td><a ui-sref="selection.FeedSystem.ScrewNuts.Details({id:item.TypeID})">详情</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <cnc-pagination></cnc-pagination>
+        <div class="row">
+            <div class="col-md-offset-8 col-md-2">
+                <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下一步</button>
+            </div>
+            <div>
+                <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>

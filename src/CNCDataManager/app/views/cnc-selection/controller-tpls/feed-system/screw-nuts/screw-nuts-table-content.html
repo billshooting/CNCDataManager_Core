@@ -1,7 +1,7 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li><a ui-sref="FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">滚珠丝杠列表</li>
         </ol>
         <div class="row">
@@ -10,7 +10,7 @@
             </div>
             <form name="ballscrewForm">
                 <div class="col-md-4">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default panel-green">
                         <div class="panel-heading">
                             <h3 class="panel-title">滚珠丝杠参数</h3>
                         </div>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default panel-green">
                         <div class="panel-heading">
                             <h3 class="panel-title">计算结果</h3>
                         </div>
@@ -95,8 +95,8 @@
                             </div>
                             <p class="text-danger" ng-bind="message"></p>
                             <div class="row">
-                                <button type="button" class="btn btn-primary col-md-3 col-md-offset-2" ng-click="caculate()" ng-disabled="ballscrewForm.$invalid">计算</button>
-                                <button type="button" class="btn btn-primary col-md-3 col-md-offset-2" ng-click="reset()">重置</button>
+                                <button type="button" class="btn btn-success col-md-3 col-md-offset-2" ng-click="caculate()" ng-disabled="ballscrewForm.$invalid">计算</button>
+                                <button type="button" class="btn btn-success col-md-3 col-md-offset-2" ng-click="reset()">重置</button>
                             </div>
                         </div>
                     </div>
@@ -105,83 +105,154 @@
         </div>
     </div>
     <div class="selection-content">
-        <div class="table-responsive">
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col" ng-switch="state.colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>钢球尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>丝杠尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>配合尺寸</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>极限转速</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[4]" ng-click="toggleCol(4, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>外形参数</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[5]" ng-click="toggleCol(5, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>物理性质</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
-                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
-                        <th class="btn-primary" ng-click="title='BasicRatedDynamicLoad_Ca';desc=!desc" role="button">基本额定动载荷Ca</th>
-                        <th class="btn-primary" ng-click="title='BasicRatedStaticLoad_Coa';desc=!desc" role="button">基本额定静载荷Coa</th>
-                        <th class="btn-primary" ng-click="title='Stiffness';desc=!desc" role="button">刚度</th>
-                        <th class="btn-primary" ng-click="title='NominalDiameter_d0';desc=!desc" role="button">公称直径d0</th>
-                        <th class="btn-primary" ng-click="title='NominalLead_Ph0';desc=!desc" role="button">公称导程ph0</th>
-                        <th class="btn-primary" ng-click="title='OuterDiameterOfScrew_d1';desc=!desc" role="button">丝杠外径d1</th>
-                        <th class="btn-primary" ng-click="title='DiameterOfSteelBall_DW';desc=!desc" role="button">钢球直径DW</th>
-                        <th class="btn-primary" ng-click="title='BottomDiameterOfScrew_d2';desc=!desc" role="button">丝杠底径d2</th>
-                        <th class="btn-primary" ng-click="title='AdaptableDiameterWithBearing';desc=!desc" role="button">轴承配合直径</th>
-                        <th class="btn-primary" ng-click="title='AdaptableDiameterWithCouplingShaftHole';desc=!desc" role="button">联轴器轴孔配合直径</th>
-                        <th class="btn-primary" ng-click="title='LimitRotationSpeed';desc=!desc" role="button">极限转速</th>
-                        <th class="btn-primary" ng-click="title='DistanceBetweenTwoPushBearings';desc=!desc" role="button">两双推轴承之间的距离</th>
-                        <th class="btn-primary" ng-click="title='LengthOfScrew_L';desc=!desc" role="button">丝杠长度L</th>
-                        <th class="btn-primary" ng-click="title='TotalCycleTurns_n';desc=!desc" role="button">循环总圈数n</th>
-                        <th class="btn-primary" ng-click="title='NumberOfScrewHoles_m';desc=!desc" role="button">螺栓孔数目m</th>
-                        <th class="btn-primary" ng-click="title='Density';desc=!desc" role="button">密度</th>
-                        <th class="btn-primary" ng-click="title='ElasticModulus';desc=!desc" role="button">弹性模量</th>
-                        <th class="btn-primary" ng-click="title='ShearElasticModulus';desc=!desc" role="button">剪切弹性模量</th>
-                        <th class="btn-primary" ng-click="title='RadialDampingCoefficient';desc=!desc" role="button">丝杠与螺母结合面径向阻尼系数</th>
-                        <th class="btn-primary" ng-click="title='ViscousFrictionFactor';desc=!desc" role="button">滚珠丝杠副处的粘滞摩擦因素</th>
-                        <th class="btn-primary" ng-click="title='EfficiencyOfBallScrewPreload';desc=!desc" role="button">滚珠丝杠预紧效率</th>
-                        <th class="btn-primary"></th>
+                        <td style="width: 100px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedDynamicLoad_Ca')" title="按此列排序">
+                            基本额定动载荷Ca
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'BasicRatedDynamicLoad_Ca'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-BasicRatedDynamicLoad_Ca'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('BasicRatedStaticLoad_Coa')" title="按此列排序">
+                            基本额定静载荷Coa
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'BasicRatedStaticLoad_Coa'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-BasicRatedStaticLoad_Coa'"></span>
+                        </td>
+                        
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NominalDiameter_d0')" title="按此列排序">
+                            公称直径d0
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'NominalDiameter_d0'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-NominalDiameter_d0'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NominalLead_Ph0')" title="按此列排序">
+                            公称导程Ph0
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="state.orderProperty === 'NominalLead_Ph0'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="state.orderProperty === '-NominalLead_Ph0'"></span>
+                        </td>
+                        <td>刚度</td>
+                        <td ng-if="state.colState[0]">钢球直径DW</td>
+                        <td ng-if="state.colState[1]">丝杠外径d1</td>
+                        <td ng-if="state.colState[1]">丝杠底径d2</td>
+                        <td ng-if="state.colState[2]">轴承内径配合直径</td>
+                        <td ng-if="state.colState[2]">联轴器轴孔配合直径</td>
+                        <td ng-if="state.colState[3]">极限转速</td>
+
+                        <td ng-if="state.colState[4]">两双推轴承之间的距离</td>
+                        <td ng-if="state.colState[4]">丝杠总长L</td>
+                        <td ng-if="state.colState[4]">循环总圈数n</td>
+                        <td ng-if="state.colState[4]">尺寸D3</td>
+                        <td ng-if="state.colState[4]">尺寸D4</td>
+                        <td ng-if="state.colState[4]">尺寸D5</td>
+                        <td ng-if="state.colState[4]">尺寸D6</td>
+                        <td ng-if="state.colState[4]">尺寸D7</td>
+                        <td ng-if="state.colState[4]">尺寸L1</td>
+                        <td ng-if="state.colState[4]">螺钉孔个数m</td>
+
+                        <td ng-if="state.colState[5]">密度</td>
+                        <td ng-if="state.colState[5]">弹性模量</td>
+                        <td ng-if="state.colState[5]">剪切弹性模量</td>
+                        <td ng-if="state.colState[5]">丝杠与螺母结合面径向阻尼系数</td>
+                        <td ng-if="state.colState[5]">滚珠丝杠副处的粘滞摩擦因素</td>
+                        <td ng-if="state.colState[5]">滚珠丝杠预紧效率</td>
+
+                        <td>详情</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="ballscrew in ballscrews|SolidBallScrewNutPairsFilt:caculation|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(ballscrew)" ng-class="{tableSelected:ballscrew.TypeID==ballscrewSelected.TypeID}">
-                        <td>{{ballscrew.TypeID}}</td>
-                        <td>{{ballscrew.Manufacturer}}</td>
-                        <td>{{ballscrew.BasicRatedDynamicLoad_Ca}}</td>
-                        <td>{{ballscrew.BasicRatedStaticLoad_Coa}}</td>
-                        <td>{{ballscrew.Stiffness}}</td>
-                        <td>{{ballscrew.NominalDiameter_d0}}</td>
-                        <td>{{ballscrew.NominalLead_Ph0}}</td>
-                        <td>{{ballscrew.OuterDiameterOfScrew_d1}}</td>
-                        <td>{{ballscrew.DiameterOfSteelBall_DW}}</td>
-                        <td>{{ballscrew.BottomDiameterOfScrew_d2}}</td>
-                        <td>{{ballscrew.AdaptableDiameterWithBearing}}</td>
-                        <td>{{ballscrew.AdaptableDiameterWithCouplingShaftHole}}</td>
-                        <td>{{ballscrew.LimitRotationSpeed}}</td>
-                        <td>{{ballscrew.DistanceBetweenTwoPushBearings}}</td>
-                        <td>{{ballscrew.LengthOfScrew_L}}</td>
-                        <td>{{ballscrew.TotalCycleTurns_n}}</td>
-                        <td>{{ballscrew.NumberOfScrewHoles_m}}</td>
-                        <td>{{ballscrew.Density}}</td>
-                        <td>{{ballscrew.ElasticModulus}}</td>
-                        <td>{{ballscrew.ShearElasticModulus}}</td>
-                        <td>{{ballscrew.RadialDampingCoefficient}}</td>
-                        <td>{{ballscrew.ViscousFrictionFactor}}</td>
-                        <td>{{ballscrew.EfficiencyOfBallScrewPreload}}</td>
-                        <td class="freezingCol"><a ui-sref="FeedSystem.SolidBallScrewNutPairs.detail({id:ballscrew.TypeID})">详情</a></td>
+                    <tr ng-repeat="item in items | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
+                        ng-click="selectItem(item)"
+                        ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                        class="selection-table-tr">
+                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="item.TypeID"></td>
+                        <td ng-bind="item.Manufacturer" type="text"></td>
+                        <td ng-bind="item.BasicRatedDynamicLoad_Ca" type="number"></td>
+                        <td ng-bind="item.BasicRatedStaticLoad_Coa" type="number"></td>
+                        <td ng-bind="item.NominalDiameter_d0" type="number"></td>
+                        <td ng-bind="item.NominalLead_Ph0" type="number"></td>
+                        <td ng-bind="item.Stiffness" type="number"></td>
+
+                        <td ng-if="state.colState[0]" ng-bind="item.DiameterOfSteelBall_DW" type="number"></td>
+                        <td ng-if="state.colState[1]" ng-bind="item.OuterDiameterOfScrew_d1" type="number"></td>
+                        <td ng-if="state.colState[1]" ng-bind="item.BottomDiameterOfScrew_d2" type="number"></td>
+                        <td ng-if="state.colState[2]" ng-bind="item.AdaptableDiameterWithBearing" type="number"></td>
+                        <td ng-if="state.colState[2]" ng-bind="item.AdaptableDiameterWithCouplingShaftHole" type="number"></td>
+                        <td ng-if="state.colState[3]" ng-bind="item.LimitRotationSpeed" type="number"></td>
+
+                        <td ng-if="state.colState[4]" ng-bind="item.DistanceBetweenTwoPushBearings" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.LengthOfScrew_L" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.TotalCycleTurns_n" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_D3" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_D4" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_D5" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_D6" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_D7" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.Size_L1" type="number"></td>
+                        <td ng-if="state.colState[4]" ng-bind="item.NumberOfScrewHoles_m" type="number"></td>
+
+                        <td ng-if="state.colState[5]" ng-bind="item.Density" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.ElasticModulus" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.ShearElasticModulus" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.RadialDampingCoefficient" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.ViscousFrictionFactor" type="number"></td>
+                        <td ng-if="state.colState[5]" ng-bind="item.EfficiencyOfBallScrewPreload" type="number"></td>
+
+                        <td><a ui-sref="selection.FeedSystem.ScrewNuts.Details({id:item.TypeID})">详情</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="row form-horizontal">
-            <div class="form-group">
-                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
-                <div class="col-md-2">
-                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
-                </div>
-                <div class="col-md-6 col-md-offset-1">
-                    <uib-pagination boundary-links="true" total-items="ballscrews|SolidBallScrewNutPairsFilt:caculation|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
-                </div>
-            </div>
-        </div>
+        <cnc-pagination></cnc-pagination>
         <div class="row">
             <div class="col-md-offset-8 col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!ballscrewSelected.TypeID">下 一 步</button>
+                <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下一步</button>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            <div>
+                <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>
             </div>
         </div>
     </div>
