@@ -141,10 +141,72 @@ interface IBearingsScope extends ISelectionTableScope {
         paginationAllIndex?: number[];
         colState?: boolean[];
         axisID: string,
-        bearingsTypeOptions: { name: string; type: string; url: string}[];
-        currentBearingsType: { name: string; type: string; url: string},
+        typeOptions: { name: string; type: string; url: string}[];
+        currentType: { name: string; type: string; url: string},
     };
-    changeBearingsType: () => void;
+    changeCurrentType: () => void;
+}
+
+/** Couplings Selection Type */
+interface ICouplingsScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+        typeOptions: { name: string; url: string}[];
+        currentType: { name: string; url: string},
+    };
+    changeCurrentType: () => void;
+}
+
+/** ServoMotor Selection Type */
+interface IServoMotorScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+        manufacturerOptions: string[];
+        currentManufacturer: string,
+    };
+    changeCurrentType: () => void;
+}
+
+/** ServoMotor Selection Type */
+interface IServoDriverScope extends ISelectionTableScope {
+    state: {
+        orderProperty: string;
+        paginationIndex?: number;
+        paginationSize?: number;
+        pageNumber?: number;
+        paginationAllIndex?: number[];
+        colState?: boolean[];
+        axisID: string,
+        manufacturerOptions: string[];
+        currentManufacturer: string,
+    };
+    changeCurrentType: () => void;
+}
+
+/** Selection Component Detail Scope */
+interface ISelectionDetailScope{
+    state: {
+        axisID: string;
+        imgUrl?: string;
+    };
+    item: IItem;
+    sizes?: any;
+    back: () => void;
+}
+interface ISelectionDetailHandler{
+
 }
 
 export { ISelectionAxis };
@@ -160,3 +222,8 @@ export { ICNCSystemSelectionScope };
 export { IGuideScope };
 export { IScrewNutsScope };
 export { IBearingsScope };
+export { ICouplingsScope };
+export { IServoMotorScope };
+export { IServoDriverScope };
+export { ISelectionDetailScope };
+export { ISelectionDetailHandler };

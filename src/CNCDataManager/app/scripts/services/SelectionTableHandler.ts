@@ -15,8 +15,6 @@ export default class SelectionTableHandler {
 
     public buildTableHandler(scope: ISelectionTableScope): ISelectionTableHandler
     {
-        let http = this.httpProxy;
-        let message = this.message;
         return {
             toggleCol: function (id: number, e: BaseJQueryEventObject): void {
                 if (scope.state.colState[id]) {

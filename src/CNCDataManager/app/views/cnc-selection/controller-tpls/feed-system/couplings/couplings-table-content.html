@@ -1,7 +1,7 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">联轴器列表</li>
         </ol>
         <div class="row">
@@ -10,7 +10,7 @@
             </div>
             <form name="couplingForm">
                 <div class="col-md-4">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default panel-green">
                         <div class="panel-heading">
                             <h3 class="panel-title">联轴器参数</h3>
                         </div>
@@ -18,7 +18,7 @@
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label class="control-label" for="couplingType">联轴器类型:</label>
-                                    <select id="couplingType" class="form-control" ng-options="data.name for data in typeOptions" ng-model="couplingPara.couplingType" ng-change="getData(couplingPara.couplingType)"></select>
+                                    <select id="couplingType" class="form-control" ng-options="data.name for data in state.typeOptions" ng-model="state.currentType" ng-change="changeCurrentType()"></select>
                                 </div>
                                 <div class="form-group" ng-class="{'has-error':couplingForm.applicationFactor.$invalid && !couplingForm.applicationFactor.$pristine}">
                                     <label class="control-label" for="applicationFactor">工况系数:</label>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default panel-green">
                         <div class="panel-heading">
                             <h3 class="panel-title">计算结果</h3>
                         </div>
@@ -61,52 +61,129 @@
             </form>
         </div>
     </div>
-    <div class="CNCTable">
-        <div class="table-responsive">
+    <div class="selection-content">
+        <div class="cncdata-table-select">
+            <div class="cncdata-table-col cncdata-table-col-checked" ng-switch="state.colState[0]" ng-click="toggleCol(0, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>轴孔直径</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[1]" ng-click="toggleCol(1, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>质量</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[2]" ng-click="toggleCol(2, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>转动惯量</span>
+            </div>
+            <div class="cncdata-table-col" ng-switch="state.colState[3]" ng-click="toggleCol(3, $event)">
+                <span class="glyphicon glyphicon-check" ng-switch-when="true"></span>
+                <span class="glyphicon glyphicon-unchecked" ng-switch-when="false"></span>
+                <span>刚度</span>
+            </div>
+        </div>
+        <div class="cncdata-table">
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
-                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
-                        <th class="btn-primary" ng-click="title='NominalTorque';desc=!desc" role="button">公称转矩</th>
-                        <th class="btn-primary" ng-click="title='AllowableRotationSpeed';desc=!desc" role="button">许用转速</th>
-                        <th class="btn-primary" ng-click="title='Mass';desc=!desc" role="button">质量</th>
-                        <th class="btn-primary" ng-click="title='MomentOfInertia';desc=!desc" role="button">转动惯量</th>
-                        <th class="btn-primary" ng-click="title='Stiffness';desc=!desc" role="button">刚度</th>
-                        <th class="btn-primary"></th>
+                        <td style="width: 30px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('NominalTorque')" title="按此列排序">
+                            公称转矩
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'NominalTorque'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-NominalTorque'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('AllowableRotationSpeed')" title="按此列排序" 
+                            ng-if="ITEMNAME !== 'elasticslvpincoups/' && ITEMNAME !== 'hubshapedcoups/'">
+                            许用转速
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'AllowableRotationSpeed'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-AllowableRotationSpeed'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('AllowableRotationSpeed_Steel')" title="按此列排序"
+                            ng-if="ITEMNAME === 'flexiblepinCoups/' || ITEMNAME === 'flangecoups/'">
+                            许用转速_钢
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'AllowableRotationSpeed_Steel'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-AllowableRotationSpeed_Steel'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('AllowableRotationSpeed_Iron')" title="按此列排序"
+                            ng-if="ITEMNAME === 'flexiblepinCoups/' || ITEMNAME === 'flangecoups/'">
+                            许用转速_铁
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'AllowableRotationSpeed_Iron'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-AllowableRotationSpeed_Iron'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfShaftHole_d')" title="按此列排序" ng-show="state.colState[0]"
+                            ng-if="ITEMNAME === 'flangecoups/'">
+                            轴孔直径 d/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfShaftHole_d'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfShaftHole_d'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfShaftHole_d1')" title="按此列排序" ng-show="state.colState[0]"
+                            ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'">
+                            轴孔直径 d1/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfShaftHole_d1'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfShaftHole_d1'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfShaftHole_d2')" title="按此列排序" ng-show="state.colState[0]"
+                            ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'">
+                            轴孔直径 d2/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfShaftHole_d2'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfShaftHole_d2'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('DiameterOfShaftHole_dz')" title="按此列排序" ng-show="state.colState[0]"
+                            ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'">
+                            轴孔直径 dz/mm
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'DiameterOfShaftHole_dz'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-DiameterOfShaftHole_dz'"></span>
+                        </td>
+                        <td ng-if="state.colState[1]">质量</td>
+                        <td ng-if="state.colState[2]">转动惯量</td>
+                        <td ng-if="state.colState[3]">刚度</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="coupling in couplings|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(coupling)" ng-class="{tableSelected:coupling.TypeID==couplingSelected.TypeID}">
-                        <td>{{coupling.TypeID}}</td>
-                        <td>{{coupling.Manufacturer}}</td>
-                        <td>{{coupling.NominalTorque}}</td>
-                        <td>{{coupling.AllowableRotationSpeed}}</td>
-                        <td>{{coupling.Mass}}</td>
-                        <td>{{coupling.MomentOfInertia}}</td>
-                        <td>{{coupling.Stiffness}}</td>
-                        <td><a ui-sref="FeedSystem.Coupling.detail({id:coupling.TypeID,type:couplingPara.couplingType.url})">详情</a></td>
+                    <tr ng-repeat="item in items | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
+                        ng-click="selectItem(item)"
+                        ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                        class="selection-table-tr">
+                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="item.TypeID"></td>
+                        <td ng-bind="item.Manufacturer" type="text"></td>
+                        <td ng-bind="item.NominalTorque" type="number"></td>
+                        <td ng-if="ITEMNAME !== 'elasticslvpincoups/' && ITEMNAME !== 'hubshapedcoups/'" ng-bind="item.AllowableRotationSpeed" type="number"></td>
+                        <td ng-if="ITEMNAME === 'flexiblepinCoups/' || ITEMNAME === 'flangecoups/'" ng-bind="item.AllowableRotationSpeed_Steel"></td>
+                        <td ng-if="ITEMNAME === 'flexiblepinCoups/' || ITEMNAME === 'flangecoups/'" ng-bind="item.AllowableRotationSpeed_Iron"></td>
+                        <td ng-show="state.colState[0]" ng-if="ITEMNAME === 'flangecoups/'" ng-bind="item.DiameterOfShaftHole_d" type="number"></td>
+                        <td ng-show="state.colState[0]" ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'" ng-bind="item.DiameterOfShaftHole_d1" type="number"></td>
+                        <td ng-show="state.colState[0]" ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'" ng-bind="item.DiameterOfShaftHole_d2" type="number"></td>
+                        <td ng-show="state.colState[0]" ng-if="ITEMNAME !== 'flangecoups/' && ITEMNAME !== 'oldhamcoups/'" ng-bind="item.DiameterOfShaftHole_dz" type="number"></td>
+                        <td ng-if="state.colState[1]" ng-bind="item.Mass" type="number"></td>
+                        <td ng-if="state.colState[2]" ng-bind="item.MomentOfInertia" type="number"></td>
+                        <td ng-if="state.colState[3]" ng-bind="item.Stiffness" type="number"></td>
+
+                        <td><a ui-sref="selection.FeedSystem.Couplings.Details({id:item.TypeID})">详情</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="row form-horizontal">
-            <div class="form-group">
-                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
-                <div class="col-md-2">
-                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
-                </div>
-                <div class="col-md-6 col-md-offset-1">
-                    <uib-pagination boundary-links="true" total-items="bearing|BearingsFilt:caculation:bearingPara.lubricationMethod|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
-                </div>
-            </div>
-        </div>
+        <cnc-pagination></cnc-pagination>
         <div class="row">
             <div class="col-md-offset-8 col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!couplingSelected.TypeID">下 一 步</button>
+                <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下一步</button>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            <div>
+                <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>
             </div>
         </div>
     </div>

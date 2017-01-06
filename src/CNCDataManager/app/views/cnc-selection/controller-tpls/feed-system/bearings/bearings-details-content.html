@@ -1,10 +1,10 @@
 ﻿<div class="selection-content">
     <ol class="breadcrumb">
-        <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
-        <li><a ui-sref="FeedSystem.Bearings">轴承列表</a></li>
+        <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
+        <li><a ui-sref="selection.FeedSystem.Bearings">轴承列表</a></li>
         <li class="active">轴承详情</li>
     </ol>
-    <div class="panel panel-primary">
+    <div class="panel panel-default panel-green">
         <div class="panel-heading">
             <h3 class="panel-title">轴承详情</h3>
         </div>
@@ -13,60 +13,57 @@
                 <table class="table table-striped">
                     <tr>
                         <th>型号</th>
-                        <td>{{bearing.TypeID}}</td>
+                        <td>{{item.TypeID}}</td>
                         <td></td>
                         <th>生产厂家</th>
-                        <td>{{bearing.Manufacturer}}</td>
+                        <td>{{item.Manufacturer}}</td>
                         <td></td>
                         <th>内径d</th>
-                        <td>{{bearing.InnerDiameter_d}}</td>
+                        <td>{{item.InnerDiameter_d}}</td>
                         <td>mm</td>
                     </tr>
                     <tr>
                         <th>直径D</th>
-                        <td>{{bearing.Diameter_D}}</td>
+                        <td>{{item.Diameter_D}}</td>
                         <td>mm</td>
                         <th>宽度B</th>
-                        <td>{{bearing.Width_B}}</td>
+                        <td>{{item.Width_B}}</td>
                         <td>mm</td>
                         <th>基本额定动载荷</th>
-                        <td>{{bearing.BasicRatedDynamicLoad}}</td>
+                        <td>{{item.BasicRatedDynamicLoad}}</td>
                         <td>N</td>
                     </tr>
                     <tr>
                         <th>基本额定静载荷</th>
-                        <td>{{bearing.BasicRatedStaticLoad}}</td>
+                        <td>{{item.BasicRatedStaticLoad}}</td>
                         <td>N</td>
                         <th>脂润滑极限速度</th>
-                        <td>{{bearing.SpeedLimitOfGrease}}</td>
+                        <td>{{item.SpeedLimitOfGrease}}</td>
                         <td>r/min</td>
                         <th>油润滑极限速度</th>
-                        <td>{{bearing.SpeedLimitOfOil}}</td>
+                        <td>{{item.SpeedLimitOfOil}}</td>
                         <td>r/min</td>
                     </tr>
                     <tr>
                         <th>轴承轴向刚度</th>
-                        <td>{{bearing.BearingAxialStiffness}}</td>
+                        <td>{{item.BearingAxialStiffness}}</td>
                         <td>N/m</td>
                         <th>轴承启动转矩</th>
-                        <td>{{bearing.BearingStartingTorque}}</td>
+                        <td>{{item.BearingStartingTorque}}</td>
                         <td>N·m</td>
                     </tr>
                 </table>
             </div>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <img ng-src="{{imgsrc}}" class="img-thumbnail">
+                    <img ng-src="{{state.imgsrc}}" class="img-thumbnail">
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 col-md-offset-8">
-            <button type="button" ng-click="nextStep()" class="btn btn-primary">下 一 步</button>
-        </div>
-        <div>
-            <button type="button" ng-click="back()" class="btn btn-primary">返 回</button>
+        <div class="col-md-2 col-md-offset-10">
+            <button type="button" ng-click="back()" class="btn btn-success">返 回</button>
         </div>
     </div>
 </div>

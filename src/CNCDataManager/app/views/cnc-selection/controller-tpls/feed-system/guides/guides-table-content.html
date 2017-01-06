@@ -1,7 +1,7 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{state.axisID}}轴</a></li>
+            <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">导轨列表</li>
         </ol>
         <div class="row">
@@ -114,8 +114,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="button" ng-click="caculate()" class="btn btn-primary col-md-offset-2 col-md-3 text-center" ng-disabled="guideForm.$invalid">计算</button>
-                                <button type="button" ng-click="reset()" class="btn btn-primary col-md-offset-2 col-md-3 text-center">重置</button>
+                                <button type="button" ng-click="caculate()" class="btn btn-success col-md-offset-2 col-md-3 text-center" ng-disabled="guideForm.$invalid">计算</button>
+                                <button type="button" ng-click="reset()" class="btn btn-danger col-md-offset-2 col-md-3 text-center">重置</button>
                             </div>
                         </div>
                     </div>

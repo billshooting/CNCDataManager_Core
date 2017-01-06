@@ -1,10 +1,10 @@
 ﻿<div class="selection-content">
     <ol class="breadcrumb">
-        <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}</a></li>
-        <li><a ui-sref="FeedSystem.Coupling">联轴器列表</a></li>
+        <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}</a></li>
+        <li><a ui-sref="selection.FeedSystem.Couplings">联轴器列表</a></li>
         <li>联轴器详情</li>
     </ol>
-    <div class="panel panel-primary">
+    <div class="panel panel-default panel-green">
         <div class="panel-heading">
             <h3 class="panel-title">轴承详情</h3>
         </div>
@@ -13,46 +13,43 @@
                 <table class="table table-striped">
                     <tr>
                         <th>型号</th>
-                        <td>{{coupling.TypeID}}</td>
+                        <td>{{item.TypeID}}</td>
                         <td></td>
                         <th>生产厂家</th>
-                        <td>{{coupling.Manufacturer}}</td>
+                        <td>{{item.Manufacturer}}</td>
                         <td></td>
                         <th>公称转矩</th>
-                        <td>{{coupling.NominalTorque}}</td>
+                        <td>{{item.NominalTorque}}</td>
                         <td>N·m</td>
                     </tr>
                     <tr>
                         <th>许用转速</th>
-                        <td>{{coupling.AllowableRotationSpeed}}</td>
+                        <td>{{item.AllowableRotationSpeed}}</td>
                         <td>r/min</td>
                         <th>质量</th>
-                        <td>{{coupling.Mass}}</td>
+                        <td>{{item.Mass}}</td>
                         <td>kg</td>
                         <th>转动惯量</th>
-                        <td>{{coupling.MomentOfInertia}}</td>
+                        <td>{{item.MomentOfInertia}}</td>
                         <td>kg·m^2</td>
                     </tr>
                     <tr>
                         <th>刚度</th>
-                        <td>{{coupling.Stiffness}}</td>
+                        <td>{{item.Stiffness}}</td>
                         <td></td>
                     </tr>
                 </table>
             </div>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <img ng-src="{{imgsrc}}" class="img-thumbnail" alt="联轴器尺寸">
+                    <img ng-src="{{state.imgsrc}}" class="img-thumbnail" alt="联轴器尺寸">
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 col-md-offset-8">
-            <button type="button" ng-click="nextStep()" class="btn btn-primary">下 一 步</button>
-        </div>
-        <div class="col-md-2">
-            <button type="button" ng-click="back()" class="btn btn-primary">返 回</button>
+        <div class="col-md-2 col-md-offset-10">
+            <button type="button" ng-click="back()" class="btn btn-success">返 回</button>
         </div>
     </div>
 </div>

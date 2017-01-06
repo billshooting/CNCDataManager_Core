@@ -8,6 +8,8 @@ import { FeedSystemLeftSide } from './feed-system/FeedSystemLeftSide';
 import { SelectionGuides } from './feed-system/SelectionGuides';
 import { SelectionScrewNuts } from './feed-system/SelectionScrewNuts';
 import { SelectionBearings } from './feed-system/SelectionBearings';
+import { SelectionCouplings } from './feed-system/SelectionCouplings';
+import { SelectionServoMotors } from './feed-system/SelectionServoMotors';
 
 export default function registerSelectionControllers(app: angular.IModule): void {
     app.controller('SelectionCtrl', Selection);
@@ -19,4 +21,6 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('SelectionGuidesCtrl', SelectionGuides);
     app.controller('SelectionScrewNutsCtrl', SelectionScrewNuts);
     app.controller('SelectionBearingsCtrl', SelectionBearings);
+    app.controller('SelectionCouplingsCtrl', SelectionCouplings);
+    app.controller('SelectionServoMotorsCtrl', SelectionServoMotors);
 }

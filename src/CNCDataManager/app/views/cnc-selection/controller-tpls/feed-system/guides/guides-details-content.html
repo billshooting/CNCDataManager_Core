@@ -1,10 +1,10 @@
 ﻿<div class="selection-content">
     <ol class="breadcrumb">
-        <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
-        <li><a ui-sref="FeedSystem">导轨列表</a></li>
+        <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
+        <li><a ui-sref="selection.FeedSystem.Guides">导轨列表</a></li>
         <li class="active">导轨详情</li>
     </ol>
-    <div class="panel panel-primary">
+    <div class="panel panel-success panel-green">
         <div class="panel-heading">
             <h3 class="panel-title">导轨详情</h3>
         </div>
@@ -12,142 +12,142 @@
             <table class="table table-striped">
                 <tr>
                     <th>型号:</th>
-                    <td>{{guid.TypeID}}</td>
+                    <td>{{item.TypeID}}</td>
                     <td></td>
                     <th>生产厂家:</th>
-                    <td>{{guid.Manufacturer}}</td>
+                    <td>{{item.Manufacturer}}</td>
                     <td></td>
                     <th>导轨固定螺栓大小:</th>
-                    <td>{{guid.SizeOfGuideFixedBolt}}</td>
+                    <td>{{item.SizeOfGuideFixedBolt}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滚子类型:</th>
-                    <td>{{guid.RollerType}}</td>
+                    <td>{{item.RollerType}}</td>
                     <td></td>
                     <th>基本额定动载荷C:</th>
-                    <td>{{guid.BasicRatedDynamicLoad_C}}</td>
+                    <td>{{item.BasicRatedDynamicLoad_C}}</td>
                     <td>KN</td>
                     <th>基本额定静载荷C0:</th>
-                    <td>{{guid.BasicRatedStaticLoad_C0}}</td>
+                    <td>{{item.BasicRatedStaticLoad_C0}}</td>
                     <td>KN</td>
                 </tr>
                 <tr>
                     <th>容许静力矩MR:</th>
-                    <td>{{guid.AllowableStaticMoment_MR}}</td>
+                    <td>{{item.AllowableStaticMoment_MR}}</td>
                     <td>KN·m</td>
                     <th>容许静力矩Mp:</th>
-                    <td>{{guid.AllowableStaticMoment_Mp}}</td>
+                    <td>{{item.AllowableStaticMoment_Mp}}</td>
                     <td>KN·m</td>
                     <th>容许静力矩Mq:</th>
-                    <td>{{guid.AllowableStaticMoment_Mq}}</td>
+                    <td>{{item.AllowableStaticMoment_Mq}}</td>
                     <td>KN·m</td>
                 </tr>
                 <tr>
                     <th>滑块质量:</th>
-                    <td>{{guid.MassOfSlider}}</td>
+                    <td>{{item.MassOfSlider}}</td>
                     <td>kg</td>
                     <th>导轨质量:</th>
-                    <td>{{guid.MassOfGuide}}</td>
+                    <td>{{item.MassOfGuide}}</td>
                     <td>kg</td>
                     <th>组件大小H:</th>
-                    <td>{{guid.SizeOfComponent_H}}</td>
+                    <td>{{item.SizeOfComponent_H}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>组件大小H1:</th>
-                    <td>{{guid.SizeOfComponent_H1}}</td>
+                    <td>{{item.SizeOfComponent_H1}}</td>
                     <td>mm</td>
                     <th>组件大小N:</th>
-                    <td>{{guid.SizeOfComponent_N}}</td>
+                    <td>{{item.SizeOfComponent_N}}</td>
                     <td>mm</td>
                     <th>滑块大小W:</th>
-                    <td>{{guid.SizeOfSlider_W}}</td>
+                    <td>{{item.SizeOfSlider_W}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滑块大小B:</th>
-                    <td>{{guid.SizeOfSlider_B}}</td>
+                    <td>{{item.SizeOfSlider_B}}</td>
                     <td>mm</td>
                     <th>滑块大小B1:</th>
-                    <td>{{guid.SizeOfSlider_B1}}</td>
+                    <td>{{item.SizeOfSlider_B1}}</td>
                     <td>mm</td>
                     <th>滑块大小C:</th>
-                    <td>{{guid.SizeOfSlider_C}}</td>
+                    <td>{{item.SizeOfSlider_C}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滑块大小L1:</th>
-                    <td>{{guid.SizeOfSlider_L1}}</td>
+                    <td>{{item.SizeOfSlider_L1}}</td>
                     <td>mm</td>
                     <th>滑块大小L:</th>
-                    <td>{{guid.SizeOfSlider_L}}</td>
+                    <td>{{item.SizeOfSlider_L}}</td>
                     <td>mm</td>
                     <th>滑块大小K:</th>
-                    <td>{{guid.SizeOfSlider_K}}</td>
+                    <td>{{item.SizeOfSlider_K}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滑块大小G:</th>
-                    <td>{{guid.SizeOfSlider_G}}</td>
+                    <td>{{item.SizeOfSlider_G}}</td>
                     <td>mm</td>
                     <th>滑块大小M:</th>
-                    <td>{{guid.SizeOfSlider_M}}</td>
+                    <td>{{item.SizeOfSlider_M}}</td>
                     <td>mm</td>
                     <th>滑块大小T:</th>
-                    <td>{{guid.SizeOfSlider_T}}</td>
+                    <td>{{item.SizeOfSlider_T}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滑块大小T1:</th>
-                    <td>{{guid.SizeOfSlider_T1}}</td>
+                    <td>{{item.SizeOfSlider_T1}}</td>
                     <td>mm</td>
                     <th>滑块大小T2:</th>
-                    <td>{{guid.SizeOfSlider_T2}}</td>
+                    <td>{{item.SizeOfSlider_T2}}</td>
                     <td>mm</td>
                     <th>滑块大小H2:</th>
-                    <td>{{guid.SizeOfSlider_H2}}</td>
+                    <td>{{item.SizeOfSlider_H2}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>滑块大小H3:</th>
-                    <td>{{guid.SizeOfSlider_H3}}</td>
+                    <td>{{item.SizeOfSlider_H3}}</td>
                     <td>mm</td>
                     <th>导轨大小WR:</th>
-                    <td>{{guid.SizeOfGuide_WR}}</td>
+                    <td>{{item.SizeOfGuide_WR}}</td>
                     <td>mm</td>
                     <th>导轨大小HR:</th>
-                    <td>{{guid.SizeOfGuide_HR}}</td>
+                    <td>{{item.SizeOfGuide_HR}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>导轨大小D:</th>
-                    <td>{{guid.SizeOfGuide_D}}</td>
+                    <td>{{item.SizeOfGuide_D}}</td>
                     <td>mm</td>
                     <th>导轨大小h:</th>
-                    <td>{{guid.SizeOfGuide_h}}</td>
+                    <td>{{item.SizeOfGuide_h}}</td>
                     <td>mm</td>
                     <th>导轨大小d1:</th>
-                    <td>{{guid.SizeOfGuide_d1}}</td>
+                    <td>{{item.SizeOfGuide_d1}}</td>
                     <td>mm</td>
                 </tr>
                 <tr>
                     <th>导轨大小P:</th>
-                    <td>{{guid.SizeOfGuide_P}}</td>
+                    <td>{{item.SizeOfGuide_P}}</td>
                     <td>mm</td>
                     <th>导轨大小E:</th>
-                    <td>{{guid.SizeOfGuide_E}}</td>
+                    <td>{{item.SizeOfGuide_E}}</td>
                     <td>mm</td>
                     <th>导轨副的摩擦系数:</th>
-                    <td>{{guid.CoefficientOfFrictionGuidPairs}}</td>
+                    <td>{{item.CoefficientOfFrictionGuidPairs}}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <th>粘滞摩擦因子:</th>
-                    <td>{{guid.CoefficientOfViscousFriction}}</td>
+                    <td>{{item.CoefficientOfViscousFriction}}</td>
                     <td></td>
                     <th>说明:</th>
-                    <td>{{guid.Description}}</td>
+                    <td>{{item.Description}}</td>
                     <td></td>
                 </tr>
             </table>
@@ -159,11 +159,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 col-md-offset-8">
-            <button type="button" ng-click="nextStep()" class="btn btn-primary">下 一 步</button>
-        </div>
-        <div>
-            <button type="button" ng-click="back()" class="btn btn-primary">返 回</button>
+        <div class="col-md-2 col-md-offset-10">
+            <button type="button" ng-click="back()" class="btn btn-success">返 回</button>
         </div>
     </div>
 </div>

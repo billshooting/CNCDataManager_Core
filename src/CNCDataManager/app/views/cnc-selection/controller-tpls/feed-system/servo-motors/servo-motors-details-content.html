@@ -1,15 +1,15 @@
 ﻿<div class="selection-content">
     <ol class="breadcrumb">
-        <li><a ui-sref="FeedSystem">进给轴{{FeedSytemType}}</a></li>
-        <li><a ui-sref="FeedSystem.ServoMotor">伺服电机列表</a></li>
+        <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}</a></li>
+        <li><a ui-sref="selection.FeedSystem.ServoMotors">伺服电机列表</a></li>
         <li>伺服电机详情</li>
     </ol>
-    <div class="panel panel-primary">
+    <div class="panel panel-default panel-green">
         <div class="panel-heading">
             <h3 class="panel-title">伺服电机详情</h3>
         </div>
         <div class="panel-body">
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-green">
                 <div class="panel-heading">
                     <h3 class="panel-title">技术数据</h3>
                 </div>
@@ -18,102 +18,102 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>型号</th>
-                                <td>{{servoMotorParas.TypeID}}</td>
+                                <td>{{item.TypeID}}</td>
                                 <td></td>
                                 <th>生产厂家</th>
-                                <td>{{servoMotorParas.Manufacturer}}</td>
+                                <td>{{item.Manufacturer}}</td>
                                 <td></td>
                                 <th>额定转矩</th>
-                                <td>{{servoMotorParas.RatedTorque}}</td>
+                                <td>{{item.RatedTorque}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>最大转矩</th>
-                                <td>{{servoMotorParas.MaxTorque}}</td>
+                                <td>{{item.MaxTorque}}</td>
                                 <td></td>
                                 <th>额定转速</th>
-                                <td>{{servoMotorParas.RatedRotationSpeed}}</td>
+                                <td>{{item.RatedRotationSpeed}}</td>
                                 <td></td>
                                 <th>最大转速</th>
-                                <td>{{servoMotorParas.MaxRotationSpeed}}</td>
+                                <td>{{item.MaxRotationSpeed}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>转动惯量</th>
-                                <td>{{servoMotorParas.MomentOfInertia}}</td>
+                                <td>{{item.MomentOfInertia}}</td>
                                 <td></td>
                                 <th>额定功率</th>
-                                <td>{{servoMotorParas.RatedPower}}</td>
+                                <td>{{item.RatedPower}}</td>
                                 <td></td>
                                 <th>静转矩</th>
-                                <td>{{servoMotorParas.StaticTorque}}</td>
+                                <td>{{item.StaticTorque}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>电机磁极对数</th>
-                                <td>{{servoMotorParas.PairsOfMotorPole}}</td>
+                                <td>{{item.PairsOfMotorPole}}</td>
                                 <td></td>
                                 <th>直流母线电压</th>
-                                <td>{{servoMotorParas.DCLinkVoltage}}</td>
+                                <td>{{item.DCLinkVoltage}}</td>
                                 <td></td>
                                 <th>额定电流</th>
-                                <td>{{servoMotorParas.RatedCurrent}}</td>
+                                <td>{{item.RatedCurrent}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>最大电流</th>
-                                <td>{{servoMotorParas.MaxCurrent}}</td>
+                                <td>{{item.MaxCurrent}}</td>
                                 <td></td>
                                 <th>机械时间常数</th>
-                                <td>{{servoMotorParas.MechanicalTimeConstant}}</td>
+                                <td>{{item.MechanicalTimeConstant}}</td>
                                 <td></td>
                                 <th>质量</th>
-                                <td>{{servoMotorParas.Mass}}</td>
+                                <td>{{item.Mass}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>定子电阻</th>
-                                <td>{{servoMotorParas.StatorResistance}}</td>
+                                <td>{{item.StatorResistance}}</td>
                                 <td></td>
                                 <th>定子绕组每项漏电感</th>
-                                <td>{{servoMotorParas.LeakageInductanceOfEachPhaseOfStatorWinding}}</td>
+                                <td>{{item.LeakageInductanceOfEachPhaseOfStatorWinding}}</td>
                                 <td></td>
                                 <th>反电动势</th>
-                                <td>{{servoMotorParas.CounterElectromotiveForce}}</td>
+                                <td>{{item.CounterElectromotiveForce}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>额定频率</th>
-                                <td>{{servoMotorParas.RatedFrequency}}</td>
+                                <td>{{item.RatedFrequency}}</td>
                                 <td></td>
                                 <th>电机转子转动惯量</th>
-                                <td>{{servoMotorParas.MomentOfInertiaOfMotorRotor}}</td>
+                                <td>{{item.MomentOfInertiaOfMotorRotor}}</td>
                                 <td></td>
                                 <th>相绕组电阻</th>
-                                <td>{{servoMotorParas.ResistanceOfPhaseWinding}}</td>
+                                <td>{{item.ResistanceOfPhaseWinding}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>相绕组电感</th>
-                                <td>{{servoMotorParas.InductanceOfPhaseWinding}}</td>
+                                <td>{{item.InductanceOfPhaseWinding}}</td>
                                 <td></td>
                                 <th>是否带抱闸</th>
-                                <td>{{servoMotorParas.IfWithBrake}}</td>
+                                <td>{{item.IfWithBrake}}</td>
                                 <td></td>
                                 <th>工作电压</th>
-                                <td>{{servoMotorParas.WorkVoltage}}</td>
+                                <td>{{item.WorkVoltage}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>安装方式</th>
-                                <td>{{servoMotorParas.Installment}}</td>
+                                <td>{{item.Installment}}</td>
                                 <td></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-green">
                 <div class="panel-heading">
                     <h3 class="panel-title">尺寸数据</h3>
                 </div>
@@ -122,40 +122,40 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>型号</th>
-                                <td>{{servoMotorSizes.TypeID}}</td>
+                                <td>{{sizes.TypeID}}</td>
                                 <td></td>
                                 <th>尺寸B</th>
-                                <td>{{servoMotorSizes.Size_B}}</td>
+                                <td>{{sizes.Size_B}}</td>
                                 <td></td>
                                 <th>尺寸C</th>
-                                <td>{{servoMotorSizes.Size_C}}</td>
+                                <td>{{sizes.Size_C}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>尺寸K</th>
-                                <td>{{servoMotorSizes.Size_K}}</td>
+                                <td>{{sizes.Size_K}}</td>
                                 <td></td>
                                 <th>尺寸F</th>
-                                <td>{{servoMotorSizes.Size_F}}</td>
+                                <td>{{sizes.Size_F}}</td>
                                 <td></td>
                                 <th>尺寸G</th>
-                                <td>{{servoMotorSizes.Size_G}}</td>
+                                <td>{{sizes.Size_G}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>尺寸D</th>
-                                <td>{{servoMotorSizes.Size_D}}</td>
+                                <td>{{sizes.Size_D}}</td>
                                 <td></td>
                                 <th>尺寸E1</th>
-                                <td>{{servoMotorSizes.Size_E1}}</td>
+                                <td>{{sizes.Size_E1}}</td>
                                 <td></td>
                                 <th>尺寸E2</th>
-                                <td>{{servoMotorSizes.Size_E2}}</td>
+                                <td>{{sizes.Size_E2}}</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>尺寸E3</th>
-                                <td>{{servoMotorSizes.Size_E3}}</td>
+                                <td>{{sizes.Size_E3}}</td>
                                 <td></td>
                             </tr>
                         </table>
@@ -171,9 +171,6 @@
     </div>
     <div class="row">
         <div class="col-md-2 col-md-offset-8">
-            <button class="btn btn-primary" type="button" ng-click="nextStep()">下 一 步</button>
-        </div>
-        <div class="col-md-2 ">
             <button class="btn btn-primary" type="button" ng-click="back()">返 回</button>
         </div>
     </div>

@@ -135,6 +135,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/couplings/couplings-table-content.html',
+                        controller: 'SelectionCouplingsCtrl'
                     }
                 }
             })
@@ -143,6 +144,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/couplings/couplings-details-content.html',
+                        
                     }
                 }
             })
@@ -151,6 +153,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/servo-motors/servo-motors-table-content.html',
+                        controller: 'SelectionServoMotorsCtrl'
                     }
                 }
             })

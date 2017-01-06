@@ -1,7 +1,7 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{state.axisID}}轴</a></li>
+            <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">{{state.currentBearingsType.name}}列表</li>
         </ol>
         <div class="row">
@@ -18,7 +18,7 @@
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label class="control-label" for="bearingType">轴承类型:</label>
-                                    <select id="bearingType" class="form-control" ng-options="data as data.name for data in state.bearingsTypeOptions" ng-model="state.currentBearingsType" style="width:100%;padding-left:0" ng-change="changeBearingsType()"></select>
+                                    <select id="bearingType" class="form-control" ng-options="data as data.name for data in state.typeOptions" ng-model="state.currentType" style="width:100%;padding-left:0" ng-change="changeCurrentType()"></select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="compoundMode">组合方式:</label>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default panel-green">
                         <div class="panel-heading">
                             <h3 class="panel-title">计算结果</h3>
                         </div>
@@ -74,8 +74,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()" ng-disabled="bearingForm.$invalid">计算</button>
-                                <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重置</button>
+                                <button class="btn btn-success col-md-offset-2 col-md-3" type="button" ng-click="caculate()" ng-disabled="bearingForm.$invalid">计算</button>
+                                <button class="btn btn-danger col-md-offset-2 col-md-3" type="button" ng-click="reset()">重置</button>
                             </div>
                         </div>
                     </div>

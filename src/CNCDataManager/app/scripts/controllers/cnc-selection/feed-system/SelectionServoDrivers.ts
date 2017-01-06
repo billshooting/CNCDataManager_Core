@@ -2,17 +2,17 @@ import * as angular from 'angular';
 import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
-import { IBearingsScope, ISelectionAxis } from '../../../types/CncSelection';
+import { IServoDriverScope, ISelectionAxis } from '../../../types/CncSelection';
 
-export class SelectionBearings {
-    public constructor ($scope: IBearingsScope,
+export class SelectionServoDrivers {
+    public constructor ($scope: IServoDriverScope,
                         $state: angular.ui.IStateService,
                         $stateParams: angular.ui.IStateParamsService,
                         tableHandler: SelectionTableHandler,
                         dataStorage: DataStorage,
                         notifier: SelectionNotification)
     {
-        $scope.ITEMNAME = 'angcontactballbrgs/';
+        $scope.ITEMNAME = 'pmsrvmotordrivers/';
         $scope.items = [];
         $scope.state = {
             orderProperty: 'TypeID',
@@ -20,24 +20,11 @@ export class SelectionBearings {
             paginationSize: 10,
             pageNumber: 1,
             paginationAllIndex: [1],
-            colState: [true, true, true, false, false, false],
             axisID: null,
-            typeOptions: [
-                { name: '角接触球轴承', type: 'ball', url: 'angcontactballbrgs/'},
-                { name: '深沟球轴承', type: 'ball', url: 'deepgrooveballbrgs/' },
-                { name: '圆锥滚子轴承', type: 'roller', url: 'taperedrollerbrgs/'},
-                { name: '圆柱滚子轴承', type: 'roller', url: 'cylinrollerbrgs/'},
-                { name: '调心滚子轴承', type: 'roller', url: 'alignrollerbrgs/'},
-                { name: '调心球轴承', type: 'ball', url: 'alignballbrgs/'},
-                { name: '滚珠丝杠支撑轴承', type: 'ball', url: 'ballleadscrewsptbrgs/'},
-                { name: '交叉圆锥滚子轴承', type: 'roller', url: 'xtaperedrollerbrgs/'},
-                { name: '双列圆柱滚子轴承', type: 'roller', url: 'doublerowcylinrollerbrgs/'},
-                { name: '双向推力角接触球轴承', type: 'ball', url: 'doublethrustangcontactballbrgs/'},
-                //{ name: '滚针轴承和推力滚子组合轴承', type: 'roller', url: 'needlerollerthrustrollerbrgs'},
-            ],
-            currentType: null,
+            manufacturerOptions: ["华中数控","广州数控","沈阳高精","北京航天数控"],
+            currentManufacturer: null,
         };
-        $scope.state.currentType = $scope.state.typeOptions[0];
+        $scope.state.currentManufacturer = $scope.state.manufacturerOptions[0];
         $scope.data = {
             selectedTypeID: null,
             selectedItem: null
@@ -68,28 +55,33 @@ export class SelectionBearings {
         };
 
         $scope.changeCurrentType = (): void => {
-            $scope.ITEMNAME = $scope.state.currentType.url;
+            $scope.ITEMNAME = $scope.state.currentManufacturer;
             tableHandler.Initialize($scope);
         }
 
         $scope.nextStep = () =>　{
-            let key = 'FeedSystem' + $scope.state.axisID + 'Bearings';
+            let key = 'FeedSystem' + $scope.state.axisID + 'ServoDrivers';
             dataStorage.setObject(key, $scope.data.selectedItem);
             notifier.notifyChange(data => {
                 let feedSystem: ISelectionAxis = null;
                 if($scope.state.axisID === 'X') feedSystem = data.FeedSystemX;
                 else if($scope.state.axisID === 'Y') feedSystem = data.FeedSystemY;
                 else feedSystem = data.FeedSystemZ; 
-                let indentifiedValue = feedSystem.Bearings.IsShown; 
-                feedSystem.Bearings = {
+                let indentifiedValue = feedSystem.ServoDriver.IsShown; 
+                feedSystem.ServoDriver = {
                     IsSelected: true,
                     TypeID: $scope.data.selectedTypeID,
                     Manufacturer: $scope.data.selectedItem.Manufacturer,
                     IsShown: indentifiedValue,
-                    ImgUrl: './images/Mechanics/滚动轴承-表/滚动轴承.jpg',
+                    ImgUrl: './images/Motors/伺服电机.jpg',
                 };
             });
-            $state.go('selection.FeedSystem.Couplings');
+            if($scope.state.axisID === 'X') $state.go('selection.FeedSystem.Guides', {axis: 'Y'});
+            else if ($scope.state.axisID === 'Y') $state.go('selection.FeedSystem.Guides', {axis: 'Z'});
+            else if ($scope.state.axisID === 'Z'){
+                alert('请转至侧边栏查看所选组件');
+            }
+            
         };
 
         $scope.reset = () => {
@@ -102,4 +94,4 @@ export class SelectionBearings {
     }
 };
 
-SelectionBearings.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];
+SelectionServoDrivers.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];

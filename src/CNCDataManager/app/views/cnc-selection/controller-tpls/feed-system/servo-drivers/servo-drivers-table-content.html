@@ -1,7 +1,7 @@
 ﻿<div>
     <div class="selection-content">
         <ol class="breadcrumb">
-            <li><a ui-sref="FeedSystem">进给轴{{FeedSystemType}}轴</a></li>
+            <li><a ui-sref="selection.FeedSystem">进给轴{{state.axisID}}轴</a></li>
             <li class="active">伺服驱动列表</li>
         </ol>
         <div class="row">
@@ -9,7 +9,7 @@
                 <img src="./images/Servo/Driver.jpg" class="driver-img" alt="伺服驱动">
             </div>
             <div class="col-md-offset-2 col-md-4">
-                <div class="panel panel-primary">
+                <div class="panel panel-default panel-green">
                     <div class="panel-heading">
                         <h3 class="panel-title">伺服驱动参数</h3>
                     </div>
@@ -18,7 +18,7 @@
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label class="control-label" for="manufacturer">生产厂家:</label>
-                                    <select class="form-control" id="manufacturer" ng-options="data.name for data in manufacturerOptions" ng-model="driverPara.manufacturer"></select>
+                                    <select class="form-control" id="manufacturer" ng-options="data for data in state.manufacturerOptions" ng-model="state.currentManufacturer"></select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="powerType">输入电源类型:</label>
@@ -39,8 +39,8 @@
                                     <label class="control-label">A</label>
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="caculate()">计 算</button>
-                                    <button class="btn btn-primary col-md-offset-2 col-md-3" type="button" ng-click="reset()">重 置</button>
+                                    <button class="btn btn-success col-md-offset-2 col-md-3" type="button" ng-click="caculate()">计 算</button>
+                                    <button class="btn btn-danger col-md-offset-2 col-md-3" type="button" ng-click="reset()">重 置</button>
                                 </div>
                             </div>
                         </form>
@@ -50,57 +50,93 @@
         </div>
     </div>
     <div class="selection-content">
-        <div class="table-responsive">
+        <div class="cncdata-table">
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="btn-primary" ng-click="title='TypeID';desc=!desc" role="button">型号</th>
-                        <th class="btn-primary" ng-click="title='Manufacturer';desc=!desc" role="button">生产厂家</th>
-                        <th class="btn-primary" ng-click="title='ContinuousCurrent';desc=!desc" role="button">连续电流</th>
-                        <th class="btn-primary" ng-click="title='PeakCurrent';desc=!desc" role="button">短时最大电流</th>
-                        <th class="btn-primary" ng-click="title='SupplyVoltage';desc=!desc" role="button">电源电压</th>
-                        <th class="btn-primary" ng-click="title='MaxAdaptableMotorPower';desc=!desc" role="button">最大适配电机功率</th>
-                        <th class="btn-primary" ng-click="title='MaxBrakingCurrent';desc=!desc" role="button">最大制动电流</th>
-                        <th class="btn-primary" ng-click="title='ExternalBrakingResistance';desc=!desc" role="button">外接制动电阻</th>
-                        <th class="btn-primary" ng-click="title='CycleOfPWM';desc=!desc" role="button">PWM周期</th>
-                        <th class="btn-primary" ng-click="title='SupplyVoltageOfDC';desc=!desc" role="button">直流供电电压</th>
-                        <th class="btn-primary"></th>
+                        <td style="width: 30px">序号</td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('TypeID')" title="按此列排序">
+                            型号
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'TypeID'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-TypeID'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('Manufacturer')" title="按此列排序">
+                            生产厂家
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'Manufacturer'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-Manufacturer'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('ContinuousCurrent')" title="按此列排序">
+                            连续电流
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'ContinuousCurrent'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-ContinuousCurrent'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('PeakCurrent')" title="按此列排序">
+                            峰值电流
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'PeakCurrent'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-PeakCurrent'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('SupplyVoltage')" title="按此列排序">
+                            电源电压
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'SupplyVoltage'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-SupplyVoltage'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('MaxAdaptableMotorPower')" title="按此列排序">
+                            最大适配电机功率
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxAdaptableMotorPower'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxAdaptableMotorPower'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('MaxBrakingCurrent')" title="按此列排序">
+                            最大制动电流
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'MaxBrakingCurrent'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-MaxBrakingCurrent'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('ExternalBrakingResistance')" title="按此列排序">
+                            外接制动电阻
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'ExternalBrakingResistance'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-ExternalBrakingResistance'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('CycleOfPWM')" title="按此列排序">
+                            PWM周期
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'CycleOfPWM'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-CycleOfPWM'"></span>
+                        </td>
+                        <td class="table-td-orderable" ng-click="changeOrderProperty('SupplyVoltageOfDC')" title="按此列排序">
+                            直流供电电压
+                            <span class="glyphicon glyphicon-arrow-up" ng-if="orderProperty === 'SupplyVoltageOfDC'"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-if="orderProperty === '-SupplyVoltageOfDC'"></span>
+                        </td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="driver in drivers|DriverFilt:driverPara|orderBy:title:desc|paging:Page.currentPage:Page.pageSize" ng-click="selected(driver)" ng-class="{tableSelected:driver.TypeID==driverSelected.TypeID}">
-                        <td>{{driver.TypeID}}</td>
-                        <td>{{driver.Manufacturer}}</td>
-                        <td>{{driver.ContinuousCurrent}}</td>
-                        <td>{{driver.PeakCurrent}}</td>
-                        <td>{{driver.SupplyVoltage}}</td>
-                        <td>{{driver.MaxAdaptableMotorPower}}</td>
-                        <td>{{driver.MaxBrakingCurrent}}</td>
-                        <td>{{driver.ExternalBrakingResistance}}</td>
-                        <td>{{driver.CycleOfPWM}}</td>
-                        <td>{{driver.SupplyVoltageOfDC}}</td>
-                        <td><a ui-sref="FeedSystem.Driver.detail({id:driver.TypeID})">详情</a></td>
+                    <tr ng-repeat="item in items | orderBy: state.orderProperty | pageBy: state.paginationIndex: state.paginationSize"
+                        ng-click="selectItem(item)"
+                        ng-class="{trselected: item.TypeID === data.selectedTypeID}"
+                        class="selection-table-tr">
+                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="item.TypeID"></td>
+                        <td ng-bind="item.Manufacturer" type="text"></td>
+                        <td ng-bind="item.ContinuousCurrent" type="number"></td>
+                        <td ng-bind="item.PeakCurrent" type="number"></td>
+                        <td ng-bind="item.SupplyVoltage"></td>
+                        <td ng-bind="item.MaxAdaptableMotorPower"></td>
+                        <td ng-bind="item.MaxBrakingCurrent" type="number"></td>
+                        <td ng-bind="item.ExternalBrakingResistance" type="number"></td>
+                        <td ng-bind="item.CycleOfPWM" type="number"></td>
+                        <td ng-bind="item.SupplyVoltageOfDC" type="number"></td>
+
+                        <td><a ui-sref="selection.FeedSystem.Couplings.Details({id:item.TypeID})">详情</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="row form-horizontal">
-            <div class="form-group">
-                <label for="pageSize" class="control-label col-md-2">每页条目数：</label>
-                <div class="col-md-2">
-                    <select id="pageSize" ng-model="Page.pageSize" ng-options="num for num in [10,20,30]" class="form-control"></select>
-                </div>
-                <div class="col-md-6 col-md-offset-1">
-                    <uib-pagination boundary-links="true" total-items="bearing|BearingsFilt:caculation:bearingPara.lubricationMethod|size" ng-model="Page.currentPage" items-per-page="Page.pageSize" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"></uib-pagination>
-                </div>
-            </div>
-        </div>
+        <cnc-pagination></cnc-pagination>
         <div class="row">
             <div class="col-md-offset-8 col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="nextStep()" ng-disabled="!driverSelected.TypeID">下 一 步</button>
+                <button type="button" ng-click="nextStep()" class="btn btn-success" ng-disabled="!data.selectedTypeID">下一步</button>
             </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="cancel()">取 消</button>
+            <div>
+                <button type="button" ng-click="reset()" class="btn btn-danger">取 消</button>
             </div>
         </div>
     </div>
