@@ -93,6 +93,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/guides/guides-details-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })
@@ -110,6 +111,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/screw-nuts/screw-nuts-details-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })
@@ -127,6 +129,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/bearings/bearings-details-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })
@@ -144,7 +147,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/couplings/couplings-details-content.html',
-                        
+                        controller: 'ComponentDetailsCtrl',                   
                     }
                 }
             })
@@ -162,6 +165,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/servo-motors/servo-motors-details-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })
@@ -170,6 +174,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/servo-drivers/servo-drivers-table-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })

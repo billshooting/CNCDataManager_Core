@@ -11,6 +11,8 @@ import { SelectionBearings } from './feed-system/SelectionBearings';
 import { SelectionCouplings } from './feed-system/SelectionCouplings';
 import { SelectionServoMotors } from './feed-system/SelectionServoMotors';
 
+import { ComponentDetails } from './feed-system/ComponentDetails';    
+
 export default function registerSelectionControllers(app: angular.IModule): void {
     app.controller('SelectionCtrl', Selection);
     app.controller('MachineTypeCtrl', MachineType);
@@ -23,4 +25,5 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('SelectionBearingsCtrl', SelectionBearings);
     app.controller('SelectionCouplingsCtrl', SelectionCouplings);
     app.controller('SelectionServoMotorsCtrl', SelectionServoMotors);
+    app.controller('ComponentDetailsCtrl', ComponentDetails);
 }

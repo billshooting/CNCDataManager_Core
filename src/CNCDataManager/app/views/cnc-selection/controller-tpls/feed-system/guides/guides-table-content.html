@@ -219,7 +219,7 @@
                         ng-click="selectItem(item)"
                         ng-class="{trselected: item.TypeID === data.selectedTypeID}"
                         class="selection-table-tr">
-                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="$index + state.paginationSize * (state.paginationIndex - 1) + 1" style="width: 30px"></td>
                         <td ng-bind="item.TypeID"></td>
                         <td ng-bind="item.Manufacturer" type="text"></td>
                         <td ng-bind="item.RollerType" type="text"></td>
@@ -233,7 +233,7 @@
                         <td ng-show="state.colState[2]" ng-bind="item.CoefficientOfFrictionGuidPairs" type="text"></td>
                         <td ng-show="state.colState[2]" ng-bind="item.CoefficientOfViscousFriction" type="text"></td>
                         <td ng-show="state.colState[2]" ng-bind="item.SizeOfGuideFixedBolt" type="text"></td>
-                        <td><a ui-sref="selection.FeedSystem.Guides.Details({id:item.TypeID})">详情</a></td>
+                        <td><a ng-click="goDetails(item)">详情</a></td>
                     </tr>
                 </tbody>
             </table>

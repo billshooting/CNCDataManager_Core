@@ -3,6 +3,8 @@ import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
 import { IScrewNutsScope, ISelectionAxis } from '../../../types/CncSelection';
+import { IItem } from '../../../types/CncData';
+import SelectionDetails from '../../../services/SelectionDetails';
 
 export class SelectionScrewNuts {
     public constructor ($scope: IScrewNutsScope,
@@ -10,7 +12,8 @@ export class SelectionScrewNuts {
                         $stateParams: angular.ui.IStateParamsService,
                         tableHandler: SelectionTableHandler,
                         dataStorage: DataStorage,
-                        notifier: SelectionNotification)
+                        notifier: SelectionNotification,
+                        detail: SelectionDetails)
     {
         $scope.ITEMNAME = 'solidballscrewnutpairs/';
         $scope.items = [];
@@ -32,25 +35,14 @@ export class SelectionScrewNuts {
         let handler = tableHandler.buildTableHandler($scope);
         $scope.changeOrderProperty = handler.changeOrderProperty;
         $scope.toggleCol = handler.toggleCol;
-        $scope.selectItem = item => {
-            $scope.data.selectedItem = item as any;
-            $scope.data.selectedTypeID = item.TypeID;
-        };
+        $scope.selectItem = handler.selectItem;
+        $scope.changePaginationSize = handler.changePaginationSize;
 
-        $scope.changePaginationSize = () => {
-            let size = $scope.state.paginationSize;
-            let number = $scope.state.pageNumber;
-            $scope.state.pageNumber = Math.ceil($scope.items.length / size);
-            let newNumber = $scope.state.pageNumber;
-            if(newNumber <= number) $scope.state.paginationAllIndex = $scope.state.paginationAllIndex.slice(0, newNumber);
-            else{
-                for(let i = number + 1; i <= newNumber; i++)
-                {
-                    $scope.state.paginationAllIndex.push(i);
-                }
-            }
-            $scope.state.paginationIndex = 1;
-        };
+        $scope.goDetails = (item: IItem) => {
+            detail.item = item;
+            detail.typeID = item.TypeID;
+            $state.go('.Details', { id: item.TypeID});
+        }
 
         $scope.nextStep = () =>　{
             let key = 'FeedSystem' + $scope.state.axisID + 'ScrewNuts';
@@ -81,4 +73,5 @@ export class SelectionScrewNuts {
     }  
 };
 
-SelectionScrewNuts.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];
+SelectionScrewNuts.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 
+                            'DataStorage', 'SelectionNotification', 'SelectionDetails'];

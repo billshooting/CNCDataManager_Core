@@ -6,7 +6,7 @@ export class CNCSystemAccessories {
                         $state: angular.ui.IStateService)
     {
         $scope.nextStep = () => {
-            $state.go('selection.FeedSystem', {axis: 'X'});
+            $state.go('selection.FeedSystem.Guides', {axis: 'X'});
         };
         $scope.reset = () => {
 

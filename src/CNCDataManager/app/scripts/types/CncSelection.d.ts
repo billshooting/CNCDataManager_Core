@@ -67,11 +67,15 @@ interface ISelectionTableScope extends ITableScope, ISelectionPartScope {
     changePaginationIndex?: (index: number) => void;
     previousPage?: () => void;
     nextPage?: () => void;
+    goDetails?: (item: IItem) => void;
 }
 
 interface ISelectionTableHandler {
     toggleCol: (id: number, e: BaseJQueryEventObject)=> void;
-    changeOrderProperty: (property: string)=> void
+    changeOrderProperty: (property: string)=> void;
+    selectItem?: (item: IItem) => void;
+    changePaginationSize?: () => void;
+    goDetails?: (item: IItem) => void;
 }
 
 /** PageBy Filter Type Definition */

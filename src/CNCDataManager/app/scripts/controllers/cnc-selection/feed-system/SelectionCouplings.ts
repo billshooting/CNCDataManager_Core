@@ -2,7 +2,9 @@ import * as angular from 'angular';
 import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
+import SelectionDetails from '../../../services/SelectionDetails';
 import { ICouplingsScope, ISelectionAxis } from '../../../types/CncSelection';
+import { IItem } from '../../../types/CncData';
 
 export class SelectionCouplings {
     public constructor ($scope: ICouplingsScope,
@@ -10,7 +12,8 @@ export class SelectionCouplings {
                         $stateParams: angular.ui.IStateParamsService,
                         tableHandler: SelectionTableHandler,
                         dataStorage: DataStorage,
-                        notifier: SelectionNotification)
+                        notifier: SelectionNotification,
+                        detail: SelectionDetails)
     {
         $scope.ITEMNAME = 'elasticslvpincoups/';
         $scope.items = [];
@@ -44,29 +47,19 @@ export class SelectionCouplings {
         let handler = tableHandler.buildTableHandler($scope);
         $scope.changeOrderProperty = handler.changeOrderProperty;
         $scope.toggleCol = handler.toggleCol;
-        $scope.selectItem = item => {
-            $scope.data.selectedItem = item as any;
-            $scope.data.selectedTypeID = item.TypeID;
-        };
-
-        $scope.changePaginationSize = () => {
-            let size = $scope.state.paginationSize;
-            let number = $scope.state.pageNumber;
-            $scope.state.pageNumber = Math.ceil($scope.items.length / size);
-            let newNumber = $scope.state.pageNumber;
-            if(newNumber <= number) $scope.state.paginationAllIndex = $scope.state.paginationAllIndex.slice(0, newNumber);
-            else{
-                for(let i = number + 1; i <= newNumber; i++)
-                {
-                    $scope.state.paginationAllIndex.push(i);
-                }
-            }
-            $scope.state.paginationIndex = 1;
-        };
+        $scope.selectItem = handler.selectItem;
+        $scope.changePaginationSize = handler.changePaginationSize;
 
         $scope.changeCurrentType = (): void => {
             $scope.ITEMNAME = $scope.state.currentType.url;
             tableHandler.Initialize($scope);
+        }
+
+        $scope.goDetails = (item: IItem) => {
+            detail.item = item;
+            detail.typeID = item.TypeID;
+            detail.component = $scope.state.currentType.name;
+            $state.go('.Details', {id: item.TypeID });
         }
 
         $scope.nextStep = () =>　{
@@ -99,4 +92,5 @@ export class SelectionCouplings {
     }
 };
 
-SelectionCouplings.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 'DataStorage', 'SelectionNotification'];
+SelectionCouplings.$inject = ['$scope', '$state', '$stateParams', 'SelectionTableHandler', 
+                            'DataStorage', 'SelectionNotification', 'SelectionDetails'];

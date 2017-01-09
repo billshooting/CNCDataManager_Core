@@ -2,6 +2,7 @@ import * as angular from 'angular';
 import HttpProxy from './HttpProxy';
 import MessageTips from './MessageTips';
 import { ISelectionTableScope, ISelectionTableHandler} from '../types/CncSelection';
+import { IItem } from '../types/CncData';
 
 export default class SelectionTableHandler {
     private httpProxy: HttpProxy;
@@ -32,6 +33,24 @@ export default class SelectionTableHandler {
                 } else {
                     scope.state.orderProperty = property;
                 }
+            },
+            selectItem: function (item: IItem): void {
+                scope.data.selectedItem = item as any;
+                scope.data.selectedTypeID = item.TypeID;
+            },
+            changePaginationSize: function (): void {
+                let size = scope.state.paginationSize;
+                let number = scope.state.pageNumber;
+                scope.state.pageNumber = Math.ceil(scope.items.length / size);
+                let newNumber = scope.state.pageNumber;
+                if(newNumber <= number) scope.state.paginationAllIndex = scope.state.paginationAllIndex.slice(0, newNumber);
+                else{
+                    for(let i = number + 1; i <= newNumber; i++)
+                    {
+                        scope.state.paginationAllIndex.push(i);
+                    }
+                }
+                scope.state.paginationIndex = 1;
             }
         };
     }

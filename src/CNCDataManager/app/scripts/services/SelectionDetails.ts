@@ -4,22 +4,22 @@ import MessageTips from './MessageTips';
 import { ISelectionDetailScope, ISelectionDetailHandler } from '../types/CncSelection';
 
 export default class SelectionDetails {
-    private component: string;
-    private typeID: string;
-    private item: any;
-    private sizes: any;
+    private _component: string;
+    private _typeID: string;
+    private _item: any;
+    private _sizes: any;
 
     public constructor(){}
 
-    set Component(value: string) { this.component = value; }
-    get Component(): string { return this.component; }
+    set component(value: string) { this._component = value; }
+    get component(): string { return this._component; }
 
-    set TypeID(value: string) { this.typeID = value; }
-    get TypeID(): string { return this.typeID; }
+    set typeID(value: string) { this._typeID = value; }
+    get typeID(): string { return this._typeID; }
 
-    set Item(value: any) { this.item = value; }
-    get Item(): any { return this.item; }
+    set item(value: any) { this._item = value; }
+    get item(): any { return this._item; }
 
-    set Sizes(value: any) { this.sizes = value; }
-    get Sizes(): any { return this.sizes; }
+    set sizes(value: any) { this._sizes = value; }
+    get sizes(): any { return this._sizes; }
 };

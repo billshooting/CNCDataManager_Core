@@ -157,7 +157,7 @@
                         ng-click="selectItem(item)"
                         ng-class="{trselected: item.TypeID === data.selectedTypeID}"
                         class="selection-table-tr">
-                        <td style="width: 30px">{{$index + 1}}</td>
+                        <td ng-bind="$index + state.paginationSize * (state.paginationIndex - 1) + 1" style="width: 30px"></td>
                         <td ng-bind="item.TypeID"></td>
                         <td ng-bind="item.Manufacturer" type="text"></td>
                         <td ng-bind="item.NominalTorque" type="number"></td>
@@ -172,7 +172,7 @@
                         <td ng-if="state.colState[2]" ng-bind="item.MomentOfInertia" type="number"></td>
                         <td ng-if="state.colState[3]" ng-bind="item.Stiffness" type="number"></td>
 
-                        <td><a ui-sref="selection.FeedSystem.Couplings.Details({id:item.TypeID})">详情</a></td>
+                        <td><a ng-click="goDetails(item)">详情</a></td>
                     </tr>
                 </tbody>
             </table>
