@@ -199,8 +199,8 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
                 };
                 httpProxy.http('Report')
                          .post(result)
-                         .then(response => { let docWindow = window.open("", "预览"); docWindow.document.write(response); },
-                               response => { alert(response); });
+                         .then(response => { let docWindow = window.open("", "预览"); docWindow.document.write(response.data); },
+                               response => { alert(response.data); });
             };
             scope.selectionReset = () => {
                 dataStorage.clear();

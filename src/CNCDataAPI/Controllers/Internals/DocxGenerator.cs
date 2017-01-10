@@ -111,13 +111,13 @@ namespace CNCDataManager.Controllers.Internals
             p = table.Rows[1].Cells[1].Paragraphs.FirstOrDefault();
             p.Append(system.SupportMachineType);
             p = table.Rows[2].Cells[1].Paragraphs.FirstOrDefault();
-            p.Append(system.NumberOfSupportChannels.Value.ToString());
+            p.Append(system.NumberOfSupportChannels.HasValue? system.NumberOfSupportChannels.Value.ToString() : "");
             p = table.Rows[3].Cells[1].Paragraphs.FirstOrDefault();
-            p.Append(system.MaxNumberOfFeedSystemAxis.Value.ToString());
+            p.Append(system.MaxNumberOfFeedSystemAxis.HasValue? system.MaxNumberOfFeedSystemAxis.Value.ToString() : "");
             p = table.Rows[4].Cells[1].Paragraphs.FirstOrDefault();
-            p.Append(system.MaxNumberOfSpindleAxis.Value.ToString());
+            p.Append(system.MaxNumberOfSpindleAxis.HasValue? system.MaxNumberOfSpindleAxis.Value.ToString() : "");
             p = table.Rows[5].Cells[1].Paragraphs.FirstOrDefault();
-            p.Append(system.MaxNumberOfLinkageAxis.Value.ToString());
+            p.Append(system.MaxNumberOfLinkageAxis.HasValue? system.MaxNumberOfLinkageAxis.Value.ToString() : "");
         }
 
         private void AddServoMotor(ServoMotor sm)
@@ -130,13 +130,13 @@ namespace CNCDataManager.Controllers.Internals
         private void AddServoMotorAxis(Table table, ServoMotorAxis sma, int rowIndex)
         {
             Paragraph p = table.Rows[rowIndex].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sma.RatedTorque.Value.ToString());
+            p.Append(sma.RatedTorque.HasValue? sma.RatedTorque.Value.ToString() : "");
             p = table.Rows[rowIndex + 1].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sma.RatedSpeed.Value.ToString());
+            p.Append(sma.RatedSpeed.HasValue? sma.RatedSpeed.Value.ToString() : "");
             p = table.Rows[rowIndex + 2].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sma.MomentOfInertia.Value.ToString());
+            p.Append(sma.MomentOfInertia.HasValue? sma.MomentOfInertia.Value.ToString() : "");
             p = table.Rows[rowIndex + 3].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sma.RatedPower.Value.ToString());
+            p.Append(sma.RatedPower.HasValue? sma.RatedPower.Value.ToString() : "");
         }
 
         private void AddServoDriver(ServoDriver sd)
@@ -149,13 +149,13 @@ namespace CNCDataManager.Controllers.Internals
         private void AddServoDriverAxis(Table table, ServoDriverAxis sda, int rowIndex)
         {
             Paragraph p = table.Rows[rowIndex].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sda.ContinuousCurrent.Value.ToString());
+            p.Append(sda.ContinuousCurrent.HasValue? sda.ContinuousCurrent.Value.ToString() : "");
             p = table.Rows[rowIndex + 1].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sda.PeakCurrent.Value.ToString());
+            p.Append(sda.PeakCurrent.HasValue? sda.PeakCurrent.Value.ToString() : "");
             p = table.Rows[rowIndex + 2].Cells[2].Paragraphs.FirstOrDefault();
             p.Append(sda.SupplyVoltage);
             p = table.Rows[rowIndex + 3].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(sda.MaxAdaptableMotorPower.Value.ToString());
+            p.Append(sda.MaxAdaptableMotorPower.HasValue? sda.MaxAdaptableMotorPower.Value.ToString() : "");
             p = table.Rows[rowIndex + 4].Cells[2].Paragraphs.FirstOrDefault();
             p.Append(sda.ExternalBrakingResistance);
         }
@@ -174,9 +174,9 @@ namespace CNCDataManager.Controllers.Internals
             p = table.Rows[rowIndex + 1].Cells[2].Paragraphs.FirstOrDefault();
             p.Append(ga.RollerType);
             p = table.Rows[rowIndex + 2].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(ga.BasicRatedDynamicLoad.Value.ToString());
+            p.Append(ga.BasicRatedDynamicLoad.HasValue? ga.BasicRatedDynamicLoad.Value.ToString() : "");
             p = table.Rows[rowIndex + 3].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(ga.BasicRatedStaticLoad.Value.ToString());
+            p.Append(ga.BasicRatedStaticLoad.HasValue? ga.BasicRatedStaticLoad.Value.ToString() : "");
         }
 
         private void AddBallScrew(BallScrew bs)
@@ -189,11 +189,11 @@ namespace CNCDataManager.Controllers.Internals
         private void AddBallScrewAxis(Table table, BallScrewAxis bsa, int rowIndex)
         {
             Paragraph p = table.Rows[rowIndex].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(bsa.NominalDiameter.Value.ToString());
+            p.Append(bsa.NominalDiameter.HasValue? bsa.NominalDiameter.Value.ToString() : "");
             p = table.Rows[rowIndex + 1].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(bsa.NominalLead.Value.ToString());
+            p.Append(bsa.NominalLead.HasValue? bsa.NominalLead.Value.ToString() : "");
             p = table.Rows[rowIndex + 2].Cells[2].Paragraphs.FirstOrDefault();
-            p.Append(bsa.BasicRatedDynamicLoad.Value.ToString());
+            p.Append(bsa.BasicRatedDynamicLoad.HasValue? bsa.BasicRatedDynamicLoad.Value.ToString() : "");
         }
 
         public void Dispose()

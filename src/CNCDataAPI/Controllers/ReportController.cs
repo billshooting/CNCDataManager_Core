@@ -44,7 +44,7 @@ namespace CNCDataManager.Controllers
         {
             ReportTemplateResult res = new ReportTemplateResult()
             {
-                MachinePicture = "images/Report/MachineType.png",
+                MachinePicture = MapPath("images/Report/MachineType.png"),
                 TransmissionMethod = new TransmissionMethod()
                 {
                     XAxis = "减速器",
@@ -79,9 +79,9 @@ namespace CNCDataManager.Controllers
                 },
                 SimulationPictures = new List<string>()
                 {
-                    "images/Report/simu-1.png",
-                    "images/Report/simu-2.png",
-                    "images/Report/simu-3.png"
+                    MapPath("images/Report/simu-1.png"),
+                    MapPath("images/Report/simu-2.png"),
+                    MapPath("images/Report/simu-3.png")
                 }
             };
             res.Components.Add(new Component() { AxisAndName = "X轴滚珠丝杠", TypeID = result.FeedSystemX.Ballscrew.TypeID, Manufacturer = result.FeedSystemX.Ballscrew.Manufacturer });
