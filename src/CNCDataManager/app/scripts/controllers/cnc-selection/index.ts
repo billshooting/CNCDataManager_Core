@@ -10,6 +10,7 @@ import { SelectionScrewNuts } from './feed-system/SelectionScrewNuts';
 import { SelectionBearings } from './feed-system/SelectionBearings';
 import { SelectionCouplings } from './feed-system/SelectionCouplings';
 import { SelectionServoMotors } from './feed-system/SelectionServoMotors';
+import { SelectionServoDrivers } from './feed-system/SelectionServoDrivers';
 
 import { ComponentDetails } from './feed-system/ComponentDetails';    
 
@@ -25,5 +26,6 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('SelectionBearingsCtrl', SelectionBearings);
     app.controller('SelectionCouplingsCtrl', SelectionCouplings);
     app.controller('SelectionServoMotorsCtrl', SelectionServoMotors);
+    app.controller('SelectionServoDriversCtrl', SelectionServoDrivers);
     app.controller('ComponentDetailsCtrl', ComponentDetails);
 }

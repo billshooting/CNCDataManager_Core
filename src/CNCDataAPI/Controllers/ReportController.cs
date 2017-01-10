@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using CNCDataManager.Controllers.Internals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Cors;
 
 namespace CNCDataManager.Controllers
 {
+    [EnableCors("FullOpen")]
+    [Route("api/cncdata/[controller]")]
     public class ReportController : Controller
     {
         private string _webRootPath; 
@@ -21,13 +24,13 @@ namespace CNCDataManager.Controllers
 
         // GET: Report
         [HttpPost]
-        public ActionResult Index (SelectionResult selectionResult)
+        public ActionResult Index ([FromBody]SelectionResult selectionResult)
         {
             ReportTemplateResult result = ToReportTemplate(selectionResult);
             string shortName = DateTime.Now.ToString("yyyyMMdd-hhmmss");
             string filename = MapPath("temp", shortName + ".docx");
             result.Filename = shortName;
-            using (DocxGenerator gen = new DocxGenerator(MapPath("others", @"选型简表结果.docx")))
+            using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
             {
                 gen.AddMachinePicture(MapPath(result.MachinePicture))
                     .AddSimulationPictures(MapPath(result.SimulationPictures.ToArray()))

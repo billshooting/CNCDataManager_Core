@@ -25,7 +25,7 @@ namespace CNCDataManager.Controllers.Internals
         public string DocName { get; }
         //public Stream DocStream { get; }
 
-        public DocxGenerator(string filename = @"~/App/docTemplate/选型简表结果.docx")
+        public DocxGenerator(string filename = @"./选型简表结果.docx")
         {
             DocName = filename;
             //DocStream = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);

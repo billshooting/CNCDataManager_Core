@@ -64,7 +64,7 @@
                     <span>导轨</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.Guide.IsShown">
-                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <img class="detail-image" alt="导轨" ng-src="{{data.FeedSystemX.Guide.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -87,7 +87,7 @@
                     <span>滚珠丝杠</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.ScrewNuts.IsShown">
-                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <img class="detail-image" alt="滚珠丝杠" ng-src="{{data.FeedSystemX.ScrewNuts.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -110,7 +110,7 @@
                     <span>轴承</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.Bearings.IsShown">
-                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg"/>
+                    <img class="detail-image" alt="轴承" ng-src="{{data.FeedSystemX.Bearings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -133,7 +133,7 @@
                     <span>联轴器</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.Couplings.IsShown">
-                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <img class="detail-image" alt="联轴器" ng-src="{{data.FeedSystemX.Couplings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -156,7 +156,7 @@
                     <span>伺服电机</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.ServoMotor.IsShown">
-                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <img class="detail-image" alt="伺服电机" ng-src="{{data.FeedSystemX.ServoMotor.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -179,7 +179,7 @@
                     <span>伺服驱动</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemX.ServoDriver.IsShown">
-                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <img class="detail-image" alt="伺服驱动" ng-src="{{data.FeedSystemX.ServoDriver.ImgUrl}}"/>
                     <table class="table table-striped"> 
                         <tr>
                             <td>型号</td>
@@ -207,7 +207,7 @@
                     <span>导轨</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.Guide.IsShown">
-                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <img class="detail-image" alt="导轨" ng-src="{{data.FeedSystemY.Guide.ImgUrl}}" />
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -230,7 +230,7 @@
                     <span>滚珠丝杠</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.ScrewNuts.IsShown">
-                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <img class="detail-image" alt="滚珠丝杠" ng-src="{{data.FeedSystemY.ScrewNuts.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -253,7 +253,7 @@
                     <span>轴承</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.Bearings.IsShown">
-                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg" />
+                    <img class="detail-image" alt="轴承" ng-src="{{data.FeedSystemY.Bearings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -276,7 +276,7 @@
                     <span>联轴器</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.Couplings.IsShown">
-                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <img class="detail-image" alt="联轴器" ng-src="{{data.FeedSystemY.Couplings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -299,7 +299,7 @@
                     <span>伺服电机</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.ServoMotor.IsShown">
-                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <img class="detail-image" alt="伺服电机" ng-src="{{data.FeedSystemY.ServoMotor.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -322,7 +322,7 @@
                     <span>伺服驱动</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemY.ServoDriver.IsShown">
-                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <img class="detail-image" alt="伺服驱动" ng-src="{{data.FeedSystemY.ServoDriver.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -350,7 +350,7 @@
                     <span>导轨</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.Guide.IsShown">
-                    <img class="detail-image" alt="导轨" src="./images/Mechanics/导轨-表/Guide.jpg"/>
+                    <img class="detail-image" alt="导轨" ng-src="{{data.FeedSystemZ.Guide.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -373,7 +373,7 @@
                     <span>滚珠丝杠</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.ScrewNuts.IsShown">
-                    <img class="detail-image" alt="滚珠丝杠" src="./images/Mechanics/滚珠丝杠-表/滚珠丝杠螺母副.jpg"/>
+                    <img class="detail-image" alt="滚珠丝杠" ng-src="{{data.FeedSystemZ.ScrewNuts.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -396,7 +396,7 @@
                     <span>轴承</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.Bearings.IsShown">
-                    <img class="detail-image" alt="轴承" src="./images/Mechanics/滚动轴承-表/滚动轴承.jpg"/>
+                    <img class="detail-image" alt="轴承" ng-src="{{data.FeedSystemZ.Bearings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -419,7 +419,7 @@
                     <span>联轴器</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.Couplings.IsShown">
-                    <img class="detail-image" alt="联轴器" src="./images/Mechanics/联轴器-表/联轴器.jpg"/>
+                    <img class="detail-image" alt="联轴器" ng-src="{{data.FeedSystemZ.Couplings.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -442,7 +442,7 @@
                     <span>伺服电机</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.ServoMotor.IsShown">
-                    <img class="detail-image" alt="伺服电机" src="./images/Motors/伺服电机.jpg"/>
+                    <img class="detail-image" alt="伺服电机" ng-src="{{data.FeedSystemZ.ServoMotor.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -465,7 +465,7 @@
                     <span>伺服驱动</span>
                 </div>
                 <div class="side-menu-detail" ng-show="data.FeedSystemZ.ServoDriver.IsShown">
-                    <img class="detail-image" alt="伺服驱动" src="./images/Servo/Driver.jpg"/>
+                    <img class="detail-image" alt="伺服驱动" ng-src="{{data.FeedSystemZ.ServoDriver.ImgUrl}}"/>
                     <table class="table table-striped">
                         <tr>
                             <td>型号</td>
@@ -483,7 +483,7 @@
                 </div>
             </div>
         </div>
-        <a id="side-menu-complete" class="btn btn-default">完成</a>
-        <a id="side-menu-reset" class="btn btn-danger">重置数据</a>
+        <a id="side-menu-complete" class="btn btn-success" ng-click="selectionComplete()">完成</a>
+        <a id="side-menu-reset" class="btn btn-danger" ng-click="selectionReset()">重置数据</a>
     </div>
 </div>

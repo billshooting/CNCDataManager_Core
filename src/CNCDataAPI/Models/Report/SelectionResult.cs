@@ -14,7 +14,7 @@ namespace CNCDataManager.Models
         public double? InnerDiameter_d { get; set; }
         public double? Diameter_D { get; set; }
         public double? Width_B { get; set; }
-        public double BasicRatedDynamicLoad { get; set; }
+        public double? BasicRatedDynamicLoad { get; set; }
         public double? BasicRatedStaticLoad { get; set; }
         public double? SpeedLimitOfGrease { get; set; }
         public double? SpeedLimitOfOil { get; set; }

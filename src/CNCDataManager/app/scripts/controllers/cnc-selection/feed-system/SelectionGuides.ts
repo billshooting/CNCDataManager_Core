@@ -46,7 +46,7 @@ export class SelectionGuides {
         };
 
         $scope.nextStep = () =>　{
-            let key = 'FeedSystem' + $scope.state.axisID + 'Guide';
+            let key = 'FeedSystem' + $scope.state.axisID + 'Guides';
             dataStorage.setObject(key, $scope.data.selectedItem);
             notifier.notifyChange(data => {
                 let feedSystem: ISelectionAxis = null;

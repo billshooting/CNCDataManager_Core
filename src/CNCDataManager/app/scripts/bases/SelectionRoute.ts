@@ -174,7 +174,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/servo-drivers/servo-drivers-table-content.html',
-                        controller: 'ComponentDetailsCtrl',
+                        controller: 'SelectionServoDriversCtrl'
                     }
                 }
             })
@@ -183,6 +183,7 @@ export default function registerSelectionRoute(app: angular.IModule): void
                 views: {
                     'content@selection': {
                         templateUrl: './views/cnc-selection/controller-tpls/feed-system/servo-drivers/servo-drivers-details-content.html',
+                        controller: 'ComponentDetailsCtrl',
                     }
                 }
             })
