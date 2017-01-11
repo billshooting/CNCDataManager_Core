@@ -10,17 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge; charset=utf-8"/>
     <title>文档预览</title>
-    <link href="~/App/styles/others/docPreview.css" rel="stylesheet" />
+    <link href="./css/docPreview.css" rel="stylesheet" />
 </head>
 <body>
     <div class="middle-container">
         <div class="fixed-window">
-            <a class="download" href="/Report/DownLoad?shortName=@Model.Filename">下载报表</a>
+            <a class="download" href="http://localhost:52132/api/cncdata/Report/DownLoad?shortName=@Model.Filename">下载报表</a>
             <div style="margin-top: -1cm">
-                <img id="university-icon" src="~/App/images/Report/university-icon.png" />
+                <img id="university-icon" src="./images/Report/university-icon.png" />
             </div>
             <div style="position: relative">
-                <img id="barcode" src="~/App/images/Report/条形码.png" />
+                <img id="barcode" src="./images/Report/条形码.png" />
                 <div id="time-div"class="inline-div">
                     <p>@DateTime.Now.ToString("yyyy年MM月dd日 hh:mm:ss")</p>
                     <ul style="line-height: 20px">
@@ -385,7 +385,7 @@
             <br />
             <br />
             <br />
-            <p class="paragraph"><img style="width:1.22cm; height:1.07cm" src="~/App/images/Report/cautious.png"/>注意事项</p>
+            <p class="paragraph"><img style="width:1.22cm; height:1.07cm" src="./images/Report/cautious.png"/>注意事项</p>
             <ol style="line-height: 24px; margin-left: 20px">
                 <li><p>该选型软件包括了大部分机床类型，还有少部分没有考虑，下一代选型软件将会不断完善。</p></li>
                 <li><p>该选型软件数据库更新升级的过程，希望机床厂家使用该软件的同时向我们提供相关数据，使得软件应用范围更广，包含的数据库更加丰富。</p></li>

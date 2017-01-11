@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Cors;
 namespace CNCDataManager.Controllers
 {
     [EnableCors("FullOpen")]
-    [Route("api/cncdata/[controller]")]
+    [Route("api/cncdata/[controller]/[action]")]
     public class ReportController : Controller
     {
         private string _webRootPath; 
@@ -44,7 +44,7 @@ namespace CNCDataManager.Controllers
         {
             ReportTemplateResult res = new ReportTemplateResult()
             {
-                MachinePicture = MapPath("images/Report/MachineType.png"),
+                MachinePicture = "./images/Report/MachineType.png",
                 TransmissionMethod = new TransmissionMethod()
                 {
                     XAxis = "减速器",
@@ -79,9 +79,9 @@ namespace CNCDataManager.Controllers
                 },
                 SimulationPictures = new List<string>()
                 {
-                    MapPath("images/Report/simu-1.png"),
-                    MapPath("images/Report/simu-2.png"),
-                    MapPath("images/Report/simu-3.png")
+                    "./images/Report/simu-1.png",
+                    "./images/Report/simu-2.png",
+                    "./images/Report/simu-3.png"
                 }
             };
             res.Components.Add(new Component() { AxisAndName = "X轴滚珠丝杠", TypeID = result.FeedSystemX.Ballscrew.TypeID, Manufacturer = result.FeedSystemX.Ballscrew.Manufacturer });
@@ -168,8 +168,8 @@ namespace CNCDataManager.Controllers
 
         public IActionResult DownLoad(string shortName)
         {
-            string filename = MapPath("temp", shortName + ".docx");
-            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果");   
+            string filename = "./temp/" + shortName + ".docx";
+            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");   
         }
 
         private string MapPath(string relativeUrl)

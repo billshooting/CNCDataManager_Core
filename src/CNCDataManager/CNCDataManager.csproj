@@ -224,6 +224,7 @@
     <Content Include="app\views\directives\cnc-pagination.html" />
     <Content Include="app\views\directives\progress-bar.html" />
     <Content Include="app\views\directives\side-menu.html" />
+    <Content Include="dist\css\docPreview.css" />
     <Content Include="dist\lib\bootstrap\bootstrap.min.css" />
     <Content Include="app\lib\bootstrap\bootstrap.min.js" />
     <Content Include="app\lib\jquery\jquery.min.js" />

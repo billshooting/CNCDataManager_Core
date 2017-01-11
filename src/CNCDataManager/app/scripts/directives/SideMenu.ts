@@ -197,7 +197,7 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
                     FeedSystemY: getFeedSystem('Y'),
                     FeedSystemZ: getFeedSystem('Z'),
                 };
-                httpProxy.http('Report')
+                httpProxy.http('Report/Index')
                          .post(result)
                          .then(response => { let docWindow = window.open("", "预览"); docWindow.document.write(response.data); },
                                response => { alert(response.data); });
