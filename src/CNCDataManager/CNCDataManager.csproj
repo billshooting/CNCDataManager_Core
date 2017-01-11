@@ -134,9 +134,9 @@
     <Content Include="app\images\Mechanics\导轨-表\1-直线滚动导轨-表.jpg" />
     <Content Include="app\images\Mechanics\导轨-表\Guide.jpg" />
     <Content Include="app\images\Mechanics\导轨-表\导轨.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\立铣X轴导轨.jpg" />
+    <Content Include="app\images\Mechanics\导轨-表\立铣Y轴导轨.jpg" />
     <Content Include="app\images\Mechanics\导轨-表\立铣Z轴导轨.jpg" />
-    <Content Include="app\images\Mechanics\导轨-表\立铣水平上导轨.jpg" />
-    <Content Include="app\images\Mechanics\导轨-表\立铣水平下导轨.jpg" />
     <Content Include="app\images\Mechanics\数控系统-介绍.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\1-角接触球轴承-表.jpg" />
     <Content Include="app\images\Mechanics\滚动轴承-表\2-深沟球轴承-表.jpg" />
@@ -198,7 +198,9 @@
     <Content Include="app\lib\angular-strap\angular-strap.tpl.min.js" />
     <Content Include="app\lib\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="app\lib\angular\angular.min.js" />
+    <Content Include="app\lib\bluebird\bluebird.min.js" />
     <Content Include="app\lib\bootstrap\bootstrap.min.css" />
+    <Content Include="app\lib\es6-promise\es6-promise.min.js" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\ncsystems.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\solid-ball-screw-nut-pairs.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\cncsystem\accessories-content.html" />
