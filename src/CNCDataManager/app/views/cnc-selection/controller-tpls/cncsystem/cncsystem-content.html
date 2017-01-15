@@ -7,17 +7,20 @@
         <div class="form-group">
             <label for="Manufacturer" class="col-md-2 control-label">生产厂家：</label>
             <div class="col-md-2">
-                <select class="form-control" id="Manufacturer" ng-model="state.filtrateConditions.Manufacturer" ng-options="data for data in state.ManufacturerOptions">
+                <select class="form-control" id="Manufacturer" 
+                        ng-change="changeFilter()"
+                        ng-model="state.filtrateConditions.Manufacturer" 
+                        ng-options="data for data in state.ManufacturerOptions">
                     <option value="">--请选择--</option>
                 </select>
             </div>
             <label for="SupportNumberOfChannels" class="col-md-2 control-label">支持通道数：</label>
             <div class="col-md-2">
-                <input type="number" class="form-control" id="SupportNumberOfChannels" ng-model="state.filtrateConditions.SupportChannels" min="1">
+                <input type="number" class="form-control" id="SupportNumberOfChannels" ng-change="changeFilter()" ng-model="state.filtrateConditions.SupportChannels" min="1">
             </div>
             <label for="MaxControlNumberOfFeedAxis" class="col-md-2 control-label">最大进给轴数：</label>
             <div class="col-md-2">
-                <input type="number" class="form-control" id="MaxControlNumberOfFeedAxis" ng-model="state.filtrateConditions.MaxNumberOfFeedShafts" min="1">
+                <input type="number" class="form-control" id="MaxControlNumberOfFeedAxis" ng-change="changeFilter()" ng-model="state.filtrateConditions.MaxNumberOfFeedShafts" min="1">
             </div>
         </div>
     </form>

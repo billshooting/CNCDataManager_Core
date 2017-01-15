@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import { ICNCSystemSelectionScope, ICNCSystemFilterConditions } from '../../../types/CncSelection';
+import { ICNCSystemSelectionScope, ICNCSystemFilterConditions, IFilterCNCSystemFiltrate } from '../../../types/CncSelection';
 import SelectionTableHandler from '../../../services/SelectionTableHandler';
 import DataStorage from '../../../services/DataStorage';
 import SelectionNotification from '../../../services/SelectionNotification';
@@ -9,7 +9,8 @@ export class CNCSystemType {
                        tableHandler: SelectionTableHandler,
                        $state: angular.ui.IStateService,
                        dataStorage: DataStorage,
-                       notifier: SelectionNotification)
+                       notifier: SelectionNotification,
+                       $filter: angular.IFilterService)
     {
         // 属性
         $scope.ITEMNAME = 'ncsystems/';
@@ -21,9 +22,9 @@ export class CNCSystemType {
             paginationSize: 10,
             pageNumber: 1,
             paginationAllIndex: [1],
-            ManufacturerOptions: ["华中数控","广州数控","沈阳高精","北京航天数控"],
+            ManufacturerOptions: ['所有厂商', '华中数控', '广州数控', '沈阳高精' , '北京航天数控'],
             filtrateConditions: {
-                Manufacturer: null,
+                Manufacturer: '所有厂商',
                 SupportChannels: 1,
                 MaxNumberOfFeedShafts: 1,
                 SupportMachineType: dataStorage.getObject('MachineType').support,
@@ -37,25 +38,10 @@ export class CNCSystemType {
         // 方法
         let handler = tableHandler.buildTableHandler($scope);
         $scope.changeOrderProperty = handler.changeOrderProperty;
-        $scope.selectItem = item => {
-            $scope.data.selectedItem = item as any;
-            $scope.data.selectedTypeID = item.TypeID;
-        };
-
-        $scope.changePaginationSize = () => {
-            let size = $scope.state.paginationSize;
-            let number = $scope.state.pageNumber;
-            $scope.state.pageNumber = Math.ceil($scope.items.length / size);
-            let newNumber = $scope.state.pageNumber;
-            if(newNumber <= number) $scope.state.paginationAllIndex = $scope.state.paginationAllIndex.slice(0, newNumber);
-            else{
-                for(let i = number + 1; i <= newNumber; i++)
-                {
-                    $scope.state.paginationAllIndex.push(i);
-                }
-            }
-            $scope.state.paginationIndex = 1;
-        };
+        $scope.selectItem = handler.selectItem;
+        $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changeFilter = handler.changeFilter('cncSystemFiltrateBy');
+        $scope.reset = handler.reset;
 
         $scope.nextStep = () =>　{
             dataStorage.setObject('CNCSystem', $scope.data.selectedItem);
@@ -72,11 +58,7 @@ export class CNCSystemType {
             $state.go('.Accessories');
         };
 
-        $scope.reset = () => {
-            $scope.data = { selectedTypeID: null, selectedItem: null };
-        };
-
         tableHandler.Initialize($scope);
     }
 };
-CNCSystemType.$inject = ['$scope', 'SelectionTableHandler', '$state', 'DataStorage', 'SelectionNotification'];
+CNCSystemType.$inject = ['$scope', 'SelectionTableHandler', '$state', 'DataStorage', 'SelectionNotification', '$filter'];

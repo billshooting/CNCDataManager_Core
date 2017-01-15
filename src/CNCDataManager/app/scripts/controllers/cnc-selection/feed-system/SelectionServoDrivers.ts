@@ -17,6 +17,7 @@ export class SelectionServoDrivers {
     {
         $scope.ITEMNAME = 'pmsrvmotordrivers/';
         $scope.items = [];
+        $scope.filtratedItems = [];
         $scope.state = {
             orderProperty: 'TypeID',
             paginationIndex: 1,
@@ -39,17 +40,9 @@ export class SelectionServoDrivers {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
-
-        $scope.goDetails = (item: IItem) => {
-            detail.item = item;
-            detail.typeID = item.TypeID;
-            $state.go('.Details', {id: item.TypeID});
-        };
-
-        // $scope.changeCurrentType = (): void => {
-        //     $scope.ITEMNAME = $scope.state.currentManufacturer;
-        //     tableHandler.Initialize($scope);
-        // }
+        $scope.changeFilter = handler.changeFilter('selectionServoDriverFiltrateBy');
+        $scope.goDetails = handler.goDetails;
+        $scope.reset = handler.reset;
 
         $scope.nextStep = () =>　{
             let key = 'FeedSystem' + $scope.state.axisID + 'ServoDrivers';
@@ -74,10 +67,6 @@ export class SelectionServoDrivers {
                 alert('请转至侧边栏查看所选组件');
             }
             
-        };
-
-        $scope.reset = () => {
-            $scope.data = { selectedTypeID: null, selectedItem: null };
         };
 
         //初始化

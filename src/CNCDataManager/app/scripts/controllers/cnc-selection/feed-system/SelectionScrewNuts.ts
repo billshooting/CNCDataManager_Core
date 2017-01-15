@@ -17,6 +17,7 @@ export class SelectionScrewNuts {
     {
         $scope.ITEMNAME = 'solidballscrewnutpairs/';
         $scope.items = [];
+        $scope.filtratedItems = [];
         $scope.state = {
             orderProperty: 'TypeID',
             paginationIndex: 1,
@@ -37,12 +38,9 @@ export class SelectionScrewNuts {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
-
-        $scope.goDetails = (item: IItem) => {
-            detail.item = item;
-            detail.typeID = item.TypeID;
-            $state.go('.Details', { id: item.TypeID});
-        }
+        $scope.changeFilter = handler.changeFilter('selectionScrewNutsFiltrateBy');
+        $scope.goDetails = handler.goDetails;
+        $scope.reset = handler.reset;
 
         $scope.nextStep = () =>　{
             let key = 'FeedSystem' + $scope.state.axisID + 'ScrewNuts';
@@ -64,9 +62,6 @@ export class SelectionScrewNuts {
             $state.go('selection.FeedSystem.Bearings');
         };
 
-        $scope.reset = () => {
-            $scope.data = { selectedTypeID: null, selectedItem: null };
-        };
         $scope.state.axisID = $stateParams['axis'];
         //初始化
         tableHandler.Initialize($scope);

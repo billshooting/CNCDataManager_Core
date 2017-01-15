@@ -17,6 +17,7 @@ export class SelectionCouplings {
     {
         $scope.ITEMNAME = 'elasticslvpincoups/';
         $scope.items = [];
+        $scope.filtratedItems = [];
         $scope.state = {
             orderProperty: 'TypeID',
             paginationIndex: 1,
@@ -49,18 +50,20 @@ export class SelectionCouplings {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changeFilter = handler.changeFilter('selectionCouplingsFiltrateBy');
+        $scope.reset = handler.reset;
 
         $scope.changeCurrentType = (): void => {
             $scope.ITEMNAME = $scope.state.currentType.url;
             tableHandler.Initialize($scope);
-        }
+        };
 
         $scope.goDetails = (item: IItem) => {
             detail.item = item;
             detail.typeID = item.TypeID;
             detail.component = $scope.state.currentType.name;
             $state.go('.Details', {id: item.TypeID });
-        }
+        };
 
         $scope.nextStep = () =>　{
             let key = 'FeedSystem' + $scope.state.axisID + 'Couplings';
@@ -82,9 +85,6 @@ export class SelectionCouplings {
             $state.go('selection.FeedSystem.ServoMotors');
         };
 
-        $scope.reset = () => {
-            $scope.data = { selectedTypeID: null, selectedItem: null };
-        };
 
         //初始化
         $scope.state.axisID = $stateParams['axis'];

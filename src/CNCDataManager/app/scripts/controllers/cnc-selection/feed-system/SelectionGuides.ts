@@ -17,6 +17,7 @@ export class SelectionGuides {
     {
         $scope.ITEMNAME = 'linerollingguides/';
         $scope.items = [];
+        $scope.filtratedItems = [];
         $scope.state = {
             orderProperty: 'TypeID',
             paginationIndex: 1,
@@ -38,12 +39,10 @@ export class SelectionGuides {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changeFilter = handler.changeFilter('selectionGuidesFiltrateBy');
+        $scope.goDetails = handler.goDetails;
+        $scope.reset = handler.reset;
         
-        $scope.goDetails = (item: IItem) => {
-            detail.item = item;
-            detail.typeID = item.TypeID;
-            $state.go('.Details', {id: item.TypeID});
-        };
 
         $scope.nextStep = () =>　{
             let key = 'FeedSystem' + $scope.state.axisID + 'Guides';
@@ -63,10 +62,6 @@ export class SelectionGuides {
                 };
             });
             $state.go('selection.FeedSystem.ScrewNuts');
-        };
-
-        $scope.reset = () => {
-            $scope.data = { selectedTypeID: null, selectedItem: null };
         };
 
         //初始化

@@ -10,7 +10,7 @@ let Pagination: angular.IDirectiveFactory = (): angular.IDirective => {
             $scope.changePaginationSize = () => {
                 let size = $scope.state.paginationSize;
                 let number = $scope.state.pageNumber;
-                $scope.state.pageNumber = Math.ceil($scope.items.length / size);
+                $scope.state.pageNumber = Math.ceil($scope.filtratedItems.length / size);
                 let newNumber = $scope.state.pageNumber;
                 if(newNumber <= number) $scope.state.paginationAllIndex = $scope.state.paginationAllIndex.slice(0, newNumber);
                 else{

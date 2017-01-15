@@ -7,7 +7,7 @@ export default function (): IFilterCNCSystemFiltrate {
         if(items)
         {
             items.forEach(item => {
-                if((!conditions.Manufacturer || item.Manufacturer === conditions.Manufacturer) &&
+                if((conditions.Manufacturer === '所有厂商' || item.Manufacturer === conditions.Manufacturer) &&
                    item.SupportMachineType.indexOf(conditions.SupportMachineType) >= 0 &&
                    item.SupportChannels >= conditions.SupportChannels &&
                    item.MaxNumberOfFeedShafts >= conditions.MaxNumberOfFeedShafts)
@@ -17,5 +17,5 @@ export default function (): IFilterCNCSystemFiltrate {
             });
         }
         return result;
-    }
-}
+    };
+};
