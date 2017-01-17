@@ -28,4 +28,4 @@ export default function registerSelectionControllers(app: angular.IModule): void
     app.controller('SelectionServoMotorsCtrl', SelectionServoMotors);
     app.controller('SelectionServoDriversCtrl', SelectionServoDrivers);
     app.controller('ComponentDetailsCtrl', ComponentDetails);
-}
+};

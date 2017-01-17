@@ -1,0 +1,33 @@
+﻿<div class="short-background">
+    <msg-dialog></msg-dialog>
+    <!-- 巨幕标题 -->
+    <div class="layout-header">
+        <div class="container">
+            <h1>数控系统仿真</h1>
+            <p>开始数控系统仿真,根据MWorks提供的modelica解算器计算</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="col-md-3">
+                    <a ui-sref="simulation.Settings({axis: 'X'})" class="text-center">X轴仿真</a>
+                </li>
+                <li class="col-md-3">
+                    <a ui-sref="simulation.Settings({axis: 'Y'})" class="text-center">Y轴仿真</a>
+                </li>
+                <li class="col-md-3">
+                    <a ui-sref="simulation.Settings({axis: 'Z'})" class="text-center">Z轴仿真</a>
+                </li>
+                <li class="col-md-3">
+                    <a ui-sref="simulation.Settings({axis: 'Spindle'})" class="text-center">主轴仿真</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-2" style="padding-left: 0px" ui-view="leftside"></div>
+            <div class="col-md-10" ui-view="content"></div>
+        </div>
+    </div>
+    <side-menu></side-menu>
+</div>

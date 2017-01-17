@@ -26,7 +26,8 @@ export class SelectionServoMotors {
             paginationAllIndex: [1],
             colState: [false, false, false, false],
             axisID: null,
-            manufacturerOptions: ["华大","广数","登奇","光洋"],
+            manufacturerOptions: ["全部厂商", "华大","广数","登奇","光洋"],
+            voltageOptions: [{ name: '全部电压', id: 0 }, { name: '低压220V', id: 220 }, { name: '高压380V', id: 380 }],
             currentManufacturer: null,
         };
         $scope.state.currentManufacturer = $scope.state.manufacturerOptions[0];

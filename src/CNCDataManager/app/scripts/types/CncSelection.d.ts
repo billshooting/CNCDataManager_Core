@@ -187,6 +187,7 @@ interface IServoMotorScope extends ISelectionTableScope {
         filtrateConditions?: any;
         axisID: string,
         manufacturerOptions: string[];
+        voltageOptions: any[];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
         currentManufacturer: string,
     };
     changeCurrentType: () => void;

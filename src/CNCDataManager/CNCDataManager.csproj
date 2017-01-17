@@ -24,13 +24,12 @@
   <ItemGroup>
     <Content Include="app\css\cnc-data\controller-tpls\cncdata-leftside.css" />
     <Content Include="app\css\cnc-selection\controller-tpls\selection.css" />
+    <Content Include="app\css\cnc-simulation\simulation.css" />
     <Content Include="app\css\directives\back-to-top.css" />
     <Content Include="app\css\cnc-data\controller-tpls\cncdata-description.css" />
     <Content Include="app\css\cnc-data\controller-tpls\cncdata-list.css" />
     <Content Include="app\css\directives\progress-bar.css" />
     <Content Include="app\css\directives\side-menu.css" />
-    <Content Include="app\css\others\feedSystem.css" />
-    <Content Include="app\css\others\reset.css" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\images\back-to-top-icon.png" />
     <Content Include="app\images\CNC\CNCSystem\CASNUC2000TA.jpg" />
@@ -101,6 +100,7 @@
     <Content Include="app\images\Cover\machine.jpg" />
     <Content Include="app\images\Cover\motor.jpg" />
     <Content Include="app\images\Cover\system.jpg" />
+    <Content Include="app\images\head-bg.jpg" />
     <Content Include="app\images\Home\angular.png" />
     <Content Include="app\images\Home\asp-net.png" />
     <Content Include="app\images\Home\Azure.png" />
@@ -223,6 +223,9 @@
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\machine-type-leftside.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\working-conditions-content.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\selection.html" />
+    <Content Include="app\views\cnc-simulation\controller-tpls\simulation-content.html" />
+    <Content Include="app\views\cnc-simulation\controller-tpls\simulation-leftside.html" />
+    <Content Include="app\views\cnc-simulation\controller-tpls\simulation.html" />
     <Content Include="app\views\directives\cnc-pagination.html" />
     <Content Include="app\views\directives\progress-bar.html" />
     <Content Include="app\views\directives\side-menu.html" />

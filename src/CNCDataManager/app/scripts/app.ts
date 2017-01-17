@@ -25,6 +25,10 @@ import registerFilters from './filters/index';
 
 import registerSelectionRoute from './bases/SelectionRoute';
 import registerSelectionControllers from './controllers/cnc-selection/index';
+import registerDefaultValue from './bases/DefaultValue';
+
+import registerSimulationRoute from './bases/SimulationRoute';
+import registerSimulationControllers from './controllers/cnc-simulation/index';
 ///* services register*/
 registerServices(app);
 
@@ -42,7 +46,10 @@ registerRoute(app);
 
 registerSelectionRoute(app);
 registerSelectionControllers(app);
+registerDefaultValue(app); 
 
+registerSimulationRoute(app);
+registerSimulationControllers(app);
 
 
 

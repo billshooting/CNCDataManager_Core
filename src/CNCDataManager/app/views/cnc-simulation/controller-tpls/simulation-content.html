@@ -1,0 +1,347 @@
+﻿<div>
+    <div class=info-block>
+        <div class="panel panel-default" id="motor">
+            <div class="panel-heading">
+                <h3 class="panel-title">进给伺服电机模型参数</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="motorRotorMomentInertia">转子转动惯量</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorRotorMomentInertia" ng-model="motorPara.rotorMomentInertia" />
+                        </div>
+                        <label class="control-label col-md-2" for="motorPolePairs">级对数</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorPolePairs" ng-model="motorPara.polePairs" />
+                        </div>
+                        <label class="control-label col-md-2" for="motorStatorResistance">定子相电阻(Ω)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorResistance" ng-model="motorPara.statorResistance" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="motorStatorStrayInductance">定子绕组每项漏电感(Ω)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorStrayInductance" ng-model="motorPara.statorStrayInductance" />
+                        </div>
+                        <label class="control-label col-md-2" for="motorMainFieldInductanceDaxis">d轴励磁电感(H)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceDaxis" ng-model="motorPara.mainFieldInductanceDaxis" />
+                        </div>
+                        <label class="control-label col-md-2" for="motorMainFieldInductanceQaxis">q轴励磁电感(H)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceQaxis" ng-model="motorPara.mainFieldInductanceQaxis" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="motorOpposingElectromotiveForce">反电动势(V)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorOpposingElectromotiveForce" ng-model="motorPara.opposingElectromotiveForce" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="driver">
+            <div class="panel-heading">
+                <h3 class="panel-title">进给伺服驱动模型参数</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="driverNominalVoltage">额定电压(V)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverNominalVoltage" ng-model="driverPara.nominalVoltage" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverPWMCircle">PWM周期(s)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverPWMCircle" ng-model="driverPara.PWMCircle" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverKS">位置增益环</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKS" ng-model="driverPara.KS" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="driverKV">速度增益环</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKV" ng-model="driverPara.KV" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverpolePairs">极数</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverpolePairs" ng-model="driverPara.polePairs" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverCellVoltage">直流供电电压(V)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverCellVoltage" ng-model="driverPara.cellVoltage" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="driverKD">d轴电流增益环</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKD" ng-model="driverPara.KD" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverTD">d轴电流积分常数</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverTD" ng-model="driverPara.TD" />
+                        </div>
+                        <label class="control-label col-md-2" for="driverTV">速度积分环常数</label>
+                        <div class="col-md-2">
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverTV" ng-model="driverPara.TV" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="machine">
+            <div class="panel-heading">
+                <h3 class="panel-title">机械传动部分模型参数</h3>
+            </div>
+            <div class="panel-body machine-body">
+                <ul class="nav nav-pills nav-justified machine-nav">
+                    <li class="active">
+                        <a href="#ballScrew" data-toggle="tab">滚珠丝杠</a>
+                    </li>
+                    <li>
+                        <a href="#guide" data-toggle="tab">导轨</a>
+                    </li>
+                    <li>
+                        <a href="#bearing" data-toggle="tab">轴承</a>
+                    </li>
+                    <li>
+                        <a href="#coupling" data-toggle="tab">联轴器</a>
+                    </li>
+                    <li>
+                        <a href="#worktable" data-toggle="tab">直线工作台</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="ballScrew">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="ballscrewDiameter">丝杠直径(m)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDiameter" ng-model="ballscrewPara.diameter" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewModulusofElasticty">弹性模量(Mpa)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewModulusofElasticty" ng-model="ballscrewPara.modulusofElasticty" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewShaftDistance">两双推轴承之间的距离(mm)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShaftDistance" ng-model="ballscrewPara.shaftDistance" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="ballscrewPitch">丝杠的导程(m)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewPitch" ng-model="ballscrewPara.pitch" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewLength">丝杠总长(m)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewLength" ng-model="ballscrewPara.length" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewDensity">密度(kg/m^3)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDensity" ng-model="ballscrewPara.density" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="ballscrewShearModulusofElasticty">剪切弹性模量(N·m^2)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShearModulusofElasticty" ng-model="ballscrewPara.shearModulusofElasticty" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewCampingCoefficient">丝杠与螺母结合面径向阻尼系数</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewCampingCoefficient" ng-model="ballscrewPara.campingCoefficient" />
+                                </div>
+                                <label class="control-label col-md-2" for="ballscrewMass">工作台质量(kg)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewMass" ng-model="worktablePara.mass" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="guide">
+                        <div class="form-horizontal">
+                            <label class="control-label col-md-2" for="guideMass">工作台质量(kg)</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideMass" ng-model="worktablePara.mass" />
+                            </div>
+                            <label class="control-label col-md-2" for="guideFrictionFactor">导轨副摩擦系数</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideFrictionFactor" ng-model="guidePara.frictionFactor" />
+                            </div>
+                            <label class="control-label col-md-2" for="guideViscosityFriction">粘滞摩擦因子</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideViscosityFriction" ng-model="guidePara.viscosityFriction" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bearing">
+                        <div class="form-horizontal">
+                            <label class="control-label col-md-2" for="bearingsAxisalStiffness">轴承轴向刚度(N/m)</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsAxisalStiffness" ng-model="bearingsPara.axisalStiffness" />
+                            </div>
+                            <label class="control-label col-md-2" for="bearingsStartingMoment">轴承启动力矩(N·m)</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsStartingMoment" ng-model="bearingsPara.startingMoment" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="coupling">
+                        <div class="form-horizontal">
+                            <label class="control-label col-md-2" for="couplingStiffness">刚度(N/m)</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="couplingStiffness" ng-model="couplingPara.stiffness" />
+                            </div>
+                            <label class="control-label col-md-2" for="couplingMomentInertia">转动惯量(kg·m^2)</label>
+                            <div class="col-md-2">
+                                <input class="form-control" type="number" placeholder="请输入值" id="couplingMomentInertia" ng-model="couplingPara.momentInertia" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="worktable">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="worktableMass">工作台质量(kg)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableMass" ng-model="worktablePara.mass" />
+                                </div>
+                                <label class="control-label col-md-2" for="worktableTighteningEfficiency">预紧滚珠丝杠的效率</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableTighteningEfficiency" ng-model="worktablePara.tighteningEfficiency" />
+                                </div>
+                                <label class="control-label col-md-2" for="worktableContactStiffness">接触刚度(N/m)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableContactStiffness" ng-model="worktablePara.contactStiffness" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="worktableDynamicLoadRating">双螺母额定动载荷(N)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableDynamicLoadRating" ng-model="worktablePara.dynamicLoadRating" />
+                                </div>
+                                <label class="control-label col-md-2" for="worktablePitch">丝杠的导程(m)</label>
+                                <div class="col-md-2">
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktablePitch" ng-model="ballscrewPara.pitch" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-block">
+        <div class="panel panel-default" id="setting">
+            <div class="panel-heading">
+                <h3 class="panel-title">仿真设置</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="signal">信号类别</label>
+                        <div class="col-md-2">
+                            <select class="form-control" ng-options="data.id as data.name for data in signalOptions" id="signal" ng-model="setting.signal"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="startTime">开始时间</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="number" placeholder="请输入值" id="startTime" ng-model="setting.startTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="endTime">结束时间</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="number" placeholder="请输入值" id="endTime" ng-model="setting.endTime" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="stepSize">步长</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="number" placeholder="请输入值" id="stepSize" ng-model="setting.stepSize" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="stepNum">步数</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="number" placeholder="请输入值" id="stepNum" ng-model="setting.stepNum" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="alg">算法</label>
+                            <div class="col-md-7">
+                                <select class="form-control" ng-options="data for data in algOptions" id="alg" ng-model="setting.alg"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-5" for="precision">精度</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="number" placeholder="请输入值" id="precision" ng-model="setting.precision" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary col-md-1 col-md-offset-8" type="button" data-toggle="modal" data-target="#startModel">开始仿真</button>
+            <div class="modal fade" id="startModel" tabindex="-1" role="dialog" aria-labelledby="startLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title" id="startLabel">开始仿真</h4>
+                        </div>
+                        <div class="modal-body">确认要开始仿真{{axis}}轴吗，输入信号为{{setting.signal}}</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" ng-click="startSimulation()">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-default col-md-1 col-md-offset-1" type="button">取 消</button>
+        </div>
+    </div>
+    <div class="info-block">
+        <h3>仿真进度</h3>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 40%;">
+                <span class="sr-only">40% 完成</span>
+            </div>
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                <span class="sr-only">30% 完成（信息）</span>
+            </div>
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                <span class="sr-only">20% 完成（警告）</span>
+            </div>
+        </div>
+        <p>正在进行模型编译...</p>
+    </div>
+    <div class="sim-rightlist" id="rightScrollspy">
+        <ul class="nav nav-pills nav-stacked rightlist-nav">
+            <li class="active rightlist-item"><a href="#motor" ng-click="gotoAnchor('motor')">电机</a></li>
+            <li class="rightlist-item"><a href="#driver" ng-click="gotoAnchor('driver')">驱动</a></li>
+            <li class="rightlist-item"><a href="#machine" ng-click="gotoAnchor('machine')">机械</a></li>
+            <li class="rightlist-item"><a href="#setting" ng-click="gotoAnchor('setting')">设置</a></li>
+        </ul>
+        <div class="rightlist-gotop">
+            <div class="s-line"></div>
+            <div class="btn_gotop" title="返回顶部"></div>
+        </div>
+    </div>
+</div>
