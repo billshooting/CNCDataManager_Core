@@ -4,3 +4,33 @@
     background: #fff;
     box-shadow:0 0 8px 1px #e4e5e6;
 }
+
+.sim-rightlist{
+  top:350px;
+  right:30px;
+  position:fixed;
+  z-index: 1;
+}
+
+.sim-rightlist .rightlist-nav{
+  width:70px;
+  overflow: hidden;
+  background-color: #f6f9fa;
+  text-align: center;
+  border:1px solid #e5e9ef;
+  border-radius: 4px;
+}
+
+
+.sim-rightlist .rightlist-item{
+  border-bottom: 1px solid #e5e9ef;
+  margin-top:0;
+}
+
+.sim-rightlist .rightlist-item:last-child{
+  border-bottom: 0;
+}
+
+.sim-rightlist .rightlist-gotop{
+  cursor: pointer;
+}

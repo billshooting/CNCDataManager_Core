@@ -223,6 +223,7 @@
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\machine-type-leftside.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\machine-type\working-conditions-content.html" />
     <Content Include="app\views\cnc-selection\controller-tpls\selection.html" />
+    <Content Include="app\views\cnc-simulation\controller-tpls\simulation-chart.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-content.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-leftside.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation.html" />

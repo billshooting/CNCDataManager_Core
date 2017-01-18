@@ -1,4 +1,4 @@
-﻿
+﻿import * as $ from 'jquery';
 import * as angular from 'angular';
 import 'angular-animate';
 import 'angular-cookie';
