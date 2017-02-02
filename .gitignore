@@ -3,14 +3,13 @@
 /src/CNCDataManager/node_modules
 /src/CNCDataManager/dist/*
 
-/src/CNCDataManager_Core/bin
-/src/CNCDataManager_Core/obj
-/src/CNCDataManager_Core/FrontEnd
 /src/CNCDataAPI/bin
 /src/CNCDataAPI/obj
 /src/CNCDataAPI/initial_files
 /src/CNCDataAPI/Simulator
 /src/CNCDataAPI/Setting
+/src/CNCDataAPI/wwwroot/Mworks
+
 
 /src/CNCDataManager_Publish
 
