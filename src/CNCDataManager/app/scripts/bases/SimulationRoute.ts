@@ -11,11 +11,11 @@ export default function registerSimulationRoute(app: angular.IModule): void
 
         $stateProvider
             .state('simulation', {
-                url: '/simulation',
+                url: '/simulation/{axisID}',
                 templateUrl: './views/cnc-simulation/controller-tpls/simulation.html',
             })
             .state('simulation.Settings', {
-                url: '/settings/{axis}',
+                url: '/settings',
                 views: {
                     '':{
                         templateUrl: './views/cnc-simulation/controller-tpls/simulation.html',
@@ -32,6 +32,12 @@ export default function registerSimulationRoute(app: angular.IModule): void
             .state('simulation.Chart', {
                 url: '/chart',
                 views: {
+                    '':{
+                        templateUrl: './views/cnc-simulation/controller-tpls/simulation.html',
+                    },
+                    'leftside@simulation': {
+                        templateUrl: './views/cnc-simulation/controller-tpls/simulation-leftside.html',
+                    },
                     'content@simulation': {
                         templateUrl: './views/cnc-simulation/controller-tpls/simulation-chart.html',
                         controller: 'SimulationChartCtrl'

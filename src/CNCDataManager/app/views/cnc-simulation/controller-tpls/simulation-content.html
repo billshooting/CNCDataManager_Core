@@ -9,35 +9,35 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="motorRotorMomentInertia">转子转动惯量</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorRotorMomentInertia" ng-model="motorPara.rotorMomentInertia" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorRotorMomentInertia" ng-model="data.motor.rotorMomentInertia" />
                         </div>
                         <label class="control-label col-md-2" for="motorPolePairs">级对数</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorPolePairs" ng-model="motorPara.polePairs" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorPolePairs" ng-model="data.motor.polePairs" />
                         </div>
                         <label class="control-label col-md-2" for="motorStatorResistance">定子相电阻(Ω)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorResistance" ng-model="motorPara.statorResistance" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorResistance" ng-model="data.motor.statorResistance" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2" for="motorStatorStrayInductance">定子绕组每项漏电感(Ω)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorStrayInductance" ng-model="motorPara.statorStrayInductance" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorStatorStrayInductance" ng-model="data.motor.statorStrayInductance" />
                         </div>
                         <label class="control-label col-md-2" for="motorMainFieldInductanceDaxis">d轴励磁电感(H)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceDaxis" ng-model="motorPara.mainFieldInductanceDaxis" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceDaxis" ng-model="data.motor.mainFieldInductanceDaxis" />
                         </div>
                         <label class="control-label col-md-2" for="motorMainFieldInductanceQaxis">q轴励磁电感(H)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceQaxis" ng-model="motorPara.mainFieldInductanceQaxis" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorMainFieldInductanceQaxis" ng-model="data.motor.mainFieldInductanceQaxis" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2" for="motorOpposingElectromotiveForce">反电动势(V)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="motorOpposingElectromotiveForce" ng-model="motorPara.opposingElectromotiveForce" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="motorOpposingElectromotiveForce" ng-model="data.motor.opposingElectromotiveForce" />
                         </div>
                     </div>
                 </div>
@@ -52,43 +52,43 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="driverNominalVoltage">额定电压(V)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverNominalVoltage" ng-model="driverPara.nominalVoltage" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverNominalVoltage" ng-model="data.driver.nominalVoltage" />
                         </div>
                         <label class="control-label col-md-2" for="driverPWMCircle">PWM周期(s)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverPWMCircle" ng-model="driverPara.PWMCircle" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverPWMCircle" ng-model="data.driver.PWMCircle" />
                         </div>
                         <label class="control-label col-md-2" for="driverKS">位置增益环</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverKS" ng-model="driverPara.KS" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKS" ng-model="data.driver.KS" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2" for="driverKV">速度增益环</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverKV" ng-model="driverPara.KV" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKV" ng-model="data.driver.KV" />
                         </div>
                         <label class="control-label col-md-2" for="driverpolePairs">极数</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverpolePairs" ng-model="driverPara.polePairs" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverpolePairs" ng-model="data.driver.polePairs" />
                         </div>
                         <label class="control-label col-md-2" for="driverCellVoltage">直流供电电压(V)</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverCellVoltage" ng-model="driverPara.cellVoltage" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverCellVoltage" ng-model="data.driver.cellVoltage" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2" for="driverKD">d轴电流增益环</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverKD" ng-model="driverPara.KD" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverKD" ng-model="data.driver.KD" />
                         </div>
                         <label class="control-label col-md-2" for="driverTD">d轴电流积分常数</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverTD" ng-model="driverPara.TD" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverTD" ng-model="data.driver.TD" />
                         </div>
                         <label class="control-label col-md-2" for="driverTV">速度积分环常数</label>
                         <div class="col-md-2">
-                            <input class="form-control" type="number" placeholder="请输入值" id="driverTV" ng-model="driverPara.TV" />
+                            <input class="form-control" type="number" placeholder="请输入值" id="driverTV" ng-model="data.driver.TV" />
                         </div>
                     </div>
                 </div>
@@ -122,43 +122,43 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="ballscrewDiameter">丝杠直径(m)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDiameter" ng-model="ballscrewPara.diameter" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDiameter" ng-model="data.ballscrew.diameter" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewModulusofElasticty">弹性模量(Mpa)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewModulusofElasticty" ng-model="ballscrewPara.modulusofElasticty" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewModulusofElasticty" ng-model="data.ballscrew.modulusofElasticty" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewShaftDistance">两双推轴承之间的距离(mm)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShaftDistance" ng-model="ballscrewPara.shaftDistance" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShaftDistance" ng-model="data.ballscrew.shaftDistance" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="ballscrewPitch">丝杠的导程(m)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewPitch" ng-model="ballscrewPara.pitch" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewPitch" ng-model="data.ballscrew.pitch" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewLength">丝杠总长(m)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewLength" ng-model="ballscrewPara.length" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewLength" ng-model="data.ballscrew.length" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewDensity">密度(kg/m^3)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDensity" ng-model="ballscrewPara.density" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewDensity" ng-model="data.ballscrew.density" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="ballscrewShearModulusofElasticty">剪切弹性模量(N·m^2)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShearModulusofElasticty" ng-model="ballscrewPara.shearModulusofElasticty" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewShearModulusofElasticty" ng-model="data.ballscrew.shearModulusofElasticty" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewCampingCoefficient">丝杠与螺母结合面径向阻尼系数</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewCampingCoefficient" ng-model="ballscrewPara.campingCoefficient" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewCampingCoefficient" ng-model="data.ballscrew.campingCoefficient" />
                                 </div>
                                 <label class="control-label col-md-2" for="ballscrewMass">工作台质量(kg)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewMass" ng-model="worktablePara.mass" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="ballscrewMass" ng-model="data.worktable.mass" />
                                 </div>
                             </div>
                         </div>
@@ -167,15 +167,15 @@
                         <div class="form-horizontal">
                             <label class="control-label col-md-2" for="guideMass">工作台质量(kg)</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="guideMass" ng-model="worktablePara.mass" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideMass" ng-model="data.worktable.mass" />
                             </div>
                             <label class="control-label col-md-2" for="guideFrictionFactor">导轨副摩擦系数</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="guideFrictionFactor" ng-model="guidePara.frictionFactor" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideFrictionFactor" ng-model="data.guide.frictionFactor" />
                             </div>
                             <label class="control-label col-md-2" for="guideViscosityFriction">粘滞摩擦因子</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="guideViscosityFriction" ng-model="guidePara.viscosityFriction" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="guideViscosityFriction" ng-model="data.guide.viscosityFriction" />
                             </div>
                         </div>
                     </div>
@@ -183,11 +183,11 @@
                         <div class="form-horizontal">
                             <label class="control-label col-md-2" for="bearingsAxisalStiffness">轴承轴向刚度(N/m)</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsAxisalStiffness" ng-model="bearingsPara.axisalStiffness" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsAxisalStiffness" ng-model="data.bearings.axisalStiffness" />
                             </div>
                             <label class="control-label col-md-2" for="bearingsStartingMoment">轴承启动力矩(N·m)</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsStartingMoment" ng-model="bearingsPara.startingMoment" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="bearingsStartingMoment" ng-model="data.bearings.startingMoment" />
                             </div>
                         </div>
                     </div>
@@ -195,11 +195,11 @@
                         <div class="form-horizontal">
                             <label class="control-label col-md-2" for="couplingStiffness">刚度(N/m)</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="couplingStiffness" ng-model="couplingPara.stiffness" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="couplingStiffness" ng-model="data.coupling.stiffness" />
                             </div>
                             <label class="control-label col-md-2" for="couplingMomentInertia">转动惯量(kg·m^2)</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="number" placeholder="请输入值" id="couplingMomentInertia" ng-model="couplingPara.momentInertia" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="couplingMomentInertia" ng-model="data.coupling.momentInertia" />
                             </div>
                         </div>
                     </div>
@@ -208,25 +208,25 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="worktableMass">工作台质量(kg)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableMass" ng-model="worktablePara.mass" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableMass" ng-model="data.worktable.mass" />
                                 </div>
                                 <label class="control-label col-md-2" for="worktableTighteningEfficiency">预紧滚珠丝杠的效率</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableTighteningEfficiency" ng-model="worktablePara.tighteningEfficiency" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableTighteningEfficiency" ng-model="data.worktable.tighteningEfficiency" />
                                 </div>
                                 <label class="control-label col-md-2" for="worktableContactStiffness">接触刚度(N/m)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableContactStiffness" ng-model="worktablePara.contactStiffness" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableContactStiffness" ng-model="data.worktable.contactStiffness" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="worktableDynamicLoadRating">双螺母额定动载荷(N)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableDynamicLoadRating" ng-model="worktablePara.dynamicLoadRating" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktableDynamicLoadRating" ng-model="data.worktable.dynamicLoadRating" />
                                 </div>
                                 <label class="control-label col-md-2" for="worktablePitch">丝杠的导程(m)</label>
                                 <div class="col-md-2">
-                                    <input class="form-control" type="number" placeholder="请输入值" id="worktablePitch" ng-model="ballscrewPara.pitch" />
+                                    <input class="form-control" type="number" placeholder="请输入值" id="worktablePitch" ng-model="data.ballscrew.pitch" />
                                 </div>
                             </div>
                         </div>
@@ -245,7 +245,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="signal">信号类别</label>
                         <div class="col-md-2">
-                            <select class="form-control" ng-options="data.id as data.name for data in signalOptions" id="signal" ng-model="setting.signal"></select>
+                            <select class="form-control" ng-options="data for data in ['Sine', 'Step', 'Constant']" id="signal" ng-model="data.setting.signal"></select>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -254,13 +254,13 @@
                         <div class="form-group">
                             <label class="control-label col-md-5" for="startTime">开始时间</label>
                             <div class="col-md-7">
-                                <input class="form-control" type="number" placeholder="请输入值" id="startTime" ng-model="setting.startTime" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="startTime" ng-model="data.setting.startTime" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-5" for="endTime">结束时间</label>
                             <div class="col-md-7">
-                                <input class="form-control" type="number" placeholder="请输入值" id="endTime" ng-model="setting.endTime" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="endTime" ng-model="data.setting.endTime" />
                             </div>
                         </div>
                     </div>
@@ -268,13 +268,13 @@
                         <div class="form-group">
                             <label class="control-label col-md-5" for="stepSize">步长</label>
                             <div class="col-md-7">
-                                <input class="form-control" type="number" placeholder="请输入值" id="stepSize" ng-model="setting.stepSize" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="stepSize" ng-model="data.setting.stepSize" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-5" for="stepNum">步数</label>
                             <div class="col-md-7">
-                                <input class="form-control" type="number" placeholder="请输入值" id="stepNum" ng-model="setting.stepNum" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="stepNum" ng-model="data.setting.stepNum" />
                             </div>
                         </div>
                     </div>
@@ -282,13 +282,13 @@
                         <div class="form-group">
                             <label class="control-label col-md-5" for="alg">算法</label>
                             <div class="col-md-7">
-                                <select class="form-control" ng-options="data for data in algOptions" id="alg" ng-model="setting.alg"></select>
+                                <select class="form-control" ng-options="data for data in ['Dass1', 'Dass2']" id="alg" ng-model="data.setting.alg"></select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-5" for="precision">精度</label>
                             <div class="col-md-7">
-                                <input class="form-control" type="number" placeholder="请输入值" id="precision" ng-model="setting.precision" />
+                                <input class="form-control" type="number" placeholder="请输入值" id="precision" ng-model="data.setting.precision" />
                             </div>
                         </div>
                     </div>
@@ -298,13 +298,15 @@
         <div class="row">
             <button class="btn btn-primary col-md-1 col-md-offset-8" type="button" data-toggle="modal" data-target="#startModel">开始仿真</button>
             <div class="modal fade" id="startModel" tabindex="-1" role="dialog" aria-labelledby="startLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             <h4 class="modal-title" id="startLabel">开始仿真</h4>
                         </div>
-                        <div class="modal-body">确认要开始仿真{{axis}}轴吗，输入信号为{{setting.signal}}</div>
+                        <div class="modal-body">确认要开始仿真{{data.axisID}}轴吗，输入信号为{{data.setting.signal}}</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" ng-click="startSimulation()">确认</button>

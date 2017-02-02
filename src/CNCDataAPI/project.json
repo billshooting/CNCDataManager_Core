@@ -62,10 +62,14 @@
   "frameworks": {
     "net452": {}
   },
+  "runtimes": {
+    "win7-x86": {}
+  },
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "platform": "x86"
   },
 
   "publishOptions": {

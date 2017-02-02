@@ -15,7 +15,7 @@ namespace CNCDataManager.Controllers
     [Route("api/cncdata/[controller]/[action]")]
     public class ReportController : Controller
     {
-        private string _webRootPath; 
+        private readonly string _webRootPath; 
 
         public ReportController(IHostingEnvironment host)
         {

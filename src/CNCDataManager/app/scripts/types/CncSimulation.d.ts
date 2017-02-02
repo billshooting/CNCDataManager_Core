@@ -2,6 +2,7 @@ import * as angular from 'angular';
 
 interface ISimulationScope extends angular.IScope {
     data: {
+        axisID: string;
         motor: {
             rotorMomentInertia: number;   
             polePairs: number;
@@ -22,7 +23,7 @@ interface ISimulationScope extends angular.IScope {
             TD: number;
             TV: number;
         };
-        ballScrew: {
+        ballscrew: {
             diameter: number;
             modulusofElasticty: number;
             shaftDistance: number;
@@ -44,22 +45,27 @@ interface ISimulationScope extends angular.IScope {
             stiffness: number;
 		    momentInertia: number;
         };
-        workTable: {
+        worktable: {
             mass: number;
             tighteningEfficiency: number;
             contactStiffness: number;
             dynamicLoadRating: number;
         };
-        settings: {
+        setting: {
             signal: string,
             startTime: number;
             endTime: number;
             stepSize: number;
             stepNum: number;
-            algorithm: string;
+            alg: string;
             precision: number;
         };
     };
+    setDefaultMotorPara: () => void;
+    setDefaultDriverPara: () => void;
+    setDefaultMechanicalPara: () => void;
+    setDefaultSimulationSettings: () => void;
+    startSimulation: () => void;
 }
 
 export { ISimulationScope };
