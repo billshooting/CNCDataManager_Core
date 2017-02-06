@@ -1,11 +1,14 @@
 import * as angular from 'angular';
 import { ISimulationScope } from '../../types/CncSimulation';
 import HttpProxy from '../../services/HttpProxy';
+import SimulationNotification from '../../services/SimulationNotification';
 
 export default class Simulation {
     public constructor($scope: ISimulationScope, 
                        $stateParams: angular.ui.IStateParamsService,
-                       httpProxy: HttpProxy) 
+                       $state: angular.ui.IStateService,
+                       httpProxy: HttpProxy,
+                       notifier: SimulationNotification) 
     {
         $scope.setDefaultMotorPara = () => {
             $scope.data.motor = {
@@ -65,7 +68,7 @@ export default class Simulation {
         };
         
         $scope.setDefaultSimulationSettings = () => {
-            $scope.data.setting={
+            $scope.data.setting = { 
                 signal: 'Sine',
                 startTime: 0,
                 endTime: 1,
@@ -77,9 +80,17 @@ export default class Simulation {
         };
 
         $scope.startSimulation = () => {
-            httpProxy.http('Simulation/StartSimulation')
+            httpProxy.http('Simulation/DelayTest')
                      .post($scope.data)
-                     .then((response: any) => console.log(response));
+                     .then((response: any) => {
+                         notifier.notifyComplement(response.data);
+                     }, (response: any) => {
+                         notifier.notifyFailure(response.statusText || '糟糕，连不上服务器');
+                     });
+            notifier.resetFileID(); //清除已经存在的fileID
+            $state.go('simulation.Chart');
+            setTimeout(() => notifier.notifyStart(), 500); //由于此时结果页面的scope还没生成,所以要等一会儿
+            angular.element('.modal-backdrop').remove(); //modal的bug,会出现两个<div class='modal-backdrop'>
         }
 
         $scope.data = {} as any;
@@ -91,4 +102,4 @@ export default class Simulation {
     }
 };
 
-Simulation.$inject = ['$scope', '$stateParams', 'HttpProxy'];
+Simulation.$inject = ['$scope', '$stateParams', '$state', 'HttpProxy', 'SimulationNotification'];

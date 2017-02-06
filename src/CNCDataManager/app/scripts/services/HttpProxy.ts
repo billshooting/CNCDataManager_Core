@@ -9,7 +9,7 @@ import { ITableScope, ICncDataScope, IItem, IHandlingItems } from '../types/CncD
 import MessageTips from './MessageTips';
 
 interface IRestfulMethod {
-    get: () => angular.IPromise<any>;
+    get: (queryStringObject?: any) => angular.IPromise<any>;
     post: (data: any) => angular.IPromise<any>;
     put: (data: any) => angular.IPromise<any>;
     delete: () => angular.IPromise<any>;
@@ -38,7 +38,25 @@ export default class HttpProxy{
         this.messageTips = messageTips;
     }
 
-    private getUrl(uri: string): string { return this.BASE + this.PATH + uri };
+    public getUrl(uri: string, queryStringObject?: any): string { 
+        let result = this.BASE + this.PATH + uri;
+        if(queryStringObject){
+            result = result + '?';
+            for(let key in queryStringObject) result = result + key + '=' + queryStringObject[key] + '&';
+            result = result.substr(0, result.length - 1);
+        }
+        return result;
+    };
+
+    public getRelativeUrl(relativeUri: string, queryStringObject?: any): string {
+        let result = relativeUri;
+        if(queryStringObject) {
+            result = result + '?';
+            for(let key in queryStringObject) result = result + key + '=' + queryStringObject[key] + '&';
+            result = result.substr(0, result.length - 1);
+        }
+        return result;
+    }
 
     public http(uri: string): IRestfulMethod {
         let url: string = this.getUrl(uri);
@@ -46,7 +64,12 @@ export default class HttpProxy{
         let promise: angular.IPromise<any> = deffered.promise;
         let $http = this.$http;
         return{
-            get: function(): angular.IPromise<any> {
+            get: function(queryStringObject?: any): angular.IPromise<any> {
+                if(queryStringObject){
+                    url = url + '?';
+                    for(let key in queryStringObject) url = url + key + '=' + queryStringObject[key] + '&';
+                    url = url.substr(0, url.length - 1);// 去掉最后一个 '&'
+                }
                 $http.get(url).then(
                     (response: any) => deffered.resolve(response),
                     (response: any) => deffered.reject(response));

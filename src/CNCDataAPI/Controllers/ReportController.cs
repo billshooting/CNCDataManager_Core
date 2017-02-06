@@ -40,6 +40,26 @@ namespace CNCDataManager.Controllers
             return View(result);
         }
 
+        public CreatedResult UploadSvg([FromQuery]string fileID, [FromBody]SvgPara para)
+        {
+            var filename = para.FileName;
+            var type = para.Type;
+            var width = para.Width;
+            var svg = para.SvgStr;
+            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
+            int wid = 0;
+            string resultPath = null;
+            if(filename != null &&
+               type != null &&
+               svg != null &&
+               Int32.TryParse(width, out wid))
+            {
+                Exporter exporter = new Exporter(filename, type, wid, svg);
+                resultPath = exporter.WriteToFile(workPath);
+            }
+            return Created(resultPath, null);
+        }
+
         private ReportTemplateResult ToReportTemplate(SelectionResult result)
         {
             ReportTemplateResult res = new ReportTemplateResult()

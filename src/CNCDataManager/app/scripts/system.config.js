@@ -62,6 +62,8 @@
         //    "http://cdn.bootcss.com/angular-strap/2.3.10/angular-strap.tpl.min.js",
         //    "lib:angular-strap/angular-strap.tpl.min.js",
         //]
+        "highcharts": "http://cdn.hcharts.cn/highcharts/highcharts.js",
+        "highchart-exporting": "http://cdn.hcharts.cn/highcharts/modules/exporting.js",
     },
     meta: {
         'jquery': {

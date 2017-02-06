@@ -228,6 +228,7 @@
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-leftside.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation.html" />
     <Content Include="app\views\cnc-pagination.html" />
+    <Content Include="app\views\directives\cnc-pagination.html" />
     <Content Include="app\views\directives\progress-bar.html" />
     <Content Include="app\views\directives\side-menu.html" />
     <Content Include="app\lib\bootstrap\bootstrap.min.js" />

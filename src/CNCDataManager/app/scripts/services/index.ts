@@ -7,6 +7,7 @@ import SelectionNotification from './SelectionNotification';
 import DataStorage from './DataStorage';
 import SelectionTableHandler from './SelectionTableHandler';
 import SelectionDetails from './SelectionDetails';
+import SimulationNotification from './SimulationNotification';
 
 export default function registerServices(app: angular.IModule): void {
     app.service('HttpProxy', HttpProxy);
@@ -17,4 +18,5 @@ export default function registerServices(app: angular.IModule): void {
     app.service('DataStorage', DataStorage);
     app.service('SelectionTableHandler', SelectionTableHandler);
     app.service("SelectionDetails", SelectionDetails);
+    app.service('SimulationNotification', SimulationNotification);
 };

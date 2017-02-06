@@ -68,4 +68,26 @@ interface ISimulationScope extends angular.IScope {
     startSimulation: () => void;
 }
 
+interface ISimulationCompletedScope extends angular.IScope {
+    simulationStarted: () => void;
+    simulationCompleted: () => void;
+    simulationFailed: (errorMsg: string) => void;
+    showData: (type: string) => void;
+    state: {
+        isCompleted: boolean;
+        progress: number;
+    }
+}
+
+interface ISimulationChartScope extends ISimulationCompletedScope {
+    state: {
+        isCompleted: boolean;
+        isStarted: boolean;
+        progress: number;
+        stateText: string;
+    }
+}
+
 export { ISimulationScope };
+export { ISimulationCompletedScope };
+export { ISimulationChartScope };

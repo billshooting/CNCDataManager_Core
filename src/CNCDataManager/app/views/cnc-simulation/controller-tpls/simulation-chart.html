@@ -1,1 +1,36 @@
-﻿<p>haha</p>
+﻿<div>
+    <div class="info-block">
+        <h3>仿真进度</h3>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: {{state.progress}}%;">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <p>{{state.stateText}}</p>
+    </div>
+    <div class="info-block" ng-show="state.isCompleted">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="javascript:; #displacement-chart" data-toggle="tab" ng-click="showData('displacement')">位移曲线</a>
+            </li>
+            <li>
+                <a href="javascript:; #velocity-chart" data-toggle="tab" ng-click="showData('velocity')">速度曲线</a>
+            </li>
+            <li>
+                <a href="javascript:; #acceleration-chart" data-toggle="tab" ng-click="showData('acceleration')">加速度曲线</a>
+            </li>
+            <li>
+                <a href="javascript:; #other-chart" data-toggle="tab">导轨</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="displacement-chart" class="tab-pane fade in active" style="height: 400px">位移曲线</div>
+            <div id="velocity-chart" class="tab-pane fade" style="height: 400px">速度曲线</div>
+            <div id="acceleration-chart" class="tab-pane fade" style="height: 400px">加速度曲线</div>
+        </div>
+    </div>
+</div>
+<!--<scripts src="http://cdn.hcharts.cn/highcharts/highcharts.js"></scripts>
+<scripts src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></scripts>-->
