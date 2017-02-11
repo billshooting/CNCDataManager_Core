@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import { ISelectionAxis, ISelectionObject } from './CncSelection';
 
 interface ISimulationScope extends angular.IScope {
     data: {
@@ -85,9 +86,33 @@ interface ISimulationChartScope extends ISimulationCompletedScope {
         isStarted: boolean;
         progress: number;
         stateText: string;
-    }
+    };
+    report: {
+        isShown: boolean;
+        CNCMachine?: ISelectionObject;
+        CNCSystem?: ISelectionObject;
+        FeedSystemX?: ISelectionAxis;
+        FeedSystemY?: ISelectionAxis;
+        FeedSystemZ?: ISelectionAxis;
+        Spindle?: ISelectionAxis;
+        Components?: {typeID: string; manufacturer: string; name: string}[];
+    };
+    reportToggle: () => void;
+    stateInit: () => void;
+    reportInit: () => void;
+    reportDownload: () => void;
+}
+
+interface IReportResult {
+    MachineType: any;
+    NCSystem: any;
+    FeedSystemX: any;
+    FeedSystemY: any;
+    FeedSystemZ: any;
+    Spindle: any;
 }
 
 export { ISimulationScope };
 export { ISimulationCompletedScope };
 export { ISimulationChartScope };
+export { IReportResult };

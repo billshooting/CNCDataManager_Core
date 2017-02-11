@@ -3,22 +3,33 @@
     background-color: #e8e8e8;
 }*/
 
-.middle-container{
+.report-background{
     display: block;
-    position: relative;
-    width: 21cm;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1200;
+}
+.report-buttons {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
 }
 
-.fixed-window {
+.report-container {
     display: block;
-    position:fixed;
-    height: 90%;
-    max-height: 90%;
-    width: 14.64cm;
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 21cm;
+    height: 100%;
     padding: 2.54cm 3.18cm 2.54cm 3.18cm;
 
     border: 1px solid #555;

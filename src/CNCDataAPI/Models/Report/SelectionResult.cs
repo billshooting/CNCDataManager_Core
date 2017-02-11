@@ -33,11 +33,11 @@ namespace CNCDataManager.Models
         public double? Stiffness { get; set; }
     }
 
-    public class CNCType
+    public class MachineType
     {
         public string Type { get; set; }
         public string Support { get; set; }
-        public string Img { get; set; }
+        public string ImgUrl { get; set; }
     }
 
     public class FeedSystem
@@ -52,7 +52,7 @@ namespace CNCDataManager.Models
 
     public class SelectionResult
     {
-        public CNCType CNCType { get; set; }
+        public MachineType MachineType { get; set; }
         public NCSystem NCSystem { get; set; }
         public FeedSystem FeedSystemX { get; set; }
         public FeedSystem FeedSystemY { get; set; }

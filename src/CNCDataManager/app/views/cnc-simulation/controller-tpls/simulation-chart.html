@@ -22,7 +22,7 @@
                 <a href="javascript:; #acceleration-chart" data-toggle="tab" ng-click="showData('acceleration')">加速度曲线</a>
             </li>
             <li>
-                <a href="javascript:; #other-chart" data-toggle="tab">导轨</a>
+                <a class="btn btn-success" ng-click="reportToggle()">报表预览</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -31,6 +31,387 @@
             <div id="acceleration-chart" class="tab-pane fade" style="height: 400px">加速度曲线</div>
         </div>
     </div>
+    <div class="report-background" ng-show="report.isShown">
+        <div class="report-container">
+            <div class="report-buttons">
+                <a class="download" href="http://localhost:52132/api/cncdata/DownLoad?fileID=36e4d31a-191f-4abb-ad27-87f04684abf2"></a>
+                <button type="button" class="btn btn-success" ng-click="reportDownload()">下载报表</button>
+                <button class="btn btn-danger pull-right" ng-click="reportToggle()">关闭预览</button>
+            </div>           
+            <div style="margin-top: -1cm">
+                <img id="university-icon" src="./images/Report/university-icon.png" />
+            </div>
+            <div style="position: relative">
+                <img id="barcode" src="./images/Report/条形码.png" />
+                <div id="time-div" class="inline-div">
+                    <p>时间</p>
+                    <ul style="line-height: 20px">
+                        <li>公司 ：</li>
+                        <li>部门 ：</li>
+                        <li>姓名 ：</li>
+                        <li>地址 ：</li>
+                        <li>电话 ：</li>
+                        <li>传真 ：</li>
+                        <li>邮箱 ：</li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <h2 id="title">《国产数控系统选型结果分析报告》</h2>
+            <br />
+            <ol style="line-height: 24px; margin-left: 20px">
+                <li>请参考数控机床选型结果</li>
+                <li>如果还有其他问题，请联系我们</li>
+                <li>非常感谢使用我公司的数控系统选型软件</li>
+            </ol>
+            <br />
+            <br />
+
+            <h3 class="sub-title">一、 应用机床类型及其传动方式</h3>
+            <p class="paragraph">客户先根据需求选择机床类型，先选择机床一级类型铣床，再选择机床二级类型立式铣床，再根据所选机床类型，得到相应的匹配计算过程及仿真结果。</p>
+            <p class="paragraph">机床示意彩图：</p>
+            <br />
+            <div>
+                <img id="machineType-pic" ng-src="{{report.CNCMachine.imgUrl}}" />
+            </div>
+
+            <p class="paragraph">进给系统传动方式为：</p>
+            <table class="doc-table">
+                <tr>
+                    <td>轴号</td>
+                    <td>传动方式</td>
+                </tr>
+                <tr>
+                    <td>X轴</td>
+                    <td>{{report.FeedSystemX.TransmissionMethod}}</td>
+                </tr>
+                <tr>
+                    <td>Y轴</td>
+                    <td>{{report.FeedSystemY.TransmissionMethod}}</td>
+                </tr>
+                <tr>
+                    <td>Z轴</td>
+                    <td>{{report.FeedSystemY.TransmissionMethod}}</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <h3 class="sub-title">二、 部件清单</h3>
+            <br />
+            <table class="doc-table">
+                <tr>
+                    <td>序号</td>
+                    <td>型号</td>
+                    <td>生产厂家</td>
+                    <td>轴号加部件名称</td>
+                </tr>
+                <tr ng-repeat="component in report.Components">
+                    <td>{{($index + 1) * 10}}</td>
+                    <td>{{component.typeID}}</td>
+                    <td>{{component.manufacturer}}</td>
+                    <td>{{component.name}}</td>
+                </tr>
+            </table>
+            <br />
+
+            <h3 class="sub-title">三、 重要部件基本参数</h3>
+            <br />
+            <table class="doc-table">
+                <tr>
+                    <td>数控系统</td>
+                    <td>{{report.CNCSystem.TypeID}}</td>
+                </tr>
+                <tr>
+                    <td>支持机床类型</td>
+                    <td>{{report.CNCSystem.SupportMachineType}}</td>
+                </tr>
+                <tr>
+                    <td>支持通道数</td>
+                    <td>{{report.CNCSystem.NumberOfSupportChannels}}</td>
+                </tr>
+                <tr>
+                    <td>进给轴最大控制轴数</td>
+                    <td>{{report.CNCSystem.MaxNumberOfFeedSystemAxis}}</td>
+                </tr>
+                <tr>
+                    <td>主轴最大控制轴数c</td>
+                    <td>{{report.CNCSystem.MaxNumberOfSpindleAxis}}</td>
+                </tr>
+                <tr>
+                    <td>最大联动轴数</td>
+                    <td>{{report.CNCSystem.MaxNumberOfLinkageAxis}}</td>
+                </tr>
+            </table>
+            <br />
+
+            <table class="doc-table">
+                <tr><td colspan="3">伺服电机</td></tr>
+                <tr>
+                    <td class="td-25" rowspan="4">X轴</td>
+                    <td>额定转矩 N·m</td>
+                    <td class="td-25">{{report.FeedSystemX.ServoMotor.RatedTorque}}</td>
+                </tr>
+                <tr>
+                    <td>额定转速 r/min</td>
+                    <td class="td-25">{{report.FeedSystemX.ServoMotor.RatedRotationSpeed}}</td>
+                </tr>
+                <tr>
+                    <td>转动惯量 Kg·m²</td>
+                    <td class="td-25">{{report.FeedSystemX.ServoMotor.MomentOfInertia}}</td>
+                </tr>
+                <tr>
+                    <td>额定功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemX.ServoMotor.RatedPower}}</td>
+                </tr>
+                <tr>
+                    <td class="td-25" rowspan="4">Y轴</td>
+                    <td>额定转矩 N·m</td>
+                    <td class="td-25">{{report.FeedSystemY.ServoMotor.RatedTorque}}</td>
+                </tr>
+                <tr>
+                    <td>额定转速 r/min</td>
+                    <td class="td-25">{{report.FeedSystemY.ServoMotor.RatedRotationSpeed}}</td>
+                </tr>
+                <tr>
+                    <td>转动惯量 Kg·m²</td>
+                    <td class="td-25">{{report.FeedSystemY.ServoMotor.MomentOfInertia}}</td>
+                </tr>
+                <tr>
+                    <td>额定功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemY.ServoMotor.RatedPower}}</td>
+                </tr>
+                <tr>
+                    <td class="td-25" rowspan="4">Z轴</td>
+                    <td>额定转矩 N·m</td>
+                    <td class="td-25">{{report.FeedSystemZ.ServoMotor.RatedTorque}}</td>
+                </tr>
+                <tr>
+                    <td>额定转速 r/min</td>
+                    <td class="td-25">{{report.FeedSystemZ.ServoMotor.RatedRotationSpeed}}</td>
+                </tr>
+                <tr>
+                    <td>转动惯量 Kg·m²</td>
+                    <td class="td-25">{{report.FeedSystemZ.ServoMotor.MomentOfInertia}}</td>
+                </tr>
+                <tr>
+                    <td>额定功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemZ.ServoMotor.RatedPower}}</td>
+                </tr>
+            </table>
+            <br />
+
+            <table class="doc-table">
+                <tr><td colspan="3">伺服驱动器</td></tr>
+                <tr>
+                    <td class="td-25" rowspan="5">X轴</td>
+                    <td>连续电流（A/30分钟）</td>
+                    <td class="td-25">{{report.FeedSystemX.Driver.ContinuousCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>短时最大电流（A/1分钟）</td>
+                    <td class="td-25">{{report.FeedSystemX.Driver.PeakCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>电源电压 V</td>
+                    <td class="td-25">{{report.FeedSystemX.Driver.SupplyVoltage}}</td>
+                </tr>
+                <tr>
+                    <td>最大适配电机功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemX.Driver.MaxAdaptableMotorPower}}</td>
+                </tr>
+                <tr>
+                    <td>外接制动电阻 KΩ</td>
+                    <td class="td-25">{{report.FeedSystemX.Driver.ExternalBrakingResistance}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="5">Y轴</td>
+                    <td>连续电流（A/30分钟）</td>
+                    <td class="td-25">{{report.FeedSystemY.Driver.ContinuousCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>短时最大电流（A/1分钟）</td>
+                    <td class="td-25">{{report.FeedSystemY.Driver.PeakCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>电源电压 V</td>
+                    <td class="td-25">{{report.FeedSystemY.Driver.SupplyVoltage}}</td>
+                </tr>
+                <tr>
+                    <td>最大适配电机功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemY.Driver.MaxAdaptableMotorPower}}</td>
+                </tr>
+                <tr>
+                    <td>外接制动电阻 KΩ</td>
+                    <td class="td-25">{{report.FeedSystemY.Driver.ExternalBrakingResistance}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="5">Z轴</td>
+                    <td>连续电流（A/30分钟）</td>
+                    <td class="td-25">{{report.FeedSystemZ.Driver.ContinuousCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>短时最大电流（A/1分钟）</td>
+                    <td class="td-25">{{report.FeedSystemZ.Driver.PeakCurrent}}</td>
+                </tr>
+                <tr>
+                    <td>电源电压 V</td>
+                    <td class="td-25">{{report.FeedSystemZ.Driver.SupplyVoltage}}</td>
+                </tr>
+                <tr>
+                    <td>最大适配电机功率 KW</td>
+                    <td class="td-25">{{report.FeedSystemZ.Driver.MaxAdaptableMotorPower}}</td>
+                </tr>
+                <tr>
+                    <td>外接制动电阻 KΩ</td>
+                    <td class="td-25">{{report.FeedSystemZ.Driver.ExternalBrakingResistance}}</td>
+                </tr>
+
+            </table>
+            <br />
+
+            <table class="doc-table">
+                <tr><td colspan="3">导轨</td></tr>
+                <tr>
+                    <td class="td-25" rowspan="4">X轴</td>
+                    <td>导轨固定螺栓尺寸</td>
+                    <td class="td-25">{{report.FeedSystemX.Guide.SizeOfGuideFixedBolt}}</td>
+                </tr>
+                <tr>
+                    <td>滚子类型</td>
+                    <td class="td-25">{{report.FeedSystemX.Guide.RollerType}}</td>
+                </tr>
+                <tr>
+                    <td>基本动额定负荷 C/KN</td>
+                    <td class="td-25">{{report.FeedSystemX.Guide.BasicRatedDynamicLoad_C}}</td>
+                </tr>
+                <tr>
+                    <td>基本静额定负荷 C0/KN</td>
+                    <td class="td-25">{{report.FeedSystemX.Guide.BasicRatedStaticLoad_C0}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="4">Y轴</td>
+                    <td>导轨固定螺栓尺寸</td>
+                    <td class="td-25">{{report.FeedSystemY.Guide.SizeOfGuideFixedBolt}}</td>
+                </tr>
+                <tr>
+                    <td>滚子类型</td>
+                    <td class="td-25">{{report.FeedSystemY.Guide.RollerType}}</td>
+                </tr>
+                <tr>
+                    <td>基本动额定负荷 C/KN</td>
+                    <td class="td-25">{{report.FeedSystemY.Guide.BasicRatedDynamicLoad_C}}</td>
+                </tr>
+                <tr>
+                    <td>基本静额定负荷 C0/KN</td>
+                    <td class="td-25">{{report.FeedSystemY.Guide.BasicRatedStaticLoad_C0}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="4">Z轴</td>
+                    <td>导轨固定螺栓尺寸</td>
+                    <td class="td-25">{{report.FeedSystemZ.Guide.SizeOfGuideFixedBolt}}</td>
+                </tr>
+                <tr>
+                    <td>滚子类型</td>
+                    <td class="td-25">{{report.FeedSystemZ.Guide.RollerType}}</td>
+                </tr>
+                <tr>
+                    <td>基本动额定负荷 C/KN</td>
+                    <td class="td-25">{{report.FeedSystemZ.Guide.BasicRatedDynamicLoad_C}}</td>
+                </tr>
+                <tr>
+                    <td>基本静额定负荷 C0/KN</td>
+                    <td class="td-25">{{report.FeedSystemZ.Guide.BasicRatedStaticLoad_C0}}</td>
+                </tr>
+            </table>
+            <br />
+
+            <table class="doc-table">
+                <tr><td colspan="3">滚珠丝杠</td></tr>
+                <tr>
+                    <td class="td-25" rowspan="3">X轴</td>
+                    <td>公称直径 d0/mm</td>
+                    <td class="td-25">{{report.FeedSystemX.Ballscrew.NominalDiameter_d0}}</td>
+                </tr>
+                <tr>
+                    <td>公称导程 Ph0/mm</td>
+                    <td class="td-25">{{report.FeedSystemX.Ballscrew.NominalLead_Ph0}}</td>
+                </tr>
+                <tr>
+                    <td>基本额定动载荷 Ca/KN</td>
+                    <td class="td-25">{{report.FeedSystemX.Ballscrew.BasicRatedDynamicLoad_Ca}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="3">Y轴</td>
+                    <td>公称直径 d0/mm</td>
+                    <td class="td-25">{{report.FeedSystemY.Ballscrew.NominalDiameter_d0}}</td>
+                </tr>
+                <tr>
+                    <td>公称导程 Ph0/mm</td>
+                    <td class="td-25">{{report.FeedSystemY.Ballscrew.NominalLead_Ph0}}</td>
+                </tr>
+                <tr>
+                    <td>基本额定动载荷 Ca/KN</td>
+                    <td class="td-25">{{report.FeedSystemY.Ballscrew.BasicRatedDynamicLoad}}</td>
+                </tr>
+
+                <tr>
+                    <td class="td-25" rowspan="3">Z轴</td>
+                    <td>公称直径 d0/mm</td>
+                    <td class="td-25">{{report.FeedSystemZ.Ballscrew.NominalDiameter_d0}}</td>
+                </tr>
+                <tr>
+                    <td>公称导程 Ph0/mm</td>
+                    <td class="td-25">{{report.FeedSystemZ.Ballscrew.NominalLead_Ph0}}</td>
+                </tr>
+                <tr>
+                    <td>基本额定动载荷 Ca/KN</td>
+                    <td class="td-25">{{report.FeedSystemZ.Ballscrew.BasicRatedDynamicLoad_Ca}}</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <br />
+
+            <h3 class="sub-title">四、 机床动力学仿真图表</h3>
+            <div>
+                <div id="report-x-chart" class="simu-pic" src="" ></div>
+                <br />
+                <div id="report-v-chart" class="simu-pic" src="" ></div>
+                <br />
+                <div id="report-a-chart" class="simu-pic" src="" ></div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <p class="paragraph"><img style="width:1.22cm; height:1.07cm" src="./images/Report/cautious.png" />注意事项</p>
+            <ol style="line-height: 24px; margin-left: 20px">
+                <li><p>该选型软件包括了大部分机床类型，还有少部分没有考虑，下一代选型软件将会不断完善。</p></li>
+                <li><p>该选型软件数据库更新升级的过程，希望机床厂家使用该软件的同时向我们提供相关数据，使得软件应用范围更广，包含的数据库更加丰富。</p></li>
+                <li><p>该软件提供是一个参考和借鉴，我们不对使用我们软件造成的损失负责。</p></li>
+            </ol>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
 </div>
-<!--<scripts src="http://cdn.hcharts.cn/highcharts/highcharts.js"></scripts>
-<scripts src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></scripts>-->

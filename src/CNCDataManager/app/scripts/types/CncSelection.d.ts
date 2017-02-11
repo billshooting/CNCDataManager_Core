@@ -5,7 +5,7 @@ interface IObjectState {
     [prop: string]: any;
 }
 
-interface ISelectionOject extends IObjectState {
+interface ISelectionObject extends IObjectState {
     TypeID: string;
     Manufacturer?: string;
     SupportType?: string;
@@ -14,18 +14,19 @@ interface ISelectionOject extends IObjectState {
 }
 
 interface ISelectionAxis extends IObjectState {
-    Guide: ISelectionOject;
-    ScrewNuts: ISelectionOject;
-    Bearings: ISelectionOject;
-    Couplings: ISelectionOject;
-    ServoMotor: ISelectionOject;
-    ServoDriver: ISelectionOject;
-    [prop: string]: any;
+    Guide: ISelectionObject;
+    ScrewNuts: ISelectionObject;
+    Bearings: ISelectionObject;
+    Couplings: ISelectionObject;
+    ServoMotor: ISelectionObject;
+    ServoDriver: ISelectionObject;
+    TransmissionMethod?: string;
+    [prop: string]: ISelectionObject & any;
 }
 
 interface ISelectionData {
-    CNCMachine: ISelectionOject;
-    CNCSystem: ISelectionOject;
+    CNCMachine: ISelectionObject;
+    CNCSystem: ISelectionObject;
     FeedSystemX: ISelectionAxis;
     FeedSystemY: ISelectionAxis;
     FeedSystemZ: ISelectionAxis;
@@ -237,6 +238,7 @@ interface ISelectionDefaultValue {
 	ballscrewLength: number,
 }
 
+export { ISelectionObject }
 export { ISelectionAxis };
 export { ISelectionData };
 export { ISelectionStateScope };

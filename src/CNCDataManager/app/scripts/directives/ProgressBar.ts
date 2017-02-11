@@ -179,6 +179,8 @@ let ProgressBar: angular.IDirectiveFactory = (notification: SelectionNotificatio
             };
             //注册通知
             notification.registerNotification(scope);
+            //销毁时回收资源
+            scope.$on('$destroy', () => notification.deregisterNotification(scope));
         }
     };
 };

@@ -1,9 +1,11 @@
 import * as angular from 'angular';
 import Highcharts from 'highcharts';
 import HighchartsExporting from 'highchart-exporting';
-import { ISimulationChartScope } from '../../types/CncSimulation';
+import { ISimulationChartScope, IReportResult } from '../../types/CncSimulation';
+import { ISelectionData } from '../../types/CncSelection';
 import HttpProxy from '../../services/HttpProxy';
 import SimulationNotification from '../../services/SimulationNotification';
+import SelectionNotification from '../../services/SelectionNotification';
 
 HighchartsExporting(Highcharts);
 export default class SimulationChart
@@ -12,36 +14,53 @@ export default class SimulationChart
                        $interval: angular.IIntervalService,
                        $timeout: angular.ITimeoutService,
                        httpProxy: HttpProxy,
-                       notifier: SimulationNotification) 
+                       simuNotifier: SimulationNotification,
+                       selecNotifier: SelectionNotification) 
     {
-        $scope.simulationStarted = () => {
-            $scope.state.isStarted = true;
-            $scope.state.isCompleted = false;
-            $scope.state.progress = 0;
-        }
-
-        $scope.simulationCompleted = (): void =>
-        {
-            $scope.state.isStarted = false;
-            $scope.state.isCompleted = true;
-            $scope.state.progress = 100;
-            $scope.state.stateText = '仿真结束';            
-            $interval.cancel(intervalID);
+        /** 从localStorage 取组件数据 */
+        let getComponentsFromData = function(data: IReportResult) {
+            let results: { typeID: string; manufacturer: string; name: string}[] = [];
+            let enToZh: any = { 
+                Guide: '导轨', Ballscrew: '滚珠丝杠', Bearings: '轴承',
+                Coupling: '联轴器', ServoMotor: '伺服电机', Driver: '伺服驱动器',
+            };
+            for(let key in data.FeedSystemX){
+                if(enToZh[key]){
+                    let componentName = 'X轴' + enToZh[key];
+                    results.push({
+                        typeID: data.FeedSystemX[key].TypeID,
+                        manufacturer: data.FeedSystemX[key].Manufacturer,
+                        name: componentName,
+                    });
+                }
+            }
+            for(let key in data.FeedSystemY){
+                if(enToZh[key]){
+                    let componentName = 'Y轴' + enToZh[key];
+                    results.push({
+                        typeID: data.FeedSystemX[key].TypeID,
+                        manufacturer: data.FeedSystemX[key].Manufacturer,
+                        name: componentName,
+                    });
+                }
+            }
+            for(let key in data.FeedSystemZ){
+                if(enToZh[key]){
+                    let componentName = 'Z轴' + enToZh[key];
+                    results.push({
+                        typeID: data.FeedSystemX[key].TypeID,
+                        manufacturer: data.FeedSystemX[key].Manufacturer,
+                        name: componentName,
+                    });
+                }
+            }
+            for(let i = 0; i < 10; i++){
+                results.push({ typeID: null, manufacturer: null, name: null });
+            }
+            return results;
         };
-
-        $scope.simulationFailed = (errorMsg: string): void => {
-            $scope.state.isStarted = false;
-            $scope.state.isCompleted = false;
-            $scope.state.progress = 0;
-            $scope.state.stateText = errorMsg;
-            $interval.cancel(intervalID);
-        }
-
-        $scope.showData = (simulationType: string): void => {
-            let simuTypeStr: string = null;
-            let plotData = notifier.plotData;
-            let thisData = plotData[simulationType];
-            let containerID = simulationType + '-chart';
+        /** 得到HighChart的option */
+        let getChartOption = function(simulationType: string): Highcharts.Options {
             let chartOptions: Highcharts.Options = {
                 chart: { zoomType: 'x' },
                 title: { text: '速度-时间仿真结果' },
@@ -88,7 +107,6 @@ export default class SimulationChart
             };
             switch(simulationType){
                 case 'displacement':{
-                    simuTypeStr = 'X';
                     chartOptions.title.text = '位移-时间仿真结果';
                     (chartOptions.yAxis as any).title.text = '位移 (m)'
                     chartOptions.tooltip.valueSuffix = 'm';
@@ -96,7 +114,6 @@ export default class SimulationChart
                     break;
                 }
                 case 'velocity':{
-                    simuTypeStr = 'v';
                     chartOptions.title.text = '速度-时间仿真结果';
                     (chartOptions.yAxis as any).title.text = '速度 (m/s)'
                     chartOptions.tooltip.valueSuffix = 'm/s';
@@ -104,7 +121,6 @@ export default class SimulationChart
                     break;
                 }
                 case 'acceleration':{
-                    simuTypeStr = 'a';
                     chartOptions.title.text = '加速度-时间仿真结果';
                     (chartOptions.yAxis as any).title.text = '加速度 (m/s^2)'
                     chartOptions.tooltip.valueSuffix = 'm/s^2';
@@ -113,50 +129,164 @@ export default class SimulationChart
                 }
                 default: break;
             }
-            if(thisData){
+            return chartOptions;
+        };
+        /** 根据id和data类型画图 */
+        let plotData = function(containerID: string, simulationType: string, isDownload: boolean = false): void {
+            let simuTypeStr: string = null;
+            let thisData = simuNotifier.plotData[simulationType];
+            let chartOptions = getChartOption(simulationType);
+            let chart: Highcharts.ChartObject = null;
+            switch(simulationType){
+                case 'displacement':{
+                    simuTypeStr = 'X';
+                    break;
+                }
+                case 'velocity':{
+                    simuTypeStr = 'v';
+                    break;
+                }
+                case 'acceleration':{
+                    simuTypeStr = 'a';
+                    break;
+                }
+                default: break;
+            }
+            if(thisData) {
                 chartOptions.series[0].data = thisData;
                 $timeout(() => {
-                    let chart = Highcharts.chart(containerID, chartOptions);
+                    chart = Highcharts.chart(containerID, chartOptions);
+                    if(isDownload) {
+                        let svg: string = chart.getSVG();
+                        let url = httpProxy.getRelativeUrl('Report/UploadSvg', { fileID: simuNotifier.fileID });
+                        httpProxy.http(url)
+                        .post({
+                            FileName: simuTypeStr + '-t',
+                            Type: 'image/png',
+                            Width: 800,
+                            SvgStr: svg,
+                        })
+                        .catch(reponse => { 
+                            let error: string = reponse.statusText || '网络连接问题';
+                            alert('由于' + error + '导致仿真图片上传失败，如果需要下载文档，请再次点击文档预览重试');
+                        });
+                    }
                 }, 300);
             }
-            else{
+            else {
                 httpProxy.http('Simulation/SimulationResults').get({
-                    fileID: notifier.fileID,
+                    fileID: simuNotifier.fileID,
                     type: simuTypeStr,
                 }).then(response => {
                     /** 将string类型的数据转换为number */
                     let stringData = response.data.data as [string, string][];
-                    notifier.plotData[simulationType] = stringData.map(twoEleArray => {
+                    simuNotifier.plotData[simulationType] = stringData.map(twoEleArray => {
                         return <[number, number]>[parseFloat(twoEleArray[0]), parseFloat(twoEleArray[1])];
                     });
-                    chartOptions.series[0].data = notifier.plotData[simulationType];
+                    chartOptions.series[0].data = simuNotifier.plotData[simulationType];
                     $timeout(() => {
-                        let chart = Highcharts.chart(containerID, chartOptions);
-                    }, 300);
-                    // let svg: string = chart.getSVG();
-                    // let url = httpProxy.getRelativeUrl('Report/UploadSvg', { fileID: notifier.fileID });
-                    // httpProxy.http(url).post({
-                    //     FileName: 'v-t',
-                    //     Type: 'image/png',
-                    //     Width: 800,
-                    //     SvgStr: svg
-                    // });
+                        chart = Highcharts.chart(containerID, chartOptions);
+                        if(isDownload) {
+                            let svg: string = chart.getSVG();
+                            let url = httpProxy.getRelativeUrl('Report/UploadSvg', { fileID: simuNotifier.fileID });
+                            httpProxy.http(url)
+                            .post({
+                                FileName: simuTypeStr + '-t',
+                                Type: 'image/png',
+                                Width: 800,
+                                SvgStr: svg,
+                            })
+                            .catch(reponse => { 
+                                let error: string = reponse.statusText || '网络连接问题';
+                                alert('由于' + error + '导致仿真图片上传失败，如果需要下载文档，请再次点击文档预览重试');
+                            });
+                        }
+                    }, 100);                   
                 });
             }
+        };
 
+        $scope.simulationStarted = () => {
+            $scope.state.isStarted = true;
+            $scope.state.isCompleted = false;
+            $scope.state.progress = 0;
         }
+
+        $scope.simulationCompleted = (): void => {
+            $scope.state.isStarted = false;
+            $scope.state.isCompleted = true;
+            $scope.state.progress = 100;
+            $scope.state.stateText = '仿真结束';            
+            $interval.cancel(intervalID);
+        };
+
+        $scope.simulationFailed = (errorMsg: string): void => {
+            $scope.state.isStarted = false;
+            $scope.state.isCompleted = false;
+            $scope.state.progress = 0;
+            $scope.state.stateText = errorMsg;
+            $interval.cancel(intervalID);
+        };
+
+        $scope.showData = (simulationType: string): void => {
+            let containerID = simulationType + '-chart';
+            plotData(containerID, simulationType);
+        };
+
+        $scope.reportToggle = () => { 
+            if($scope.report.isShown === false)
+            {
+                let data = selecNotifier.getReportData();
+                $scope.report.isShown = true; 
+                $scope.report.CNCMachine = data.MachineType;
+                $scope.report.CNCSystem = data.NCSystem;
+                $scope.report.FeedSystemX = data.FeedSystemX;
+                $scope.report.FeedSystemY = data.FeedSystemY;
+                $scope.report.FeedSystemZ = data.FeedSystemZ;
+                $scope.report.Spindle = data.Spindle;
+                $scope.report.Components = getComponentsFromData(data);
+                plotData('report-x-chart', 'displacement', true);
+                plotData('report-v-chart', 'velocity', true);
+                plotData('report-a-chart', 'acceleration', true);
+            }
+            else {
+                $scope.report.isShown = false;
+            }
+        };
+
+        $scope.reportDownload = () => {
+            let data = selecNotifier.getReportData();
+            let relativeUtl = httpProxy.getRelativeUrl('Report/GenerateDocument', { fileID: simuNotifier.fileID });
+            httpProxy.http(relativeUtl)
+            .post(data)
+            .then(response => {
+                let downloadUrl = httpProxy.getRelativeUrl('Report/DownLoad', { fileID: simuNotifier.fileID });
+                httpProxy.http(downloadUrl).get();
+            })
+        }
+
+        $scope.stateInit = () => {
+            $scope.state = {
+                isCompleted: false,
+                isStarted: false,
+                progress: 0,
+                stateText: '尚未开始仿真',
+            };
+        };
+
+        $scope.reportInit = () => {
+            $scope.report = {
+                isShown: false,
+            };
+        };
+        
 
         /** 初始化 */
         /** 注册通知 */
-        notifier.registerNotification($scope);
+        simuNotifier.registerNotification($scope);
         var intervalID: angular.IPromise<any> = null;
-        $scope.state = 
-        {
-            isCompleted: false,
-            isStarted: false,
-            progress: 0,
-            stateText: '尚未开始仿真',
-        };
+        $scope.stateInit();
+        $scope.reportInit();
 
         /** 进度条设置 */
         intervalID = $interval(() => {
@@ -173,8 +303,9 @@ export default class SimulationChart
             }
         }, 500);
         /** 如果已经有数据了 */
-        if(notifier.fileID && notifier.fileID.length === 36) $scope.simulationCompleted();
+        if(simuNotifier.fileID && simuNotifier.fileID.length === 36) $scope.simulationCompleted();
     }
 };
 
-SimulationChart.$inject = ['$scope', '$interval', '$timeout', 'HttpProxy', 'SimulationNotification'];
+SimulationChart.$inject = ['$scope', '$interval', '$timeout', 'HttpProxy', 
+                        'SimulationNotification', 'SelectionNotification'];

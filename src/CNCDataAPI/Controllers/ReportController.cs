@@ -22,24 +22,7 @@ namespace CNCDataManager.Controllers
             _webRootPath = host.WebRootPath;
         }
 
-        // GET: Report
         [HttpPost]
-        public ActionResult Index ([FromBody]SelectionResult selectionResult)
-        {
-            ReportTemplateResult result = ToReportTemplate(selectionResult);
-            string shortName = DateTime.Now.ToString("yyyyMMdd-hhmmss");
-            string filename = MapPath("temp", shortName + ".docx");
-            result.Filename = shortName;
-            using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
-            {
-                gen.AddMachinePicture(MapPath(result.MachinePicture))
-                    .AddSimulationPictures(MapPath(result.SimulationPictures.ToArray()))
-                    .AddContent(result)
-                    .SaveAs(filename);
-            }
-            return View(result);
-        }
-
         public CreatedResult UploadSvg([FromQuery]string fileID, [FromBody]SvgPara para)
         {
             var filename = para.FileName;
@@ -60,11 +43,11 @@ namespace CNCDataManager.Controllers
             return Created(resultPath, null);
         }
 
-        private ReportTemplateResult ToReportTemplate(SelectionResult result)
+        private ReportTemplateResult ToReportTemplate(SelectionResult result, string workPath)
         {
             ReportTemplateResult res = new ReportTemplateResult()
             {
-                MachinePicture = "./images/Report/MachineType.png",
+                MachinePicture = result.MachineType.ImgUrl,
                 TransmissionMethod = new TransmissionMethod()
                 {
                     XAxis = "减速器",
@@ -99,9 +82,9 @@ namespace CNCDataManager.Controllers
                 },
                 SimulationPictures = new List<string>()
                 {
-                    "./images/Report/simu-1.png",
-                    "./images/Report/simu-2.png",
-                    "./images/Report/simu-3.png"
+                    Path.Combine(workPath, "X-t.png"),
+                    Path.Combine(workPath, "v-t.png"),
+                    Path.Combine(workPath, "a-t.png")
                 }
             };
             res.Components.Add(new Component() { AxisAndName = "X轴滚珠丝杠", TypeID = result.FeedSystemX.Ballscrew.TypeID, Manufacturer = result.FeedSystemX.Ballscrew.Manufacturer });
@@ -186,10 +169,29 @@ namespace CNCDataManager.Controllers
             return res;
         }
 
-        public IActionResult DownLoad(string shortName)
+        [HttpPost]
+        public CreatedResult GenerateDocument([FromQuery]string fileID, [FromBody]SelectionResult selectionResult)
         {
-            string filename = "./temp/" + shortName + ".docx";
-            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");   
+            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
+            ReportTemplateResult result = ToReportTemplate(selectionResult, workPath);
+            string shortName = "选型结果简表";
+            string filename = Path.Combine(workPath, shortName + ".docx");
+            using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
+            {
+                gen.AddMachinePicture(MapPath(result.MachinePicture))
+                    .AddSimulationPictures(result.SimulationPictures.ToArray())
+                    .AddContent(result)
+                    .SaveAs(filename);
+            }
+            return Created(Path.Combine("Mworks", "Temp", fileID), null);
+        }
+
+        public IActionResult DownLoad([FromQuery]string fileID)
+        {
+            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
+            string filename = Path.Combine(workPath, "选型结果简表.docx");
+            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");
+          //  return File(Path.Combine(workPath, "v-t.png"), "image/png");   
         }
 
         private string MapPath(string relativeUrl)

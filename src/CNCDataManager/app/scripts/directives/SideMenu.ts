@@ -10,13 +10,16 @@ interface ISideMenuScope extends ISelectionStateScope{
     selectionReset: () => void;
 }
 
-let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, dataStorage: DataStorage, httpProxy: HttpProxy): angular.IDirective => {
+let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, 
+                                           dataStorage: DataStorage, 
+                                           httpProxy: HttpProxy,
+                                           $state: angular.ui.IStateService): angular.IDirective => {
     return {
         templateUrl: './views/directives/side-menu.html',
         restrict: 'E',
         scope: true,
         link: (scope: ISideMenuScope, ele: Element, attr: Attr): void => {
-            //辅助方法
+            /** scope上数据初始化 */
             let dataInitialize = (scope: ISideMenuScope): void => {
                 scope.data = {
                     CNCMachine: {
@@ -153,17 +156,6 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
                     },
                 };
             };
-            let getFeedSystem = (axisID: string): any => {
-                let feedSystem = {
-                    Guide: dataStorage.getObject('FeedSystem' + axisID + 'Guides'),
-                    Ballscrew: dataStorage.getObject('FeedSystem' + axisID + 'ScrewNuts'),
-                    Bearings: dataStorage.getObject('FeedSystem' + axisID + 'Bearings'),
-                    Coupling: dataStorage.getObject('FeedSystem' + axisID + 'Couplings'),
-                    ServoMotor: dataStorage.getObject('FeedSystem' + axisID + 'ServoMotors'),
-                    Driver: dataStorage.getObject('FeedSystem' + axisID + 'ServoDrivers'),
-                };
-                return feedSystem;
-            };
 
             
             //方法定义
@@ -181,26 +173,7 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
             };
 
             scope.selectionComplete = () => {
-                let system = dataStorage.getObject('CNCSystem');
-                let ncSystem = {
-                    TypeID: system.TypeID,
-                    SupportMachineType: system.SupportMachineType,
-                    NumberOfSupportChannels: system.SupportChannels,
-                    MaxNumberOfFeedSystemAxis: system.MaxNumberOfFeedShafts,
-                    MaxNumberOfSpindleAxis: system.MaxNumberOfSpindels,
-                    MaxNumberOfLinkageAxis: system.MaxNumberOfLinkageAxis
-                };
-                let result = {
-                    CNCType: dataStorage.getObject('MachineType'),
-                    NCSystem: ncSystem,
-                    FeedSystemX: getFeedSystem('X'),
-                    FeedSystemY: getFeedSystem('Y'),
-                    FeedSystemZ: getFeedSystem('Z'),
-                };
-                httpProxy.http('Report/Index')
-                         .post(result)
-                         .then(response => { let docWindow = window.open("", "预览"); docWindow.document.write(response.data); },
-                               response => { alert(response.data); });
+                $state.go('simulation.Settings', {axisID: 'X'});
             };
             scope.selectionReset = () => {
                 dataStorage.clear();
@@ -209,9 +182,11 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
 
             scope.changeHandler = () => {};
 
-            //注册通知
+            // 1.注册通知
             notifier.registerNotification(scope);
+            // 2.数据初始化
             dataInitialize(scope);
+            // 3.用当前localStorage里的数据初始化 SideMenu
             let storageKeys: string[] = ['MachineType', 'MachineWorkingConditions',
                                         'CNCSystem', 'CNCSystemAccessories',
                                         'FeedSystemXGuides', 'FeedSystemXScrewNuts', 'FeedSystemXBearings', 'FeedSystemXCouplings', 'FeedSystemXServoMotors', 'FeedSystemXServoDrivers',
@@ -507,10 +482,13 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, data
                     }
                 }
             });
+
+            // 4.监听destroy事件，释放资源
+            scope.$on('$destroy', () => notifier.deregisterNotification(scope));
             
         }
     };
 };
-SideMenu.$inject = ['SelectionNotification', 'DataStorage', 'HttpProxy'];
+SideMenu.$inject = ['SelectionNotification', 'DataStorage', 'HttpProxy', '$state'];
 
 export default SideMenu;
