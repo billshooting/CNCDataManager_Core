@@ -27,7 +27,7 @@ var paths = {
 
 gulp.task("copy-html", function () {
     return gulp.src(paths.pages)
-        //.pipe(minifyHtml())
+        .pipe(minifyHtml())
         .pipe(gulp.dest("../CNCDataManager_Publish"));
 });
 
@@ -38,14 +38,14 @@ gulp.task("copy-lib", function () {
 
 gulp.task("copy-config", function () {
     return gulp.src(paths.config)
-        //.pipe(uglify({ mangle: false }))
+        .pipe(uglify({ mangle: false }))
         .pipe(gulp.dest("../CNCDataManager_Publish/scripts"))
 }); 
 
 gulp.task("css", function () {
     return gulp.src(paths.styles)
         .pipe(concat("app.css"))
-        //.pipe(minifyCss())
+        .pipe(minifyCss())
         .pipe(gulp.dest("../CNCDataManager_Publish/css"));
 })
 
@@ -54,7 +54,6 @@ gulp.task("default", ["copy-html", "copy-lib", "css", "copy-config"], function (
         .pipe(tsProject())
         .js
         //.pipe(uglify({ mangle: false }))
-        //.pipe(concat('bundle.js'))
         .pipe(gulp.dest("../CNCDataManager_Publish/scripts"));
 
 });

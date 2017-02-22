@@ -2,13 +2,15 @@ import * as angular from 'angular';
 import { ISimulationScope } from '../../types/CncSimulation';
 import HttpProxy from '../../services/HttpProxy';
 import SimulationNotification from '../../services/SimulationNotification';
+import SelectionNotification from '../../services/SelectionNotification';
 
 export default class Simulation {
     public constructor($scope: ISimulationScope, 
                        $stateParams: angular.ui.IStateParamsService,
                        $state: angular.ui.IStateService,
                        httpProxy: HttpProxy,
-                       notifier: SimulationNotification) 
+                       selecNotifier: SelectionNotification,
+                       simuNotifier: SimulationNotification) 
     {
         $scope.setDefaultMotorPara = () => {
             $scope.data.motor = {
@@ -39,12 +41,12 @@ export default class Simulation {
         $scope.setDefaultMechanicalPara = () => {
             $scope.data.ballscrew = {  
                 diameter: 0.04,
-                modulusofElasticty: 2.1e11,
+                modulusofElasticty: 210,
                 shaftDistance: 0.8,
                 pitch: 0.012,
                 length: 0.766,
                 density: 7850,
-                shearModulusofElasticty: 6.2e10,
+                shearModulusofElasticty: 62,
                 campingCoefficient: 0.09,
             };
             $scope.data.guide = {
@@ -72,25 +74,43 @@ export default class Simulation {
                 signal: 'Sine',
                 startTime: 0,
                 endTime: 1,
-                stepSize: 0.002,
-                stepNum: 500,
-                alg: 'Dass1',
+                stepSize: 0.0002,
+                stepNum: 5000,
+                alg: 'Rkfix4',
                 precision:0.001,
             }
         };
 
         $scope.startSimulation = () => {
-            httpProxy.http('Simulation/DelayTest')
-                     .post($scope.data)
-                     .then((response: any) => {
-                         notifier.notifyComplement(response.data);
-                     }, (response: any) => {
-                         notifier.notifyFailure(response.statusText || '糟糕，连不上服务器');
-                     });
-            notifier.resetFileID(); //清除已经存在的fileID
-            $state.go('simulation.Chart');
-            setTimeout(() => notifier.notifyStart(), 500); //由于此时结果页面的scope还没生成,所以要等一会儿
-            angular.element('.modal-backdrop').remove(); //modal的bug,会出现两个<div class='modal-backdrop'>
+            if(selecNotifier.isAllSelected()) {
+                /** 处理因单位不同的数据 GPa->Pa */
+                $scope.data.ballscrew.modulusofElasticty = $scope.data.ballscrew.modulusofElasticty * 1e9;
+                $scope.data.ballscrew.shearModulusofElasticty = $scope.data.ballscrew.modulusofElasticty * 1e9;
+
+                let fileID = simuNotifier.getCurrentTime();
+                let simulationUrl = httpProxy.getRelativeUrl('Simulation/StartSimulation', { fileID: fileID });
+                httpProxy.http(simulationUrl).post($scope.data, { timeout: 1000 * 60 * 5});
+                        // .then((response: any) => {
+                        //     simuNotifier.notifyComplement(response.data);
+                        // }, (response: any) => {
+                        //     simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器');
+                        // });
+                let pollingUrl = httpProxy.getRelativeUrl('Simulation/PollingSimulation', { fileID: fileID });
+                let pollingID = httpProxy.http(pollingUrl).polling(
+                    response => simuNotifier.notifyComplement(response.data),
+                    response => simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器'));
+                simuNotifier.resetFileID(); //清除已经存在的fileID
+                $state.go('simulation.Chart');
+                setTimeout(() => simuNotifier.notifyStart(), 500); //由于此时结果页面的scope还没生成,所以要等一会儿
+                angular.element('.modal-backdrop').remove(); //modal的bug,会出现两个<div class='modal-backdrop'>
+            }
+            else alert('选型尚未完成，请继续');
+        };
+
+        $scope.changeStepNum = () => {
+            let interval = $scope.data.setting.endTime - $scope.data.setting.startTime;
+            let stepSize = $scope.data.setting.stepSize;
+            $scope.data.setting.stepNum = Math.round(interval / stepSize);
         }
 
         $scope.data = {} as any;
@@ -102,4 +122,4 @@ export default class Simulation {
     }
 };
 
-Simulation.$inject = ['$scope', '$stateParams', '$state', 'HttpProxy', 'SimulationNotification'];
+Simulation.$inject = ['$scope', '$stateParams', '$state', 'HttpProxy', 'SelectionNotification', 'SimulationNotification'];

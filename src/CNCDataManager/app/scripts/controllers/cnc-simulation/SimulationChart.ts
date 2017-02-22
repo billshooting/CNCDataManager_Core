@@ -156,6 +156,7 @@ export default class SimulationChart
                 chartOptions.series[0].data = thisData;
                 $timeout(() => {
                     chart = Highcharts.chart(containerID, chartOptions);
+                    /** 如果需要上传 再下载*/
                     if(isDownload) {
                         let svg: string = chart.getSVG();
                         let url = httpProxy.getRelativeUrl('Report/UploadSvg', { fileID: simuNotifier.fileID });
@@ -201,7 +202,10 @@ export default class SimulationChart
                                 alert('由于' + error + '导致仿真图片上传失败，如果需要下载文档，请再次点击文档预览重试');
                             });
                         }
-                    }, 100);                   
+                    }, 300);                   
+                }, response => {
+                    if(response.status === 404) console.log('incorrected fileID or data type.');
+                    else console.log(response.status + ' ' + response.statusText);
                 });
             }
         };
@@ -218,6 +222,7 @@ export default class SimulationChart
             $scope.state.progress = 100;
             $scope.state.stateText = '仿真结束';            
             $interval.cancel(intervalID);
+            $scope.showData('displacement');
         };
 
         $scope.simulationFailed = (errorMsg: string): void => {
@@ -260,9 +265,9 @@ export default class SimulationChart
             httpProxy.http(relativeUtl)
             .post(data)
             .then(response => {
-                let downloadUrl = httpProxy.getRelativeUrl('Report/DownLoad', { fileID: simuNotifier.fileID });
-                httpProxy.http(downloadUrl).get();
-            })
+                let downloadUrl = httpProxy.getUrl('Report/DownLoad', { fileID: simuNotifier.fileID });
+                window.open(downloadUrl, '_blank');
+            }, response => { alert('生成报表失败') });
         }
 
         $scope.stateInit = () => {
@@ -299,11 +304,11 @@ export default class SimulationChart
                 else if($scope.state.progress <= 20) $scope.state.stateText = '(请勿离开此页面)正在编译模型...';
                 else if($scope.state.progress <= 50) $scope.state.stateText = '(请勿离开此页面)正在生成求解器...';
                 else if($scope.state.progress < 100) $scope.state.stateText = '(请勿离开此页面)正在运行求解器...';
-                $scope.state.progress += 2;               
+                $scope.state.progress += 0.3;               
             }
         }, 500);
         /** 如果已经有数据了 */
-        if(simuNotifier.fileID && simuNotifier.fileID.length === 36) $scope.simulationCompleted();
+        if(simuNotifier.fileID && simuNotifier.fileID.length === 15) $scope.simulationCompleted();
     }
 };
 

@@ -40,6 +40,7 @@ export class CNCSystemType {
         $scope.changeOrderProperty = handler.changeOrderProperty;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changePaginationIndex = handler.changePaginationIndex;
         $scope.changeFilter = handler.changeFilter('cncSystemFiltrateBy');
         $scope.reset = handler.reset;
 

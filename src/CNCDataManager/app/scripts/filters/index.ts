@@ -16,5 +16,5 @@ export default function registerFilters(app: angular.IModule): void {
     app.filter('selectionBearingsFiltrateBy', SelectionBearingsFiltrateBy);
     app.filter('selectionCouplingsFiltrateBy', SelectionCouplingsFiltrateBy);
     app.filter('selectionServoMotorFiltrateBy', SelectionServoMotorFiltrateBy);
-    app.filter('SelectionServoDriverFiltrateBy', SelectionServoDriverFiltrateBy);
+    app.filter('selectionServoDriverFiltrateBy', SelectionServoDriverFiltrateBy);
 };

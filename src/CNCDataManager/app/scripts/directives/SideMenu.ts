@@ -26,13 +26,15 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
                         IsSelected: false,
                         IsShown: false,
                         TypeID: null,
-                        SupportType: null
+                        SupportType: null,
+                        ImgUrl: null,
                     },
                     CNCSystem: {
                         IsSelected: false,
                         IsShown: false,
                         TypeID: null,
-                        Manufacturer: null
+                        Manufacturer: null,
+                        ImgUrl: null,
                     },
                     FeedSystemX: {
                         IsSelected: false,
@@ -41,37 +43,43 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ScrewNuts: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Bearings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Couplings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoMotor: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoDriver: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                     },
                     FeedSystemY: {
@@ -81,37 +89,43 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ScrewNuts: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Bearings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Couplings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoMotor: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoDriver: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                     },
                     FeedSystemZ: {
@@ -121,42 +135,47 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ScrewNuts: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Bearings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         Couplings: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoMotor: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                         ServoDriver: {
                             IsSelected: false,
                             IsShown: false,
                             TypeID: null,
-                            Manufacturer: null
+                            Manufacturer: null,
+                            ImgUrl: null,
                         },
                     },
                 };
             };
-
             
             //方法定义
             scope.toggleState = (propA?: string, propB?: string): void => {
@@ -173,7 +192,8 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
             };
 
             scope.selectionComplete = () => {
-                $state.go('simulation.Settings', {axisID: 'X'});
+                if(notifier.isAllSelected()) $state.go('simulation.Settings', {axisID: 'X'});
+                else alert('选型尚未完成，请继续');
             };
             scope.selectionReset = () => {
                 dataStorage.clear();

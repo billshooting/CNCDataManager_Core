@@ -79,6 +79,7 @@ interface ISelectionTableHandler {
     changeOrderProperty: (property: string)=> void;
     selectItem?: (item: IItem) => void;
     changePaginationSize?: () => void;
+    changePaginationIndex?: (index: number) => void;
     changeFilter?: (filerName: string) => () => void;
     goDetails?: (item: IItem) => void;
     reset?: () => void;

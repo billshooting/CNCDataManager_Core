@@ -226,7 +226,6 @@
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-chart.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-content.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-leftside.html" />
-    <Content Include="app\views\cnc-simulation\controller-tpls\simulation-report.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation.html" />
     <Content Include="app\views\cnc-pagination.html" />
     <Content Include="app\views\directives\cnc-pagination.html" />

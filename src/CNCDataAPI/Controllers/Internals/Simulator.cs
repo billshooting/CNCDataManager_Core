@@ -70,6 +70,11 @@ namespace CNCDataManager.Controllers.Internals
             lines[7] = "dae_algo=" + setting.Alg;
             lines[8] = "tol=" + setting.Precision;
 
+            if (!Directory.Exists(_pathSettings.CompilerPath))
+            {
+                Directory.CreateDirectory(_pathSettings.CompilerPath);
+            }
+
             File.WriteAllLines(_pathSettings.SettingFile, lines, Encoding.GetEncoding("UTF-8"));
         }
 
@@ -80,10 +85,10 @@ namespace CNCDataManager.Controllers.Internals
         {
             Process process = new Process();
 
-            process.StartInfo.FileName = _pathSettings.CompilerFile;
+            process.StartInfo.FileName = getCmdArguments(_pathSettings.CompilerFile);
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.UseShellExecute = false;
-            process.StartInfo.Arguments = "-s " + _pathSettings.SettingFile + " -r " + _pathSettings.MsfFile;
+            process.StartInfo.Arguments = "-s " + getCmdArguments(_pathSettings.SettingFile) + " -r " + getCmdArguments(_pathSettings.MsfFile);
 
             //开启一个进程运行求解器并等待其运行结束
             process.Start();
@@ -96,9 +101,9 @@ namespace CNCDataManager.Controllers.Internals
         /// <param name="para">前端传入的数据</param>
         public void PrepareSimulationModel(SimulationPara para)
         {
-            ReadTemplateFile();
+            ReadTemplateFile();//读取 Mworks/Template/X_axis/package.txt 这是一个模板文件
 
-            ReplaceInput(para.Setting);
+            ReplaceInput(para.Setting); //替换模板中的输入信号和干扰
             ReplaceMotor(para.Motor);
             ReplaceDriver(para.Driver);
             ReplaceBallscrew(para.Ballscrew, para.Worktable);
@@ -107,7 +112,13 @@ namespace CNCDataManager.Controllers.Internals
             ReplaceCoupling(para.Coupling);
             ReplaceWorktable(para.Worktable, para.Ballscrew);
 
-            WriteModelFile();
+            WriteModelFile();//生成realpackage.mo
+        }
+
+        //路径中有空格需要用引号
+        private string getCmdArguments(string path)
+        {
+            return "\"" + path + "\"";
         }
 
         private void ReadTemplateFile()
@@ -131,9 +142,9 @@ namespace CNCDataManager.Controllers.Internals
         private void WriteModelFile()
         {
             //判断模板文件目录是否存在
-            if (!Directory.Exists(_pathSettings.ModelPath))
+            if (!Directory.Exists(_pathSettings.WorkingPath))
             {
-                Directory.CreateDirectory(_pathSettings.ModelPath);
+                Directory.CreateDirectory(_pathSettings.WorkingPath);
             }
             //打开文件流，写入模型文件
             using (FileStream cs = new FileStream(_pathSettings.ModelFile, FileMode.Create))

@@ -66,6 +66,9 @@ export default class SelectionTableHandler {
                 }
                 scope.state.paginationIndex = 1;
             },
+            changePaginationIndex: function (index: number) {
+                scope.state.paginationIndex = index;
+            },
             changeFilter: function (filterName: string): () => void {
                 return function (): void {
                     scope.filtratedItems = $filter<any>(filterName)(scope.items, scope.state.filtrateConditions);

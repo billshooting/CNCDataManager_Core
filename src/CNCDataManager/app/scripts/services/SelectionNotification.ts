@@ -26,6 +26,7 @@ export default class SelectionNotification {
         return feedSystem;
     }
 
+    /** 注册要通知的scope */
     public registerNotification(...listeners: ISelectionStateScope[]): void
     {
         if(listeners)
@@ -34,6 +35,7 @@ export default class SelectionNotification {
         }
     }
 
+    /** 注销要通知的scope */
     public deregisterNotification(...listeners: ISelectionStateScope[]): void
     {
         if(listeners)
@@ -46,6 +48,7 @@ export default class SelectionNotification {
         }
     }
 
+    /** 通知数据修改 */
     public notifyChange(change: (data: ISelectionData) => void): void
     {
         this.scopes.forEach(scope => {
@@ -53,12 +56,13 @@ export default class SelectionNotification {
             scope.changeHandler();
         });
     }
-
+    /** 或者SideMenu的 scope.data */
     public getSideMenuScopeData(): ISelectionData {
         let scope = this.scopes[0];
         return scope.data;
     }
 
+    /** 从localStorage中获取报表所需数据 */
     public getReportData(): IReportResult {
         let system = this.dataStorage.getObject('CNCSystem');
         let ncSystem = {
@@ -77,6 +81,25 @@ export default class SelectionNotification {
             FeedSystemZ: this.getFeedSystem('Z'),
             Spindle: null,
         };
+        return result;
+    }
+
+    public isAllSelected(): boolean {
+        let scope = this.scopes[0];
+        let data = scope.data;
+        let result: boolean = data.CNCMachine.IsSelected && data.CNCSystem.IsSelected;
+        for(let compo in data.FeedSystemX) {
+            if(compo === 'IsSelected' || compo === 'IsShown') continue;
+            else result = result && data.FeedSystemX[compo].IsSelected;
+        }
+        for(let compo in data.FeedSystemY) {
+            if(compo === 'IsSelected' || compo === 'IsShown') continue;
+            result = result && data.FeedSystemY[compo].IsSelected;
+        }
+        for(let compo in data.FeedSystemZ) {
+            if(compo === 'IsSelected' || compo === 'IsShown') continue;
+            else result = result && data.FeedSystemZ[compo].IsSelected;
+        }
         return result;
     }
 };

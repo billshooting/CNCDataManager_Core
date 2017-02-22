@@ -9,10 +9,11 @@ import { ITableScope, ICncDataScope, IItem, IHandlingItems } from '../types/CncD
 import MessageTips from './MessageTips';
 
 interface IRestfulMethod {
-    get: (queryStringObject?: any) => angular.IPromise<any>;
-    post: (data: any) => angular.IPromise<any>;
-    put: (data: any) => angular.IPromise<any>;
-    delete: () => angular.IPromise<any>;
+    get: (queryStringObject?: any, options?: angular.IRequestShortcutConfig) => angular.IPromise<any>;
+    post: (data: any, options?: angular.IRequestShortcutConfig) => angular.IPromise<any>;
+    put: (data: any, options?: angular.IRequestShortcutConfig) => angular.IPromise<any>;
+    delete: (options?: angular.IRequestShortcutConfig) => angular.IPromise<any>;
+    polling: (onSuccess?: (response: any) => void, onError?: (response: any) => void, options?: angular.IRequestShortcutConfig) => angular.IPromise<any>;
 }
 
 interface IHttpResponse<T> extends angular.IHttpPromiseCallbackArg<T>{
@@ -22,20 +23,22 @@ interface IHttpResponse<T> extends angular.IHttpPromiseCallbackArg<T>{
 
 export default class HttpProxy{
     //private BASE = '/';
-    //private BASE = 'http://localhost:9200/';
-    private BASE = 'http://localhost:52132/';
-    //private BASE = 'http://cncdataapi.azurewebsites.net/';
+    //private BASE = 'http://localhost:5000/';
+    //private BASE = 'http://localhost:52132/';
+    private BASE = 'http://cncdataapi.azurewebsites.net/';
     private PATH = 'api/cncdata/';
 
     private $http: angular.IHttpService;
     private $q: angular.IQService;
     private messageTips: MessageTips;
+    private $interval: angular.IIntervalService;
 
-    public constructor($http: angular.IHttpService, $q: angular.IQService, messageTips: MessageTips)
+    public constructor($http: angular.IHttpService, $q: angular.IQService, messageTips: MessageTips, $interval: angular.IIntervalService)
     {
         this.$http = $http;
         this.$q = $q;
         this.messageTips = messageTips;
+        this.$interval = $interval;
     }
 
     public getUrl(uri: string, queryStringObject?: any): string { 
@@ -63,35 +66,49 @@ export default class HttpProxy{
         let deffered: angular.IDeferred<any> = this.$q.defer<any>();
         let promise: angular.IPromise<any> = deffered.promise;
         let $http = this.$http;
+        let $interval = this.$interval;
         return{
-            get: function(queryStringObject?: any): angular.IPromise<any> {
+            get: function(queryStringObject?: any, options?: angular.IRequestShortcutConfig): angular.IPromise<any> {
                 if(queryStringObject){
                     url = url + '?';
                     for(let key in queryStringObject) url = url + key + '=' + queryStringObject[key] + '&';
                     url = url.substr(0, url.length - 1);// 去掉最后一个 '&'
                 }
-                $http.get(url).then(
+                $http.get(url, options).then(
                     (response: any) => deffered.resolve(response),
                     (response: any) => deffered.reject(response));
                 return promise;
             },
-            post: function(data: any): angular.IPromise<any>{
-                $http.post(url, data).then(
+            post: function(data: any, options?: angular.IRequestShortcutConfig): angular.IPromise<any>{
+                $http.post(url, data, options).then(
                     (response: any) => deffered.resolve(response),
                     (response: any) => deffered.reject(response));
                 return promise;
             },
-            put: function(data: any): angular.IPromise<any>{
-                $http.put(url, data).then(
+            put: function(data: any, options?: angular.IRequestShortcutConfig): angular.IPromise<any>{
+                $http.put(url, data, options).then(
                     (response: any) => deffered.resolve(response),
                     (response: any) => deffered.reject(response));
                 return promise;
             },
-            delete: function(): angular.IPromise<any>{
-                $http.delete(url).then(
+            delete: function(options?: angular.IRequestShortcutConfig): angular.IPromise<any>{
+                $http.delete(url, options).then(
                     (response: any) => deffered.resolve(response),
                     (response: any) => deffered.reject(response));
                 return promise;
+            },
+            polling: function(onSuccess, onError, options?: angular.IRequestShortcutConfig): angular.IPromise<any>{
+                let intervalID = $interval(() => $http.get(url, options).then(
+                    (response: any) => {
+                        if(response.status === 200) 
+                        {
+                            $interval.cancel(intervalID);
+                            onSuccess(response);
+                        }
+                        else if(response.status === 204) console.log('Not Completed Yet!');
+                    }, 
+                    (response: any) => onError(response)), 11000, 30);
+                return intervalID;
             }
         }
     }
@@ -189,6 +206,6 @@ export default class HttpProxy{
     }
 }
 
-HttpProxy.$inject = ['$http', '$q', 'MessageTips'];
+HttpProxy.$inject = ['$http', '$q', 'MessageTips', '$interval'];
 
 

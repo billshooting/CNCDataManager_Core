@@ -15,21 +15,24 @@ namespace CNCDataManager.Controllers
     [Route("api/cncdata/[controller]/[action]")]
     public class ReportController : Controller
     {
-        private readonly string _webRootPath; 
+        private readonly string _webRootPath;
+        private readonly string _appRootPath;
 
         public ReportController(IHostingEnvironment host)
         {
             _webRootPath = host.WebRootPath;
+            _appRootPath = host.ContentRootPath;
         }
 
         [HttpPost]
-        public CreatedResult UploadSvg([FromQuery]string fileID, [FromBody]SvgPara para)
+        public CreatedResult UploadSvg([FromQuery]string fileID, [FromBody]SvgPara para, [FromBody]string userName)
         {
             var filename = para.FileName;
             var type = para.Type;
             var width = para.Width;
             var svg = para.SvgStr;
-            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
+            userName = userName != null ? userName : "bill_shooting";
+            string workPath = Path.Combine(_webRootPath, "Users", userName, fileID, "report");
             int wid = 0;
             string resultPath = null;
             if(filename != null &&
@@ -37,6 +40,7 @@ namespace CNCDataManager.Controllers
                svg != null &&
                Int32.TryParse(width, out wid))
             {
+                if (!Directory.Exists(workPath)) Directory.CreateDirectory(workPath);
                 Exporter exporter = new Exporter(filename, type, wid, svg);
                 resultPath = exporter.WriteToFile(workPath);
             }
@@ -170,9 +174,10 @@ namespace CNCDataManager.Controllers
         }
 
         [HttpPost]
-        public CreatedResult GenerateDocument([FromQuery]string fileID, [FromBody]SelectionResult selectionResult)
+        public CreatedResult GenerateDocument([FromQuery]string fileID, [FromBody]SelectionResult selectionResult, [FromBody]string userName)
         {
-            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
+            userName = userName != null ? userName : "bill_shooting";
+            string workPath = Path.Combine(_webRootPath, "Users", userName, fileID, "report");
             ReportTemplateResult result = ToReportTemplate(selectionResult, workPath);
             string shortName = "选型结果简表";
             string filename = Path.Combine(workPath, shortName + ".docx");
@@ -183,15 +188,16 @@ namespace CNCDataManager.Controllers
                     .AddContent(result)
                     .SaveAs(filename);
             }
-            return Created(Path.Combine("Mworks", "Temp", fileID), null);
+            return Created(Path.Combine("Users", userName, fileID, "report"), null);
         }
 
+        [HttpGet]
         public IActionResult DownLoad([FromQuery]string fileID)
         {
-            string workPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID);
-            string filename = Path.Combine(workPath, "选型结果简表.docx");
+            var userName = "bill_shooting";
+            string virtualPath = Path.Combine("Users", userName, fileID, "report");
+            string filename = Path.Combine(virtualPath, "选型结果简表.docx");
             return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");
-          //  return File(Path.Combine(workPath, "v-t.png"), "image/png");   
         }
 
         private string MapPath(string relativeUrl)

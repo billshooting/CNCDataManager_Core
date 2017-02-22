@@ -50,6 +50,7 @@ export class SelectionCouplings {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changePaginationIndex = handler.changePaginationIndex;
         $scope.changeFilter = handler.changeFilter('selectionCouplingsFiltrateBy');
         $scope.reset = handler.reset;
 

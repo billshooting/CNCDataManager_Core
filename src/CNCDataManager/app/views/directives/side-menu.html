@@ -484,6 +484,23 @@
             </div>
         </div>
         <a id="side-menu-complete" class="btn btn-success" ng-click="selectionComplete()">完成</a>
-        <a id="side-menu-reset" class="btn btn-danger" ng-click="selectionReset()">重置数据</a>
+        <a id="side-menu-reset" class="btn btn-danger" data-toggle="modal" data-target="#confirmReset">重置数据</a>
+    </div>
+</div>
+<div class="modal fade" id="confirmReset" tabindex="-1" role="dialog" aria-labelledby="confirmLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="confirmLabel">确认重置</h4>
+            </div>
+            <div class="modal-body">此操作将重置所选的选型数据，请确认。</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="selectionReset()">重置</button>
+            </div>
+        </div>
     </div>
 </div>

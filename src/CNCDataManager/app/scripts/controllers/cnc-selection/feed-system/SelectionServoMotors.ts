@@ -42,6 +42,7 @@ export class SelectionServoMotors {
         $scope.toggleCol = handler.toggleCol;
         $scope.selectItem = handler.selectItem;
         $scope.changePaginationSize = handler.changePaginationSize;
+        $scope.changePaginationIndex = handler.changePaginationIndex;
         $scope.changeFilter = handler.changeFilter('selectionServoMotorFiltrateBy');
         $scope.goDetails = handler.goDetails;
         $scope.reset = handler.reset;

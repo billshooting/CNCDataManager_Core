@@ -62,6 +62,7 @@ interface ISimulationScope extends angular.IScope {
             precision: number;
         };
     };
+    changeStepNum: () => void;
     setDefaultMotorPara: () => void;
     setDefaultDriverPara: () => void;
     setDefaultMechanicalPara: () => void;

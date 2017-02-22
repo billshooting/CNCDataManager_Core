@@ -24,23 +24,17 @@ namespace CNCDataManager.Controllers
             _webRootPath = host.WebRootPath;
         }
 
-        [HttpGet]
-        public string Index()
-        {
-            return "test";
-        }
-
         [HttpPost]
-        public string StartSimulation([FromBody] SimulationPara para)
+        public async Task<string> StartSimulation([FromQuery]string fileID, [FromBody] SimulationPara para)
         {
             //设置模型路径
-            PathSettings path = new PathSettings(_webRootPath, para.AxisID);
+            PathSettings path = new PathSettings(_webRootPath, para.AxisID, "bill_shooting", fileID);
 
             Simulator simulator = new Simulator(path);
 
             //进行模型替换
-            //await Task.Run(() => 
-            //{
+            await Task.Run(() => 
+            {
                 simulator.PrepareSimulationModel(para);
 
                 //进行模型编译求解
@@ -50,30 +44,52 @@ namespace CNCDataManager.Controllers
 
                 //进行结果转换
                 simulator.MsfToTxt();
-            //});
+            });
 
 
             //返回独一无二的个人信息标识，后序通过此标识获取仿真结果
             return path.TempId;
         }
 
-        [HttpPost]
-        public async Task<string> DelayTest([FromBody] SimulationPara para)
+        [HttpGet]
+        public async Task<IActionResult> PollingSimulation([FromQuery]string fileID, [FromQuery]string userName)
         {
-            await Task.Delay(10000);
-            return "36e4d31a-191f-4abb-ad27-87f04684abf2";
+            string file = Path.Combine(_webRootPath, "Users", "bill_shooting", fileID, "data", "pmsm.flange_a.tau.txt");
+            if (System.IO.File.Exists(file))
+            {
+                TryCleanSimulationFiles("bill_shooting", fileID);
+                return Ok(fileID);
+            }
+            await Task.Delay(5000);
+            if (System.IO.File.Exists(file))
+            {
+                TryCleanSimulationFiles("bill_shooting", fileID);
+                return Ok(fileID);
+            }
+            await Task.Delay(5000);
+            if (System.IO.File.Exists(file))
+            {
+                TryCleanSimulationFiles("bill_shooting", fileID);
+                return Ok(fileID);
+            }
+            return NoContent();
         }
 
         [HttpGet]
-        public async Task<JsonResult> SimulationResults([FromQuery]string fileID, [FromQuery] string type)
+        public async Task<IActionResult> SimulationResults([FromQuery]string fileID, [FromQuery] string type)
         {
-            string dataPath = Path.Combine(_webRootPath, "Mworks", "Temp", fileID, "data");
+            if (string.IsNullOrEmpty(fileID) || string.IsNullOrEmpty(type) || fileID == "null" || type == "null")
+            {
+                return NotFound();
+            }
+            string dataPath = Path.Combine(_webRootPath, "Users", "bill_shooting", fileID, "data");
             string timeFile = Path.Combine(dataPath, "time.txt");
             string dataFile = Path.Combine(dataPath, "a.txt");
-            if(type == "a" || type == "v" || type == "X")
+            if (type == "a" || type == "v" || type == "X")
             {
                 dataFile = Path.Combine(dataPath, type + ".txt");
             }
+            else return NotFound();
             string[] times = null;
             string[] data = null;
             await Task.Run(() =>
@@ -81,7 +97,7 @@ namespace CNCDataManager.Controllers
                 times = System.IO.File.ReadAllLines(timeFile, Encoding.UTF8);
                 data = System.IO.File.ReadAllLines(dataFile, Encoding.UTF8);
             });
-            return Json(new { data = MinifyData(times, data, 100) });
+            return Json(new { data = MinifyData(times, data) });
         }
 
         /// <summary>
@@ -91,8 +107,9 @@ namespace CNCDataManager.Controllers
         /// <param name="data">某种类型的仿真数据</param>
         /// <param name="minifier">缩小倍数</param>
         /// <returns>缩小后的数组</returns>
-        private List<string[]> MinifyData(string[] times, string[] data, int minifier)
+        private List<string[]> MinifyData(string[] times, string[] data)
         {
+            int minifier = (times.Length / 500);
             if (minifier <= 0) throw new ArgumentException("minifier must greater than 0");
             List<string[]> result = new List<string[]>(data.Length / minifier + 1);
             for(int i = 0; i < data.Length; i += minifier)
@@ -100,6 +117,23 @@ namespace CNCDataManager.Controllers
                 result.Add(new string[2] { times[i], data[i] });
             }
             return result;
+        }
+
+        private bool TryCleanSimulationFiles(string userName, string fileID)
+        {
+            string workPath = Path.Combine(_webRootPath, "Users", userName, fileID);
+            string[] deletingFiles = Directory.GetFiles(workPath);
+            string complierPath = Path.Combine(workPath, "compiler");
+            try
+            {
+                Directory.Delete(complierPath, true);
+                foreach (var f in deletingFiles) System.IO.File.Delete(f);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

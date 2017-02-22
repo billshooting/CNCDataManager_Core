@@ -8,14 +8,14 @@ namespace CNCDataManager.Controllers.Internals
 {
     public class PathSettings
     {
-        public PathSettings(string webRootPath, string axis)
+        public PathSettings(string webRootPath, string axis, string userName, string fileID)
         {
             MWorksPath = Path.Combine(webRootPath, "Mworks");
 
             Library = Path.Combine(MWorksPath, "Library", "Modelica 2.2.2");
 
             //生成独一无二的临时文件夹
-            TempId = Guid.NewGuid().ToString();
+            //TempId = Guid.NewGuid().ToString();
 
             //确定使用的模板文件
             string axisName = axis + "_axis";
@@ -24,14 +24,14 @@ namespace CNCDataManager.Controllers.Internals
             if (axis != "X" && axis != "Y" && axis != "Z") throw new ArgumentException("Wrong Axis Name!");
             ModelName = axis + "_axis." + axis + "_axis_model";
 
-            ModelPath = Path.Combine(MWorksPath, "Temp", TempId); //临时文件夹路径
-            CompilerPath = Path.Combine(ModelPath, "compiler");
-            DataPath = Path.Combine(ModelPath, "data");
+            WorkingPath = Path.Combine(webRootPath, "Users", userName, fileID); //工作目录
+            CompilerPath = Path.Combine(WorkingPath, "compiler");
+            DataPath = Path.Combine(WorkingPath, "data", " ").TrimEnd(); //msfReaderDll.dll似有bug
 
-            MsfFile = Path.Combine(ModelPath, "data.msf");
-            ModelFile = Path.Combine(ModelPath, "realpackage.mo");
+            MsfFile = Path.Combine(WorkingPath, "data.msf");
+            ModelFile = Path.Combine(WorkingPath, "realpackage.mo");
             CompilerFile = Path.Combine(CompilerPath, "MWSolver.exe");
-            SettingFile = Path.Combine(ModelPath, "Setting.txt");
+            SettingFile = Path.Combine(CompilerPath, "Setting.txt");
         }
 
         public readonly string MWorksPath;   //Morks组件根目录
@@ -42,7 +42,7 @@ namespace CNCDataManager.Controllers.Internals
 
         public readonly string TemplateFile;   //模板文件
 
-        public readonly string ModelPath;    //模型文件所在目录
+        public readonly string WorkingPath;    //模型文件所在目录
 
         public readonly string ModelFile;   //模型文件
 
