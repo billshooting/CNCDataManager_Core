@@ -25,4 +25,10 @@ body {
     position: relative;
 }
 
+#loading-progress-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: all ease 1s;
+}
 

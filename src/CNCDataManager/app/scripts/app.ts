@@ -1,7 +1,6 @@
 ﻿import * as $ from 'jquery';
 import * as angular from 'angular';
 import 'angular-animate';
-import 'angular-cookie';
 import 'angular-resource';
 import 'angular-sanitize';
 import 'angular-strap';
@@ -10,7 +9,6 @@ import 'angular-strap';
 let app = angular.module('cncDataManager', [
     'ui.router',
     'ngAnimate',
-   // 'ngCookies',
     'ngResource',
     'ngSanitize',
     'mgcrea.ngStrap',
@@ -50,7 +48,6 @@ registerDefaultValue(app);
 
 registerSimulationRoute(app);
 registerSimulationControllers(app);
-
 
 
 

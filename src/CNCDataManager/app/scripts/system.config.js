@@ -82,3 +82,5 @@
         }
     }
 });
+
+System.import('./scripts/app.js');
