@@ -20,6 +20,10 @@ a.home-index-nav-link{
     letter-spacing:2px;
 }
 
+a.home-index-nav-link:hover {
+    cursor: pointer;
+}
+
 a.home-index-nav-link :visited{
     background-color: transparent;
 }

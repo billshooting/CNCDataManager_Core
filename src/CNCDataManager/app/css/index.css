@@ -32,3 +32,8 @@ body {
     transition: all ease 1s;
 }
 
+/**ËÆÓÐbug*/
+.modal-backdrop {
+    z-index: 1029;
+}
+

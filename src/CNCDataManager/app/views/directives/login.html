@@ -1,0 +1,82 @@
+﻿<ul class="nav navbar-nav navbar-right" ng-if="isAuthenticated">
+    <li><a class="home-index-nav-link" ui-sref="account" title="Manage"><span>你好,{{user.name}}</span></a></li>
+    <li><a class="home-index-nav-link" ng-click="user.logout()"><span>注销</span></a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated">
+    <li><a class="home-index-nav-link" data-toggle="modal" data-target="#loginModal">登陆</a></li>
+    <li><a class="home-index-nav-link" data-toggle="modal" data-target="#registerModal">注册</a></li>
+</ul>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="loginLabel">登陆机床数据中心</h4>
+            </div>
+            <form role="form" name="loginForm" id="loginForm">
+                <div class="modal-body">
+                    <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && !loginForm.username.$pristine}">
+                        <label for="login-username">用户名</label>
+                        <input type="text" id="login-username" name="username" class="form-control" ng-model="tourist.loginUserName" placeholder="请输入用户名" required />
+                        <p class="text-danger" ng-show="loginForm.username.$invalid && !loginForm.username.$pristine">用户名尚未输入</p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && !loginForm.password.$pristine}">
+                        <label for="login-password">密码</label>
+                        <input type="password" id="login-password" name="password" class="form-control" ng-model="tourist.loginPassword" placeholder="请输入密码" required />
+                        <p class="text-danger" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine">密码尚未输入</p>
+                    </div>              
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="tourist.login()" ng-disabled="!loginForm.$valid">登陆</button>
+                </div>
+            </form>          
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerLabel" aria-hidden="true">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="loginLabel">注册成为机床数据中心会员！</h4>
+            </div>
+            <form role="form" name="registerForm" id="registerForm">
+                <div class="modal-body">
+                    <div class="form-group" ng-class="{'has-error': registerForm.email.$invalid && !registerForm.email.$pristine}">
+                        <label for="register-email">邮箱</label>
+                        <input type="email" id="register-email" name="email" class="form-control" ng-model="tourist.registerEmail" placeholder="请输入注册邮箱" required />
+                        <p class="text-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">邮箱尚未输入或输入有误</p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': registerForm.username.$invalid && !registerForm.username.$pristine}">
+                        <label for="register-username">用户名</label>
+                        <input type="text" id="register-username" name="username" class="form-control" ng-model="tourist.registerUserName" placeholder="请输入用户名" ng-minlength="3" ng-maxlength="24" />
+                        <p class="text-danger" ng-show="registerForm.username.$error.minlength">用户名太短了，至少3个字符</p>
+                        <p class="text-danger" ng-show="registerForm.username.$error.maxlength">用户名太长了，最多24个字符</p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && !registerForm.password.$pristine}">
+                        <label for="register-password">密码</label>
+                        <input type="password" id="register-password" name="password" class="form-control" ng-model="tourist.registerPassword" placeholder="请输入密码" ng-minlength="6" ng-maxlength="16" />
+                        <p class="text-danger" ng-show="registerForm.password.$error.minlength">密码太短了，至少6个字符</p>
+                        <p class="text-danger" ng-show="registerForm.password.$error.maxlength">密码太长了，最多16个字符</p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': !registerForm.confirmPassword.$pristine && tourist.registerPassword !== tourist.registerConfirmPassword}">
+                        <label for="confirm-password">确认密码</label>
+                        <input type="password" id="confirm-password" name="confirmPassword" class="form-control" ng-model="tourist.registerConfirmPassword" placeholder="请再次输入密码"/>
+                        <p class="text-danger" ng-show="tourist.registerPassword !== tourist.registerConfirmPassword">两次密码不一致</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="tourist.register()" ng-disabled="registerForm.$invalid || (tourist.registerPassword !== tourist.registerConfirmPassword)">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
