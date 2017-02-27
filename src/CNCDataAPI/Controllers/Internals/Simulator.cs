@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers.Internals
 {
-    public class Simulator
+    internal class Simulator
     {
         /// <summary>
         /// 根据参数指定的路径创建一个求解器
@@ -48,6 +48,7 @@ namespace CNCDataManager.Controllers.Internals
             {
                 Directory.CreateDirectory(_pathSettings.CompilerPath);
             }
+            /** modelica dll的限制，不能多线程同时调用**/
             modelCompiler(_pathSettings.Library, _pathSettings.ModelFile, _pathSettings.CompilerPath, _pathSettings.ModelName);
         }
 

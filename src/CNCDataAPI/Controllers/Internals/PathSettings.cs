@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers.Internals
 {
-    public class PathSettings
+    internal class PathSettings
     {
         public PathSettings(string webRootPath, string axis, string userName, string fileID)
         {
@@ -37,8 +37,6 @@ namespace CNCDataManager.Controllers.Internals
         public readonly string MWorksPath;   //Morks组件根目录
 
         public readonly string Library;   //Modelica库文件目录
-
-        public readonly string TempId;   //Temp文件夹id
 
         public readonly string TemplateFile;   //模板文件
 

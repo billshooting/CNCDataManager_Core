@@ -14,7 +14,7 @@ let app = angular.module('cncDataManager', [
     'mgcrea.ngStrap',
 ]);
 
-
+import changeDefaultConfiguration from './bases/Configuration';
 import registerControllers from './controllers/cnc-data/index';
 import registerRoute from './bases/Route';
 import registerServices from './services/index';
@@ -38,6 +38,9 @@ registerDirectives(app);
 
 ///* controller register*/
 registerControllers(app);
+
+/** change default config */
+changeDefaultConfiguration(app);
 
 /* route config*/
 registerRoute(app);

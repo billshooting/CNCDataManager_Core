@@ -6,12 +6,13 @@ using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using CNCDataManager.Controllers.Internals;
 
 namespace CNCDataManager.Controllers.APIs
 {
-    //[ApiAuthorize]
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     public class AlignBallBrgsController : Controller
     {
         private CNCMachineData db;

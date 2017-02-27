@@ -32,17 +32,21 @@ let MsgDialog: angular.IDirectiveFactory = (messageService: MessageTips): angula
                 $scope.isError = false;
             };
             messageService.showError = (msg: string) => {
+                $scope.isLoading = false;
                 angular.element('#errorMsg').text(msg);
                 $scope.isError = true;
             };
-            messageService.showLoading = () => { $scope.isLoading = true; };
+            messageService.showLoading = () => { 
+                $scope.isError = false;
+                $scope.isLoading = true; 
+            };
             messageService.hideLoading = () => {
                 angular.element('#update-msg').text('');
                 angular.element('#error-msg').text('');
                 $scope.isLoading = false;
             };
             messageService.showUpdate = (i, count, msg) => {
-                console.log('showupdate called');
+                $scope.isError = false;
                 let message = i.toString() + '/' + count.toString() + ' success';
                 angular.element('#update-msg').text(message);
                 if (msg) {
@@ -50,6 +54,11 @@ let MsgDialog: angular.IDirectiveFactory = (messageService: MessageTips): angula
                     angular.element(_errorMsg).text(msg);
                 }
             };
+            messageService.showMsg = (msg: string) => {
+                $scope.isError = false;
+                angular.element('#error-msg').text(msg);
+                $scope.isLoading = true;
+            }
         }
     };
 };

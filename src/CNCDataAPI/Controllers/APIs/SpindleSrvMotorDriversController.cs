@@ -6,10 +6,11 @@ using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using CNCDataManager.Controllers.Internals;
 
 namespace CNCDataManager.Controllers.APIs
 {
-    [EnableCors("FullOpen")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     [Route("api/cncdata/[controller]")]
     public class SpindleSrvMotorDriversController : Controller
     {

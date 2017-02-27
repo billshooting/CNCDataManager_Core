@@ -1,4 +1,5 @@
-﻿using CNCDataManager.Models.APIs;
+﻿using CNCDataManager.Controllers.Internals;
+using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers.APIs
 {
-    //[ApiAuthorize]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
     public class CablesController : Controller

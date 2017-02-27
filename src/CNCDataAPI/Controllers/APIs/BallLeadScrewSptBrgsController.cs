@@ -1,4 +1,5 @@
-﻿using CNCDataManager.Models.APIs;
+﻿using CNCDataManager.Controllers.Internals;
+using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers.APIs
 {
-    //[ApiAuthorize]
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     public class BallLeadScrewSptBrgsController : Controller
     {
         private CNCMachineData db;

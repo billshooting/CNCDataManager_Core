@@ -1,3 +1,4 @@
+using CNCDataManager.Controllers.Internals;
 using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers.APIs
 {
-    //[ApiAuthorize]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
     public class LineRollingGuidesController : Controller

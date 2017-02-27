@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using CNCDataManager.Controllers.Internals;
 
 namespace CNCDataManager.Controllers.APIs
 {
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     public class UploadFilesController : Controller
     {
         private CNCMachineData db;

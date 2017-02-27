@@ -2,7 +2,7 @@
 
 namespace CNCDataManager.Controllers.Internals
 {
-    public class ApiAuthorizeAttribute : AuthorizeAttribute
+    internal class ApiAuthorizeAttribute : AuthorizeAttribute
     {
     }
 }

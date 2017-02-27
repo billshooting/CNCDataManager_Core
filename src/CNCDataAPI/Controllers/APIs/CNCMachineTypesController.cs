@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.IO;
+using CNCDataManager.Controllers.Internals;
 
 namespace CNCDataManager.Controllers.APIs
 {
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     public class CNCMachineTypesController : Controller
     {
         private CNCMachineData db;

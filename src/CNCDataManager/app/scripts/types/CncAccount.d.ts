@@ -3,7 +3,7 @@ interface ILoginScope extends angular.IScope
     isAuthenticated: boolean;
     user: {
         name: string;
-        logout: () => boolean;
+        logout: () => void;
     };
     tourist: {
         loginUserName?: string;
@@ -12,9 +12,21 @@ interface ILoginScope extends angular.IScope
         registerUserName?: string;
         registerPassword?: string;
         registerConfirmPassword: string;
-        login: () => boolean;
-        register: () => boolean;
+        login: () => void;
+        register: () => void;
     }
 }
 
+interface IRegisterModel {
+    email: string;
+    username: string;
+    password: string;
+}
+interface ILoginModel {
+    username: string;
+    password: string;
+}
+
 export { ILoginScope };
+export { IRegisterModel };
+export { ILoginModel };

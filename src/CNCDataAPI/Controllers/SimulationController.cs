@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using CNCDataManager.Models;
+﻿using CNCDataManager.Controllers.Internals;
 using CNCDataManager.Models.Simulation;
-using System.Text;
-using System.IO;
-using Microsoft.AspNetCore.Mvc;
-using CNCDataManager.Controllers.Internals;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers
@@ -25,7 +23,7 @@ namespace CNCDataManager.Controllers
         }
 
         [HttpPost]
-        public async Task<string> StartSimulation([FromQuery]string fileID, [FromBody] SimulationPara para)
+        public async Task StartSimulation([FromQuery]string fileID, [FromBody] SimulationPara para)
         {
             //设置模型路径
             PathSettings path = new PathSettings(_webRootPath, para.AxisID, "bill_shooting", fileID);
@@ -45,10 +43,6 @@ namespace CNCDataManager.Controllers
                 //进行结果转换
                 simulator.MsfToTxt();
             });
-
-
-            //返回独一无二的个人信息标识，后序通过此标识获取仿真结果
-            return path.TempId;
         }
 
         [HttpGet]

@@ -13,6 +13,7 @@ using CNCDataManager.Data;
 using CNCDataManager.Models;
 using CNCDataManager.Services;
 using CNCDataManager.Models.APIs;
+using CNCDataManager.Controllers.Internals;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -47,17 +48,41 @@ namespace CNCDataManager
             // 1.数据库服务
             services.AddDbContext<CNCMachineData>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("CNCMachineData")));
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ApplicationUserContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CNCUserData")));
 
             // 2.登陆认证服务
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+                .AddEntityFrameworkStores<ApplicationUserContext>()
                 .AddDefaultTokenProviders();
 
-            // 3.MVC核心服务
+            // 3.自定义的验证规则
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(nameof(AuthorizationLevel.Tourist),
+                    policy => policy.RequireRole("Tourist", "Member", "AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.Member),
+                    policy => policy.RequireRole("Member", "AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.AdvancedMember),
+                    policy => policy.RequireRole("AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.ResourceOwner),
+                    policy => policy.RequireRole("ResourceOwner", "Adminstrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.Adminstrator),
+                    policy => policy.RequireRole("Adminstrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.Root),
+                    policy => policy.RequireRole("Root"));
+            });
+
+            // 4.MVC核心服务
             services.AddMvc();
-            // 4.配置JSON序列化时使用Pascal风格
+
+            // 5.配置JSON序列化时使用Pascal风格
             services.AddMvcCore().AddJsonFormatters(options =>
             {
                 var resolver = options.ContractResolver;
@@ -68,7 +93,7 @@ namespace CNCDataManager
                 }
             });
 
-            // 5.配置Cors
+            // 6.配置Cors
             services.AddCors(options => options.AddPolicy("FullOpen", policy =>
             {
                 policy.AllowAnyHeader()

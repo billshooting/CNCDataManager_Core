@@ -53,7 +53,7 @@ gulp.task("default", ["copy-html", "copy-lib", "css", "copy-config"], function (
     return tsProject.src()
         .pipe(tsProject())
         .js
-        .pipe(uglify({ mangle: false }))
+        //.pipe(uglify({ mangle: false }))
         .pipe(gulp.dest("../CNCDataManager_Publish/scripts"));
 
 });

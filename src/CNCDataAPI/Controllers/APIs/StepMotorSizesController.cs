@@ -1,3 +1,4 @@
+using CNCDataManager.Controllers.Internals;
 using CNCDataManager.Models.APIs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -11,6 +12,7 @@ namespace CNCDataManager.Controllers.APIs
 {
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.ResourceOwner))]
     public class StepMotorSizesController : Controller
     {
         private CNCMachineData db;

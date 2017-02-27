@@ -5,6 +5,7 @@
 export default class MessageTips {
     public hideError: () => void;
     public showError: (msg: string) => void;
+    public showMsg:(msg: string) => void;
     public showLoading: () => void;
     public hideLoading: () => void;
     public showUpdate: (sequence: number, count: number, errorMsg?: string) => void;
@@ -14,5 +15,6 @@ export default class MessageTips {
         this.showLoading = () => { };
         this.hideLoading = () => { };
         this.showUpdate = (sequence, count, errorMsg?) => { };
+        this.showMsg = msg => {};
     }
 };
