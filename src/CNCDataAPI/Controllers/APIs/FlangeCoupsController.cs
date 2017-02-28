@@ -94,7 +94,7 @@ namespace CNCDataManager.Controllers.APIs
             {
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 if (FlangeCoupExists(flangeCoup.TypeID))
                 {
@@ -102,7 +102,7 @@ namespace CNCDataManager.Controllers.APIs
                 }
                 else
                 {
-                    throw;
+                    throw ex;
                 }
             }
 

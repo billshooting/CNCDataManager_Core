@@ -25,23 +25,18 @@ namespace CNCDataManager.Models.APIs
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "支持机床类型")]
         [Column(name: "MachineType")]
         public string SupportMachineType { get; set; }
 
-        [Display(Name = "支持通道数")]
         [Column(name: "Channels")]
         public int? SupportChannels { get; set; }
 
-        [Display(Name = "进给轴最大控制轴数")]
         [Column(name: "FeedShafts")]
         public int? MaxNumberOfFeedShafts { get; set; }
 
-        [Display(Name = "主轴最大控制轴数")]
         [Column(name: "Spindels")]
         public int? MaxNumberOfSpindels { get; set; }
 
-        [Display(Name = "最大联轴数")]
         [Column(name: "LinkageAxes")]
         public int? MaxNumberOfLinkageAxis { get; set; }
 

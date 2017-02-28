@@ -11,7 +11,6 @@ namespace CNCDataManager.Models.APIs
         [Column(name: "型号")]
         public string TypeID { get; set; }
 
-        [Required]
         [StringLength(50)]
         [Column(name: "生产厂家")]
         public string Manufacturer { get; set; }

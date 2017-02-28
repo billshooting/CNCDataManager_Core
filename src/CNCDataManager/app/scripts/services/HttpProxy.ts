@@ -122,6 +122,7 @@ export default class HttpProxy{
         else {
             let msg = '错误信息:' + response.status.toString() + ' ' + response.statusText;
             if (response.message !== undefined) msg = '错误信息:' + response.message;
+            if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
             this.messageTips.hideLoading();
             this.messageTips.showError(msg);
         }
@@ -131,6 +132,7 @@ export default class HttpProxy{
     {
         let msg = '错误信息:' + response.status + ' ' + response.statusText;
         if (response.message !== undefined) msg = '错误信息:' + response.message;
+        if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
         this.messageTips.hideLoading();
         this.messageTips.showError(msg);
     }
@@ -145,6 +147,7 @@ export default class HttpProxy{
         }
         else {
             let msg = '错误信息:' + response.status + ' ' + response.statusText;
+            if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
             this.messageTips.hideLoading();
             this.messageTips.showError(msg);
         }    
@@ -153,6 +156,7 @@ export default class HttpProxy{
     public addFail(scope: ICncDataScope, response: IHttpResponse<any>): void
     {
         let msg = '错误信息:' + response.status + ' ' + response.statusText;
+        if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
         this.messageTips.hideLoading();
         this.messageTips.showError(msg);
 
@@ -167,6 +171,7 @@ export default class HttpProxy{
         }
         else {
             let msg = '错误信息:' + response.status + ' ' + response.statusText;
+            if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
             scope.handlingItems.deletingItem = null;
             this.messageTips.hideLoading();
             this.messageTips.showError(msg);
@@ -176,6 +181,7 @@ export default class HttpProxy{
     public deleteFail(scope: ICncDataScope, response: IHttpResponse<any>): void
     {
         let msg = '错误信息:' + response.status + ' ' + response.statusText;
+        if(response.status === 401) msg = '错误消息：您尚未登陆或者您的账户没有权限进行此操作';
         scope.handlingItems.deletingItem = null;
         this.messageTips.hideLoading();
         this.messageTips.showError(msg);

@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Buffers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CNCDataManager
 {
@@ -54,10 +56,32 @@ namespace CNCDataManager
             // 2.登陆认证服务
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
+                // 修改默认的密码规则，改简单一点
                 options.Password.RequiredLength = 6;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
+
+                // 修改默认的重定向行为,让他直接返回401
+                options.Cookies.ApplicationCookie.LoginPath = PathString.Empty;
+                Func<CookieRedirectContext, Task> return401 = context =>
+                {
+                    if (context.Request.Path.Value.StartsWith("/api"))
+                    {
+                        context.Response.Clear();
+                        context.Response.StatusCode = 401;
+                        context.Response.Headers["Access-Control-Allow-Credentials"] = "true";
+                        context.Response.Headers["Access-Control-Allow-Origin"] = context.Request.Headers["Origin"];
+                        return Task.FromResult(0);
+                    }
+                    context.Response.Redirect(context.RedirectUri);
+                    return Task.FromResult(0);
+                };
+                options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+                {
+                    OnRedirectToLogin = return401,
+                    OnRedirectToAccessDenied = return401
+                };
             })
                 .AddEntityFrameworkStores<ApplicationUserContext>()
                 .AddDefaultTokenProviders();

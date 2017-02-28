@@ -11,12 +11,11 @@ namespace CNCDataManager.Models.APIs
         [Column("型号")]
         public string TypeID { get; set; }
 
-        [Required]
         [StringLength(50)]
         [Column("生产厂家")]
         public string Manufacturer { get; set; }
 
-        [Column("功率/kW")]
+        [Column("功率")]
         public double Power { get; set; }
 
         [StringLength(50)]
