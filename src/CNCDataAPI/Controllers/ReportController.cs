@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using CNCDataManager.Models;
-using System.Text;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using CNCDataManager.Controllers.Internals;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Cors;
 
 namespace CNCDataManager.Controllers
 {
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]/[action]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.Member))]
     public class ReportController : Controller
     {
         private readonly string _webRootPath;
@@ -25,13 +24,14 @@ namespace CNCDataManager.Controllers
         }
 
         [HttpPost]
-        public CreatedResult UploadSvg([FromQuery]string fileID, [FromBody]SvgPara para, [FromBody]string userName)
+        public IActionResult UploadSvg([FromQuery]string fileID, [FromQuery]string userName, [FromBody]SvgPara para)
         {
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
             var filename = para.FileName;
             var type = para.Type;
             var width = para.Width;
             var svg = para.SvgStr;
-            userName = userName != null ? userName : "bill_shooting";
             string workPath = Path.Combine(_webRootPath, "Users", userName, fileID, "report");
             int wid = 0;
             string resultPath = null;
@@ -45,6 +45,55 @@ namespace CNCDataManager.Controllers
                 resultPath = exporter.WriteToFile(workPath);
             }
             return Created(resultPath, null);
+        }
+
+        [HttpPost]
+        public IActionResult GenerateDocument([FromQuery]string fileID, [FromQuery]string userName, [FromBody]SelectionResult selectionResult)
+        {
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
+            string workPath = Path.Combine(_webRootPath, "Users", userName, fileID, "report");
+            ReportTemplateResult result = ToReportTemplate(selectionResult, workPath);
+            string shortName = "选型结果简表";
+            string filename = Path.Combine(workPath, shortName + ".docx");
+            using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
+            {
+                gen.AddMachinePicture(MapPath(result.MachinePicture))
+                    .AddSimulationPictures(result.SimulationPictures.ToArray())
+                    .AddContent(result)
+                    .SaveAs(filename);
+            }
+            return Created(Path.Combine("Users", userName, fileID, "report"), null);
+        }
+
+        [HttpGet]
+        public IActionResult DownLoad([FromQuery]string fileID, [FromQuery]string userName)
+        {
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
+            string virtualPath = Path.Combine("Users", userName, fileID, "report");
+            string filename = Path.Combine(virtualPath, "选型结果简表.docx");
+            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");
+        }
+
+        private string MapPath(string relativeUrl)
+        {
+            return Path.Combine(_webRootPath, relativeUrl);
+        }
+
+        private string MapPath(string path1, string path2)
+        {
+            return Path.Combine(_webRootPath, path1, path2);
+        }
+
+        private string[] MapPath(string[] relativeUrls)
+        {
+            return new string[]
+            {
+                MapPath(relativeUrls[0]),
+                MapPath(relativeUrls[1]),
+                MapPath(relativeUrls[2])
+            };
         }
 
         private ReportTemplateResult ToReportTemplate(SelectionResult result, string workPath)
@@ -171,53 +220,6 @@ namespace CNCDataManager.Controllers
             res.BallScrew.ZAxis.BasicRatedDynamicLoad = result.FeedSystemZ.Ballscrew.BasicRatedDynamicLoad_Ca;
 
             return res;
-        }
-
-        [HttpPost]
-        public CreatedResult GenerateDocument([FromQuery]string fileID, [FromBody]SelectionResult selectionResult, [FromBody]string userName)
-        {
-            userName = userName != null ? userName : "bill_shooting";
-            string workPath = Path.Combine(_webRootPath, "Users", userName, fileID, "report");
-            ReportTemplateResult result = ToReportTemplate(selectionResult, workPath);
-            string shortName = "选型结果简表";
-            string filename = Path.Combine(workPath, shortName + ".docx");
-            using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
-            {
-                gen.AddMachinePicture(MapPath(result.MachinePicture))
-                    .AddSimulationPictures(result.SimulationPictures.ToArray())
-                    .AddContent(result)
-                    .SaveAs(filename);
-            }
-            return Created(Path.Combine("Users", userName, fileID, "report"), null);
-        }
-
-        [HttpGet]
-        public IActionResult DownLoad([FromQuery]string fileID)
-        {
-            var userName = "bill_shooting";
-            string virtualPath = Path.Combine("Users", userName, fileID, "report");
-            string filename = Path.Combine(virtualPath, "选型结果简表.docx");
-            return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");
-        }
-
-        private string MapPath(string relativeUrl)
-        {
-            return Path.Combine(_webRootPath, relativeUrl);
-        }
-
-        private string MapPath(string path1, string path2)
-        {
-            return Path.Combine(_webRootPath, path1, path2);
-        }
-
-        private string[] MapPath(string[] relativeUrls)
-        {
-            return new string[]
-            {
-                MapPath(relativeUrls[0]),
-                MapPath(relativeUrls[1]),
-                MapPath(relativeUrls[2])
-            };
         }
     }
 }

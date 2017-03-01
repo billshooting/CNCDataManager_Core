@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace CNCDataManager.Controllers
 {
@@ -48,8 +50,10 @@ namespace CNCDataManager.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation(1, "User logged in.");
-                    return Ok(model.Username);
+                    _logger.LogInformation(1, $"User: {model.Username} logged in at " + DateTime.Now.ToString("yyyyMMdd-hhmmss"));
+                    var user = await _userManager.FindByNameAsync(model.Username);
+                    string role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                    return Ok(new { userName = model.Username, role = role});
                 }
                 else
                 {
@@ -74,9 +78,9 @@ namespace CNCDataManager.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
-                    await _userManager.AddToRoleAsync(user, "Tourist");
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    return Ok(model.Username);
+                    await _userManager.AddToRoleAsync(user, "Administrator");
+                    _logger.LogInformation(3, $"Create User: {model.Username}, role: Tourist with password at" + DateTime.Now.ToString("yyyyMMdd-hhmmss"));
+                    return Ok(new { userName = model.Username, role = "Tourist" });
                 }
                 AddErrors(result);
                 foreach(var error in result.Errors)
@@ -90,13 +94,63 @@ namespace CNCDataManager.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        [ApiAuthorize(Policy = nameof(AuthorizationLevel.Administrator))]
+        public async Task<IActionResult> RegisterOhter([FromQuery]string role, [FromBody]RegisterModel model)
+        {
+            if (ModelState.IsValid || model.Email == null || model.Password == null || model.Username == null)
+            {
+                if (role == "Tourist" || role == "Member" || role == "AdvancedMember" || role == "ResourceOwner" || role == "Adminstrator" || role == "Root")
+                {
+                    var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.AddToRoleAsync(user, role);
+                        _logger.LogInformation(3, $"Create User: {model.Username}, role: {role} with password at " + DateTime.Now.ToString("yyyyMMdd-hhmmss") + ".");
+                        return Ok(new { userName = model.Username, role = role });
+                    }
+                    AddErrors(result);
+                    foreach (var error in result.Errors)
+                    {
+                        if (error.Code == "DuplicateUserName") return StatusCode(409, "User Conflict.");
+                    }
+                    return NoContent();
+                }
+                else return BadRequest();
+            }
+
+            // If we got this far, something failed.
+            return NoContent();
+        }
+
         // POST: /Account/LogOff
         [HttpPost]
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            _logger.LogInformation(4, "User logged out.");
+            _logger.LogInformation(4, $"User: {User.Identity.Name} logged out at " + DateTime.Now.ToString("yyyyMMdd-hhmmss") + ".");
             return Ok();
+        }
+
+        [HttpDelete]
+        [ApiAuthorize(Policy = nameof(AuthorizationLevel.Administrator))]
+        public async Task<IActionResult> Deregister([FromQuery]string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+                return Ok();
+            }
+            else return NotFound();
+        }
+
+        [HttpGet]
+        [ApiAuthorize(Policy = nameof(AuthorizationLevel.Administrator))]
+        public IQueryable<ApplicationUser> Users()
+        {
+            return _userManager.Users;
         }
 
         //

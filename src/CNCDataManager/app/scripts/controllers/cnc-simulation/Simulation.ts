@@ -3,17 +3,24 @@ import { ISimulationScope } from '../../types/CncSimulation';
 import HttpProxy from '../../services/HttpProxy';
 import SimulationNotification from '../../services/SimulationNotification';
 import SelectionNotification from '../../services/SelectionNotification';
+import User from '../../services/User';
+import MessageTips from '../../services/MessageTips';
 
-export default class Simulation {
+export default class Simulation 
+{
     public constructor($scope: ISimulationScope, 
                        $stateParams: angular.ui.IStateParamsService,
                        $state: angular.ui.IStateService,
                        httpProxy: HttpProxy,
                        selecNotifier: SelectionNotification,
-                       simuNotifier: SimulationNotification) 
+                       simuNotifier: SimulationNotification,
+                       user: User,
+                       message: MessageTips) 
     {
-        $scope.setDefaultMotorPara = () => {
-            $scope.data.motor = {
+        $scope.setDefaultMotorPara = () => 
+        {
+            $scope.data.motor = 
+            {
                 rotorMomentInertia: 0.915,   
                 polePairs: 1,
                 statorResistance: 0.3567,
@@ -24,8 +31,10 @@ export default class Simulation {
             };
         };
 
-        $scope.setDefaultDriverPara = () => {
-            $scope.data.driver = {
+        $scope.setDefaultDriverPara = () => 
+        {
+            $scope.data.driver = 
+            {
                 nominalVoltage: 311,
                 PWMCircle: 0.0001,
                 KS: 60,
@@ -38,8 +47,10 @@ export default class Simulation {
             };
         };
 
-        $scope.setDefaultMechanicalPara = () => {
-            $scope.data.ballscrew = {  
+        $scope.setDefaultMechanicalPara = () => 
+        {
+            $scope.data.ballscrew = 
+            {  
                 diameter: 0.04,
                 modulusofElasticty: 210,
                 shaftDistance: 0.8,
@@ -49,19 +60,23 @@ export default class Simulation {
                 shearModulusofElasticty: 62,
                 campingCoefficient: 0.09,
             };
-            $scope.data.guide = {
+            $scope.data.guide = 
+            {
                 frictionFactor: 0.01,
                 viscosityFriction: 56.6223,
             };
-            $scope.data.bearings = {
+            $scope.data.bearings = 
+            {
                 axisalStiffness: 7.6e8,
                 startingMoment: 0.15,
             };
-            $scope.data.coupling = {
+            $scope.data.coupling = 
+            {
                 stiffness: 96389.8,
                 momentInertia: 4e-5,
             };
-            $scope.data.worktable = {
+            $scope.data.worktable = 
+            {
                 mass: 100,
                 tighteningEfficiency: 0.952,
                 contactStiffness: 1.15e9,
@@ -69,8 +84,10 @@ export default class Simulation {
             };
         };
         
-        $scope.setDefaultSimulationSettings = () => {
-            $scope.data.setting = { 
+        $scope.setDefaultSimulationSettings = () => 
+        {
+            $scope.data.setting = 
+            { 
                 signal: 'Sine',
                 startTime: 0,
                 endTime: 1,
@@ -81,24 +98,33 @@ export default class Simulation {
             }
         };
 
-        $scope.startSimulation = () => {
-            if(selecNotifier.isAllSelected()) {
+        $scope.startSimulation = () => 
+        {
+            if(selecNotifier.isAllSelected()) 
+            {
+                /** 检测是否登陆 */
+                if(!user.IsAuthenticated) 
+                {
+                    message.showError('请先登陆后再尝试');
+                    return;
+                }
                 /** 处理因单位不同的数据 GPa->Pa */
                 $scope.data.ballscrew.modulusofElasticty = $scope.data.ballscrew.modulusofElasticty * 1e9;
                 $scope.data.ballscrew.shearModulusofElasticty = $scope.data.ballscrew.modulusofElasticty * 1e9;
-
+                
                 let fileID = simuNotifier.getCurrentTime();
-                let simulationUrl = httpProxy.getRelativeUrl('Simulation/StartSimulation', { fileID: fileID });
-                httpProxy.http(simulationUrl).post($scope.data, { timeout: 1000 * 60 * 5});
-                        // .then((response: any) => {
-                        //     simuNotifier.notifyComplement(response.data);
-                        // }, (response: any) => {
-                        //     simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器');
-                        // });
-                let pollingUrl = httpProxy.getRelativeUrl('Simulation/PollingSimulation', { fileID: fileID });
+                let simulationUrl = httpProxy.getRelativeUrl('Simulation/StartSimulation', { fileID: fileID, userName: user.Name });
+                httpProxy.http(simulationUrl).post($scope.data, { timeout: 1000 * 60 * 5}).catch(
+                    response => { if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够'); });
+
+                let pollingUrl = httpProxy.getRelativeUrl('Simulation/PollingSimulation', { fileID: fileID, userName: user.Name });
                 let pollingID = httpProxy.http(pollingUrl).polling(
                     response => simuNotifier.notifyComplement(response.data),
-                    response => simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器'));
+                    response => 
+                    {
+                        if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够');
+                        else simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器')
+                    });
                 simuNotifier.resetFileID(); //清除已经存在的fileID
                 $state.go('simulation.Chart');
                 setTimeout(() => simuNotifier.notifyStart(), 500); //由于此时结果页面的scope还没生成,所以要等一会儿
@@ -107,7 +133,8 @@ export default class Simulation {
             else alert('选型尚未完成，请继续');
         };
 
-        $scope.changeStepNum = () => {
+        $scope.changeStepNum = () => 
+        {
             let interval = $scope.data.setting.endTime - $scope.data.setting.startTime;
             let stepSize = $scope.data.setting.stepSize;
             $scope.data.setting.stepNum = Math.round(interval / stepSize);
@@ -122,4 +149,4 @@ export default class Simulation {
     }
 };
 
-Simulation.$inject = ['$scope', '$stateParams', '$state', 'HttpProxy', 'SelectionNotification', 'SimulationNotification'];
+Simulation.$inject = ['$scope', '$stateParams', '$state', 'HttpProxy', 'SelectionNotification', 'SimulationNotification', 'User', 'MessageTips'];

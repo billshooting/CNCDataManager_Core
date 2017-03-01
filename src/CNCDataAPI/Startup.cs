@@ -82,6 +82,9 @@ namespace CNCDataManager
                     OnRedirectToLogin = return401,
                     OnRedirectToAccessDenied = return401
                 };
+
+                // 不允许邮箱重复
+                options.User.RequireUniqueEmail = true;
             })
                 .AddEntityFrameworkStores<ApplicationUserContext>()
                 .AddDefaultTokenProviders();
@@ -90,15 +93,15 @@ namespace CNCDataManager
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(nameof(AuthorizationLevel.Tourist),
-                    policy => policy.RequireRole("Tourist", "Member", "AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                    policy => policy.RequireRole("Tourist", "Member", "AdvancedMember", "ResourceOwner", "Administrator", "Root"));
                 options.AddPolicy(nameof(AuthorizationLevel.Member),
-                    policy => policy.RequireRole("Member", "AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                    policy => policy.RequireRole("Member", "AdvancedMember", "ResourceOwner", "Administrator", "Root"));
                 options.AddPolicy(nameof(AuthorizationLevel.AdvancedMember),
-                    policy => policy.RequireRole("AdvancedMember", "ResourceOwner", "Adminstrator", "Root"));
+                    policy => policy.RequireRole("AdvancedMember", "ResourceOwner", "Administrator", "Root"));
                 options.AddPolicy(nameof(AuthorizationLevel.ResourceOwner),
-                    policy => policy.RequireRole("ResourceOwner", "Adminstrator", "Root"));
-                options.AddPolicy(nameof(AuthorizationLevel.Adminstrator),
-                    policy => policy.RequireRole("Adminstrator", "Root"));
+                    policy => policy.RequireRole("ResourceOwner", "Administrator", "Root"));
+                options.AddPolicy(nameof(AuthorizationLevel.Administrator),
+                    policy => policy.RequireRole("Administrator", "Root"));
                 options.AddPolicy(nameof(AuthorizationLevel.Root),
                     policy => policy.RequireRole("Root"));
             });
@@ -123,7 +126,7 @@ namespace CNCDataManager
                 policy.AllowAnyHeader()
                       .AllowAnyOrigin()
                       .AllowAnyMethod()
-                      .SetPreflightMaxAge(TimeSpan.FromSeconds(2520))
+                      .SetPreflightMaxAge(TimeSpan.FromSeconds(1))
                       .AllowCredentials();
             }));
 
@@ -153,8 +156,15 @@ namespace CNCDataManager
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             app.UseCors("FullOpen");
+
+            ////修改Cors头， 因为withCredentials特性不允许Access-Control-Allow-Origin = *
+            //app.Use((context, next) =>
+            //{
+            //    context.Response.Headers["Access-Control-Allow-Origin"] = context.Request.Headers["Origin"];
+            //    context.Response.Headers["Access-Control-Allow-Credentials"] = "true";
+            //    return next();
+            //});
 
             app.UseMvc(routes =>
             {

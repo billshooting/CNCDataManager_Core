@@ -13,6 +13,7 @@ namespace CNCDataManager.Controllers
 {
     [EnableCors("FullOpen")]
     [Route("api/cncdata/[controller]/[action]")]
+    [ApiAuthorize(Policy = nameof(AuthorizationLevel.Member))]
     public class SimulationController: Controller
     {
         private readonly string _webRootPath;
@@ -23,10 +24,13 @@ namespace CNCDataManager.Controllers
         }
 
         [HttpPost]
-        public async Task StartSimulation([FromQuery]string fileID, [FromBody] SimulationPara para)
+        public async Task<IActionResult> StartSimulation([FromQuery]string fileID, [FromQuery]string userName, [FromBody] SimulationPara para)
         {
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
+
             //设置模型路径
-            PathSettings path = new PathSettings(_webRootPath, para.AxisID, "bill_shooting", fileID);
+            PathSettings path = new PathSettings(_webRootPath, para.AxisID, userName, fileID);
 
             Simulator simulator = new Simulator(path);
 
@@ -43,47 +47,46 @@ namespace CNCDataManager.Controllers
                 //进行结果转换
                 simulator.MsfToTxt();
             });
+            return Ok();
         }
 
         [HttpGet]
         public async Task<IActionResult> PollingSimulation([FromQuery]string fileID, [FromQuery]string userName)
         {
-            string file = Path.Combine(_webRootPath, "Users", "bill_shooting", fileID, "data", "pmsm.flange_a.tau.txt");
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
+
+            string file = Path.Combine(_webRootPath, "Users", userName, fileID, "data", "pmsm.flange_a.tau.txt");
             if (System.IO.File.Exists(file))
             {
-                TryCleanSimulationFiles("bill_shooting", fileID);
+                TryCleanSimulationFiles(userName, fileID);
                 return Ok(fileID);
             }
             await Task.Delay(5000);
             if (System.IO.File.Exists(file))
             {
-                TryCleanSimulationFiles("bill_shooting", fileID);
+                TryCleanSimulationFiles(userName, fileID);
                 return Ok(fileID);
             }
             await Task.Delay(5000);
             if (System.IO.File.Exists(file))
             {
-                TryCleanSimulationFiles("bill_shooting", fileID);
+                TryCleanSimulationFiles(userName, fileID);
                 return Ok(fileID);
             }
             return NoContent();
         }
 
         [HttpGet]
-        public async Task<IActionResult> SimulationResults([FromQuery]string fileID, [FromQuery] string type)
+        public async Task<IActionResult> SimulationResults([FromQuery]string fileID, [FromQuery]string userName, [FromQuery] string type)
         {
-            if (string.IsNullOrEmpty(fileID) || string.IsNullOrEmpty(type) || fileID == "null" || type == "null")
-            {
-                return NotFound();
-            }
-            string dataPath = Path.Combine(_webRootPath, "Users", "bill_shooting", fileID, "data");
+            if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
+            if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
+            if (string.IsNullOrEmpty(type) || type == "null") return BadRequest();
+            string dataPath = Path.Combine(_webRootPath, "Users", userName, fileID, "data");
             string timeFile = Path.Combine(dataPath, "time.txt");
-            string dataFile = Path.Combine(dataPath, "a.txt");
-            if (type == "a" || type == "v" || type == "X")
-            {
-                dataFile = Path.Combine(dataPath, type + ".txt");
-            }
-            else return NotFound();
+            string dataFile = Path.Combine(dataPath, type + ".txt");
+            if (!System.IO.File.Exists(dataFile)) return NotFound();
             string[] times = null;
             string[] data = null;
             await Task.Run(() =>

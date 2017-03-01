@@ -1,0 +1,21 @@
+﻿<div class="short-background">
+    <!-- 巨幕标题 -->
+    <div class="layout-header">
+        <div class="container">
+            <h1>数控机床数据中心会员管理</h1>
+            <p>修改密码。请求提升权限等功能</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-2" style="padding-left: 0px">
+                <div class="btn-group-vertical" style="width: 100%">
+                    <a ui-sref="account.ChangePassword" class="btn btn-default btn-selection-menu">修改密码</a>
+                    <a ui-sref="account.AddInfo" class="btn btn-default btn-selection-menu">添加信息</a>
+                    <a ui-sref="account.ManageUser" class="btn btn-default btn-selection-menu" ng-show="user.role === 'Root' || user.role === 'Administrator'">管理用户</a>
+                </div>
+            </div>
+            <div class="col-md-10" ui-view="content"></div>
+        </div>
+    </div>
+</div>

@@ -64,7 +64,7 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
                         user.register(registerData, response => 
                         {
                             messageService.hideLoading();
-                            if(response.status === 200) { messageService.showMsg('注册成功，欢迎你：' + response.data); }
+                            if(response.status === 200) { messageService.showMsg('注册成功，欢迎你：' + response.data.userName); }
                             else if(response.status === 204) { messageService.showError('注册失败，该服务可能未开放。'); }
                             stateSync();
                         }, response => 

@@ -243,13 +243,15 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="signal">信号类别</label>
-                            <div class="col-md-2">
-                                <select class="form-control" ng-options="data for data in ['Sine', 'Step', 'Constant']" id="signal" ng-model="data.setting.signal" required></select>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-5" for="signal">信号类别</label>
+                                <div class="col-md-7">
+                                    <select class="form-control" ng-options="data for data in ['Sine', 'Step', 'Constant']" id="signal" ng-model="data.setting.signal" required></select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <label class="control-label col-md-5" for="startTime">开始时间</label>
                                 <div class="col-md-7">
@@ -263,7 +265,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <label class="control-label col-md-5" for="stepSize">步长</label>
                                 <div class="col-md-7">
@@ -277,7 +279,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <label class="control-label col-md-5" for="alg">算法</label>
                                 <div class="col-md-7">
@@ -291,7 +293,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-6">
                             <span class="text-danger" ng-show="data.setting.alg === 'Rkfix4'">Rkfix4算法较快，定步长算法，可以修改步长。但它对步长范围有严格要求，建议使用默认值</span>
                             <span class="text-danger" ng-show="data.setting.alg === 'Dass1'">Dass1算法较慢，变步长算法，步长由算法自身推算。仿真时间超过一秒不建议使用此算法</span>
                         </div>

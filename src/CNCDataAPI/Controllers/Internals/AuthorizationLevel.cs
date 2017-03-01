@@ -11,7 +11,7 @@ namespace CNCDataManager.Controllers.Internals
         Member,
         AdvancedMember,
         ResourceOwner,
-        Adminstrator,
+        Administrator,
         Root
     }
 }

@@ -7,6 +7,7 @@ export default class User
     private name: string;
     private isAuthenticated: boolean;
     private httpProxy: HttpProxy;
+    private role: string;
 
     public constructor(httpProxy: HttpProxy) 
     {
@@ -17,6 +18,7 @@ export default class User
 
     public get Name(): string { return this.name; }
     public get IsAuthenticated(): boolean { return this.isAuthenticated; }
+    public get Role(): string { return this.role; }
 
     public login(formData: ILoginModel, onsuccess?: (response: any) => void, onerror?: (response: any) => void): void
     {
@@ -24,7 +26,8 @@ export default class User
         {
             if(response.status === 200) 
             {
-                this.name = response.data as string;
+                this.name = response.data.userName as string;
+                this.role = response.data.role as string;
                 this.isAuthenticated = true;
             }
             onsuccess(response);
@@ -42,7 +45,8 @@ export default class User
         {
             if(response.status === 200) 
             {
-                this.name = response.data as string;
+                this.name = response.data.userName as string;
+                this.role = response.data.role as string;
                 this.isAuthenticated = true;
             }
             onsuccess(response);

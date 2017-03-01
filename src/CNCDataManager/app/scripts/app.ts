@@ -27,6 +27,9 @@ import registerDefaultValue from './bases/DefaultValue';
 
 import registerSimulationRoute from './bases/SimulationRoute';
 import registerSimulationControllers from './controllers/cnc-simulation/index';
+
+import registerAccountRoute from './bases/AccountRoute';
+import registerAccountControllers from './controllers/account/index';
 ///* services register*/
 registerServices(app);
 
@@ -51,6 +54,9 @@ registerDefaultValue(app);
 
 registerSimulationRoute(app);
 registerSimulationControllers(app);
+
+registerAccountRoute(app);
+registerAccountControllers(app);
 
 
 
