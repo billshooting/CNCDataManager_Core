@@ -1,28 +1,15 @@
-
 import * as angular from 'angular';
-import 'angular-strap';
-import 'angular-strap-tpl';
 import { ICncDataScope, IItem, IHandlingItems, ITableHandler } from '../../../../types/CncData';
 import TableHandler from '../../../../services/TableHandler';
 
 export class NCSystemManuals {
     private tableHandler: TableHandler;
 
-    public constructor($modal: mgcrea.ngStrap.modal.IModalService, tableHandler: TableHandler, $scope: ICncDataScope)
+    public constructor(tableHandler: TableHandler, $scope: ICncDataScope)
     {
         this.tableHandler = tableHandler;
         // 0. 辅助方法声明
         $scope.ITEMNAME = 'ncsystemmanuals/';
-        $scope.deleteItemModal = $modal({
-            scope: $scope,
-            templateUrl: './views/cnc-data/modals/confirmDeleteModal.html',
-            show: false
-        });
-        $scope.addItemModal = $modal({
-            scope: $scope,
-            templateUrl: './views/cnc-data/modals/tryAddModal.html',
-            show: false
-        });
 
         // 1. scope模型初始化
         $scope.items = [];                                                 //所有数据，get发回的json数据
@@ -52,4 +39,4 @@ export class NCSystemManuals {
     }
 };
 
-NCSystemManuals.$inject = ['$modal', 'TableHandler', '$scope'];
+NCSystemManuals.$inject = ['TableHandler', '$scope'];

@@ -68,6 +68,7 @@ interface ISimulationScope extends angular.IScope {
     setDefaultMechanicalPara: () => void;
     setDefaultSimulationSettings: () => void;
     startSimulation: () => void;
+    confirmStart:() => void;
 }
 
 interface ISimulationCompletedScope extends angular.IScope {

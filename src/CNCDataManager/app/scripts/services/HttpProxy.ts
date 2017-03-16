@@ -23,7 +23,7 @@ interface IHttpResponse<T> extends angular.IHttpPromiseCallbackArg<T>{
 
 export default class HttpProxy{
     //private BASE = '/';
-    //private BASE = 'http://localhost:5000/';
+    //private BASE = 'http://localhost:9201/';
     //private BASE = 'http://localhost:52132/';
     private BASE = 'http://cncdataapi.azurewebsites.net/';
     //private BASE = 'http://cncdataapitest.azurewebsites.net/';

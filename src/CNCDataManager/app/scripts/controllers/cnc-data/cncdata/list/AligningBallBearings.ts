@@ -1,27 +1,15 @@
 ﻿import * as angular from 'angular';
-import 'angular-strap';
-import 'angular-strap-tpl';
 import { ICncDataScope } from '../../../../types/CncData';
 import TableHandler from '../../../../services/TableHandler';
 
 export class AligningBallBearings {
     private tableHandler: TableHandler;
 
-    public constructor($modal: mgcrea.ngStrap.modal.IModalService, tableHandler: TableHandler, $scope: ICncDataScope)
+    public constructor(tableHandler: TableHandler, $scope: ICncDataScope)
     {
         this.tableHandler = tableHandler;
         // 0. 辅助方法声明
         $scope.ITEMNAME = 'alignballbrgs/';
-        $scope.deleteItemModal = $modal({
-            scope: $scope,
-            templateUrl: './views/cnc-data/modals/confirmDeleteModal.html',
-            show: false
-        });
-        $scope.addItemModal = $modal({
-            scope: $scope,
-            templateUrl: './views/cnc-data/modals/tryAddModal.html',
-            show: false
-        });
 
         // 1. scope模型初始化
         $scope.items = [];                                                 //所有数据，get发回的json数据
@@ -51,4 +39,4 @@ export class AligningBallBearings {
     }
 };
 
-AligningBallBearings.$inject = ['$modal', 'TableHandler', '$scope'];
+AligningBallBearings.$inject = ['TableHandler', '$scope'];

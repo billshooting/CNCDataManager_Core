@@ -3,8 +3,8 @@
     <li><a class="home-index-nav-link" ng-click="user.logout()"><span>注销</span></a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated">
-    <li><a class="home-index-nav-link" data-toggle="modal" data-target="#loginModal">登陆</a></li>
-    <li><a class="home-index-nav-link" data-toggle="modal" data-target="#registerModal">注册</a></li>
+    <li><a class="home-index-nav-link" href="javascript: $('#loginModal').modal({focus: true})">登陆</a></li>
+    <li><a class="home-index-nav-link" href="javascript: $('#registerModal').modal({focus: true})">注册</a></li>
 </ul>
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">

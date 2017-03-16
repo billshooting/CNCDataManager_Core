@@ -36,7 +36,4 @@ body {
 .modal-backdrop {
     z-index: 1029;
 }
-.modal-open {
-    overflow: auto;
-}
 

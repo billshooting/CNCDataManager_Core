@@ -6,6 +6,7 @@ import ProgressBar from './ProgressBar';
 import SideMenu from './SideMenu';
 import Pagination from './Pagination';
 import Login from './Login';
+import DataListModal from './DataListModal';
 import ContentEditable from './ContentEditable';
 
 export default function registerDirective(app: angular.IModule): void {
@@ -16,6 +17,7 @@ export default function registerDirective(app: angular.IModule): void {
     app.directive('sideMenu', SideMenu);
     app.directive('cncPagination', Pagination);
     app.directive('cncLogin', Login);
+    app.directive('datalistModal', DataListModal);
 
     app.directive('contenteditable', ContentEditable);
 };

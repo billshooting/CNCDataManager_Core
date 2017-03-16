@@ -301,7 +301,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn btn-primary col-md-1 col-md-offset-8" type="submit" data-toggle="modal" data-target="#startModal" ng-disabled="!simuform.$valid">开始仿真</button>
+                <button class="btn btn-primary col-md-1 col-md-offset-8" type="submit" ng-click="confirmStart()" ng-disabled="!simuform.$valid">开始仿真</button>
                 <button class="btn btn-default col-md-1 col-md-offset-1" type="button">取 消</button>
             </div>
         </div>
@@ -320,7 +320,7 @@
             <div class="modal-body">确认要开始仿真{{data.axisID}}轴吗，输入信号为{{data.setting.signal}}</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startSimulation()">确认</button>
+                <button type="button" class="btn btn-primary" ng-click="startSimulation()">确认</button>
             </div>
         </div>
     </div>

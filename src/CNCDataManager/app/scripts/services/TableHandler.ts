@@ -42,7 +42,7 @@ export default class TableHandler {
             // 3. 删除数据
             showDeleteModal: function (item: IItem): void {
                 scope.handlingItems.deletingItem = item;
-                scope.deleteItemModal.$promise.then(scope.deleteItemModal.show);
+                (angular.element('#confirm-delete-modal') as any).modal({ focus: true });
             },
             deleteItemLocal: function (item: IItem): void {
                 _.remove(scope.addingItems, item);
@@ -50,7 +50,7 @@ export default class TableHandler {
             deleteItemRemote: function (): void {
                 //显示加载图像
                 message.showLoading();
-                scope.deleteItemModal.hide();
+                (angular.element('#confirm-delete-modal') as any).modal('hide');
                 httpProxy.http(scope.ITEMNAME + $.trim(scope.handlingItems.deletingItem.TypeID))
                     .delete()
                     .then((response: any) => { httpProxy.deleteSuccess(scope, response); },
@@ -58,12 +58,12 @@ export default class TableHandler {
             },
             // 4. 添加数据
             showAddModal: function (): void {
-                scope.addItemModal.$promise.then(scope.addItemModal.show);
+                (angular.element('#add-item-modal') as any).modal({ focus: true });
             },
             addItemLocal: function (): void {
                 scope.addingItems.push(scope.handlingItems.addingItem);
                 scope.handlingItems.addingItem = null;
-                scope.addItemModal.hide();
+                (angular.element('#add-item-modal') as any).modal('hide');
             },
             addItemRemote: function (item: any): void {
                 //显示加载图像

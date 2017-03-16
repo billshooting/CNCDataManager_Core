@@ -98,8 +98,13 @@ export default class Simulation
             }
         };
 
+        //由于一个未知的Bootstrap modal的bug: 如果用data-*标签的方式调用modal会出现两个<div class='modal-backdrop'>，而且会导致整个页面在modal消失之后左移17px
+        //只能用js手动调用了
+        $scope.confirmStart = () => { (angular.element('#startModal') as any).modal({focus: true}); };
         $scope.startSimulation = () => 
         {
+            (angular.element('#startModal') as any).modal('hide');
+
             if(selecNotifier.isAllSelected()) 
             {
                 /** 检测是否登陆 */
@@ -126,9 +131,8 @@ export default class Simulation
                         else simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器')
                     });
                 simuNotifier.resetFileID(); //清除已经存在的fileID
-                $state.go('simulation.Chart');
-                setTimeout(() => simuNotifier.notifyStart(), 500); //由于此时结果页面的scope还没生成,所以要等一会儿
-                angular.element('.modal-backdrop').remove(); //modal的bug,会出现两个<div class='modal-backdrop'>
+                setTimeout(() => $state.go('simulation.Chart'), 700);
+                setTimeout(() => simuNotifier.notifyStart(), 1200); //由于此时结果页面的scope还没生成,所以要等一会儿               
             }
             else alert('选型尚未完成，请继续');
         };

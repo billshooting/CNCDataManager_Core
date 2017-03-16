@@ -3,7 +3,6 @@ import * as angular from 'angular';
 import 'angular-animate';
 import 'angular-resource';
 import 'angular-sanitize';
-import 'angular-strap';
 
 
 let app = angular.module('cncDataManager', [
@@ -11,7 +10,6 @@ let app = angular.module('cncDataManager', [
     'ngAnimate',
     'ngResource',
     'ngSanitize',
-    'mgcrea.ngStrap',
 ]);
 
 import changeDefaultConfiguration from './bases/Configuration';

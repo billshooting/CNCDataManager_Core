@@ -232,6 +232,7 @@
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation-leftside.html" />
     <Content Include="app\views\cnc-simulation\controller-tpls\simulation.html" />
     <Content Include="app\views\directives\cnc-pagination.html" />
+    <Content Include="app\views\directives\datalist-modal.html" />
     <Content Include="app\views\directives\login.html" />
     <Content Include="app\views\directives\progress-bar.html" />
     <Content Include="app\views\directives\side-menu.html" />
@@ -246,7 +247,7 @@
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\aligning-roller-bearings.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\angular-contact-ball-bearings.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\arc-cylindrical-wormgears.html" />
-    <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\ball-leading-screw-supporting-bearings.html.html" />
+    <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\ball-leading-screw-supporting-bearings.html" />
     <Content Include="app\views\cnc-data\controller-tpls\cncdata\list\bwelastic-sleeve-pin-couplings.html" />
     <Content Include="app\views\directives\back-to-top.html" />
     <Content Include="app\views\directives\message-tips.html" />
