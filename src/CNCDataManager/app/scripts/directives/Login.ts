@@ -79,6 +79,9 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
                         });                      
                     },
                 };
+                scope.showLoginModal = () => { ($('#loginModal') as any).modal({focus: true}); };
+                scope.showRegisterModal = () => { ($('#registerModal') as any).modal({focus: true}); };
+                user.isLogin(stateSync);
             };
             init();
         }

@@ -52,35 +52,26 @@
         //    "http://cdn.bootcss.com/angular-ui-router/0.3.2/angular-ui-router.min.js",
         //    "lib:angular-ui-router/angular-ui-router.min.js",
         //],
-        "angular-strap": "http://cdn.bootcss.com/angular-strap/2.3.10/angular-strap.min.js",
-        //    [
-        //    "http://cdn.bootcss.com/angular-strap/2.3.10/angular-strap.min.js",
-        //    "lib:angular-strap/angular-strap.min.js",
-        //],
-        "angular-strap-tpl": "http://cdn.bootcss.com/angular-strap/2.3.10/angular-strap.tpl.min.js",
-        //    [
-        //    "http://cdn.bootcss.com/angular-strap/2.3.10/angular-strap.tpl.min.js",
-        //    "lib:angular-strap/angular-strap.tpl.min.js",
-        //]
-        "highcharts": "http://cdn.hcharts.cn/highcharts/highcharts.js",
-        "highchart-exporting": "http://cdn.hcharts.cn/highcharts/modules/exporting.js",
+
+        "highcharts": "//cdn.bootcss.com/highcharts/5.0.9/highcharts.js",
+        "highchart-exporting": "//cdn.bootcss.com/highcharts/5.0.9/js/modules/exporting.js",
     },
     meta: {
-        'jquery': {
-            format: 'global'
-        },
+
         'angular': {
             format: 'global',
+            exports: 'angular',
             deps: ["jquery",
                 "bootstrap"
             ]
         },
-        'angular-cookie': {
-            deps: ["jquery",
-                "angular"
+        'bootstrap':{
+            deps:[
+                'jquery'
             ]
         }
     }
 });
 
-System.import('./scripts/app.js');
+//System.import('./scripts/app.js');
+System.import('./scripts/bundle.min.js');
