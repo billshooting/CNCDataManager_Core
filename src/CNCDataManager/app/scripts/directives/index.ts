@@ -1,5 +1,4 @@
-﻿import * as angular from 'angular';
-import Header from './Header';
+﻿import Header from './Header';
 import BackToTop from './BackToTop';
 import MsgDialog from './MsgDialog';
 import ProgressBar from './ProgressBar';

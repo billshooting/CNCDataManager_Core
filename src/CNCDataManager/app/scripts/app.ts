@@ -1,9 +1,7 @@
-﻿import * as $ from 'jquery';
-import * as angular from 'angular';
+﻿import angular from 'angular';
 import 'angular-animate';
 import 'angular-resource';
 import 'angular-sanitize';
-
 
 let app = angular.module('cncDataManager', [
     'ui.router',

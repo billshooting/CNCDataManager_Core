@@ -1,6 +1,5 @@
 ﻿import * as angular from 'angular';
 
-
 let BackToTop: angular.IDirectiveFactory = (): angular.IDirective => {
     return {
         templateUrl: './views/directives/back-to-top.html',

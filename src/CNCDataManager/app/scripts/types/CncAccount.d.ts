@@ -15,6 +15,8 @@ interface ILoginScope extends angular.IScope
         login: () => void;
         register: () => void;
     }
+    showLoginModal: () => void;
+    showRegisterModal: () => void;
 }
 
 interface IRegisterModel {

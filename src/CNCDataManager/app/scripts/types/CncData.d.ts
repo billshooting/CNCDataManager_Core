@@ -1,4 +1,3 @@
-import 'angular-strap';
 /**
  * This is angular scope type definition used in cncdatamanagner.
  */

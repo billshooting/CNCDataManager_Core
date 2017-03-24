@@ -52,6 +52,18 @@ export default class User
             onsuccess(response);
         }, onerror);
     }
+    public isLogin(stateSync: () => void): void
+    {
+        this.httpProxy.http('Account/IsLogin')
+            .get()
+            .then((response: any) => 
+            {
+                this.name = response.data.userName as string;
+                this.role = response.data.role as string;
+                this.isAuthenticated = true;
+                stateSync();
+            }, response => {});
+    }
 
 };
 User.$inject = ['HttpProxy'];

@@ -9,8 +9,8 @@ var minifyCss = require("gulp-minify-css");
 var minifyHtml = require("gulp-minify-html");
 var rename = require("gulp-rename");
 var concat = require("gulp-concat");
-var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
+var tsc = require("gulp-typescript");
+var tsProject = tsc.createProject("tsconfig.json");
 
 var browserify = require("browserify");
 var source = require("vinyl-source-stream");
@@ -47,13 +47,39 @@ gulp.task("css", function () {
         .pipe(concat("app.css"))
         .pipe(minifyCss())
         .pipe(gulp.dest("../CNCDataManager_Publish/css"));
-})
+});
+
 
 gulp.task("default", ["copy-html", "copy-lib", "css", "copy-config"], function () {
     return tsProject.src()
         .pipe(tsProject())
         .js
-        .pipe(uglify({ mangle: false }))
+        //.pipe(uglify({ mangle: false }))
         .pipe(gulp.dest("../CNCDataManager_Publish/scripts"));
 
+});
+
+gulp.task("bundle", function () {
+    return gulp.src('./app/scripts/app.ts')
+        .pipe(tsc({
+            typescript: require('typescript'),
+            target: 'ES5',
+            module: 'system',
+            experimentalDecorators: true,
+            emitDecoratorMetadata: true,
+            removeComments: true,
+            outFile: 'app.js'
+        }))       
+        .pipe(gulp.dest("../CNCDataManager_Publish/scripts"));
+});
+
+gulp.task("minify-bundle", function () {
+    return gulp.src('../CNCDataManager_Publish/scripts/app.js')
+            .pipe(uglify({ mangle: false }))
+            .pipe(rename('bundle.min.js'))
+            .pipe(gulp.dest('../CNCDataManager_Publish/scripts'))
+});
+
+gulp.task('publish', ["copy-html", "copy-lib", "css", "copy-config", "minify-bundle"], function () {
+    console.log('publish succeed.')
 });

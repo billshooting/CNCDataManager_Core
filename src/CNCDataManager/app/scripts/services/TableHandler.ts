@@ -1,4 +1,4 @@
-﻿import * as $ from 'jquery';
+﻿
 import * as angular from 'angular';
 import * as _ from 'lodash';
 import HttpProxy from './HttpProxy';
@@ -84,8 +84,12 @@ export default class TableHandler {
             },
             // 5. 修改数据
             updateItemLocal: function (item: IItem): void {
-                item.isUpdate = true;
-                scope.addingItems.push(item);
+                if(scope.addingItems.some(value => value === item)) return;
+                else
+                {
+                    item.isUpdate = true;
+                    scope.addingItems.push(item);
+                }
             },
             updateItemsRemote: function (): void {
                 message.showLoading();

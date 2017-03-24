@@ -7,7 +7,6 @@
     "sourceMap": false,
     "alwaysStrict": true,
     "target": "es5",
-    "experimentalDecorators": true,
-    "outDir": "./dist/scripts"
+    "experimentalDecorators": true
   }
 }

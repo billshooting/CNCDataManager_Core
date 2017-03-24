@@ -94,6 +94,19 @@ namespace CNCDataManager.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> IsLogin()
+        {
+            if (!User.Identity.IsAuthenticated) return Unauthorized();
+            else
+            {
+                string name = User.Identity.Name;
+                var user = await _userManager.FindByNameAsync(name);
+                string role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+                return Ok(new { userName = name, role = role });
+            }
+        }
+
         [HttpPost]
         [ApiAuthorize(Policy = nameof(AuthorizationLevel.Administrator))]
         public async Task<IActionResult> RegisterOhter([FromQuery]string role, [FromBody]RegisterModel model)
