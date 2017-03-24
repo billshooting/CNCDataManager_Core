@@ -11,7 +11,7 @@ CNCDataManager ASP.NET Core + TypeScript + Angular版本
 `dotnet build "{YOUR PATH}\CNCDataManager_Core\src\CNCDataAPI" --configuration Release --no-dependencies`
 - 发布到临时文件夹：
 `dotnet publish "{YOUR PATH}\CNCDataManager_Core\src\CNCDataAPI" --framework net452 --runtime win7-x86 --output "C:\PublishTemp\CNCDataAPI" --configuration Release --no-build`
-- 部署到远程服务器（在这之前，将需要用到的C++dll复制到临时文件夹下
+- 部署到远程服务器（在这之前，将需要用到的C++dll复制到临时文件夹下）
 `msdeploy" -source:manifest='C:\PublishTemp\obj\CNCDataAPI\SourceManifest.xml' -dest:manifest='C:\PublishTemp\obj\CNCDataAPI\DestinationManifest.xml',
 ComputerName='{主机名}',UserName='{账号}',Password='{密码}',IncludeAcls='False',AuthType='Basic' 
 -verb:sync -enablerule:AppOffline -enableRule:DoNotDeleteRule -retryAttempts:20`
@@ -23,6 +23,7 @@ ComputerName='{主机名}',UserName='{账号}',Password='{密码}',IncludeAcls='
 在项目目录下敲入`gulp`命令，此时Typescript文件会编译为单独的js文件。
 - 发布时生成
 `gulp bundle`生成Typescript文件的合并js文件
+
 `gulp publish`会将所有`html`文件，`css`文件，`js`文件压缩并拷贝到`CNCDataManager_Publish`项目中，此时可以借助`Visual Studio`发布Typescript项目的功能部署前端项目。
 
 
