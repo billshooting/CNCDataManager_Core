@@ -73,5 +73,8 @@
     }
 });
 
-//System.import('./scripts/app.js');
-System.import('./scripts/bundle.min.js');
+SystemJS.import('./scripts/bundle.min.js').then(function() {
+    System.import('app');
+});
+
+

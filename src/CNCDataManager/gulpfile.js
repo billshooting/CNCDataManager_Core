@@ -38,7 +38,7 @@ gulp.task("copy-lib", function () {
 
 gulp.task("copy-config", function () {
     return gulp.src(paths.config)
-        .pipe(uglify({ mangle: false }))
+        //.pipe(uglify({ mangle: false }))
         .pipe(gulp.dest("../CNCDataManager_Publish/scripts"))
 }); 
 
@@ -70,16 +70,12 @@ gulp.task("bundle", function () {
             removeComments: true,
             outFile: 'app.js'
         }))       
-        .pipe(gulp.dest("../CNCDataManager_Publish/scripts"));
+        .pipe(uglify({ mangle: false }))
+        .pipe(rename('bundle.min.js'))
+        .pipe(gulp.dest('../CNCDataManager_Publish/scripts'))
 });
 
-gulp.task("minify-bundle", function () {
-    return gulp.src('../CNCDataManager_Publish/scripts/app.js')
-            .pipe(uglify({ mangle: false }))
-            .pipe(rename('bundle.min.js'))
-            .pipe(gulp.dest('../CNCDataManager_Publish/scripts'))
-});
 
-gulp.task('publish', ["copy-html", "copy-lib", "css", "copy-config", "minify-bundle"], function () {
+gulp.task('publish', ["copy-html", "copy-lib", "css", "copy-config", "bundle"], function () {
     console.log('publish succeed.')
 });
