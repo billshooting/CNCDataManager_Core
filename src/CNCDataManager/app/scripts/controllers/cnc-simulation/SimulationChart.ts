@@ -304,6 +304,7 @@ export default class SimulationChart
             {
                 let data = selecNotifier.getReportData();
                 $scope.report.isShown = true; 
+                $scope.report.companyIcon = './images/Report/' + user.Company + '.png';
                 $scope.report.CNCMachine = data.MachineType;
                 $scope.report.CNCSystem = data.NCSystem;
                 $scope.report.FeedSystemX = data.FeedSystemX;

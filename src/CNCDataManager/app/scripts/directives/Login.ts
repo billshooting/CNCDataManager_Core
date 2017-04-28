@@ -15,13 +15,22 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
             {
                 scope.isAuthenticated = user.IsAuthenticated;
                 scope.user.name = user.Name;
+                scope.user.companyName = user.CompanyName;
             }
             let init = () => 
             {
                 scope.isAuthenticated = user.IsAuthenticated;
+                scope.companies = [
+                    { id: 'HNC', name: '华中数控' },
+                    { id: 'GSK', name: '广州数控' },
+                    { id: 'GJ', name: '沈阳高精' },
+                    { id: 'BJHT', name: '北京航天' },
+                    { id: 'OHTER', name: '其他'}
+                ]
                 scope.user = 
                 {
                     name: user.Name,
+                    companyName: user.CompanyName,
                     logout: () => 
                     {
                         user.logout();
@@ -34,6 +43,7 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
                     loginPassword: null,
                     registerEmail: null,
                     registerUserName: null,
+                    registerCompany: 'HNC',
                     registerPassword: null,
                     registerConfirmPassword: null,
                     login: () => 
@@ -60,7 +70,12 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
                     register: () => 
                     {
                         messageService.showLoading();
-                        let registerData: IRegisterModel = { email: scope.tourist.registerEmail, username: scope.tourist.registerUserName, password: scope.tourist.registerPassword };
+                        let registerData: IRegisterModel = { 
+                            email: scope.tourist.registerEmail, 
+                            username: scope.tourist.registerUserName, 
+                            company: scope.tourist.registerCompany,
+                            password: scope.tourist.registerPassword 
+                        };
                         user.register(registerData, response => 
                         {
                             messageService.hideLoading();

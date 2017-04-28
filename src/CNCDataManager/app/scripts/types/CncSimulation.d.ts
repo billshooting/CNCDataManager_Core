@@ -91,6 +91,7 @@ interface ISimulationChartScope extends ISimulationCompletedScope {
     };
     report: {
         isShown: boolean;
+        companyIcon?: string;
         CNCMachine?: ISelectionObject;
         CNCSystem?: ISelectionObject;
         FeedSystemX?: ISelectionAxis;

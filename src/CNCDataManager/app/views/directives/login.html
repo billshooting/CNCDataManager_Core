@@ -1,10 +1,11 @@
 ﻿<ul class="nav navbar-nav navbar-right" ng-if="isAuthenticated">
-    <li><a class="home-index-nav-link" ui-sref="account" title="Manage"><span>你好,{{user.name}}</span></a></li>
+    <li><a class="home-index-nav-link" ui-sref="account" title="Manage"><span>你好,{{user.companyName}}{{user.name}}</span></a></li>
     <li><a class="home-index-nav-link" ng-click="user.logout()"><span>注销</span></a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated">
     <li><a class="home-index-nav-link" ng-click="showLoginModal()">登陆</a></li>
     <li><a class="home-index-nav-link" ng-click="showRegisterModal()">注册</a></li>
+    <!--<li><a class="home-index-nav-link" disabled>注册</a></li>-->
 </ul>
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
@@ -59,6 +60,12 @@
                         <input type="text" id="register-username" name="username" class="form-control" ng-model="tourist.registerUserName" placeholder="请输入用户名" ng-minlength="3" ng-maxlength="24" />
                         <p class="text-danger" ng-show="registerForm.username.$error.minlength">用户名太短了，至少3个字符</p>
                         <p class="text-danger" ng-show="registerForm.username.$error.maxlength">用户名太长了，最多24个字符</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-company">公司名</label>
+                        <select id="register-company" class="form-control" ng-model="tourist.registerCompany" form="registerForm"
+                                ng-options="x.id as x.name for x in companies" required>
+                        </select>
                     </div>
                     <div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && !registerForm.password.$pristine}">
                         <label for="register-password">密码</label>

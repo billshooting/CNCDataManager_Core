@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using CNCDataManager.Controllers.Internals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace CNCDataManager.Controllers
 {
@@ -14,11 +16,13 @@ namespace CNCDataManager.Controllers
     [ApiAuthorize(Policy = nameof(AuthorizationLevel.Member))]
     public class ReportController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly string _webRootPath;
         private readonly string _appRootPath;
 
-        public ReportController(IHostingEnvironment host)
+        public ReportController(UserManager<ApplicationUser> userManager, IHostingEnvironment host)
         {
+            _userManager = userManager;
             _webRootPath = host.WebRootPath;
             _appRootPath = host.ContentRootPath;
         }
@@ -48,7 +52,7 @@ namespace CNCDataManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult GenerateDocument([FromQuery]string fileID, [FromQuery]string userName, [FromBody]SelectionResult selectionResult)
+        public async Task<IActionResult> GenerateDocument([FromQuery]string fileID, [FromQuery]string userName, [FromBody]SelectionResult selectionResult)
         {
             if (string.IsNullOrEmpty(fileID) || fileID == "null") return BadRequest();
             if (string.IsNullOrEmpty(userName) || userName == "null") return BadRequest();
@@ -56,9 +60,12 @@ namespace CNCDataManager.Controllers
             ReportTemplateResult result = ToReportTemplate(selectionResult, workPath);
             string shortName = "选型结果简表";
             string filename = Path.Combine(workPath, shortName + ".docx");
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            string companyName = $"./images/Report/{user.Company}.png";
             using (DocxGenerator gen = new DocxGenerator(MapPath(@"选型简表结果.docx")))
             {
-                gen.AddMachinePicture(MapPath(result.MachinePicture))
+                gen.AddCompanyLogo(MapPath(companyName))
+                    .AddMachinePicture(MapPath(result.MachinePicture))
                     .AddSimulationPictures(result.SimulationPictures.ToArray())
                     .AddContent(result)
                     .SaveAs(filename);
@@ -76,6 +83,7 @@ namespace CNCDataManager.Controllers
             return File(filename, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "仿真结果.docx");
         }
 
+        //这个方法有问题，并不会将其中的‘/’转化为windows平台的‘\'。好在DocX认识这些路径
         private string MapPath(string relativeUrl)
         {
             return Path.Combine(_webRootPath, relativeUrl);

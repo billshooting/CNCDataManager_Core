@@ -53,7 +53,7 @@ namespace CNCDataManager.Controllers
                     _logger.LogInformation(1, $"User: {model.Username} logged in at " + DateTime.Now.ToString("yyyyMMdd-hhmmss"));
                     var user = await _userManager.FindByNameAsync(model.Username);
                     string role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                    return Ok(new { userName = model.Username, role = role});
+                    return Ok(new { userName = user.UserName, role = role, company = user.Company});
                 }
                 else
                 {
@@ -71,16 +71,16 @@ namespace CNCDataManager.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody]RegisterModel model)
         {
-            if (ModelState.IsValid || model.Email == null || model.Password == null || model.Username == null)
+            if (ModelState.IsValid || model.Email == null || model.Password == null || model.Username == null || string.IsNullOrEmpty(model.Company))
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, Company = model.Company };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
                     await _userManager.AddToRoleAsync(user, "Administrator");
                     _logger.LogInformation(3, $"Create User: {model.Username}, role: Tourist with password at" + DateTime.Now.ToString("yyyyMMdd-hhmmss"));
-                    return Ok(new { userName = model.Username, role = "Tourist" });
+                    return Ok(new { userName = user.UserName, role = "Tourist", company = user.Company});
                 }
                 AddErrors(result);
                 foreach(var error in result.Errors)
@@ -103,7 +103,7 @@ namespace CNCDataManager.Controllers
                 string name = User.Identity.Name;
                 var user = await _userManager.FindByNameAsync(name);
                 string role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
-                return Ok(new { userName = name, role = role });
+                return Ok(new { userName = name, role = role, company = user.Company });
             }
         }
 

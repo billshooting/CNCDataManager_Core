@@ -10,6 +10,7 @@ namespace CNCDataManager.Controllers.Internals
 {
     internal class DocxGenerator: IDisposable
     {
+        private const int companyLogoIndex = 0;
         private const int machinePictureIndex = 1;
         private const int transmissionMethodIndex = 2;
         private const int componentsTableIndex = 3;
@@ -32,6 +33,14 @@ namespace CNCDataManager.Controllers.Internals
             document = DocX.Load(filename);
         }
 
+        public DocxGenerator AddCompanyLogo(string logo)
+        {
+            Image image = document.AddImage(logo);
+            Picture pic = image.CreatePicture(150, 300);
+            var p = document.Tables[companyLogoIndex].Rows[0].Cells[0].Paragraphs.FirstOrDefault();
+            p.InsertPicture(pic);
+            return this;
+        }
 
         public DocxGenerator AddMachinePicture(string machineImage)
         {

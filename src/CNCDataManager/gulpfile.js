@@ -68,7 +68,7 @@ gulp.task("bundle", function () {
             experimentalDecorators: true,
             emitDecoratorMetadata: true,
             removeComments: true,
-            outFile: 'app.js'
+            outFile: '../CNCDataManager_Publish/scripts/app.js'
         }))       
         .pipe(uglify({ mangle: false }))
         .pipe(rename('bundle.min.js'))
