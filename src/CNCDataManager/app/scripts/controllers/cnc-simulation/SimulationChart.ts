@@ -153,6 +153,86 @@ export default class SimulationChart
                     chartOptions.series[0].name = 'a-t';
                     break;
                 }
+                case 'motorAngularDisplacement':
+                {
+                    chartOptions.title.text = '电机角位移-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '转角 (rad)'
+                    chartOptions.tooltip.valueSuffix = 'rad';
+                    chartOptions.series[0].name = 'Phi-t';
+                    break;
+                }
+                case 'motorTorque':
+                {
+                    chartOptions.title.text = '电机角转矩-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '转矩 (N*m)'
+                    chartOptions.tooltip.valueSuffix = 'N*m';
+                    chartOptions.series[0].name = 'Tor-t';
+                    break;
+                }
+                case 'motorAPharseCurrent':
+                {
+                    chartOptions.title.text = '电机A相电流-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '电流 (A)'
+                    chartOptions.tooltip.valueSuffix = 'A';
+                    chartOptions.series[0].name = '(A)I-t';
+                    break;
+                }
+                case 'motorBPharseCurrent':
+                {
+                    chartOptions.title.text = '电机B相电流-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '电流 (A)'
+                    chartOptions.tooltip.valueSuffix = 'A';
+                    chartOptions.series[0].name = '(B)I-t';
+                    break;
+                }
+                case 'motorCPharseCurrent':
+                {
+                    chartOptions.title.text = '电机C相电流-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '电流 (A)'
+                    chartOptions.tooltip.valueSuffix = 'A';
+                    chartOptions.series[0].name = '(C)I-t';
+                    break;
+                }
+                case 'motorAngularVelocity':
+                {
+                    chartOptions.title.text = '电机角速度-时间仿真结果';
+                    (chartOptions.yAxis as any).title.text = '角速度 (rad/s)'
+                    chartOptions.tooltip.valueSuffix = 'rad/s';
+                    chartOptions.series[0].name = '(motor)w-t';
+                    break;
+                }
+                case 'couplingAngularVelocity':
+                {
+                    chartOptions.title.text = '联轴器角速度';
+                    (chartOptions.yAxis as any).title.text = '角速度 (rad/s)'
+                    chartOptions.tooltip.valueSuffix = 'rad/s';
+                    chartOptions.series[0].name = '(coupling)w-t';
+                    break;
+                }
+                case 'couplingAngularAcceleration':
+                {
+                    chartOptions.title.text = '联轴器角加速度';
+                    (chartOptions.yAxis as any).title.text = '角加速度 (rad/s^2)'
+                    chartOptions.tooltip.valueSuffix = 'rad/s^2';
+                    chartOptions.series[0].name = '(coupling)a-t';
+                    break;
+                }
+                case 'screwTorque':
+                {
+                    chartOptions.title.text = '滚珠丝杠转矩';
+                    (chartOptions.yAxis as any).title.text = '转矩 (N*m)'
+                    chartOptions.tooltip.valueSuffix = 'N*m';
+                    chartOptions.series[0].name = '(ballscrew)Tor-t';
+                    break;
+                }
+                case 'screwAngularDisplacement':
+                {
+                    chartOptions.title.text = '滚珠丝杠角位移';
+                    (chartOptions.yAxis as any).title.text = '转角 (rad)'
+                    chartOptions.tooltip.valueSuffix = 'rad';
+                    chartOptions.series[0].name = '(ballscrew)Phi-t';
+                    break;
+                }
                 default: break;
             }
             return chartOptions;
@@ -179,6 +259,56 @@ export default class SimulationChart
                 case 'acceleration':
                 {
                     simuTypeStr = 'a';
+                    break;
+                }
+                case 'motorAngularDisplacement':
+                {
+                    simuTypeStr = 'pmsm.flange_a.phi';
+                    break;
+                }
+                case 'motorTorque':
+                {
+                    simuTypeStr = 'pmsm.flange_a.tau';
+                    break;
+                }
+                case 'motorAPharseCurrent':
+                {
+                    simuTypeStr = 'pmsm.PMSM.lssigma.i[1]';
+                    break;
+                }
+                case 'motorBPharseCurrent':
+                {
+                    simuTypeStr = 'pmsm.PMSM.lssigma.i[2]';
+                    break;
+                }
+                case 'motorCPharseCurrent':
+                {
+                    simuTypeStr = 'pmsm.PMSM.lssigma.i[3]';
+                    break;
+                }
+                case 'motorAngularVelocity':
+                {
+                    simuTypeStr = 'x_axis_mechnical_model.coupling.inertia.w';
+                    break;
+                }
+                case 'couplingAngularVelocity':
+                {
+                    simuTypeStr = 'x_axis_mechnical_model.coupling.inertia.w';
+                    break;
+                }
+                case 'couplingAngularAcceleration':
+                {
+                    simuTypeStr = 'x_axis_mechnical_model.coupling.inertia.a';
+                    break;
+                }
+                case 'screwTorque':
+                {
+                    simuTypeStr = 'x_axis_mechnical_model.simpleprojectscrew.flange_a.tau';
+                    break;
+                }
+                case 'screwAngularDisplacement':
+                {
+                    simuTypeStr = 'x_axis_mechnical_model.simpleprojectscrew.flange_a.phi';
                     break;
                 }
                 default: break;

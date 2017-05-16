@@ -8,6 +8,7 @@ interface ISideMenuScope extends ISelectionStateScope{
     toggleState: (propA?: string, propB?: string)=> void;
     selectionComplete: () => void;
     selectionReset: () => void;
+    userName: string;
 }
 
 let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification, 
@@ -21,6 +22,7 @@ let SideMenu: angular.IDirectiveFactory = (notifier: SelectionNotification,
         link: (scope: ISideMenuScope, ele: Element, attr: Attr): void => {
             /** scope上数据初始化 */
             let dataInitialize = (scope: ISideMenuScope): void => {
+                scope.userName = '未登录';
                 scope.data = {
                     CNCMachine: {
                         IsSelected: false,

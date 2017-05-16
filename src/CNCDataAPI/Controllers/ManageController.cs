@@ -9,10 +9,14 @@ using Microsoft.Extensions.Logging;
 using CNCDataManager.Models;
 using CNCDataManager.Models.ManageViewModels;
 using CNCDataManager.Services;
+using CNCDataManager.Controllers.Internals;
+using Microsoft.AspNetCore.Cors;
 
 namespace CNCDataManager.Controllers
 {
-    [Authorize]
+    [ApiAuthorize]
+    [EnableCors("FullOpen")]
+    [Route("api/cncdata/[controller]/[action]")]
     public class ManageController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

@@ -12,23 +12,35 @@
     </div>
     <div class="info-block" ng-show="state.isCompleted">
         <ul class="nav nav-tabs">
-            <li class="active">
-                <a href="javascript:; #displacement-chart" data-toggle="tab" ng-click="showData('displacement')">位移曲线</a>
-            </li>
-            <li>
-                <a href="javascript:; #velocity-chart" data-toggle="tab" ng-click="showData('velocity')">速度曲线</a>
-            </li>
-            <li>
-                <a href="javascript:; #acceleration-chart" data-toggle="tab" ng-click="showData('acceleration')">加速度曲线</a>
-            </li>
-            <li>
-                <a class="btn btn-success" ng-click="reportToggle()">报表预览</a>
-            </li>
+            <li class="active"><a href="javascript:; #displacement-chart" data-toggle="tab" ng-click="showData('displacement')">工作台位移</a></li>
+            <li><a href="javascript:; #velocity-chart" data-toggle="tab" ng-click="showData('velocity')">工作台速度</a></li>
+            <li><a href="javascript:; #acceleration-chart" data-toggle="tab" ng-click="showData('acceleration')">工作台加速度</a></li>
+            <li><a href="javascript:; #motorAngularDisplacement-chart" data-toggle="tab" ng-click="showData('motorAngularDisplacement')">电机角位移</a></li>
+            <li><a href="javascript:; #motorAngularVelocity-chart" data-toggle="tab" ng-click="showData('motorAngularVelocity')">电机转速</a></li>
+            <li><a href="javascript:; #motorTorque-chart" data-toggle="tab" ng-click="showData('motorTorque')">电机转矩</a></li>
+            <li><a href="javascript:; #motorAPharseCurrent-chart" data-toggle="tab" ng-click="showData('motorAPharseCurrent')">电机A相电流</a></li>
+            <li><a href="javascript:; #motorBPharseCurrent-chart" data-toggle="tab" ng-click="showData('motorBPharseCurrent')">电机B相电流</a></li>
+            <li><a href="javascript:; #motorCPharseCurrent-chart" data-toggle="tab" ng-click="showData('motorCPharseCurrent')">电机C相电流</a></li>
+            <li><a href="javascript:; #couplingAngularVelocity-chart" data-toggle="tab" ng-click="showData('couplingAngularVelocity')">联轴器角速度</a></li>
+            <li><a href="javascript:; #couplingAngularAcceleration-chart" data-toggle="tab" ng-click="showData('couplingAngularAcceleration')">联轴器角加速度</a></li>
+            <li><a href="javascript:; #screwTorque-chart" data-toggle="tab" ng-click="showData('screwTorque')">滚珠丝杠转矩</a></li>
+            <li><a href="javascript:; #screwAngularDisplacement-chart" data-toggle="tab" ng-click="showData('screwAngularDisplacement')">滚珠丝杠转角</a></li>
+            <li><a class="btn btn-success" ng-click="reportToggle()">报表预览</a></li>
         </ul>
         <div class="tab-content">
             <div id="displacement-chart" class="tab-pane fade in active" style="height: 400px">位移曲线</div>
             <div id="velocity-chart" class="tab-pane fade" style="height: 400px">速度曲线</div>
             <div id="acceleration-chart" class="tab-pane fade" style="height: 400px">加速度曲线</div>
+            <div id="motorAngularDisplacement-chart" class="tab-pane fade" style="height: 400px">电机角位移曲线</div>
+            <div id="motorAngularVelocity-chart" class="tab-pane fade" style="height: 400px">电机角速度曲线</div>
+            <div id="motorTorque-chart" class="tab-pane fade" style="height: 400px">电机转矩曲线</div>
+            <div id="motorAPharseCurrent-chart" class="tab-pane fade" style="height: 400px">电机A相电流</div>
+            <div id="motorBPharseCurrent-chart" class="tab-pane fade" style="height: 400px">电机B相电流</div>
+            <div id="motorCPharseCurrent-chart" class="tab-pane fade" style="height: 400px">电机C相电流</div>
+            <div id="couplingAngularVelocity-chart" class="tab-pane fade" style="height: 400px">联轴器角速度</div>
+            <div id="couplingAngularAcceleration-chart" class="tab-pane fade" style="height: 400px">联轴器角加速度</div>
+            <div id="screwTorque-chart" class="tab-pane fade" style="height: 400px">滚珠丝杠转矩</div>
+            <div id="screwAngularDisplacement-chart" class="tab-pane fade" style="height: 400px">滚珠丝杠转角</div>
         </div>
     </div>
     <div class="report-background" ng-show="report.isShown">

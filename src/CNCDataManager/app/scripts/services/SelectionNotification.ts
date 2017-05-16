@@ -56,6 +56,17 @@ export default class SelectionNotification {
             scope.changeHandler();
         });
     }
+
+    public notifyOtherChange(change: (data: any) => void): void
+    {
+        this.scopes.forEach(scope => {
+            if((scope as any).userName)
+            {
+                change(scope);
+            }
+        });
+    }
+
     /** 或者SideMenu的 scope.data */
     public getSideMenuScopeData(): ISelectionData {
         let scope = this.scopes[0];

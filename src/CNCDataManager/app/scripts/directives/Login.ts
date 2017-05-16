@@ -23,8 +23,10 @@ let Login: angular.IDirectiveFactory = (user: User, messageService: MessageTips)
                 scope.companies = [
                     { id: 'HNC', name: '华中数控' },
                     { id: 'GSK', name: '广州数控' },
-                    { id: 'GJ', name: '沈阳高精' },
+                    { id: 'LT', name: '沈阳高精' },
                     { id: 'BJHT', name: '北京航天' },
+                    { id: 'GONA', name: '大连光洋'},
+                    { id: 'DMTG', name: '大连机床'},
                     { id: 'OHTER', name: '其他'}
                 ]
                 scope.user = 

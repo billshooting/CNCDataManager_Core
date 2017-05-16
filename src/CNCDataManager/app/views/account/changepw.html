@@ -1,3 +1,21 @@
 ﻿<div>
     修改密码界面，尚未施工完毕.
+    <form role="form" name="resetPasswordForm" id="resetPasswordForm">
+        <div class="form-group" ng-class="{'has-error': resetPasswordForm.oldPassword.$invalid && !resetPasswordForm.oldPassword.$pristine}">
+            <label for="old-password">原密码</label>
+            <input type="password" id="old-password" name="oldPassword" class="form-control" ng-model="user.oldPassword" placeholder="请输入密码" ng-minlength="6" ng-maxlength="16" />
+            <p class="text-danger" ng-show="resetPasswordForm.oldPassword.$invalid && !resetPasswordForm.oldPassword.$pristine">原密码未输入或格式有误</p>
+        </div>
+        <div class="form-group" ng-class="{'has-error': resetPasswordForm.newPassword.$invalid && !resetPasswordForm.newPassword.$pristine}">
+            <label for="register-password">密码</label>
+            <input type="password" id="new-password" name="newPassword" class="form-control" ng-model="user.newPassword" placeholder="请输入密码" ng-minlength="6" ng-maxlength="16" />
+            <p class="text-danger" ng-show="resetPasswordForm.newPassword.$error.minlength">密码太短了，至少6个字符</p>
+            <p class="text-danger" ng-show="resetPasswordForm.newPassword.$error.maxlength">密码太长了，最多16个字符</p>
+        </div>
+        <div class="form-group" ng-class="{'has-error': !resetPasswordForm.confirmPassword.$pristine && user.newPassword !== user.confirmPassword}">
+            <label for="confirm-password">确认密码</label>
+            <input type="password" id="confirm-password" name="confirmPassword" class="form-control" ng-model="user.confirmPassword" placeholder="请再次输入密码" />
+            <p class="text-danger" ng-show="user.newPassword !== user.confirmPassword">两次密码不一致</p>
+        </div>
+    </form>
 </div>

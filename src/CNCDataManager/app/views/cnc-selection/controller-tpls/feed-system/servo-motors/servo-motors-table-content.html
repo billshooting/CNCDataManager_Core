@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="voltage">工作电压:</label>
-                                    <select class="form-control" id="voltage" ng-options="data.name for data in voltageOptions" ng-model="servoMotorPara.voltage"></select>
+                                    <select class="form-control" id="voltage" ng-options="data.id as data.name for data in state.voltageOptions" ng-model="servoMotorPara.voltage"></select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">负载转矩:</label>

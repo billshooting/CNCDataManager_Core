@@ -1,5 +1,6 @@
 ﻿import * as angular from 'angular';
 import HttpProxy from './HttpProxy';
+import SelectionNotification from './SelectionNotification';
 import { IRegisterModel, ILoginModel } from '../types/CncAccount';
 
 export default class User 
@@ -7,12 +8,14 @@ export default class User
     private name: string;
     private isAuthenticated: boolean;
     private httpProxy: HttpProxy;
+    private sideMenuNotifier: SelectionNotification;
     private role: string;
     private company: string;
 
-    public constructor(httpProxy: HttpProxy) 
+    public constructor(httpProxy: HttpProxy, sideMenuNotifier: SelectionNotification) 
     {
         this.httpProxy = httpProxy;
+        this.sideMenuNotifier = sideMenuNotifier;
         this.isAuthenticated = false;
         this.name = null;
         this.role = null;
@@ -29,8 +32,10 @@ export default class User
         {
             case 'HNC': return '华中数控的';
             case 'GSK': return '广州数控的';
-            case 'GJ': return '沈阳高精的';
+            case 'LT': return '沈阳高精的';
             case 'BJHT': return '北京航天的';
+            case 'GONA': return '大连光洋';
+            case 'DMTG': return '大连机床';
             default: return '';
         }
     }
@@ -45,6 +50,7 @@ export default class User
                 this.role = response.data.role as string;
                 this.company = response.data.company as string;
                 this.isAuthenticated = true;
+                this.sideMenuNotifier.notifyOtherChange(scope => scope.userName = this.name);
             }
             onsuccess(response);
         }, onerror);
@@ -56,6 +62,7 @@ export default class User
         this.name = null;
         this.role = null;
         this.company = null;
+        this.sideMenuNotifier.notifyOtherChange(scope => scope.userName = '未登录');
     }
     public register(data: IRegisterModel, onsuccess?: (response: any) => void, onerror?: (response: any) => void): void 
     {
@@ -67,6 +74,7 @@ export default class User
                 this.role = response.data.role as string;
                 this.company = response.data.company as string;
                 this.isAuthenticated = true;
+                this.sideMenuNotifier.notifyOtherChange(scope => scope.userName = this.name);
             }
             onsuccess(response);
         }, onerror);
@@ -81,10 +89,11 @@ export default class User
                 this.role = response.data.role as string;
                 this.company = response.data.company as string;
                 this.isAuthenticated = true;
+                this.sideMenuNotifier.notifyOtherChange(scope => scope.userName = this.name);
                 stateSync();
             }, response => {});
     }
 
 };
-User.$inject = ['HttpProxy'];
+User.$inject = ['HttpProxy', 'SelectionNotification'];
 

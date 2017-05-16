@@ -118,18 +118,21 @@ export default class Simulation
                 $scope.data.ballscrew.shearModulusofElasticty = $scope.data.ballscrew.modulusofElasticty * 1e9;
                 
                 let fileID = simuNotifier.getCurrentTime();
-                let simulationUrl = httpProxy.getRelativeUrl('Simulation/StartSimulation', { fileID: fileID, userName: user.Name });
-                httpProxy.http(simulationUrl).post($scope.data, { timeout: 1000 * 60 * 5}).catch(
-                    response => { if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够'); });
+                // let simulationUrl = httpProxy.getRelativeUrl('Simulation/StartSimulation', { fileID: fileID, userName: user.Name });
+                // httpProxy.http(simulationUrl).post($scope.data, { timeout: 1000 * 60 * 5}).catch(
+                //     response => { if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够'); });
 
-                let pollingUrl = httpProxy.getRelativeUrl('Simulation/PollingSimulation', { fileID: fileID, userName: user.Name });
-                let pollingID = httpProxy.http(pollingUrl).polling(
-                    response => simuNotifier.notifyComplement(response.data),
-                    response => 
-                    {
-                        if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够');
-                        else simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器')
-                    });
+                // let pollingUrl = httpProxy.getRelativeUrl('Simulation/PollingSimulation', { fileID: fileID, userName: user.Name });
+                // let pollingID = httpProxy.http(pollingUrl).polling(
+                //     response => simuNotifier.notifyComplement(response.data),
+                //     response => 
+                //     {
+                //         if(response.status === 401) simuNotifier.notifyFailure('账户尚未登陆或者权限不够');
+                //         else simuNotifier.notifyFailure(response.statusText || '糟糕，连不上服务器')
+                //     });
+                setTimeout(() => {
+                    simuNotifier.notifyComplement('20170507-123404');
+                }, 3200);
                 simuNotifier.resetFileID(); //清除已经存在的fileID
                 setTimeout(() => $state.go('simulation.Chart'), 700);
                 setTimeout(() => simuNotifier.notifyStart(), 1200); //由于此时结果页面的scope还没生成,所以要等一会儿               
