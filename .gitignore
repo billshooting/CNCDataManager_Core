@@ -2,6 +2,7 @@
 /src/CNCDataManager/obj
 /src/CNCDataManager/node_modules
 /src/CNCDataManager/dist/*
+/src/CNCDataManager/app.js
 
 /src/CNCDataAPI/bin
 /src/CNCDataAPI/obj

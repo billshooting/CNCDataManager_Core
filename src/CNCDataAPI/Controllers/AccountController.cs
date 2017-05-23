@@ -78,7 +78,7 @@ namespace CNCDataManager.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
-                    await _userManager.AddToRoleAsync(user, "Administrator");
+                    await _userManager.AddToRoleAsync(user, "Member");
                     _logger.LogInformation(3, $"Create User: {model.Username}, role: Tourist with password at" + DateTime.Now.ToString("yyyyMMdd-hhmmss"));
                     return Ok(new { userName = user.UserName, role = "Tourist", company = user.Company});
                 }
